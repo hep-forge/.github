@@ -6,6 +6,8 @@ Any contribution implementing specific self-hosted runners in HEP Forge, using a
 
 ## HEP Forge Channel
 
+This is a distribution channel implementing many HEP scientific models and packages including some specific requirements.
+
 Packages are available and listed in https://anaconda.org/hep-forge/
 You can also sort by version pre-compiled and install the one you prefer.
 
@@ -26,7 +28,7 @@ conda activate myenv # enable the environment
 conda -c hep-forge -c conda-forge cernlib root lhapdf # As an example you can install cernlib, root, lhapdf in a second.
 ```
 
-Additionally, you can also provide a one line command, such as
+You can also provide a one line command, such as
 ```
 conda create -n myenv -c hep-forge -c conda-forge cernlib root lhapdf 
 conda activate myenv
@@ -36,3 +38,24 @@ You can switch between environment by activating another environment you created
 ```
 conda deactivate
 ```
+
+Additionally, you can share you environment by providing a minimal `environment.yml` file to people, such as:
+```
+# environment.yml
+name: starformer
+channels:
+  - hep-forge
+  - conda-forge
+```
+
+Environment file can be shared using:
+```
+conda create -n myenv -f environment.yml
+```
+
+## How to add new software into the HEP channel ?
+
+Please start a discussion on github to reach us and contribute. Current configuration is limited to `linux-64` platform, but it is compatible with `conda-smithy`.
+Also, a template example if provided in this organization:
+- http://github.com/hep-forge/helloworld ; this is the effective software package you want to distribute
+- http://github.com/hep-forge/helloworld-feedstock ; this repository is the one responsible for publishing in HEP channel.
