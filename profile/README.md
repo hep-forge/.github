@@ -42,7 +42,7 @@ conda deactivate
 Additionally, you can share you environment by providing a minimal `environment.yml` file to people, such as:
 ```
 # environment.yml
-name: starformer
+name: myhep
 channels:
   - hep-forge
   - conda-forge
@@ -50,7 +50,7 @@ channels:
 
 Environment file can be shared using:
 ```
-conda create -n myenv -f environment.yml
+conda create -n myhep -f environment.yml
 ```
 
 ## How to add new software into the HEP channel ?
