@@ -23,15 +23,15 @@ We recommend `miniconda` or `mamba`.
 
 You can create a conda environment by executing the following lines
 ```
-conda create -n myenv # change `myenv` as you wish
-conda activate myenv # enable the environment
+conda create -n myhep # change `myenv` as you wish
+conda activate myhep # enable the environment
 conda -c hep-forge -c conda-forge cernlib root lhapdf # As an example you can install cernlib, root, lhapdf in a second.
 ```
 
 You can also provide a one line command, such as
 ```
-conda create -n myenv -c hep-forge -c conda-forge cernlib root lhapdf 
-conda activate myenv
+conda create -n myhep -c hep-forge -c conda-forge cernlib root lhapdf 
+conda activate myhep
 ```
 
 You can switch between environment by activating another environment you created or deactivate it as follows:
