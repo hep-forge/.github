@@ -1,7 +1,7 @@
 ## Hi there 👋
 
 This forge implements `autoupload.yml/autodelete.yml` CI/CD automation for `linux` operating system.
-It supports both AMD64 (x86) and ARM64 (aarch64) architectures
+It supports both AMD64 (x86) and ARM64 (aarch64) architectures, if not already available please start a new discussion in the discussion section.
 
 Any contribution implementing specific self-hosted runners in this HEP-Forge, using any external CI as natural improvement for CI/CD, would be very welcome too.
 If you are looking for a more generic approach including macOS and window, please refer to `conda-forge` website
