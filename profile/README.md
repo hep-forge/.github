@@ -54,7 +54,7 @@ is the feedstock's release tag; "Published" is what anaconda.org actually serves
 with per-architecture availability.
 
 <!-- status:begin -->
-_Last refreshed: 2026-07-22 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -123,7 +123,7 @@ _Last refreshed: 2026-07-22 (`python3 scripts/update_readme_status.py`)_
 | [podio](https://github.com/hep-forge/podio-feedstock) | `1.7.0` | [`1.7.0`](https://anaconda.org/hep-forge/podio) | ✅ | ✅ |
 | [professor](https://github.com/hep-forge/professor-feedstock) | `2.4.2` | [`2.4.2`](https://anaconda.org/hep-forge/professor) | ✅ | ✅ |
 | [pythia](https://github.com/hep-forge/pythia-feedstock) | `8.3.12` | [`8.3.12`](https://anaconda.org/hep-forge/pythia) | ✅ | ✅ |
-| [qcdloop](https://github.com/hep-forge/qcdloop-feedstock) | `2.0.9` | [`2.0.9`](https://anaconda.org/hep-forge/qcdloop) | ✅ | ❌ |
+| [qcdloop](https://github.com/hep-forge/qcdloop-feedstock) | `2.0.9` | [`2.0.9`](https://anaconda.org/hep-forge/qcdloop) | ✅ | ✅ |
 | [qcdnum](https://github.com/hep-forge/qcdnum-feedstock) | `18.00.00` | [`18.00.00`](https://anaconda.org/hep-forge/qcdnum) | ✅ | ✅ |
 | [rapgap](https://github.com/hep-forge/rapgap-feedstock) | `3.310` | [`3.310`](https://anaconda.org/hep-forge/rapgap) | ✅ | ✅ |
 | [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.0` | [`4.1.0`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
