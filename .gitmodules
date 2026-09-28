@@ -243,3 +243,6 @@
 [submodule "feedstocks/thepeg-feedstock"]
 	path = feedstocks/thepeg-feedstock
 	url = git@github.com:hep-forge/thepeg-feedstock.git
+[submodule "feedstocks/jetphox-feedstock"]
+	path = feedstocks/jetphox-feedstock
+	url = https://github.com/hep-forge/jetphox-feedstock.git
