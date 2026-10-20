@@ -55,38 +55,49 @@ def release_tags(feedstock: Path) -> set:
     return {str(v) for vs in raw.values() for v in (vs or [])}
 
 
+def all_tags(feedstock: Path) -> list:
+    """Every tag on the feedstock's GitHub remote, local tags if offline.
+
+    The remote is authoritative: render-sync checks submodules out with
+    --depth 1, which leaves only the tags on the branch tip locally (so
+    e.g. eko showed 0.8.5 instead of 0.14.6).
+    """
+    try:
+        remote = subprocess.run(
+            ["git", "-C", str(feedstock), "ls-remote", "--tags", "origin"],
+            capture_output=True, text=True, timeout=30,
+        )
+        tags = {line.split("refs/tags/", 1)[1].removesuffix("^{}")
+                for line in remote.stdout.splitlines() if "refs/tags/" in line}
+        if remote.returncode == 0 and tags:
+            return sorted(tags)
+    except subprocess.TimeoutExpired:
+        pass
+    return subprocess.run(
+        ["git", "-C", str(feedstock), "tag"],
+        capture_output=True, text=True,
+    ).stdout.split()
+
+
 def latest_tag(feedstock: Path) -> str:
+    tags = all_tags(feedstock)
     # A recipe versioned by name (extra.release_tags) releases from those
     # tags; any numeric tag left in such a repo predates the switch (e.g.
-    # root-plus's 1.0.0 after consolidating onto beta). Among them take
-    # the most recently created, since a name says nothing about order.
-    named = release_tags(feedstock)
+    # root-plus's 1.0.0 after consolidating onto beta). A name says
+    # nothing about order, so among several take the most recently
+    # created one we can see locally.
+    named = [t for t in tags if t in release_tags(feedstock)]
     if named:
         dated = subprocess.run(
             ["git", "-C", str(feedstock), "for-each-ref", "refs/tags",
              "--sort=-creatordate", "--format=%(refname:short)"],
             capture_output=True, text=True,
         ).stdout.split()
-        for t in dated:
-            if t in named:
-                return t
-    out = subprocess.run(
-        ["git", "-C", str(feedstock), "tag", "--sort=-v:refname"],
-        capture_output=True, text=True,
-    ).stdout.split()
-    if not out:
-        # stale local clone: fall back to the remote's tags
-        remote = subprocess.run(
-            ["git", "-C", str(feedstock), "ls-remote", "--tags", "origin"],
-            capture_output=True, text=True, timeout=30,
-        ).stdout
-        out = sorted((line.split("refs/tags/", 1)[1]
-                      for line in remote.splitlines()
-                      if "refs/tags/" in line and not line.endswith("^{}")),
-                     reverse=True)
-    # CI only fires on numeric tags; prefer those over master/beta/rNN
-    numeric = [t for t in out if re.match(r"^\d", t)]
-    return (numeric or out or [""])[0]
+        return next((t for t in dated if t in named), sorted(named)[0])
+    # CI only fires on numeric tags; prefer those over master/beta/rNN.
+    # Sorted numerically (6.8 < 10.3, 0.8.5 < 0.14.6), never as text.
+    numeric = [t for t in tags if re.match(r"^\d", t)]
+    return max(numeric or tags or [""], key=version_key)
 
 
 def normalize(v: str) -> str:
@@ -95,7 +106,7 @@ def normalize(v: str) -> str:
     CI publishes tag "X-free" as version "X.free" (dashes become dots),
     and conda treats "1" and "1.0" as the same version.
     """
-    parts = re.split(r"[._-]", v.lower())
+    parts = re.split(r"[._-]", v.lower())  # "_": conda treats it like "."
     while len(parts) > 1 and parts[-1] == "0":
         parts.pop()
     return ".".join(parts)
