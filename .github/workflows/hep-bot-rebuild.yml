@@ -198,10 +198,12 @@ jobs:
           git config user.name "hep-bot"
           git config user.email "hep-bot@users.noreply.github.com"
           python3 scripts/update_readme_status.py
-          if git diff --quiet -- README.md; then
+          # README.md is a symlink to profile/README.md: the script writes
+          # through it, so the real file is the one that changes.
+          if git diff --quiet -- profile/README.md; then
             echo "README.md: nothing to update"
           else
-            git add README.md
+            git add profile/README.md
             git commit -qm "docs: refresh feedstock status table after DAG rebuild"
             git push "https://x-access-token:${HEP_BOT_TOKEN}@github.com/hep-forge/hep-feedstocks.git" HEAD:main
           fi

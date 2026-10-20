@@ -77,7 +77,10 @@ python3 scripts/update_readme_status.py
 
 # -- 5. meta-repo commit -----------------------------------------------------
 if [ "$COMMIT" -eq 1 ]; then
-  git add README.md
+  # README.md is a symlink to profile/README.md; update_readme_status.py
+  # writes through it, so staging the symlink path never picks up the
+  # table change -- stage the real file.
+  git add profile/README.md
   for dir in feedstocks/*-feedstock; do
     [ -e "$dir/.git" ] || continue
     skip=0

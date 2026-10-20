@@ -54,7 +54,7 @@ is the feedstock's release tag; "Published" is what anaconda.org actually serves
 with per-architecture availability.
 
 <!-- status:begin -->
-_Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-10-20 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -64,7 +64,7 @@ _Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 | [apfelgrid](https://github.com/hep-forge/apfelgrid-feedstock) | `1.0.1` | [`1.0.1`](https://anaconda.org/hep-forge/apfelgrid) | ✅ | ✅ |
 | [apfelxx](https://github.com/hep-forge/apfelxx-feedstock) | `4.8.0` | [`4.8.0`](https://anaconda.org/hep-forge/apfelxx) | ✅ | ✅ |
 | [applgrid](https://github.com/hep-forge/applgrid-feedstock) | `1.6.35` | [`1.6.35`](https://anaconda.org/hep-forge/applgrid) | ✅ | ✅ |
-| [cernlib](https://github.com/hep-forge/cernlib-feedstock) | `2024.09.16.0-free` | [`2024.09.16.0.free` ⚠️](https://anaconda.org/hep-forge/cernlib) | ✅ | ✅ |
+| [cernlib](https://github.com/hep-forge/cernlib-feedstock) | `2024.09.16.0-free` | [`2024.09.16.0.free`](https://anaconda.org/hep-forge/cernlib) | ✅ | ✅ |
 | [chaplin](https://github.com/hep-forge/chaplin-feedstock) | `1.2` | [`1.2`](https://anaconda.org/hep-forge/chaplin) | ✅ | ✅ |
 | [collier](https://github.com/hep-forge/collier-feedstock) | `1.2.8` | [`1.2.8`](https://anaconda.org/hep-forge/collier) | ✅ | ✅ |
 | [combiner](https://github.com/hep-forge/combiner-feedstock) | `0.1.1` | [`0.1.1`](https://anaconda.org/hep-forge/combiner) | ✅ | ✅ |
@@ -85,6 +85,7 @@ _Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 | [epic](https://github.com/hep-forge/epic-feedstock) | `26.06.0` | [`26.06.0`](https://anaconda.org/hep-forge/epic) | ✅ | ✅ |
 | [escalade](https://github.com/hep-forge/escalade-feedstock) | `v9.08.26` | [`v9.08.26`](https://anaconda.org/hep-forge/escalade) | ✅ | ✅ |
 | [estarlight](https://github.com/hep-forge/estarlight-feedstock) | `1.2.0` | [`1.2.0`](https://anaconda.org/hep-forge/estarlight) | ✅ | ✅ |
+| [fairmq](https://github.com/hep-forge/fairmq-feedstock) | `1.11.0` | [`1.11.0`](https://anaconda.org/hep-forge/fairmq) | ✅ | ✅ |
 | [fastjet-contrib](https://github.com/hep-forge/fastjet-contrib-feedstock) | `1.103` | [`1.103`](https://anaconda.org/hep-forge/fastjet-contrib) | ✅ | ✅ |
 | [fastjet](https://github.com/hep-forge/fastjet-feedstock) | `3.5.1` | [`3.5.1`](https://anaconda.org/hep-forge/fastjet) | ✅ | ✅ |
 | [fastnlo](https://github.com/hep-forge/fastnlo-feedstock) | `2.6.0` | [`2.6.0`](https://anaconda.org/hep-forge/fastnlo) | ✅ | ✅ |
@@ -107,7 +108,7 @@ _Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 | [lhapdf](https://github.com/hep-forge/lhapdf-feedstock) | `6.5.6` | [`6.5.6`](https://anaconda.org/hep-forge/lhapdf) | ✅ | ✅ |
 | [libdate-tz](https://github.com/hep-forge/libdate-tz-feedstock) | `3.0.3` | [`3.0.3`](https://anaconda.org/hep-forge/libdate-tz) | ✅ | ✅ |
 | [looptools](https://github.com/hep-forge/looptools-feedstock) | `2.16` | [`2.16`](https://anaconda.org/hep-forge/looptools) | ✅ | ✅ |
-| [mcfm](https://github.com/hep-forge/mcfm-feedstock) | `10.3` | [`10.3`](https://anaconda.org/hep-forge/mcfm) | ✅ | ❌ |
+| [mcfm](https://github.com/hep-forge/mcfm-feedstock) | `10.3-applgrid` | [`10.3.applgrid`](https://anaconda.org/hep-forge/mcfm) | ✅ | ✅ |
 | [minio-cpp](https://github.com/hep-forge/minio-cpp-feedstock) | `0.3.0.1` | [`0.3.0.1`](https://anaconda.org/hep-forge/minio-cpp) | ✅ | ✅ |
 | [mpfun90](https://github.com/hep-forge/mpfun90-feedstock) | `2024.12.06` | [`2024.12.06`](https://anaconda.org/hep-forge/mpfun90) | ✅ | ✅ |
 | [ninja-hep-ph](https://github.com/hep-forge/ninja-hep-ph-feedstock) | `1.2.0` | [`1.2.0`](https://anaconda.org/hep-forge/ninja-hep-ph) | ✅ | ✅ |
@@ -128,8 +129,8 @@ _Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 | [rapgap](https://github.com/hep-forge/rapgap-feedstock) | `3.310` | [`3.310`](https://anaconda.org/hep-forge/rapgap) | ✅ | ✅ |
 | [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.0` | [`4.1.0`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
 | [root](https://github.com/hep-forge/root-feedstock) | `6.38.04` | [`6.38.04`](https://anaconda.org/hep-forge/root) | ✅ | ✅ |
-| [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `1.0` | [`1` ⚠️](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
-| [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `1.0.0` | [`beta` ⚠️](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
+| [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `1.0` | [`1`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
+| [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `beta` | [`beta`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
 | [sherpa](https://github.com/hep-forge/sherpa-feedstock) | `2.2.16` | [`2.2.16`](https://anaconda.org/hep-forge/sherpa) | ✅ | ✅ |
 | [sz3](https://github.com/hep-forge/sz3-feedstock) | `3.3.1` | [`3.3.1`](https://anaconda.org/hep-forge/sz3) | ✅ | ✅ |
 | [thepeg](https://github.com/hep-forge/thepeg-feedstock) | `2.3.0` | [`2.3.0`](https://anaconda.org/hep-forge/thepeg) | ✅ | ✅ |
@@ -138,7 +139,7 @@ _Last refreshed: 2026-09-10 (`python3 scripts/update_readme_status.py`)_
 | [yadism](https://github.com/hep-forge/yadism-feedstock) | `0.12.5` | [`0.12.5`](https://anaconda.org/hep-forge/yadism) | ✅ | ✅ |
 | [yoda](https://github.com/hep-forge/yoda-feedstock) | `2.1.0` | [`2.1.0`](https://anaconda.org/hep-forge/yoda) | ✅ | ✅ |
 
-⚠️ = published version differs from the latest feedstock tag (build failed or still running).
+⚠️ = the latest feedstock tag is not published on anaconda.org (build failed or still running); tag `X-y` publishes as `X.y`.
 <!-- status:end -->
 
 ## Repository structure
