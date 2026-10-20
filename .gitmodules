@@ -246,3 +246,6 @@
 [submodule "feedstocks/jetphox-feedstock"]
 	path = feedstocks/jetphox-feedstock
 	url = https://github.com/hep-forge/jetphox-feedstock.git
+[submodule "feedstocks/fairmq-feedstock"]
+	path = feedstocks/fairmq-feedstock
+	url = git@github.com:hep-forge/fairmq-feedstock.git
