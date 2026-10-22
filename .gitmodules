@@ -249,3 +249,6 @@
 [submodule "feedstocks/fairmq-feedstock"]
 	path = feedstocks/fairmq-feedstock
 	url = git@github.com:hep-forge/fairmq-feedstock.git
+[submodule "feedstocks/nestdaq-feedstock"]
+	path = feedstocks/nestdaq-feedstock
+	url = git@github.com:hep-forge/nestdaq-feedstock.git
