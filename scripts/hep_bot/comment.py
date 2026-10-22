@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
 """hep-bot issue commands.
 
-Run by .github/workflows/hep-bot-comment.yml (same file in this meta-repo
-and in every feedstock, synced from scripts/templates/). The workflow
-checks this script out of hep-forge/.github, so changing a command here
-needs no fleet-wide re-sync.
+Two ways in, one handler:
 
-Commands, in an issue body (on open) or a comment:
+  event mode   run by .github/workflows/hep-bot-comment.yml (same file in
+               this meta-repo and in every feedstock, synced from
+               scripts/templates/) on the issue or comment that was just
+               written; answers within a minute.
+  --sweep      run by .github/workflows/hep-bot-sweep.yml in this
+               meta-repo every 10 minutes: searches every hep-forge repo
+               for recent requests nobody answered -- repos without the
+               workflow, or a run that failed -- and handles them. This
+               is what makes the bot work org-wide.
+
+The workflows check this script out of hep-forge/.github, so changing a
+command here needs no fleet-wide re-sync.
+
+Commands, in an issue body or a comment:
 
   @hep-bot rerun [<pkg>] <tag>      rebuild + publish an existing tag
   @hep-bot rerender [<pkg>]         re-apply the hep-forge render (CI
@@ -23,47 +33,61 @@ command text; they are recognised by their title prefix
 
 <pkg> is inferred from the repo name inside <pkg>-feedstock repos.
 "please", commas and colons around the command are tolerated
-("@hep-bot, please rerender").
+("@hep-bot, please rerender"). A line starting with @hep-bot that is not
+a command gets the help text. Every handled request gets a 👀 reaction
+and a reply carrying a hidden marker, so it is never handled twice.
 """
 import json
 import os
 import re
 import subprocess
 import sys
+from datetime import datetime, timedelta, timezone
 
 META_REPO = "hep-forge/.github"
 ORG = "hep-forge"
 TRUSTED = ("OWNER", "MEMBER", "COLLABORATOR")
+SWEEP_DAYS = 7         # how far back the sweep looks
+SWEEP_GRACE_MIN = 10   # leave fresh requests to the per-repo workflow
 
-event_name = os.environ["EVENT_NAME"]
-event = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
-repo = os.environ["REPO"]
-repo_name = repo.split("/", 1)[1]
 has_pat = os.environ.get("HAS_PAT") == "true"
-run_url = os.environ.get("RUN_URL", "")
-
-issue = event["issue"]
-issue_number = str(issue["number"])
-if event_name == "issues":
-    text = issue.get("body") or ""
-    title = issue.get("title") or ""
-    author = issue["user"]["login"]
-    association = issue.get("author_association", "NONE")
-else:
-    text = event["comment"].get("body") or ""
-    title = ""
-    author = event["comment"]["user"]["login"]
-    association = event["comment"].get("author_association", "NONE")
-
-self_pkg = repo_name[: -len("-feedstock")] if repo_name.endswith("-feedstock") else None
 
 
 def gh(*args, check=False):
     return subprocess.run(["gh", *args], capture_output=True, text=True, check=check)
 
 
-def reply(msg):
-    gh("issue", "comment", issue_number, "--repo", repo, "--body", msg)
+MARK = "<!-- hep-bot:"
+
+
+def marker(source):
+    return f"{MARK}{source} -->"
+
+
+class Request:
+    """One issue body or comment addressed to hep-bot."""
+
+    def __init__(self, repo, issue_number, text, title, author, association, source, react_path):
+        self.repo = repo
+        self.repo_name = repo.split("/", 1)[1]
+        self.issue = str(issue_number)
+        self.text = text or ""
+        self.title = title or ""
+        self.author = author
+        self.association = association or "NONE"
+        self.source = source            # "issue-<id>" or "comment-<id>"
+        self.react_path = react_path    # API path of the item's reactions
+        n = self.repo_name
+        self.self_pkg = n[: -len("-feedstock")] if n.endswith("-feedstock") else None
+
+    def reply(self, msg, handled=True):
+        """handled=False leaves the request open for the sweep."""
+        tail = f"\n\n{marker(self.source)}" if handled else ""
+        gh("issue", "comment", self.issue, "--repo", self.repo,
+           "--body", f"@{self.author} {msg}{tail}")
+
+    def ack(self):
+        gh("api", "-X", "POST", self.react_path, "-f", "content=eyes")
 
 
 def form_fields(body):
@@ -75,27 +99,31 @@ def form_fields(body):
     return fields
 
 
-def parse():
-    """-> (command, args list, kwargs dict) or None if not addressed to us."""
-    low = title.lower()
+def parse(req):
+    """-> (command, args list, kwargs dict), or None if not addressed to us."""
+    low = req.title.lower()
     if low.startswith("[new-feedstock]"):
-        f = form_fields(text)
+        f = form_fields(req.text)
         return "new", [f.get("package name", ""), f.get("upstream repository", "")], {
             "summary": f.get("summary", ""),
             "license": f.get("license", ""),
             "maintainers": f.get("maintainers", ""),
         }
     if low.startswith("[rerender]"):
-        f = form_fields(text)
+        f = form_fields(req.text)
         pkg = f.get("package name", "")
         return "rerender", [pkg] if pkg else [], {}
 
-    m = re.search(r"@hep-bot\b[\s,:]*(?:please\s+)?(rerun|rerender|render|new|help)\b(.*)",
-                  text, re.I)
+    m = re.search(r"@hep-bot\b[\s,:]*(?:please\s+)?(rerun|rebuild|rerender|render|new|help)\b(.*)",
+                  req.text, re.I)
     if not m:
+        # "@hep-bot <something else>" at the start of a line is meant for
+        # us: answer with the help. A mention mid-sentence ("thanks
+        # @hep-bot") is not.
+        if re.search(r"^\s*@hep-bot\b", req.text, re.I | re.M):
+            return "help", [], {}
         return None
-    cmd = m.group(1).lower()
-    cmd = "rerender" if cmd == "render" else cmd
+    cmd = {"render": "rerender", "rebuild": "rerun"}.get(m.group(1).lower(), m.group(1).lower())
     line = m.group(2).splitlines()[0] if m.group(2) else ""
     kwargs = {}
     for k, v in re.findall(r"\b(license|maintainers)=(\S+)", line):
@@ -113,122 +141,204 @@ def parse():
     return cmd, tokens, kwargs
 
 
-def authorized():
-    if association in TRUSTED:
+def authorized(req):
+    if req.association in TRUSTED:
         return True
     # author_association can under-report (e.g. outside collaborators
     # added through a team); ask the API before refusing.
-    r = gh("api", f"repos/{repo}/collaborators/{author}/permission", "--jq", ".permission")
+    r = gh("api", f"repos/{req.repo}/collaborators/{req.author}/permission", "--jq", ".permission")
     return r.returncode == 0 and r.stdout.strip() in ("admin", "maintain", "write")
 
 
-def dispatch_meta(workflow, fields):
-    """Start a workflow in the meta-repo; it replies on this issue when done."""
-    if repo != META_REPO and not has_pat:
-        return (f"this repo cannot start workflows in `{META_REPO}` (the `HEP_BOT_TOKEN` "
-                f"secret is only set there). Open the same request as an issue in "
-                f"[{META_REPO}](https://github.com/{META_REPO}/issues/new/choose).")
+def dispatch_meta(req, workflow, fields):
+    """Start a workflow in the meta-repo; it replies on the issue when done.
+    True when started; otherwise it has already replied."""
+    if req.repo != META_REPO and not has_pat:
+        req.reply(f"got it. This repo can't reach `{META_REPO}` directly, so the org-wide "
+                  f"sweep will pick this up within {SWEEP_GRACE_MIN} minutes.", handled=False)
+        return False
     args = ["workflow", "run", workflow, "--repo", META_REPO, "--ref", "main",
-            "-f", f"issue_repo={repo}", "-f", f"issue_number={issue_number}"]
+            "-f", f"issue_repo={req.repo}", "-f", f"issue_number={req.issue}"]
     for k, v in fields.items():
         args += ["-f", f"{k}={v}"]
     r = gh(*args)
-    return None if r.returncode == 0 else f"failed to start `{workflow}`: {r.stderr.strip()}"
+    if r.returncode != 0:
+        req.reply(f"I couldn't start `{workflow}`: {r.stderr.strip()}")
+        return False
+    return True
 
 
-HELP = f"""Commands (repo collaborators only):
+HELP = f"""here is what I can do (org members and collaborators only):
 
-| Command | Does |
+| Command | What it does |
 |---|---|
-| `@hep-bot rerun [<pkg>] <tag>` | rebuild and publish an existing release tag (amd64 + arm64) |
-| `@hep-bot rerender [<pkg>]` | re-apply the hep-forge render (CI workflow, bot workflow, README, AGENTS.md) and register the feedstock in `{META_REPO}` |
-| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary...]` | scaffold `hep-forge/<pkg>-feedstock` with a starter recipe |
+| `@hep-bot rerun [<pkg>] <tag>` | Rebuilds and publishes an existing tag (amd64 + arm64) |
+| `@hep-bot rerender [<pkg>]` | Renders the feedstock (CI workflow, bot workflow, README, AGENTS.md) and registers it in `{META_REPO}` |
+| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe |
+| `@hep-bot help` | This table |
 
-`<pkg>` defaults to this repo inside a `<pkg>-feedstock` repo. Publishing only happens on a numeric tag; neither `rerender` nor `new` publishes anything."""
+`<pkg>` defaults to this repo inside a `<pkg>-feedstock` repo. Only a tag publishes: a numeric release tag, or `head` for upstream main/master. The issue forms in [New issue](https://github.com/{META_REPO}/issues/new/choose) do the same as `new` and `rerender`."""
 
 
-def main():
-    parsed = parse()
+def handle(req):
+    parsed = parse(req)
     if parsed is None:
-        return  # some other @hep-bot mention
+        return False
     cmd, tokens, kwargs = parsed
+    req.ack()
 
     if cmd == "help":
-        reply(f"@{author} {HELP}")
-        return
+        req.reply(HELP)
+        return True
 
-    if not authorized():
-        reply(f"@{author} sorry, only repo collaborators can run hep-bot commands.")
-        return
+    if not authorized(req):
+        req.reply("sorry, only org members and repo collaborators can run hep-bot commands.")
+        return True
 
     if cmd == "rerun":
         if len(tokens) >= 2:
             pkg, version = tokens[0], tokens[1]
-        elif len(tokens) == 1 and self_pkg:
-            pkg, version = self_pkg, tokens[0]
+        elif len(tokens) == 1 and req.self_pkg:
+            pkg, version = req.self_pkg, tokens[0]
         else:
-            reply(f"@{author} usage: `@hep-bot rerun <tag>` in a feedstock, or "
-                  f"`@hep-bot rerun <package> <tag>` anywhere.")
-            return
+            req.reply("usage: `@hep-bot rerun <tag>` in a feedstock, or "
+                      "`@hep-bot rerun <package> <tag>` anywhere.")
+            return True
+        pkg = pkg.removesuffix("-feedstock")
         feedstock = f"{ORG}/{pkg}-feedstock"
-        if feedstock != repo and not has_pat:
-            reply(f"@{author} only `{META_REPO}` can rebuild other feedstocks; run this there "
-                  f"or in `{feedstock}`'s own issues.")
-            return
+        if feedstock != req.repo and not has_pat:
+            req.reply(f"only `{META_REPO}` can rebuild other feedstocks; run this there "
+                      f"or in `{feedstock}`'s own issues.")
+            return True
         if gh("repo", "view", feedstock).returncode != 0:
-            reply(f"@{author} couldn't find `{feedstock}` -- use the bare package name.")
-            return
+            req.reply(f"I couldn't find `{feedstock}`. Use the bare package name.")
+            return True
         tags = subprocess.run(["git", "ls-remote", "--tags", f"https://github.com/{feedstock}.git",
                                f"refs/tags/{version}"], capture_output=True, text=True)
         if not tags.stdout.strip():
-            reply(f"@{author} tag `{version}` not found on `{feedstock}`. Push the tag first "
-                  f"(pushing it already starts the build), or check its spelling.")
-            return
+            req.reply(f"tag `{version}` doesn't exist on `{feedstock}`. Pushing a new tag already "
+                      f"starts the build.")
+            return True
         r = gh("workflow", "run", "autoupload.yml", "--repo", feedstock, "--ref", version,
                "-f", "triggered_by=bot")
         if r.returncode != 0:
-            reply(f"@{author} failed to trigger the rebuild: {r.stderr.strip()}")
-            return
-        reply(f"@{author} rebuilding `{pkg}` at `{version}` (amd64 + arm64): "
-              f"[Actions](https://github.com/{feedstock}/actions/workflows/autoupload.yml).")
+            req.reply(f"I couldn't start the rebuild: {r.stderr.strip()}")
+            return True
+        req.reply(f"rebuilding `{pkg}` at `{version}` (amd64 + arm64): "
+                  f"[Actions](https://github.com/{feedstock}/actions/workflows/autoupload.yml).")
 
     elif cmd == "rerender":
-        pkg = tokens[0] if tokens else self_pkg
+        pkg = tokens[0] if tokens else req.self_pkg
         if not pkg:
-            reply(f"@{author} which feedstock? `@hep-bot rerender <package>`.")
-            return
+            req.reply("which feedstock? `@hep-bot rerender <package>`.")
+            return True
         pkg = pkg.removesuffix("-feedstock")
         if gh("repo", "view", f"{ORG}/{pkg}-feedstock").returncode != 0:
-            reply(f"@{author} couldn't find `{ORG}/{pkg}-feedstock`. To create it: "
-                  f"`@hep-bot new {pkg} <upstream-url>`.")
-            return
-        err = dispatch_meta("render-sync.yml", {"feedstock": pkg})
-        reply(f"@{author} {err}" if err else
-              f"@{author} rendering `{pkg}-feedstock`; I'll report back here when it's done.")
+            req.reply(f"`{ORG}/{pkg}-feedstock` doesn't exist. To create it: "
+                      f"`@hep-bot new {pkg} <upstream-url>`.")
+            return True
+        if dispatch_meta(req, "render-sync.yml", {"feedstock": pkg}):
+            req.reply(f"rendering `{pkg}-feedstock`. I'll report back here when it's done.")
 
     elif cmd == "new":
         name = (tokens[0] if tokens else "").removesuffix("-feedstock").lower()
         upstream = tokens[1] if len(tokens) > 1 else ""
         if not re.fullmatch(r"[a-z0-9][a-z0-9._-]*", name) or not upstream.startswith("http"):
-            reply(f"@{author} usage: `@hep-bot new <package> <upstream-url> [license=<spdx>] "
-                  f"[maintainers=a,b] [one-line summary]`.")
-            return
+            req.reply("usage: `@hep-bot new <package> <upstream-url> [license=<spdx>] "
+                      "[maintainers=a,b] [one-line summary]`.")
+            return True
         if gh("repo", "view", f"{ORG}/{name}-feedstock").returncode == 0:
-            has_recipe = gh("api", f"repos/{ORG}/{name}-feedstock/contents/recipe/meta.yaml").returncode == 0
-            if has_recipe:
-                reply(f"@{author} `{ORG}/{name}-feedstock` already has a recipe -- "
-                      f"use `@hep-bot rerender {name}` instead.")
-                return
-        maintainers = kwargs.get("maintainers") or author
-        err = dispatch_meta("new-feedstock.yml", {
+            if gh("api", f"repos/{ORG}/{name}-feedstock/contents/recipe/meta.yaml").returncode == 0:
+                req.reply(f"`{ORG}/{name}-feedstock` already has a recipe. "
+                          f"Use `@hep-bot rerender {name}` instead.")
+                return True
+        started = dispatch_meta(req, "new-feedstock.yml", {
             "name": name,
             "upstream": upstream,
             "summary": kwargs.get("summary", "") or "TODO: one-line summary",
             "license": kwargs.get("license", "") or "TODO",
-            "maintainers": maintainers,
+            "maintainers": kwargs.get("maintainers") or req.author,
         })
-        reply(f"@{author} {err}" if err else
-              f"@{author} scaffolding `{ORG}/{name}-feedstock`; I'll report back here when it's done.")
+        if started:
+            req.reply(f"creating `{ORG}/{name}-feedstock`. I'll report back here when it's done.")
+    return True
 
 
-main()
+# -- event mode ----------------------------------------------------------------
+
+def from_event():
+    event = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
+    repo = os.environ["REPO"]
+    issue = event["issue"]
+    if os.environ["EVENT_NAME"] == "issues":
+        return Request(repo, issue["number"], issue.get("body"), issue.get("title"),
+                       issue["user"]["login"], issue.get("author_association"),
+                       f"issue-{issue['id']}",
+                       f"repos/{repo}/issues/{issue['number']}/reactions")
+    c = event["comment"]
+    return Request(repo, issue["number"], c.get("body"), "", c["user"]["login"],
+                   c.get("author_association"), f"comment-{c['id']}",
+                   f"repos/{repo}/issues/comments/{c['id']}/reactions")
+
+
+# -- sweep mode ----------------------------------------------------------------
+
+def api_json(path):
+    r = gh("api", path)
+    if r.returncode != 0:
+        print(f"WARNING: gh api {path}: {r.stderr.strip()}", file=sys.stderr)
+        return None
+    return json.loads(r.stdout)
+
+
+def sweep(dry_run=False):
+    now = datetime.now(timezone.utc)
+    since = (now - timedelta(days=SWEEP_DAYS)).strftime("%Y-%m-%d")
+    grace = now - timedelta(minutes=SWEEP_GRACE_MIN)
+    found = {}
+    for q in (f'org:{ORG} "@hep-bot" updated:>={since}',
+              f'org:{ORG} in:title "[rerender]" updated:>={since}',
+              f'org:{ORG} in:title "[new-feedstock]" updated:>={since}'):
+        r = gh("api", "-X", "GET", "search/issues", "-f", f"q={q} is:issue is:open",
+               "-f", "per_page=100", "--jq", ".items[] | [.repository_url, .number] | @tsv")
+        for line in r.stdout.splitlines():
+            url, num = line.split("\t")
+            found[(url.split("/repos/", 1)[1], int(num))] = True
+
+    handled = 0
+    for repo, num in found:
+        issue = api_json(f"repos/{repo}/issues/{num}")
+        if not issue or issue.get("pull_request"):
+            continue
+        comments = api_json(f"repos/{repo}/issues/{num}/comments?per_page=100") or []
+        done = {m for c in comments for m in re.findall(r"<!-- hep-bot:(\S+) -->", c.get("body") or "")}
+        items = [Request(repo, num, issue.get("body"), issue.get("title"), issue["user"]["login"],
+                         issue.get("author_association"), f"issue-{issue['id']}",
+                         f"repos/{repo}/issues/{num}/reactions")]
+        items[0].created = issue["created_at"]
+        for c in comments:
+            if MARK in (c.get("body") or ""):
+                continue  # our own replies
+            req = Request(repo, num, c.get("body"), "", c["user"]["login"],
+                          c.get("author_association"), f"comment-{c['id']}",
+                          f"repos/{repo}/issues/comments/{c['id']}/reactions")
+            req.created = c["created_at"]
+            items.append(req)
+        for req in items:
+            created = datetime.fromisoformat(req.created.replace("Z", "+00:00"))
+            if req.source in done or created > grace or created < now - timedelta(days=SWEEP_DAYS):
+                continue
+            if parse(req) is None:
+                continue
+            print(f"{'WOULD HANDLE' if dry_run else 'HANDLE'} {repo}#{num} {req.source}")
+            if not dry_run:
+                handle(req)
+            handled += 1
+    print(f"sweep: {len(found)} issue(s) looked at, {handled} request(s) handled")
+
+
+if __name__ == "__main__":
+    if "--sweep" in sys.argv:
+        sweep(dry_run="--dry-run" in sys.argv)
+    else:
+        handle(from_event())

@@ -185,6 +185,7 @@ hep-bot runs in this repo with the `HEP_BOT_TOKEN` secret.
 | [render-sync](https://github.com/hep-forge/.github/actions/workflows/render-sync.yml) | Daily, on template changes, or manually | Renders every feedstock, refreshes the table above and moves the submodule pointers |
 | [ordered rebuild](https://github.com/hep-forge/.github/actions/workflows/hep-bot-rebuild.yml) | Manually | Rebuilds a package and everything that depends on it, tier by tier ([`dag.yaml`](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/dag.yaml)) |
 | [new feedstock](https://github.com/hep-forge/.github/actions/workflows/new-feedstock.yml) | `@hep-bot new` or the issue form | Creates and registers a feedstock |
+| [sweep](https://github.com/hep-forge/.github/actions/workflows/hep-bot-sweep.yml) | Every 10 minutes | Answers `@hep-bot` requests in any hep-forge repo that the repo's own workflow didn't handle |
 | [channel maintenance](https://github.com/hep-forge/.github/actions/workflows/channel-maintenance.yml) | Mondays, or manually | Trims old versions channel-wide and moves `master` labels to `main` |
 
 Upstream versions come from each recipe's source URL. Add an override in
@@ -194,7 +195,8 @@ package alone.
 
 ### Commands in issues
 
-Org members and collaborators can write these in an issue or a comment:
+Org members and collaborators can write these in an issue or a comment, in any hep-forge
+repo. hep-bot reacts with 👀 and replies on the issue:
 
 | Command | What it does |
 |---|---|
@@ -203,11 +205,11 @@ Org members and collaborators can write these in an issue or a comment:
 | `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe |
 | `@hep-bot help` | Lists the commands |
 
-`<pkg>` defaults to the current repo inside a feedstock. `rerender` and `new` run in this
-repo, so start them here
-([new issue](https://github.com/hep-forge/.github/issues/new/choose) has a form for each).
-A feedstock repo only has `GITHUB_TOKEN`, which can run `rerun` there but can't reach
-this repo.
+`<pkg>` defaults to the current repo inside a feedstock. Plain wording works
+("@hep-bot, please rerender"). A registered feedstock answers within a minute. Any other
+repo, including one created by hand, gets its answer from the sweep within 10 minutes.
+The *New feedstock* and *Rerender feedstock* forms appear under **New issue** in every
+hep-forge repo.
 
 ## Adding a feedstock
 

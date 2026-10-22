@@ -68,8 +68,9 @@ version check and every Makefile target.
   the source tree.
 - `workflow_dispatch` reads the workflow file at the dispatched tag. An old tag that predates
   the current template can't be dispatched; move it with `make retag <pkg>`.
-- `HEP_BOT_TOKEN` is a repo secret of hep-forge/.github only. Workflows in feedstocks get
-  `GITHUB_TOKEN` and can't push to or dispatch in other repos.
+- `HEP_BOT_TOKEN` is meant to be an org secret. Where a workflow doesn't get it, it falls
+  back to `GITHUB_TOKEN`, which can't push to or dispatch in other repos; the sweep
+  then handles the request from here.
 - CI submodule checkouts are `--depth 1` at the pinned commit. Scripts that change a
   feedstock first move it to its default-branch tip (see `scripts/render_sync.sh`).
 
@@ -77,7 +78,7 @@ version check and every Makefile target.
 
 | Piece | Where |
 |---|---|
-| Issue commands (`rerun`, `rerender`, `new`, `help`) | `scripts/hep_bot/comment.py`, run by `hep-bot-comment.yml` in every repo |
+| Issue commands (`rerun`, `rerender`, `new`, `help`) | `scripts/hep_bot/comment.py`, run by `hep-bot-comment.yml` in every feedstock and by `hep-bot-sweep.yml` (every 10 min, org-wide) here |
 | Version check (bump + tag, `head` rebuilds, tracking issue) | `scripts/hep_bot/check_versions.py`, `bump_version.py`, `.github/workflows/hep-bot-check.yml` |
 | Upstream overrides, dependency order, opt-out | `scripts/hep_bot/sources.yaml`, `scripts/hep_bot/dag.yaml` (`auto_update: false`) |
 | Render of one or all feedstocks | `scripts/render_sync.sh`, `.github/workflows/render-sync.yml` |

@@ -1,0 +1,40 @@
+name: hep-bot sweep
+
+# Makes hep-bot work in every hep-forge repo: finds @hep-bot requests and
+# [rerender]/[new-feedstock] issues from the last 7 days that nobody
+# answered -- in repos without hep-bot-comment.yml (new or unregistered
+# feedstocks), or where that workflow could not act -- and handles them
+# with the same code (scripts/hep_bot/comment.py --sweep). Requests younger
+# than 10 minutes are left to the per-repo workflow.
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only list what would be handled"
+        type: boolean
+        default: false
+
+concurrency:
+  group: hep-bot-sweep
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/hep_bot
+
+      - name: Handle unanswered requests
+        env:
+          GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+          HAS_PAT: 'true'
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: python3 scripts/hep_bot/comment.py --sweep $([ "$DRY_RUN" = "true" ] && echo --dry-run)
