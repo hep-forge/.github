@@ -24,9 +24,17 @@ def fetch_sha256(url: str) -> str:
     print(f"  Downloading {url} for sha256...")
     r = requests.get(url, timeout=120, stream=True)
     r.raise_for_status()
+    # Some servers answer a missing file with a 200 HTML page; never record
+    # the checksum of that.
+    if "text/html" in r.headers.get("Content-Type", ""):
+        raise ValueError(f"{url} returned an HTML page, not an archive")
     h = hashlib.sha256()
+    size = 0
     for chunk in r.iter_content(chunk_size=65536):
         h.update(chunk)
+        size += len(chunk)
+    if size < 1024:
+        raise ValueError(f"{url} is only {size} bytes, not an archive")
     return h.hexdigest()
 
 
@@ -65,14 +73,19 @@ def bump(feedstock: str, new_version: str) -> None:
 
     text = meta_path.read_text()
 
-    # Find the existing first version key and replace the whole versions dict
-    # Pattern: versions = { "X.Y.Z": "sha256hex", ... }
-    old_match = re.search(r'(versions\s*=\s*\{[^}]*?\})', text, re.DOTALL)
+    # Prepend the new version to the versions dict (the first key is the
+    # recipe's default version); older entries stay so their tags still
+    # rebuild.
+    old_match = re.search(r'versions\s*=\s*\{[ \t]*\n?([ \t]*)', text)
     if not old_match:
         raise ValueError(f"Could not find versions dict in {meta_path}")
-
-    new_versions_block = f'versions = {{\n    "{new_version}": "{sha256}"\n}}'
-    text = text[:old_match.start()] + new_versions_block + text[old_match.end():]
+    if re.search(rf'"{re.escape(new_version)}"\s*:', text):
+        raise ValueError(f"{new_version} is already in {meta_path}")
+    indent = old_match.group(1) or "    "
+    entry = f'"{new_version}": "{sha256}",\n{indent}'
+    text = text[:old_match.end()] + entry + text[old_match.end():]
+    # New upstream version -> build number starts again at 0.
+    text = re.sub(r'^(\s*number:\s*)\d+', r'\g<1>0', text, count=1, flags=re.M)
 
     meta_path.write_text(text)
     print(f"Updated {meta_path}: version={new_version}, sha256={sha256[:12]}...")

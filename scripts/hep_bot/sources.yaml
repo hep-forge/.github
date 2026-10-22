@@ -1,3 +1,11 @@
+# Upstream version sources that override what hep-bot derives from each
+# recipe's own source URL (scripts/hep_bot/check_versions.py). Only list a
+# package here when the automatic detection gets it wrong.
+#   html_scrape: url + pattern (regex, one group = version; several
+#                groups are joined with dots)
+#   git_tags:    url (git repo) + pattern (regex on tag names) or prefix
+#   github_releases: repo (owner/name)
+
 fastjet:
   type: html_scrape
   url: "https://fastjet.fr/repo/"
@@ -19,31 +27,21 @@ lhapdf:
   pattern: 'LHAPDF-(\d+\.\d+\.\d+)\.tar\.gz'
 
 hepmc:
-  type: gitlab_tags
+  type: git_tags
   url: "https://gitlab.cern.ch/hepmc/HepMC3"
   pattern: '(\d+\.\d+\.\d+)'
 
 pythia:
-  type: html_scrape
-  url: "https://pythia.org/download/pythia83/"
-  pattern: 'pythia(\d+)\.tgz'
+  type: git_tags
+  url: "https://gitlab.com/Pythia8/releases"
+  pattern: 'pythia(\d)(\d)(\d\d)'
 
 yoda:
   type: html_scrape
   url: "https://yoda.hepforge.org/downloads/"
   pattern: 'YODA-(\d+\.\d+\.\d+)\.tar\.gz'
 
-hoppet:
-  type: html_scrape
-  url: "https://hoppet.hepforge.org/downloads/"
-  pattern: 'hoppet-(\d+\.\d+\.\d+)\.tar\.gz'
-
-rapgap:
-  type: html_scrape
-  url: "https://rapgap.hepforge.org/downloads/"
-  pattern: 'rapgap-(\d+\.\d+\.\d+)\.tar\.gz'
-
 applgrid:
   type: html_scrape
   url: "https://applgrid.hepforge.org/downloads/"
-  pattern: 'applgrid-(\d+\.\d+\.\d+)\.tar\.gz'
+  pattern: 'applgrid-(\d+\.\d+\.\d+)\.tgz'
