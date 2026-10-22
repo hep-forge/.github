@@ -107,4 +107,8 @@ jobs:
           else
             MSG="Rendering \`${FEEDSTOCK:-every feedstock}\` failed, see the [log]($RUN_URL)."
           fi
-          gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG"
+          # The marker keeps hep-bot from reading the example commands in
+          # this message as a request.
+          gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG
+
+          <!-- hep-bot:reply -->"

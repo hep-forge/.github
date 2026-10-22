@@ -101,6 +101,8 @@ def form_fields(body):
 
 def parse(req):
     """-> (command, args list, kwargs dict), or None if not addressed to us."""
+    if MARK in req.text:
+        return None  # hep-bot's own messages quote commands as examples
     low = req.title.lower()
     if low.startswith("[new-feedstock]"):
         f = form_fields(req.text)
@@ -133,7 +135,7 @@ def parse(req):
         # Trailing "for arm and amd" is accepted and ignored: both
         # architectures always rebuild together in one matrix run.
         line = re.split(r"\bfor\b", line, maxsplit=1, flags=re.I)[0]
-    tokens = [t.strip(",.") for t in line.split()]
+    tokens = [t.strip(",.`'\"") for t in line.split()]
     tokens = [t for t in tokens if t and t.lower() not in ("please", "it", "this", "the", "feedstock")]
     if cmd == "new" and len(tokens) > 2:
         kwargs["summary"] = " ".join(tokens[2:])
