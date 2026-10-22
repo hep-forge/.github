@@ -1,0 +1,39 @@
+name: New feedstock
+description: Ask hep-bot to scaffold hep-forge/<package>-feedstock (starter recipe, CI, README, registration)
+title: "[new-feedstock] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        hep-bot creates `hep-forge/<package>-feedstock` with a **starter** recipe and every
+        hep-forge file (tag-only build/upload workflow, hep-bot workflow, README, AGENTS.md),
+        and registers it as a submodule of hep-forge/.github. Nothing is built or published
+        until you write the recipe and push a numeric tag. Only org members and collaborators
+        can use this. Open the issue in **hep-forge/.github**.
+  - type: input
+    attributes:
+      label: Package name
+      description: Bare conda package name, lower-case, without "-feedstock".
+      placeholder: nestdaq
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Upstream repository
+      placeholder: https://github.com/spadi-alliance/nestdaq
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Summary
+      placeholder: Streaming data acquisition framework based on FairMQ and Redis
+  - type: input
+    attributes:
+      label: License
+      description: SPDX id
+      placeholder: LGPL-3.0-only
+  - type: input
+    attributes:
+      label: Maintainers
+      description: Comma-separated GitHub logins. Defaults to you.
+      placeholder: gw2015tylerdurden,meiyasan

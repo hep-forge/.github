@@ -9,11 +9,27 @@ name: Render & README Sync
 #     refreshed, and submodule pointers are bumped to the pushed commits
 #
 # Runs daily, on demand, and whenever the template/generators change.
+# Dispatched with `feedstock` (e.g. by `@hep-bot rerender <pkg>`) it
+# renders only that feedstock, registering it as a submodule first if it
+# isn't one yet, and replies on issue_repo#issue_number when given.
 
 on:
   schedule:
     - cron: '0 5 * * *'
   workflow_dispatch:
+    inputs:
+      feedstock:
+        description: "Render only this package's feedstock (bare name, e.g. nestdaq); empty = all"
+        required: false
+        default: ''
+      issue_repo:
+        description: "Reply on this repo's issue when done (set by hep-bot)"
+        required: false
+        default: ''
+      issue_number:
+        description: "Issue number to reply on (set by hep-bot)"
+        required: false
+        default: ''
   push:
     branches: [main]
     paths:
@@ -23,12 +39,15 @@ on:
       - scripts/update_readme_status.py
       - scripts/rerender_all.sh
       - scripts/render_sync.sh
+      - scripts/templates/AGENTS.md
 
 permissions:
   contents: write
 
+# One queue per target: a pending full sync and a pending single-feedstock
+# render must not replace each other (GitHub keeps one pending run per group).
 concurrency:
-  group: render-sync
+  group: render-sync-${{ inputs.feedstock || 'all' }}
   cancel-in-progress: false
 
 jobs:
@@ -62,5 +81,30 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
+      - name: Register feedstock if needed
+        if: inputs.feedstock != ''
+        env:
+          FEEDSTOCK: ${{ inputs.feedstock }}
+        run: bash scripts/register_feedstock.sh "$FEEDSTOCK" --commit
+
       - name: Render, push feedstocks, refresh README
-        run: bash scripts/render_sync.sh --commit
+        env:
+          FEEDSTOCK: ${{ inputs.feedstock }}
+        run: bash scripts/render_sync.sh --commit ${FEEDSTOCK:+--only "$FEEDSTOCK"}
+
+      - name: Reply on the requesting issue
+        if: always() && inputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+          FEEDSTOCK: ${{ inputs.feedstock }}
+          ISSUE_REPO: ${{ inputs.issue_repo }}
+          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          OUTCOME: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$OUTCOME" = "success" ]; then
+            MSG="Rendered \`${FEEDSTOCK:-every feedstock}\` ([log]($RUN_URL)): CI workflow, hep-bot workflow, README and AGENTS.md are current, and it is registered in hep-forge/.github. Nothing was published: push a numeric tag on \`main\` (or \`@hep-bot rerun <tag>\` for an existing one) to build and upload."
+          else
+            MSG="Rendering \`${FEEDSTOCK:-every feedstock}\` failed, see the [log]($RUN_URL)."
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG"

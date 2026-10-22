@@ -1,0 +1,17 @@
+name: Rerender feedstock
+description: Ask hep-bot to re-apply the hep-forge render and register the feedstock in hep-forge/.github
+title: "[rerender] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Re-applies the rendered files (`.github/workflows/autoupload.yml`,
+        `.github/workflows/hep-bot-comment.yml`, `README.md`, `AGENTS.md`) and adds the
+        feedstock as a submodule of hep-forge/.github if it isn't one yet. Your `recipe/`
+        is not touched, and nothing is published. The same works as a comment:
+        `@hep-bot rerender <package>`.
+  - type: input
+    attributes:
+      label: Package name
+      description: Bare package name. Leave it empty when this issue is in the feedstock's own repo.
+      placeholder: nestdaq

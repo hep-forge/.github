@@ -294,12 +294,12 @@ root-trim:
 
 new-feedstock:
 ifndef NAME
-	$(error Usage: make new-feedstock NAME=<pkg> REPO=<upstream-url> [SUMMARY="..."] [LICENSE=<spdx>])
+	$(error Usage: make new-feedstock NAME=<pkg> REPO=<upstream-url> [SUMMARY="..."] [LICENSE=<spdx>] [MAINTAINERS=a,b])
 endif
 ifndef REPO
-	$(error Usage: make new-feedstock NAME=<pkg> REPO=<upstream-url> [SUMMARY="..."] [LICENSE=<spdx>])
+	$(error Usage: make new-feedstock NAME=<pkg> REPO=<upstream-url> [SUMMARY="..."] [LICENSE=<spdx>] [MAINTAINERS=a,b])
 endif
-	@bash scripts/new_feedstock.sh NAME=$(NAME) REPO=$(REPO) SUMMARY="$(SUMMARY)" LICENSE=$(LICENSE)
+	@bash scripts/new_feedstock.sh NAME=$(NAME) REPO=$(REPO) SUMMARY="$(SUMMARY)" LICENSE=$(LICENSE) MAINTAINERS=$(MAINTAINERS)
 
 # Copy this Makefile into every feedstock directory
 distribute:

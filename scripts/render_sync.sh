@@ -14,6 +14,11 @@
 #
 #   bash scripts/render_sync.sh            # steps 1-4
 #   bash scripts/render_sync.sh --commit   # + meta-repo commit/push
+#   bash scripts/render_sync.sh --commit --only nestdaq   # one feedstock
+#
+# A feedstock repo that exists on GitHub but is not a submodule yet is
+# added first by scripts/register_feedstock.sh (the render-sync workflow
+# does that when dispatched with a feedstock, e.g. by `@hep-bot rerender`).
 #
 # Requirements: git push rights on the feedstock repos, python3 + pyyaml
 
@@ -21,7 +26,22 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 
 COMMIT=0
-[ "${1:-}" = "--commit" ] && COMMIT=1
+ONLY=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --commit) COMMIT=1 ;;
+    --only)   ONLY="${2%-feedstock}"; shift ;;
+    *) echo "Unknown argument: $1" >&2; exit 1 ;;
+  esac
+  shift
+done
+
+# Feedstock dirs this run touches: all, or just --only's.
+DIRS=(feedstocks/*-feedstock)
+if [ -n "$ONLY" ]; then
+  DIRS=("feedstocks/${ONLY}-feedstock")
+  [ -e "${DIRS[0]}/.git" ] || { echo "ERROR: ${DIRS[0]} is not a checked-out submodule" >&2; exit 1; }
+fi
 
 # Dirs whose local HEAD must NOT be trusted for step 5's pointer bump --
 # either the fetch/checkout in step 1 failed, or (see step 3) a render
@@ -33,7 +53,7 @@ COMMIT=0
 UNSAFE=()
 
 # -- 1. every submodule on its default branch tip --------------------------
-for dir in feedstocks/*-feedstock; do
+for dir in "${DIRS[@]}"; do
   [ -e "$dir/.git" ] || continue
   def=$(git -C "$dir" ls-remote --symref origin HEAD 2>/dev/null \
     | awk '/^ref:/{sub("refs/heads/","",$2); print $2}')
@@ -44,22 +64,23 @@ for dir in feedstocks/*-feedstock; do
 done
 
 # -- 2. render: workflow template + hep-forge READMEs ----------------------
-bash scripts/rerender_all.sh hep-forge | grep -v "^Synced\|^Updated" || true
+bash scripts/rerender_all.sh hep-forge "$ONLY" | grep -v "^Synced\|^Updated" || true
 
 # -- 3. push what changed ---------------------------------------------------
 PUSHED=0
-for dir in feedstocks/*-feedstock; do
+for dir in "${DIRS[@]}"; do
   [ -e "$dir/.git" ] || continue
   git -C "$dir" status --porcelain --ignored=matching -- .github/workflows/autoupload.yml \
-    .github/workflows/hep-bot-comment.yml README.md \
+    .github/workflows/hep-bot-comment.yml README.md AGENTS.md \
     | grep -q . || continue
   branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD)
   [ "$branch" = "HEAD" ] && { echo "SKIP $dir (detached HEAD)"; UNSAFE+=("$dir"); continue; }
-  # -f: hep-bot-comment.yml is a brand-new file and conda-smithy's generated
-  # .gitignore (`*` with only `!.github`, not `!/.github/workflows/**`) blocks
-  # it from ever being staged otherwise -- autoupload.yml/README.md are
-  # already tracked from initial scaffolding so gitignore doesn't affect them.
-  git -C "$dir" add -f .github/workflows/autoupload.yml .github/workflows/hep-bot-comment.yml README.md
+  # -f: conda-smithy's generated .gitignore (`*` with only `!.github`, not
+  # `!/.github/workflows/**`) blocks new files such as hep-bot-comment.yml
+  # and AGENTS.md from ever being staged otherwise -- a plain `git add`
+  # silently skips them, which is how a hand-made feedstock ends up
+  # without its workflows.
+  git -C "$dir" add -f .github/workflows/autoupload.yml .github/workflows/hep-bot-comment.yml README.md AGENTS.md
   git -C "$dir" commit -qm "render: sync CI workflow + hep-forge README [render-sync]" \
     || continue
   if git -C "$dir" push -q; then
@@ -81,7 +102,7 @@ if [ "$COMMIT" -eq 1 ]; then
   # writes through it, so staging the symlink path never picks up the
   # table change -- stage the real file.
   git add profile/README.md
-  for dir in feedstocks/*-feedstock; do
+  for dir in "${DIRS[@]}"; do
     [ -e "$dir/.git" ] || continue
     skip=0
     for u in "${UNSAFE[@]:-}"; do [ "$u" = "$dir" ] && skip=1 && break; done
@@ -95,6 +116,10 @@ if [ "$COMMIT" -eq 1 ]; then
     echo "Meta-repo: nothing to commit"
   else
     git commit -qm "render-sync: refresh README status table + submodule pointers"
+  fi
+  # Push whenever HEAD is ahead -- also covers a registration commit made
+  # by scripts/register_feedstock.sh before this ran, with nothing else new.
+  if [ -n "$(git rev-list '@{u}..HEAD' 2>/dev/null)" ]; then
     # A concurrent push (manual, or another trigger) can land on main while
     # this run was working -- retry once against the latest tip rather than
     # failing the whole run over a transient non-fast-forward race.

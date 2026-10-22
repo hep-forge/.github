@@ -1,0 +1,114 @@
+name: hep-bot new feedstock
+
+# Scaffolds hep-forge/<name>-feedstock with scripts/new_feedstock.sh
+# (starter recipe + every rendered hep-forge file), creates the GitHub
+# repo (or fills a pre-created empty one), and registers it as a
+# submodule here. Started by `@hep-bot new <name> <upstream-url>` or the
+# "New feedstock" issue form; can also be dispatched by hand. Builds and
+# publishes nothing: the starter recipe still has to be written, and only
+# a numeric tag publishes.
+#
+# HEP_BOT_TOKEN must be allowed to create repositories in the hep-forge
+# org (fine-grained PAT: organization "Administration: read and write",
+# or a classic PAT with `repo` + org membership that may create repos).
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Package name (bare, lower-case, e.g. nestdaq)"
+        required: true
+      upstream:
+        description: "Upstream repository URL"
+        required: true
+      summary:
+        description: "One-line summary"
+        required: false
+        default: 'TODO: one-line summary'
+      license:
+        description: "SPDX license id"
+        required: false
+        default: 'TODO'
+      maintainers:
+        description: "Comma list of GitHub logins (recipe-maintainers + CODEOWNERS)"
+        required: false
+        default: 'meiyasan'
+      issue_repo:
+        description: "Reply on this repo's issue when done (set by hep-bot)"
+        required: false
+        default: ''
+      issue_number:
+        description: "Issue number to reply on (set by hep-bot)"
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: new-feedstock-${{ inputs.name }}
+  cancel-in-progress: false
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout meta-repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.HEP_BOT_TOKEN }}
+
+      - name: Configure git identity and token auth
+        env:
+          HEP_BOT_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+        run: |
+          git config --global user.name "hep-bot"
+          git config --global user.email "hep-bot@users.noreply.github.com"
+          git config --global init.defaultBranch main
+          git config --global --add url."https://x-access-token:${HEP_BOT_TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global --add url."https://x-access-token:${HEP_BOT_TOKEN}@github.com/".insteadOf "https://github.com/"
+
+      # new_feedstock.sh copies generic boilerplate from inih-feedstock;
+      # no other submodule is needed.
+      - name: Checkout the boilerplate donor
+        run: git submodule update --init --depth 1 feedstocks/inih-feedstock
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Scaffold, create repo, register submodule
+        env:
+          GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+          NAME: ${{ inputs.name }}
+          UPSTREAM: ${{ inputs.upstream }}
+          SUMMARY: ${{ inputs.summary }}
+          LICENSE_ID: ${{ inputs.license }}
+          MAINTAINERS: ${{ inputs.maintainers }}
+        run: |
+          bash scripts/new_feedstock.sh NAME="$NAME" REPO="$UPSTREAM" \
+            SUMMARY="$SUMMARY" LICENSE="$LICENSE_ID" MAINTAINERS="$MAINTAINERS"
+          git commit -qm "Register ${NAME}-feedstock" -- .gitmodules "feedstocks/${NAME}-feedstock"
+          git push -q || { git pull -q --rebase && git push -q; }
+
+      - name: Reply on the requesting issue
+        if: always() && inputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+          NAME: ${{ inputs.name }}
+          ISSUE_REPO: ${{ inputs.issue_repo }}
+          ISSUE_NUMBER: ${{ inputs.issue_number }}
+          OUTCOME: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          FS="hep-forge/${NAME}-feedstock"
+          if [ "$OUTCOME" = "success" ]; then
+            MSG="Created [\`$FS\`](https://github.com/$FS) ([log]($RUN_URL)) and registered it in hep-forge/.github.
+
+          Next:
+          1. Write the real recipe in \`recipe/\` (version + sha256 in the \`versions\` dict, dependencies, \`build.sh\`, a real test). A PR on the feedstock is fine; agents should read its \`AGENTS.md\` first.
+          2. After merging, push a numeric tag equal to the version on \`main\`. The tag push builds linux-64 + linux-aarch64 and uploads to anaconda.org/hep-forge.
+          3. Optional: add the package to \`scripts/hep_bot/sources.yaml\` and \`dag.yaml\` here for weekly version checks."
+          else
+            MSG="Scaffolding \`$FS\` failed, see the [log]($RUN_URL). If the repo already has commits, use \`@hep-bot rerender ${NAME}\` instead."
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG"
