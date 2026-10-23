@@ -50,6 +50,7 @@ ORG = os.environ["ORG"]
 
 def strip_jinja(text):
     text = re.sub(r"\{%.*?%\}", "", text, flags=re.DOTALL)
+    text = re.sub(r"\{#.*?#\}", "", text, flags=re.DOTALL)  # Jinja comments
     text = re.sub(r"\{\{.*?\}\}", "JINJA", text)
     return text
 
@@ -185,6 +186,7 @@ ORG = os.environ["ORG"]
 
 def strip_jinja(text):
     text = re.sub(r"\{%.*?%\}", "", text, flags=re.DOTALL)
+    text = re.sub(r"\{#.*?#\}", "", text, flags=re.DOTALL)  # Jinja comments
     text = re.sub(r"\{\{.*?\}\}", "JINJA", text)
     return text
 

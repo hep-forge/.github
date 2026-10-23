@@ -44,6 +44,7 @@ def release_tags(feedstock: Path) -> set:
     except (ImportError, OSError):
         return set()
     text = re.sub(r"\{%.*?%\}", "", text, flags=re.DOTALL)
+    text = re.sub(r"\{#.*?#\}", "", text, flags=re.DOTALL)  # Jinja comments
     text = re.sub(r"\{\{.*?\}\}", "JINJA_VALUE", text)
     try:
         meta = yaml.safe_load(text) or {}

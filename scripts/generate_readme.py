@@ -25,6 +25,7 @@ def extract_meta(meta_path: Path) -> dict:
     text = meta_path.read_text()
     # Strip Jinja2 before YAML parsing; replace expressions with placeholder
     text = re.sub(r'\{%.*?%\}', '', text, flags=re.DOTALL)
+    text = re.sub(r'\{#.*?#\}', '', text, flags=re.DOTALL)  # Jinja comments
     text = re.sub(r'\{\{.*?\}\}', 'JINJA_VALUE', text)
     return yaml.safe_load(text) or {}
 

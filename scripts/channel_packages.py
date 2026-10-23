@@ -142,6 +142,7 @@ def pinned_by(pkg: str):
 
     def strip_jinja(text):
         text = _re.sub(r"\{%.*?%\}", "", text, flags=_re.DOTALL)
+        text = _re.sub(r"\{#.*?#\}", "", text, flags=_re.DOTALL)  # Jinja comments
         text = _re.sub(r"\{\{.*?\}\}", "JINJA", text)
         return text
 
