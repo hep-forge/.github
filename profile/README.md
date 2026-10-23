@@ -100,7 +100,7 @@ _Last refreshed: 2026-10-23 (`python3 scripts/update_readme_status.py`)_
 | [mcfm](https://github.com/hep-forge/mcfm-feedstock) | `10.3-applgrid` | [`10.3.applgrid`](https://anaconda.org/hep-forge/mcfm) | ✅ | ✅ |
 | [minio-cpp](https://github.com/hep-forge/minio-cpp-feedstock) | `0.3.0.1` | [`0.3.0.1`](https://anaconda.org/hep-forge/minio-cpp) | ✅ | ✅ |
 | [mpfun90](https://github.com/hep-forge/mpfun90-feedstock) | `2024.12.06` | [`2024.12.06`](https://anaconda.org/hep-forge/mpfun90) | ✅ | ✅ |
-| [nestdaq](https://github.com/hep-forge/nestdaq-feedstock) | `head` | [`head`](https://anaconda.org/hep-forge/nestdaq) | ✅ | ✅ |
+| [nestdaq](https://github.com/hep-forge/nestdaq-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/nestdaq) | ✅ | ✅ |
 | [ninja-hep-ph](https://github.com/hep-forge/ninja-hep-ph-feedstock) | `1.2.0` | [`1.2.0`](https://anaconda.org/hep-forge/ninja-hep-ph) | ✅ | ✅ |
 | [nlojetxx](https://github.com/hep-forge/nlojetxx-feedstock) | `4.1.3` | [`4.1.3`](https://anaconda.org/hep-forge/nlojetxx) | ✅ | ✅ |
 | [nnlojet](https://github.com/hep-forge/nnlojet-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/nnlojet) | ✅ | ✅ |
