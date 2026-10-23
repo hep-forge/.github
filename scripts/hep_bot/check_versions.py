@@ -96,8 +96,13 @@ def recipe(name):
     m = re.search(r"versions\s*=\s*\{(.*?)\}", text, re.S)
     keys = re.findall(r'"([^"]+)"\s*:', m.group(1)) if m else []
     numeric = [k for k in keys if V(k)]
-    url = re.search(r'^\s*url:\s*"?([^"\n#]+)"?', text, re.M)
-    git_url = re.search(r'^\s*git_url:\s*"?([^"\n#]+)"?', text, re.M)
+    # First source only ("- url:" in a multi-source recipe): the package's
+    # own upstream; later sources are add-ons built on top of it.
+    url = re.search(r'^\s*(?:-\s*)?url:\s*"?([^"\n#]+)"?', text, re.M)
+    git_url = re.search(r'^\s*(?:-\s*)?git_url:\s*"?([^"\n#]+)"?', text, re.M)
+    if url and git_url:
+        # whichever comes first is the first source
+        url, git_url = (url, None) if url.start() < git_url.start() else (None, git_url)
     return {
         "text": text,
         "keys": keys,
