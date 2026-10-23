@@ -14,8 +14,9 @@ in dag.yaml opts a package out):
            hand edit, or an older hep-bot run that bumped without tagging):
            push that tag.
   HEAD     the feedstock has a `head` tag (the build of upstream's
-           main/master) and upstream committed since that build last ran:
-           move `head` to the default branch tip, which rebuilds it.
+           main/master) and either upstream committed since that build last
+           ran, or the feedstock's recipe/ changed since the commit `head`
+           points at: move `head` to the default branch tip, which rebuilds it.
            Having the tag is the opt-in; auto_update doesn't affect it.
   MANUAL   newer upstream release that needs a human: a new major version,
            a git source, or a URL with more jinja than {{ version }}. Listed
@@ -276,6 +277,20 @@ def last_head_build_time(name):
     return int(datetime.fromisoformat(stamp.replace("Z", "+00:00")).timestamp())
 
 
+def recipe_changed_since_head(name, branch):
+    """True if recipe/ differs between the commit the `head` tag points at
+    and the default branch tip (a recipe fix that `head` hasn't picked up)."""
+    out = git("ls-remote", f"https://github.com/hep-forge/{name}-feedstock.git",
+              "refs/tags/head", "refs/tags/head^{}").stdout.split()
+    if not out:
+        return False
+    head_sha = out[-2]  # peeled commit when annotated, else the tag's own
+    r = subprocess.run(["gh", "api", f"repos/hep-forge/{name}-feedstock/compare/{head_sha}...{branch or 'main'}",
+                        "--jq", '[.files[]?.filename | select(startswith("recipe/"))] | length'],
+                       capture_output=True, text=True)
+    return r.returncode == 0 and r.stdout.strip() not in ("", "0")
+
+
 def refresh_head(name, branch):
     """Move `head` to the default branch tip (the push rebuilds it); if it is
     already there, dispatch the build at the tag instead."""
@@ -355,9 +370,14 @@ def main() -> None:
             rec = recipe(name)
             tags = feedstock_tags(name)
             if rec and "head" in tags and (repo := upstream_repo(rec)):
-                upstream_time = upstream_head_time(repo[0])
-                if upstream_time > last_head_build_time(name):
-                    print(f"HEAD   {name}: upstream main/master moved since the last head build")
+                if upstream_head_time(repo[0]) > last_head_build_time(name):
+                    why = "upstream main/master moved since the last head build"
+                elif recipe_changed_since_head(name, branch):
+                    why = "recipe/ changed since the commit head points at"
+                else:
+                    why = None
+                if why:
+                    print(f"HEAD   {name}: {why}")
                     if not args.dry_run:
                         refresh_head(name, branch)
                         changed.append(name)

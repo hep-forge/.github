@@ -186,7 +186,7 @@ comments, pushes and tags appear under the token owner's name. Each feedstock on
 
 | Workflow | When | What it does |
 |---|---|---|
-| [version check](https://github.com/hep-forge/.github/actions/workflows/hep-bot-check.yml) | Mondays, or manually (dry run by default) | For every feedstock: bumps the recipe to a newer upstream patch/minor release and tags it, so it builds and publishes. Tags recipes that are ahead of their newest tag, and rebuilds `head` when upstream main has moved. Lists new major versions and git sources in the issue *[hep-bot] upstream updates that need a human* |
+| [version check](https://github.com/hep-forge/.github/actions/workflows/hep-bot-check.yml) | Mondays, or manually (dry run by default) | For every feedstock: bumps the recipe to a newer upstream patch/minor release and tags it, so it builds and publishes. Tags recipes that are ahead of their newest tag, and rebuilds `head` when upstream main has moved or the recipe changed. Lists new major versions and git sources in the issue *[hep-bot] upstream updates that need a human* |
 | [render-sync](https://github.com/hep-forge/.github/actions/workflows/render-sync.yml) | Daily, on template changes, or manually | Renders every feedstock, refreshes the table above and moves the submodule pointers |
 | [ordered rebuild](https://github.com/hep-forge/.github/actions/workflows/hep-bot-rebuild.yml) | Manually | Rebuilds a package and everything that depends on it, tier by tier ([`dag.yaml`](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/dag.yaml)) |
 | [new feedstock](https://github.com/hep-forge/.github/actions/workflows/new-feedstock.yml) | `@hep-bot new` or the issue form | Creates and registers a feedstock |
@@ -228,6 +228,52 @@ hep-forge repo. Commands in pull request comments are ignored.
 | Follow upstream main | create a `head` tag once; hep-bot moves it whenever upstream gets a new commit |
 
 Nothing is published without a tag. Merging a PR or pushing to `main` only changes the recipe.
+
+### How it works
+
+For the curious: hep-bot is plain GitHub Actions, and everything below runs in this repo
+or is copied from it.
+
+```
+ issue / comment in any repo ─┐
+                              ├─► comment.py ──► workflow in this repo ──► reply on the issue
+ sweep (every 10 min) ────────┘                  (render-sync, new-feedstock)
+
+ version check (Mondays) ──► push a tag on a feedstock ──► its autoupload.yml builds
+                                                           amd64 + arm64 ──► anaconda.org
+```
+
+- **Commands.** Each registered feedstock carries `hep-bot-comment.yml`. When an issue or
+  comment mentions `@hep-bot`, it checks out
+  [`scripts/hep_bot/comment.py`](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/comment.py)
+  from this repo and runs it, so changing the bot never touches the feedstocks. Short
+  jobs (`rerun`, `help`) are done right there. Long ones (`rerender`, `new`) start
+  [render-sync](https://github.com/hep-forge/.github/actions/workflows/render-sync.yml) or
+  [new-feedstock](https://github.com/hep-forge/.github/actions/workflows/new-feedstock.yml)
+  here, which report back on the issue when they finish.
+- **Sweep.** Repos without the workflow (new, or made by hand) can't trigger anything.
+  Every 10 minutes [the sweep](https://github.com/hep-forge/.github/actions/workflows/hep-bot-sweep.yml)
+  searches the org for `@hep-bot` requests and form issues from the last week and handles
+  the unanswered ones with the same code.
+- **No double answers.** Every bot reply ends with a hidden `<!-- hep-bot:<id> -->` marker
+  naming the request it answered. The sweep skips requests that already have one, and the
+  bot ignores any text carrying a marker, so it never reacts to its own messages.
+- **Rendering.** render-sync puts each registered feedstock on its `main` tip, copies the
+  templates from `scripts/templates/` (build workflow, bot workflow, AGENTS.md),
+  regenerates the README, pushes, and moves the submodule pointers here. conda-smithy plays
+  no part in this.
+- **Version check.** For each feedstock it reads the `versions` dict and source URL of
+  `recipe/meta.yaml`, finds the newest upstream release (`git ls-remote` on the upstream
+  repo, or the download page), and either bumps the recipe and pushes the new tag, tags a
+  recipe that is ahead of its newest tag, moves `head` (upstream committed, or the recipe
+  changed since `head` was built), or lists the package in the tracking issue.
+- **Publishing.** Only a tag push builds. The feedstock's own `autoupload.yml` builds
+  linux-64 and linux-aarch64, uploads to anaconda.org under the branch's label, and trims
+  old versions.
+- **Identity.** All of this acts with the org secret `HEP_BOT_TOKEN`, a fine-grained token
+  with Contents, Workflows, Actions, Issues and Administration rights on the org's repos.
+  Regenerating it means updating the org secret straight away. Uploads use
+  `ANACONDA_API_TOKEN`.
 
 ## Adding a feedstock
 
