@@ -178,7 +178,11 @@ because a fork would have to follow every conda-smithy release.
 
 ## hep-bot
 
-hep-bot runs in this repo with the `HEP_BOT_TOKEN` secret.
+hep-bot is GitHub Actions workflows in this repo plus the code in
+[`scripts/hep_bot/`](https://github.com/hep-forge/.github/tree/main/scripts/hep_bot). There is
+no server and no separate bot account: it acts with the org secret `HEP_BOT_TOKEN`, so its
+comments, pushes and tags appear under the token owner's name. Each feedstock only carries
+`.github/workflows/hep-bot-comment.yml`, which runs the code from this repo.
 
 | Workflow | When | What it does |
 |---|---|---|
@@ -210,7 +214,20 @@ repo. hep-bot reacts with 👀 and replies on the issue:
 ("@hep-bot, please rerender"). A registered feedstock answers within a minute. Any other
 repo, including one created by hand, gets its answer from the sweep within 10 minutes.
 The *New feedstock* and *Rerender feedstock* forms appear under **New issue** in every
-hep-forge repo.
+hep-forge repo. Commands in pull request comments are ignored.
+
+### Common tasks
+
+| Task | How |
+|---|---|
+| Package new software | `@hep-bot new …` or the *New feedstock* form, write the recipe in a PR on the new feedstock, merge, push the version tag |
+| Fix a feedstock made by hand | `@hep-bot rerender` in that feedstock |
+| Publish a release | push the version tag on `main` (`git tag 1.2.3 && git push origin 1.2.3`), or wait for Monday's version check |
+| Re-publish a recipe fix under the same version | merge the fix, then move the tag: `git tag -f 1.2.3 && git push -f origin refs/tags/1.2.3` (`rerun` would rebuild the recipe as it was at the tag) |
+| Rebuild a tag as it is | `@hep-bot rerun 1.2.3` |
+| Follow upstream main | create a `head` tag once; hep-bot moves it whenever upstream gets a new commit |
+
+Nothing is published without a tag. Merging a PR or pushing to `main` only changes the recipe.
 
 ## Adding a feedstock
 
