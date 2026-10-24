@@ -124,7 +124,7 @@ _Last refreshed: 2026-10-24 (`python3 scripts/update_readme_status.py`)_
 | [sherpa](https://github.com/hep-forge/sherpa-feedstock) | `2.2.16` | [`2.2.16`](https://anaconda.org/hep-forge/sherpa) | ✅ | ✅ |
 | [sz3](https://github.com/hep-forge/sz3-feedstock) | `3.3.1` | [`3.3.1`](https://anaconda.org/hep-forge/sz3) | ✅ | ✅ |
 | [thepeg](https://github.com/hep-forge/thepeg-feedstock) | `2.3.0` | [`2.3.0`](https://anaconda.org/hep-forge/thepeg) | ✅ | ✅ |
-| [troll](https://github.com/hep-forge/troll-feedstock) | `3.3` | — | ❌ | ❌ |
+| [troll](https://github.com/hep-forge/troll-feedstock) | `3.3` | [`3.3`](https://anaconda.org/hep-forge/troll) | ✅ | ✅ |
 | [xfitter-dev](https://github.com/hep-forge/xfitter-dev-feedstock) | `2.2.1` | [`2.2.1`](https://anaconda.org/hep-forge/xfitter-dev) | ✅ | ✅ |
 | [xfitter](https://github.com/hep-forge/xfitter-feedstock) | `2.2.1` | [`2.2.1`](https://anaconda.org/hep-forge/xfitter) | ✅ | ✅ |
 | [yadism](https://github.com/hep-forge/yadism-feedstock) | `0.12.5` | [`0.12.5`](https://anaconda.org/hep-forge/yadism) | ✅ | ✅ |
