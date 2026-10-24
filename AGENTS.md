@@ -88,6 +88,13 @@ Before you trigger anything that pushes, run the dry runs:
 `python3 scripts/hep_bot/check_versions.py --dry-run [--only pkg]` and
 `bash scripts/render_sync.sh` without `--commit`.
 
+## GitHub releases
+
+A release exists only to host a file the recipe downloads, such as a mirror of the
+upstream tarball. Its title is the tag and nothing else (`1.3.1_4`, not a description),
+and it has no notes: people read the upstream changelog. Create it with
+`gh release create <tag> <file> --title <tag> --notes ""`.
+
 ## Commits
 
 No `Co-authored-by` or other AI attribution trailers in commits or PRs, here or in any
