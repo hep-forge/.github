@@ -252,3 +252,6 @@
 [submodule "feedstocks/nestdaq-feedstock"]
 	path = feedstocks/nestdaq-feedstock
 	url = git@github.com:hep-forge/nestdaq-feedstock.git
+[submodule "feedstocks/troll-feedstock"]
+	path = feedstocks/troll-feedstock
+	url = git@github.com:hep-forge/troll-feedstock.git
