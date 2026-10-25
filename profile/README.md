@@ -42,7 +42,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-10-24 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-10-25 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
