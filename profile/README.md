@@ -42,7 +42,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-10-26 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-10-27 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -50,11 +50,11 @@ _Last refreshed: 2026-10-26 (`python3 scripts/update_readme_status.py`)_
 | [afterburner](https://github.com/hep-forge/afterburner-feedstock) | `0.2.1` | [`0.2.1`](https://anaconda.org/hep-forge/afterburner) | ✅ | ✅ |
 | [apfel](https://github.com/hep-forge/apfel-feedstock) | `3.1.1` | [`3.1.1`](https://anaconda.org/hep-forge/apfel) | ✅ | ✅ |
 | [apfelgrid](https://github.com/hep-forge/apfelgrid-feedstock) | `1.0.1` | [`1.0.1`](https://anaconda.org/hep-forge/apfelgrid) | ✅ | ✅ |
-| [apfelxx](https://github.com/hep-forge/apfelxx-feedstock) | `4.8.0` | [`4.8.0`](https://anaconda.org/hep-forge/apfelxx) | ✅ | ✅ |
-| [applgrid](https://github.com/hep-forge/applgrid-feedstock) | `1.6.35` | [`1.6.35`](https://anaconda.org/hep-forge/applgrid) | ✅ | ✅ |
+| [apfelxx](https://github.com/hep-forge/apfelxx-feedstock) | `4.10.0` | [`4.8.0` ⚠️](https://anaconda.org/hep-forge/apfelxx) | ✅ | ✅ |
+| [applgrid](https://github.com/hep-forge/applgrid-feedstock) | `1.6.49` | [`1.6.35` ⚠️](https://anaconda.org/hep-forge/applgrid) | ✅ | ✅ |
 | [cernlib](https://github.com/hep-forge/cernlib-feedstock) | `2024.09.16.0-free` | [`2024.09.16.0.free`](https://anaconda.org/hep-forge/cernlib) | ✅ | ✅ |
 | [chaplin](https://github.com/hep-forge/chaplin-feedstock) | `1.2` | [`1.2`](https://anaconda.org/hep-forge/chaplin) | ✅ | ✅ |
-| [collier](https://github.com/hep-forge/collier-feedstock) | `1.2.8` | [`1.2.8`](https://anaconda.org/hep-forge/collier) | ✅ | ✅ |
+| [collier](https://github.com/hep-forge/collier-feedstock) | `1.2.10` | [`1.2.10`](https://anaconda.org/hep-forge/collier) | ✅ | ✅ |
 | [combiner](https://github.com/hep-forge/combiner-feedstock) | `0.1.1` | [`0.1.1`](https://anaconda.org/hep-forge/combiner) | ✅ | ✅ |
 | [covfie](https://github.com/hep-forge/covfie-feedstock) | `0.15.6` | [`0.15.6`](https://anaconda.org/hep-forge/covfie) | ✅ | ✅ |
 | [cuba](https://github.com/hep-forge/cuba-feedstock) | `4.2.2` | [`4.2.2`](https://anaconda.org/hep-forge/cuba) | ✅ | ✅ |
@@ -62,22 +62,22 @@ _Last refreshed: 2026-10-26 (`python3 scripts/update_readme_status.py`)_
 | [curlpp](https://github.com/hep-forge/curlpp-feedstock) | `0.8.1.1` | [`0.8.1.1`](https://anaconda.org/hep-forge/curlpp) | ✅ | ✅ |
 | [cuttools](https://github.com/hep-forge/cuttools-feedstock) | `2.0` | [`2.0`](https://anaconda.org/hep-forge/cuttools) | ✅ | ✅ |
 | [dd4hep](https://github.com/hep-forge/dd4hep-feedstock) | `1.37` | [`1.37`](https://anaconda.org/hep-forge/dd4hep) | ✅ | ✅ |
-| [delphes](https://github.com/hep-forge/delphes-feedstock) | `3.5.0` | [`3.5.0`](https://anaconda.org/hep-forge/delphes) | ✅ | ✅ |
+| [delphes](https://github.com/hep-forge/delphes-feedstock) | `3.5.1` | [`3.5.0` ⚠️](https://anaconda.org/hep-forge/delphes) | ✅ | ✅ |
 | [difftop](https://github.com/hep-forge/difftop-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/difftop) | ✅ | ✅ |
 | [djangoh](https://github.com/hep-forge/djangoh-feedstock) | `4.6.21` | [`4.6.21`](https://anaconda.org/hep-forge/djangoh) | ✅ | ✅ |
 | [dyturbo](https://github.com/hep-forge/dyturbo-feedstock) | `1.4.2` | [`1.4.2`](https://anaconda.org/hep-forge/dyturbo) | ✅ | ✅ |
 | [edm4hep](https://github.com/hep-forge/edm4hep-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/edm4hep) | ✅ | ✅ |
-| [eic-smear](https://github.com/hep-forge/eic-smear-feedstock) | `1.1.17` | [`1.1.17`](https://anaconda.org/hep-forge/eic-smear) | ✅ | ✅ |
+| [eic-smear](https://github.com/hep-forge/eic-smear-feedstock) | `1.2.3` | [`1.1.17` ⚠️](https://anaconda.org/hep-forge/eic-smear) | ✅ | ✅ |
 | [eko](https://github.com/hep-forge/eko-feedstock) | `0.14.6` | [`0.14.6`](https://anaconda.org/hep-forge/eko) | ✅ | ✅ |
-| [emela](https://github.com/hep-forge/emela-feedstock) | `1.0` | [`1.0`](https://anaconda.org/hep-forge/emela) | ✅ | ✅ |
+| [emela](https://github.com/hep-forge/emela-feedstock) | `1.0.1` | [`1.0` ⚠️](https://anaconda.org/hep-forge/emela) | ✅ | ✅ |
 | [epic](https://github.com/hep-forge/epic-feedstock) | `26.06.0` | [`26.06.0`](https://anaconda.org/hep-forge/epic) | ✅ | ✅ |
 | [escalade](https://github.com/hep-forge/escalade-feedstock) | `v9.08.26` | [`v9.08.26`](https://anaconda.org/hep-forge/escalade) | ✅ | ✅ |
 | [estarlight](https://github.com/hep-forge/estarlight-feedstock) | `1.2.0` | [`1.2.0`](https://anaconda.org/hep-forge/estarlight) | ✅ | ✅ |
 | [fairmq](https://github.com/hep-forge/fairmq-feedstock) | `1.11.0` | [`1.11.0`](https://anaconda.org/hep-forge/fairmq) | ✅ | ✅ |
-| [fastjet-contrib](https://github.com/hep-forge/fastjet-contrib-feedstock) | `1.103` | [`1.103`](https://anaconda.org/hep-forge/fastjet-contrib) | ✅ | ✅ |
-| [fastjet](https://github.com/hep-forge/fastjet-feedstock) | `3.5.1` | [`3.5.1`](https://anaconda.org/hep-forge/fastjet) | ✅ | ✅ |
+| [fastjet-contrib](https://github.com/hep-forge/fastjet-contrib-feedstock) | `1.105` | [`1.105`](https://anaconda.org/hep-forge/fastjet-contrib) | ✅ | ✅ |
+| [fastjet](https://github.com/hep-forge/fastjet-feedstock) | `3.5.3` | [`3.5.3`](https://anaconda.org/hep-forge/fastjet) | ✅ | ✅ |
 | [fastnlo](https://github.com/hep-forge/fastnlo-feedstock) | `2.6.0` | [`2.6.0`](https://anaconda.org/hep-forge/fastnlo) | ✅ | ✅ |
-| [framel](https://github.com/hep-forge/framel-feedstock) | `8.48.4` | [`8.48.4`](https://anaconda.org/hep-forge/framel) | ✅ | ✅ |
+| [framel](https://github.com/hep-forge/framel-feedstock) | `8.50.3` | [`8.48.4` ⚠️](https://anaconda.org/hep-forge/framel) | ✅ | ✅ |
 | [framel-root](https://github.com/hep-forge/framel-root-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/framel-root) | ✅ | ✅ |
 | [g4hepem](https://github.com/hep-forge/g4hepem-feedstock) | `20251114` | [`20251114`](https://anaconda.org/hep-forge/g4hepem) | ✅ | ✅ |
 | [geant](https://github.com/hep-forge/geant-feedstock) | `11.4.1` | [`11.4.1`](https://anaconda.org/hep-forge/geant) | ✅ | ✅ |
@@ -86,49 +86,49 @@ _Last refreshed: 2026-10-26 (`python3 scripts/update_readme_status.py`)_
 | [hell](https://github.com/hep-forge/hell-feedstock) | `3.1` | [`3.1`](https://anaconda.org/hep-forge/hell) | ✅ | ✅ |
 | [hellx](https://github.com/hep-forge/hellx-feedstock) | `3.0` | [`3.0`](https://anaconda.org/hep-forge/hellx) | ✅ | ✅ |
 | [hepmc](https://github.com/hep-forge/hepmc-feedstock) | `3.3.1` | [`3.3.1`](https://anaconda.org/hep-forge/hepmc) | ✅ | ✅ |
-| [hepmc-merger](https://github.com/hep-forge/hepmc-merger-feedstock) | `2.2.0` | [`2.2.0`](https://anaconda.org/hep-forge/hepmc-merger) | ✅ | ✅ |
+| [hepmc-merger](https://github.com/hep-forge/hepmc-merger-feedstock) | `2.4.0` | [`2.2.0` ⚠️](https://anaconda.org/hep-forge/hepmc-merger) | ✅ | ✅ |
 | [herwig7](https://github.com/hep-forge/herwig7-feedstock) | `7.3.0` | [`7.3.0`](https://anaconda.org/hep-forge/herwig7) | ✅ | ✅ |
 | [hoppet](https://github.com/hep-forge/hoppet-feedstock) | `2.2.0` | [`2.2.0`](https://anaconda.org/hep-forge/hoppet) | ✅ | ✅ |
 | [inih](https://github.com/hep-forge/inih-feedstock) | `r60` | [`r60`](https://anaconda.org/hep-forge/inih) | ✅ | ✅ |
 | [iregi](https://github.com/hep-forge/iregi-feedstock) | `1.1.0` | [`1.1.0`](https://anaconda.org/hep-forge/iregi) | ✅ | ✅ |
-| [jana](https://github.com/hep-forge/jana-feedstock) | `2026.02.00` | [`2026.02.00`](https://anaconda.org/hep-forge/jana) | ✅ | ✅ |
+| [jana](https://github.com/hep-forge/jana-feedstock) | `2026.03.01` | [`2026.02.00` ⚠️](https://anaconda.org/hep-forge/jana) | ✅ | ✅ |
 | [jetphox](https://github.com/hep-forge/jetphox-feedstock) | `1.3.1_4` | [`1.3.1.4`](https://anaconda.org/hep-forge/jetphox) | ✅ | ✅ |
 | [kfrlib](https://github.com/hep-forge/kfrlib-feedstock) | `7.0.1` | [`7.0.1`](https://anaconda.org/hep-forge/kfrlib) | ✅ | ✅ |
 | [lhapdf](https://github.com/hep-forge/lhapdf-feedstock) | `6.5.6` | [`6.5.6`](https://anaconda.org/hep-forge/lhapdf) | ✅ | ✅ |
-| [libdate-tz](https://github.com/hep-forge/libdate-tz-feedstock) | `3.0.3` | [`3.0.3`](https://anaconda.org/hep-forge/libdate-tz) | ✅ | ✅ |
+| [libdate-tz](https://github.com/hep-forge/libdate-tz-feedstock) | `3.0.5` | [`3.0.5`](https://anaconda.org/hep-forge/libdate-tz) | ✅ | ✅ |
 | [looptools](https://github.com/hep-forge/looptools-feedstock) | `2.16` | [`2.16`](https://anaconda.org/hep-forge/looptools) | ✅ | ✅ |
 | [mcfm](https://github.com/hep-forge/mcfm-feedstock) | `10.3-applgrid` | [`10.3.applgrid`](https://anaconda.org/hep-forge/mcfm) | ✅ | ✅ |
 | [minio-cpp](https://github.com/hep-forge/minio-cpp-feedstock) | `0.3.0.1` | [`0.3.0.1`](https://anaconda.org/hep-forge/minio-cpp) | ✅ | ✅ |
 | [mpfun90](https://github.com/hep-forge/mpfun90-feedstock) | `2024.12.06` | [`2024.12.06`](https://anaconda.org/hep-forge/mpfun90) | ✅ | ✅ |
 | [nestdaq](https://github.com/hep-forge/nestdaq-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/nestdaq) | ✅ | ✅ |
-| [ninja-hep-ph](https://github.com/hep-forge/ninja-hep-ph-feedstock) | `1.2.0` | [`1.2.0`](https://anaconda.org/hep-forge/ninja-hep-ph) | ✅ | ✅ |
+| [ninja-hep-ph](https://github.com/hep-forge/ninja-hep-ph-feedstock) | `1.2.1` | [`1.2.0` ⚠️](https://anaconda.org/hep-forge/ninja-hep-ph) | ✅ | ✅ |
 | [nlojetxx](https://github.com/hep-forge/nlojetxx-feedstock) | `4.1.3` | [`4.1.3`](https://anaconda.org/hep-forge/nlojetxx) | ✅ | ✅ |
 | [nnlojet](https://github.com/hep-forge/nnlojet-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/nnlojet) | ✅ | ✅ |
 | [nnpdf](https://github.com/hep-forge/nnpdf-feedstock) | `4.0.9` | [`4.0.9`](https://anaconda.org/hep-forge/nnpdf) | ✅ | ✅ |
 | [npsim](https://github.com/hep-forge/npsim-feedstock) | `1.6.1` | [`1.6.1`](https://anaconda.org/hep-forge/npsim) | ✅ | ✅ |
 | [numdiff](https://github.com/hep-forge/numdiff-feedstock) | `5.9.0` | [`5.9.0`](https://anaconda.org/hep-forge/numdiff) | ✅ | ✅ |
 | [oneloop](https://github.com/hep-forge/oneloop-feedstock) | `3.7.2` | [`3.7.2`](https://anaconda.org/hep-forge/oneloop) | ✅ | ✅ |
-| [pepper](https://github.com/hep-forge/pepper-feedstock) | `1.12.0` | [`1.12.0`](https://anaconda.org/hep-forge/pepper) | ✅ | ✅ |
+| [pepper](https://github.com/hep-forge/pepper-feedstock) | `1.14.1` | [`1.14.1`](https://anaconda.org/hep-forge/pepper) | ✅ | ✅ |
 | [pineappl](https://github.com/hep-forge/pineappl-feedstock) | `0.8.6` | [`0.8.6`](https://anaconda.org/hep-forge/pineappl) | ✅ | ✅ |
 | [ploughshare](https://github.com/hep-forge/ploughshare-feedstock) | `0.0.20` | [`0.0.20`](https://anaconda.org/hep-forge/ploughshare) | ✅ | ✅ |
 | [podio](https://github.com/hep-forge/podio-feedstock) | `1.7.0` | [`1.7.0`](https://anaconda.org/hep-forge/podio) | ✅ | ✅ |
-| [professor](https://github.com/hep-forge/professor-feedstock) | `2.4.2` | [`2.4.2`](https://anaconda.org/hep-forge/professor) | ✅ | ✅ |
+| [professor](https://github.com/hep-forge/professor-feedstock) | `2.5.9` | [`2.4.2` ⚠️](https://anaconda.org/hep-forge/professor) | ✅ | ✅ |
 | [pythia](https://github.com/hep-forge/pythia-feedstock) | `8.3.12` | [`8.3.12`](https://anaconda.org/hep-forge/pythia) | ✅ | ✅ |
-| [qcdloop](https://github.com/hep-forge/qcdloop-feedstock) | `2.0.9` | [`2.0.9`](https://anaconda.org/hep-forge/qcdloop) | ✅ | ✅ |
+| [qcdloop](https://github.com/hep-forge/qcdloop-feedstock) | `2.1.0` | [`2.0.9` ⚠️](https://anaconda.org/hep-forge/qcdloop) | ✅ | ✅ |
 | [qcdnum](https://github.com/hep-forge/qcdnum-feedstock) | `18.00.00` | [`18.00.00`](https://anaconda.org/hep-forge/qcdnum) | ✅ | ✅ |
 | [rapgap](https://github.com/hep-forge/rapgap-feedstock) | `3.310` | [`3.310`](https://anaconda.org/hep-forge/rapgap) | ✅ | ✅ |
-| [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.0` | [`4.1.0`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
+| [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.3` | [`4.1.0` ⚠️](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
 | [root](https://github.com/hep-forge/root-feedstock) | `6.38.04` | [`6.38.04`](https://anaconda.org/hep-forge/root) | ✅ | ✅ |
 | [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `1.0` | [`1`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
 | [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `beta` | [`beta`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
 | [sherpa](https://github.com/hep-forge/sherpa-feedstock) | `2.2.16` | [`2.2.16`](https://anaconda.org/hep-forge/sherpa) | ✅ | ✅ |
-| [sz3](https://github.com/hep-forge/sz3-feedstock) | `3.3.1` | [`3.3.1`](https://anaconda.org/hep-forge/sz3) | ✅ | ✅ |
+| [sz3](https://github.com/hep-forge/sz3-feedstock) | `3.4.0` | [`3.4.0`](https://anaconda.org/hep-forge/sz3) | ✅ | ✅ |
 | [thepeg](https://github.com/hep-forge/thepeg-feedstock) | `2.3.0` | [`2.3.0`](https://anaconda.org/hep-forge/thepeg) | ✅ | ✅ |
 | [troll](https://github.com/hep-forge/troll-feedstock) | `3.3` | [`3.3`](https://anaconda.org/hep-forge/troll) | ✅ | ✅ |
 | [xfitter-dev](https://github.com/hep-forge/xfitter-dev-feedstock) | `2.2.1` | [`2.2.1`](https://anaconda.org/hep-forge/xfitter-dev) | ✅ | ✅ |
 | [xfitter](https://github.com/hep-forge/xfitter-feedstock) | `2.2.1` | [`2.2.1`](https://anaconda.org/hep-forge/xfitter) | ✅ | ✅ |
 | [yadism](https://github.com/hep-forge/yadism-feedstock) | `0.12.5` | [`0.12.5`](https://anaconda.org/hep-forge/yadism) | ✅ | ✅ |
-| [yoda](https://github.com/hep-forge/yoda-feedstock) | `2.1.0` | [`2.1.0`](https://anaconda.org/hep-forge/yoda) | ✅ | ✅ |
+| [yoda](https://github.com/hep-forge/yoda-feedstock) | `2.1.4` | [`2.1.0` ⚠️](https://anaconda.org/hep-forge/yoda) | ✅ | ✅ |
 
 ⚠️ = the latest feedstock tag is not published on anaconda.org (build failed or still running); tag `X-y` publishes as `X.y`.
 <!-- status:end -->
