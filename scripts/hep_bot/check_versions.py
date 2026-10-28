@@ -96,7 +96,6 @@ def recipe(name):
     text = meta.read_text()
     m = re.search(r"versions\s*=\s*\{(.*?)\}", text, re.S)
     keys = re.findall(r'"([^"]+)"\s*:', m.group(1)) if m else []
-    numeric = [k for k in keys if V(k)]
     # First source only ("- url:" in a multi-source recipe): the package's
     # own upstream; later sources are add-ons built on top of it.
     url = re.search(r'^\s*(?:-\s*)?url:\s*"?([^"\n#]+)"?', text, re.M)
@@ -107,10 +106,17 @@ def recipe(name):
     return {
         "text": text,
         "keys": keys,
-        "current": max(numeric, key=V) if numeric else None,
+        "current": recipe_version(text),
         "url": url.group(1).strip() if url else None,
         "git_url": git_url.group(1).strip() if git_url else None,
     }
+
+
+def recipe_version(text):
+    m = re.search(r"versions\s*=\s*\{(.*?)\}", text, re.S)
+    keys = re.findall(r'"([^"]+)"\s*:', m.group(1)) if m else []
+    numeric = [k for k in keys if V(k)]
+    return max(numeric, key=V) if numeric else None
 
 
 def breaking(old, new):
@@ -252,9 +258,17 @@ def feedstock_tags(name):
 
 def push_tag(name, version, branch):
     d = feedstock_dir(name)
-    git("tag", version, cwd=d)
-    git("push", "-q", "origin", f"refs/tags/{version}", cwd=d)
+    git("tag", "-f", version, cwd=d)
+    git("push", "-q", "--force", "origin", f"refs/tags/{version}", cwd=d)
     print(f"        pushed tag {version} on {branch} -> build + publish")
+
+
+def tagged_recipe_version(name, version):
+    d = feedstock_dir(name)
+    ref = f"refs/tags/{version}"
+    git("fetch", "-q", "--force", "origin", f"{ref}:{ref}", cwd=d)
+    text = git("show", f"{version}:recipe/meta.yaml", cwd=d).stdout
+    return recipe_version(text)
 
 
 def upstream_head_time(repo_url):
@@ -410,6 +424,13 @@ def main() -> None:
 
             if cur not in tags and (newest_tag is None or V(cur) > V(newest_tag)):
                 print(f"TAG    {name}: recipe {cur} is newer than tag {newest_tag}")
+                if not args.dry_run:
+                    push_tag(name, cur, branch)
+                    changed.append(name)
+            elif cur in tags and (
+                    (tagged_cur := tagged_recipe_version(name, cur)) is None
+                    or V(tagged_cur) < V(cur)):
+                print(f"TAG    {name}: tag {cur} points to recipe {tagged_cur}")
                 if not args.dry_run:
                     push_tag(name, cur, branch)
                     changed.append(name)
