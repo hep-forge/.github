@@ -96,7 +96,6 @@ def recipe(name):
     text = meta.read_text()
     m = re.search(r"versions\s*=\s*\{(.*?)\}", text, re.S)
     keys = re.findall(r'"([^"]+)"\s*:', m.group(1)) if m else []
-    numeric = [k for k in keys if V(k)]
     # First source only ("- url:" in a multi-source recipe): the package's
     # own upstream; later sources are add-ons built on top of it.
     url = re.search(r'^\s*(?:-\s*)?url:\s*"?([^"\n#]+)"?', text, re.M)
@@ -107,10 +106,17 @@ def recipe(name):
     return {
         "text": text,
         "keys": keys,
-        "current": max(numeric, key=V) if numeric else None,
+        "current": recipe_version(text),
         "url": url.group(1).strip() if url else None,
         "git_url": git_url.group(1).strip() if git_url else None,
     }
+
+
+def recipe_version(text):
+    m = re.search(r"versions\s*=\s*\{(.*?)\}", text, re.S)
+    keys = re.findall(r'"([^"]+)"\s*:', m.group(1)) if m else []
+    numeric = [k for k in keys if V(k)]
+    return max(numeric, key=V) if numeric else None
 
 
 def breaking(old, new):
@@ -252,9 +258,17 @@ def feedstock_tags(name):
 
 def push_tag(name, version, branch):
     d = feedstock_dir(name)
-    git("tag", version, cwd=d)
-    git("push", "-q", "origin", f"refs/tags/{version}", cwd=d)
+    git("tag", "-f", version, cwd=d)
+    git("push", "-q", "--force", "origin", f"refs/tags/{version}", cwd=d)
     print(f"        pushed tag {version} on {branch} -> build + publish")
+
+
+def tagged_recipe_version(name, version):
+    d = feedstock_dir(name)
+    ref = f"refs/tags/{version}"
+    git("fetch", "-q", "--force", "origin", f"{ref}:{ref}", cwd=d)
+    text = git("show", f"{version}:recipe/meta.yaml", cwd=d).stdout
+    return recipe_version(text)
 
 
 def upstream_head_time(repo_url):
@@ -314,6 +328,23 @@ def bump(name, old, new, branch):
     push_tag(name, new, branch)
 
 
+def recipe_maintainers(name):
+    meta = feedstock_dir(name) / "recipe" / "meta.yaml"
+    try:
+        text = meta.read_text()
+        text = re.sub(r"\{%.*?%\}", "", text, flags=re.S)
+        text = re.sub(r"\{#.*?#\}", "", text, flags=re.S)
+        text = re.sub(r"\{\{.*?\}\}", "JINJA_VALUE", text)
+        data = yaml.safe_load(text) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    maintainers = (data.get("extra", {}) or {}).get("recipe-maintainers", []) or []
+    if isinstance(maintainers, str):
+        maintainers = [maintainers]
+    return sorted({m for m in maintainers
+                   if isinstance(m, str) and re.fullmatch(r"[A-Za-z0-9-]+", m)})
+
+
 def update_tracking_issue(manual):
     """One open issue listing everything that needs a human; closed when empty."""
     r = subprocess.run(["gh", "issue", "list", "--repo", META_REPO, "--state", "open",
@@ -326,14 +357,30 @@ def update_tracking_issue(manual):
             subprocess.run(["gh", "issue", "close", number, "--repo", META_REPO,
                             "--comment", "Nothing left to update by hand."], check=False)
         return
-    rows = "\n".join(f"| [{n}](https://github.com/hep-forge/{n}-feedstock) | `{o}` | `{u}` | {why} |"
-                     for n, o, u, why in manual)
+    maintainers = {n: recipe_maintainers(n) for n, *_ in manual}
+    rows = "\n".join(
+        f"| [{n}](https://github.com/hep-forge/{n}-feedstock) | `{o}` | `{u}` | "
+        f"{why} | {', '.join('@' + m for m in maintainers[n]) or 'not listed'} |"
+        for n, o, u, why in manual)
     body = ("Upstream has newer releases that hep-bot does not apply on its own. Update the recipe "
             "and push the version tag, or set `auto_update: false` in `scripts/hep_bot/dag.yaml` "
             "to silence a package. This list is rewritten by every version check.\n\n"
-            "| Feedstock | Recipe | Upstream | Why not automatic |\n|---|---|---|---|\n" + rows)
+            "| Feedstock | Recipe | Upstream | Why not automatic | Maintainers |\n"
+            "|---|---|---|---|---|\n" + rows)
     if number:
+        previous = subprocess.run(
+            ["gh", "issue", "view", number, "--repo", META_REPO, "--json", "body", "--jq", ".body"],
+            capture_output=True, text=True)
         subprocess.run(["gh", "issue", "edit", number, "--repo", META_REPO, "--body", body], check=False)
+        if previous.returncode == 0 and previous.stdout.strip() == body:
+            return
+        recipients = sorted({m for values in maintainers.values() for m in values})
+        packages = ", ".join(n for n, *_ in manual)
+        mentions = " ".join("@" + m for m in recipients)
+        notification = (f"Human action is requested for: {packages}.\n\n"
+                        f"Please review the updated table above. {mentions}".rstrip())
+        subprocess.run(["gh", "issue", "comment", number, "--repo", META_REPO,
+                        "--body", notification], check=False)
     else:
         subprocess.run(["gh", "issue", "create", "--repo", META_REPO, "--title", TRACKING_TITLE,
                         "--body", body], check=False)
@@ -410,6 +457,13 @@ def main() -> None:
 
             if cur not in tags and (newest_tag is None or V(cur) > V(newest_tag)):
                 print(f"TAG    {name}: recipe {cur} is newer than tag {newest_tag}")
+                if not args.dry_run:
+                    push_tag(name, cur, branch)
+                    changed.append(name)
+            elif cur in tags and (
+                    (tagged_cur := tagged_recipe_version(name, cur)) is None
+                    or V(tagged_cur) < V(cur)):
+                print(f"TAG    {name}: tag {cur} points to recipe {tagged_cur}")
                 if not args.dry_run:
                     push_tag(name, cur, branch)
                     changed.append(name)
