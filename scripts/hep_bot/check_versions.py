@@ -55,6 +55,35 @@ DAG = yaml.safe_load((Path(__file__).parent / "dag.yaml").read_text()) or {}
 META_REPO = "hep-forge/.github"
 TRACKING_TITLE = "[hep-bot] upstream updates that need a human"
 NUM = r"\d+(?:\.\d+)+"
+# Upstream sites that refused hep-bot this run ({package: url}): a 403, or
+# an anti-bot challenge page (e.g. Anubis on matrix.hepforge.org). Listed in
+# the tracking issue so a human checks those packages by hand.
+BLOCKED = {}
+CURRENT = None
+ANTI_BOT_MARKERS = ("making sure you're not a bot", "anubis", "just a moment...",
+                    "cf-chl-", "captcha")
+
+
+def fetch_page(url):
+    """Page text, or None; records the current package as blocked when the
+    site refuses bots."""
+    try:
+        r = requests.get(url, timeout=20, headers=HEADERS)
+    except Exception as e:
+        print(f"  WARNING: could not fetch {url}: {e}", file=sys.stderr)
+        return None
+    head = r.text[:4000].lower()
+    if r.status_code in (401, 403, 429) or any(m in head for m in ANTI_BOT_MARKERS):
+        print(f"  BLOCKED: {url} refuses hep-bot (HTTP {r.status_code})", file=sys.stderr)
+        if CURRENT:
+            BLOCKED[CURRENT] = url
+        return None
+    if r.status_code >= 400:
+        print(f"  WARNING: could not fetch {url}: HTTP {r.status_code}", file=sys.stderr)
+        return None
+    return r.text
+
+
 # Identify the bot to upstream download servers.
 HEADERS = {"User-Agent": "hep-bot (+https://github.com/hep-forge/.github)"}
 
@@ -166,13 +195,10 @@ def latest_listed(page, filename_template):
     filename, with {{ version }} as the wildcard."""
     before, _, after = re.split(r"(\{\{\s*version\s*\}\})", filename_template, maxsplit=1)
     pattern = re.escape(before) + f"({NUM})" + re.escape(after)
-    try:
-        r = requests.get(page, timeout=20, headers=HEADERS)
-        r.raise_for_status()
-    except Exception as e:
-        print(f"  WARNING: could not fetch {page}: {e}", file=sys.stderr)
+    text = fetch_page(page)
+    if text is None:
         return None
-    found = [v for v in re.findall(pattern, r.text) if V(v)]
+    found = [v for v in re.findall(pattern, text) if V(v)]
     return max(found, key=V) if found else None
 
 
@@ -215,17 +241,18 @@ def upstream_from_recipe(rec):
 
 def upstream_from_sources(name):
     src = SOURCES[name]
+    if src["type"] == "anti_bot":
+        # Marked by hand: the site only serves browsers (no request at all).
+        BLOCKED[name] = src["url"]
+        return None
     if src["type"] == "html_scrape":
-        try:
-            r = requests.get(src["url"], timeout=20, headers=HEADERS)
-            r.raise_for_status()
-        except Exception as e:
-            print(f"  WARNING: could not fetch {src['url']}: {e}", file=sys.stderr)
+        text = fetch_page(src["url"])
+        if text is None:
             return None
         # A pattern with several groups (pythia8316 -> 8, 3, 16) is joined
         # with dots.
         found = [".".join(str(int(g)) for g in m) if isinstance(m, tuple) else m
-                 for m in re.findall(src["pattern"], r.text)]
+                 for m in re.findall(src["pattern"], text)]
         found = [v for v in found if V(v)]
         return max(found, key=V) if found else None
     if src["type"] in ("git_tags", "gitlab_tags"):
@@ -399,6 +426,7 @@ def commit_pointers(changed):
 
 
 def main() -> None:
+    global CURRENT
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="print the plan, change nothing")
     parser.add_argument("--only", default="", help="comma list of packages")
@@ -435,8 +463,18 @@ def main() -> None:
                 print(f"SKIP   {name}: no numeric version in recipe")
                 continue
             cur = rec["current"]
+            CURRENT = name
             up = upstream(name, rec)
             newest_tag = max((t for t in tags if V(t)), key=V, default=None)
+            if up is None and name in BLOCKED:
+                why = f"upstream site blocks hep-bot: {BLOCKED[name]}"
+                print(f"BLOCKED {name}: {why}")
+                manual.append((name, cur, "?", why))
+            if up and V(up) > V(cur) and up in tags:
+                # Already published under that tag by other means (dyturbo
+                # 1.4.2): re-tagging would fail and must not move it.
+                print(f"OK     {name}: {cur} (upstream {up} already tagged)")
+                continue
 
             if up and V(up) > V(cur):
                 if breaking(cur, up):

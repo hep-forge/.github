@@ -5,6 +5,8 @@
 #                groups are joined with dots)
 #   git_tags:    url (git repo) + pattern (regex on tag names) or prefix
 #   github_releases: repo (owner/name)
+#   anti_bot:    url only -- the site serves browsers only (anti-bot page);
+#                hep-bot doesn't query it and lists the package for a human
 
 fastjet:
   type: html_scrape
@@ -45,3 +47,7 @@ applgrid:
   type: html_scrape
   url: "https://applgrid.hepforge.org/downloads/"
   pattern: 'applgrid-(\d+\.\d+\.\d+)\.tgz'
+
+matrix:
+  type: anti_bot
+  url: "https://matrix.hepforge.org/download.html"
