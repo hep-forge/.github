@@ -187,7 +187,7 @@ comments, pushes and tags appear under the token owner's name. Each feedstock on
 
 | Workflow | When | What it does |
 |---|---|---|
-| [version check](https://github.com/hep-forge/.github/actions/workflows/hep-bot-check.yml) | Mondays, or manually (dry run by default) | For every feedstock: bumps the recipe to a newer upstream patch/minor release and tags it, so it builds and publishes. Tags recipes that are ahead of their newest tag, and rebuilds `head` when upstream main has moved or the recipe changed. Lists new major versions and git sources in the issue *[hep-bot] upstream updates that need a human* |
+| [version check](https://github.com/hep-forge/.github/actions/workflows/hep-bot-check.yml) | Daily, or manually (dry run by default) | For every feedstock: bumps the recipe to a newer upstream patch/minor release and tags it, so it builds and publishes. Tags recipes that are ahead of their newest tag, and rebuilds `head` when upstream main has moved or the recipe changed. Lists new major versions and git sources in the issue *[hep-bot] upstream updates that need a human* |
 | [render-sync](https://github.com/hep-forge/.github/actions/workflows/render-sync.yml) | Daily, on template changes, or manually | Renders every feedstock, refreshes the table above and moves the submodule pointers |
 | [ordered rebuild](https://github.com/hep-forge/.github/actions/workflows/hep-bot-rebuild.yml) | Manually | Rebuilds a package and everything that depends on it, tier by tier ([`dag.yaml`](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/dag.yaml)) |
 | [new feedstock](https://github.com/hep-forge/.github/actions/workflows/new-feedstock.yml) | `@hep-bot new` or the issue form | Creates and registers a feedstock |
@@ -223,7 +223,7 @@ hep-forge repo. Commands in pull request comments are ignored.
 |---|---|
 | Package new software | `@hep-bot new …` or the *New feedstock* form, write the recipe in a PR on the new feedstock, merge, push the version tag |
 | Fix a feedstock made by hand | `@hep-bot rerender` in that feedstock |
-| Publish a release | push the version tag on `main` (`git tag 1.2.3 && git push origin 1.2.3`), or wait for Monday's version check |
+| Publish a release | push the version tag on `main` (`git tag 1.2.3 && git push origin 1.2.3`), or wait for the next daily version check |
 | Re-publish a recipe fix under the same version | merge the fix, then move the tag: `git tag -f 1.2.3 && git push -f origin refs/tags/1.2.3` (`rerun` would rebuild the recipe as it was at the tag) |
 | Rebuild a tag as it is | `@hep-bot rerun 1.2.3` |
 | Follow upstream main | create a `head` tag once; hep-bot moves it whenever upstream gets a new commit |
@@ -240,7 +240,7 @@ or is copied from it.
                               ├─► comment.py ──► workflow in this repo ──► reply on the issue
  sweep (every 10 min) ────────┘                  (render-sync, new-feedstock)
 
- version check (Mondays) ──► push a tag on a feedstock ──► its autoupload.yml builds
+ version check (daily) ────► push a tag on a feedstock ──► its autoupload.yml builds
                                                            amd64 + arm64 ──► anaconda.org
 ```
 

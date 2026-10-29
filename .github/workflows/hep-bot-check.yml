@@ -7,7 +7,7 @@ name: hep-bot version check
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # every Monday 06:00 UTC
+    - cron: '0 6 * * *'   # every day 06:00 UTC
   workflow_dispatch:
     inputs:
       dry_run:
