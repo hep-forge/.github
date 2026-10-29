@@ -12,6 +12,16 @@ native macOS or Windows builds, look at [conda-forge](https://conda-forge.org).
 This repository ([hep-forge/.github](https://github.com/hep-forge/.github)) holds every
 feedstock as a submodule, plus the shared CI templates, the scripts and hep-bot.
 
+## Where to start
+
+| I want to... | Go to |
+|---|---|
+| install a package | [Install](#install), then pick from the [package table](#packages) |
+| know whether a package is up to date, or why it isn't | `@hep-bot status <pkg>` in any issue or pull request |
+| get software packaged that isn't here | [Package new software](#package-new-software) |
+| publish a new version, or fix a broken one | [Common tasks](#common-tasks) |
+| learn how hep-forge works | comment `@hep-bot help` on any issue: hep-bot answers with every command and a short guide per topic |
+
 ## Install
 
 ```bash
@@ -133,6 +143,72 @@ _Last refreshed: 2026-10-29 (`python3 scripts/update_readme_status.py`)_
 ⚠️ = the latest feedstock tag is not published on anaconda.org (build failed or still running); tag `X-y` publishes as `X.y`.
 <!-- status:end -->
 
+## Working with hep-bot
+
+hep-bot does the routine work for you. You talk to it in GitHub issues: write
+`@hep-bot <command>` in a new issue or a comment, in this repo or in any feedstock. It
+reacts with 👀 and answers in the same thread, usually within a minute. A repo it doesn't
+know yet (a feedstock made by hand) gets its answer from the sweep within 20 minutes.
+
+### Commands
+
+| Command | What it does | Who |
+|---|---|---|
+| `@hep-bot help [<topic>]` | Lists every command with a short guide per topic, or posts one guide | anyone |
+| `@hep-bot status [<pkg>]` | The feedstock's tags, its last builds and what is published on anaconda.org | anyone |
+| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe | members |
+| `@hep-bot rerun [<pkg>] <tag>` | Rebuilds and publishes an existing tag, using the recipe as it was at that tag | members |
+| `@hep-bot rerender [<pkg>]` | Refreshes the feedstock's CI and bot files, and registers it here if needed | members |
+
+"Members" means org members and repo collaborators. Inside a feedstock, `<pkg>` is that
+feedstock and can be left out. Plain wording works ("@hep-bot, please rerender"), and so do
+questions: `@hep-bot how do I publish a new version?` gets the guide about releases. In pull
+requests hep-bot answers `help` and `status` only. The *New feedstock* and *Rerender
+feedstock* forms under **New issue** do the same as `new` and `rerender`.
+
+The guides are short pages in
+[`scripts/hep_bot/guide/`](https://github.com/hep-forge/.github/tree/main/scripts/hep_bot/guide),
+also readable on GitHub:
+[new](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/new.md) (package new software),
+[recipe](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/recipe.md),
+[release](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/release.md) (tags, `head`, labels),
+[rerun](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/rerun.md),
+[rerender](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/rerender.md),
+[updates](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/updates.md) (the daily version check) and
+[install](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/guide/install.md).
+
+### Package new software
+
+1. Check that it belongs here: compiled HEP software that conda-forge doesn't have, or
+   doesn't build the way HEP users need. Pure-Python packages are already on pip, and
+   generic libraries belong on conda-forge.
+2. Open a [*New feedstock* issue](https://github.com/hep-forge/.github/issues/new?template=new-feedstock.yml),
+   or comment `@hep-bot new mypkg https://github.com/org/mypkg license=MIT` in an issue here.
+   hep-bot creates `hep-forge/mypkg-feedstock` and replies with the link.
+3. Write the recipe in `recipe/` (version and sha256, dependencies, `build.sh`, a real test)
+   in a PR on the feedstock. `@hep-bot help recipe` lists what it needs. Coding agents
+   should read [AGENTS.md](https://github.com/hep-forge/.github/blob/main/AGENTS.md) first.
+4. Once the PR is merged, push the version as a tag on `main`:
+   `git tag 1.2.3 && git push origin 1.2.3`. That builds and publishes it, and from then on
+   the daily version check keeps it up to date.
+
+If the feedstock repo already exists (made by hand or by an agent), use
+`@hep-bot rerender mypkg` instead of step 2. Locally,
+`make new-feedstock NAME=mypkg REPO=<upstream-url>` does the same as step 2.
+
+### Common tasks
+
+| Task | How |
+|---|---|
+| See what is built and published | `@hep-bot status <pkg>` |
+| Fix a feedstock made by hand | `@hep-bot rerender` in that feedstock |
+| Publish a release | push the version tag on `main` (`git tag 1.2.3 && git push origin 1.2.3`), or wait for the next daily version check |
+| Re-publish a recipe fix under the same version | merge the fix, then move the tag: `git tag -f 1.2.3 && git push -f origin refs/tags/1.2.3` (`rerun` would rebuild the recipe as it was at the tag) |
+| Retry a build that failed outside the recipe (runner, download, missing dependency) | `@hep-bot rerun 1.2.3` |
+| Follow upstream main | create a `head` tag once; hep-bot moves it whenever upstream gets a new commit |
+
+Nothing is published without a tag. Merging a PR or pushing to `main` only changes the recipe.
+
 ## How a feedstock builds
 
 - **Only a tag builds.** Pushing a tag such as `3.5.3` to a feedstock runs
@@ -177,7 +253,7 @@ workflows. `@hep-bot rerender <pkg>` registers it and renders it straight away.
 I keep the hep-forge specifics in these templates and scripts instead of a conda-smithy fork,
 because a fork would have to follow every conda-smithy release.
 
-## hep-bot
+## How hep-bot works
 
 hep-bot is GitHub Actions workflows in this repo plus the code in
 [`scripts/hep_bot/`](https://github.com/hep-forge/.github/tree/main/scripts/hep_bot). There is
@@ -199,41 +275,9 @@ Upstream versions come from each recipe's source URL. Add an override in
 only when that detection is wrong, and set `auto_update: false` in `dag.yaml` to leave a
 package alone.
 
-### Commands in issues
+### Under the hood
 
-Org members and collaborators can write these in an issue or a comment, in any hep-forge
-repo. hep-bot reacts with 👀 and replies on the issue:
-
-| Command | What it does |
-|---|---|
-| `@hep-bot rerun [<pkg>] <tag>` | Rebuilds and publishes an existing tag, using the recipe as it was at that tag |
-| `@hep-bot rerender [<pkg>]` | Renders the feedstock and registers it here if needed |
-| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe |
-| `@hep-bot help` | Lists the commands |
-
-`<pkg>` defaults to the current repo inside a feedstock. Plain wording works
-("@hep-bot, please rerender"). A registered feedstock answers within a minute. Any other
-repo, including one created by hand, gets its answer from the sweep within 10 minutes.
-The *New feedstock* and *Rerender feedstock* forms appear under **New issue** in every
-hep-forge repo. Commands in pull request comments are ignored.
-
-### Common tasks
-
-| Task | How |
-|---|---|
-| Package new software | `@hep-bot new …` or the *New feedstock* form, write the recipe in a PR on the new feedstock, merge, push the version tag |
-| Fix a feedstock made by hand | `@hep-bot rerender` in that feedstock |
-| Publish a release | push the version tag on `main` (`git tag 1.2.3 && git push origin 1.2.3`), or wait for the next daily version check |
-| Re-publish a recipe fix under the same version | merge the fix, then move the tag: `git tag -f 1.2.3 && git push -f origin refs/tags/1.2.3` (`rerun` would rebuild the recipe as it was at the tag) |
-| Rebuild a tag as it is | `@hep-bot rerun 1.2.3` |
-| Follow upstream main | create a `head` tag once; hep-bot moves it whenever upstream gets a new commit |
-
-Nothing is published without a tag. Merging a PR or pushing to `main` only changes the recipe.
-
-### How it works
-
-For the curious: hep-bot is plain GitHub Actions, and everything below runs in this repo
-or is copied from it.
+Everything below runs in this repo or is copied from it.
 
 ```
  issue / comment in any repo ─┐
@@ -248,7 +292,7 @@ or is copied from it.
   comment mentions `@hep-bot`, it checks out
   [`scripts/hep_bot/comment.py`](https://github.com/hep-forge/.github/blob/main/scripts/hep_bot/comment.py)
   from this repo and runs it, so changing the bot never touches the feedstocks. Short
-  jobs (`rerun`, `help`) are done right there. Long ones (`rerender`, `new`) start
+  jobs (`rerun`, `status`, `help`) are done right there. Long ones (`rerender`, `new`) start
   [render-sync](https://github.com/hep-forge/.github/actions/workflows/render-sync.yml) or
   [new-feedstock](https://github.com/hep-forge/.github/actions/workflows/new-feedstock.yml)
   here, which report back on the issue when they finish.
@@ -275,20 +319,6 @@ or is copied from it.
   with Contents, Workflows, Actions, Issues and Administration rights on the org's repos.
   Regenerating it means updating the org secret straight away. Uploads use
   `ANACONDA_API_TOKEN`.
-
-## Adding a feedstock
-
-1. Open a [*New feedstock* issue](https://github.com/hep-forge/.github/issues/new?template=new-feedstock.yml),
-   or comment `@hep-bot new mypkg https://github.com/org/mypkg license=MIT`.
-   Locally, `make new-feedstock NAME=mypkg REPO=<upstream-url>` does the same.
-2. Write the recipe in `recipe/` (version and sha256, dependencies, `build.sh`, a real test).
-   A PR on the feedstock is fine. Coding agents should read
-   [AGENTS.md](https://github.com/hep-forge/.github/blob/main/AGENTS.md) first.
-3. Once the recipe is merged, push the version as a tag on `main`:
-   `git tag 1.2.3 && git push origin 1.2.3`.
-
-If the feedstock repo already exists (made by hand or by an agent), use `@hep-bot rerender <pkg>`
-instead of step 1.
 
 ## Maintenance from a clone
 
