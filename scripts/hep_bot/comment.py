@@ -25,7 +25,11 @@ Commands, in an issue body or a comment:
                                     as a submodule here if it is missing
   @hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary text...]
                                     scaffold hep-forge/<pkg>-feedstock
-  @hep-bot help
+  @hep-bot status [<pkg>]           tags, recent builds and what
+                                    anaconda.org has (anyone, also in PRs)
+  @hep-bot help [<topic>]           the commands plus every guide in
+                                    scripts/hep_bot/guide/ folded up, or
+                                    one guide (new, recipe, release, ...)
 
 Issues opened from the forms in .github/ISSUE_TEMPLATE/ carry no
 command text; they are recognised by their title prefix
@@ -34,15 +38,21 @@ command text; they are recognised by their title prefix
 <pkg> is inferred from the repo name inside <pkg>-feedstock repos.
 "please", commas and colons around the command are tolerated
 ("@hep-bot, please rerender"). A line starting with @hep-bot that is not
-a command gets the help text. Every handled request gets a 👀 reaction
+a command gets the guide its first topic word points to ("@hep-bot how do
+I publish?" -> release), or the full help. Every handled request gets a 👀 reaction
 and a reply carrying a hidden marker, so it is never handled twice.
+
+In pull requests only `help` and `status` are answered; the other
+commands act on the repo and belong in an issue.
 """
 import json
 import os
 import re
 import subprocess
 import sys
+import urllib.request
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 META_REPO = "hep-forge/.github"
 ORG = "hep-forge"
@@ -77,12 +87,14 @@ class Request:
         self.association = association or "NONE"
         self.source = source            # "issue-<id>" or "comment-<id>"
         self.react_path = react_path    # API path of the item's reactions
+        self.is_pr = False
         n = self.repo_name
         self.self_pkg = n[: -len("-feedstock")] if n.endswith("-feedstock") else None
 
-    def reply(self, msg, handled=True):
+    def reply(self, msg, handled=True, footer=True):
         """handled=False leaves the request open for the sweep."""
-        tail = f"\n\n{marker(self.source)}" if handled else ""
+        tail = f"\n\n{FOOTER}" if footer else ""
+        tail += f"\n\n{marker(self.source)}" if handled else ""
         gh("issue", "comment", self.issue, "--repo", self.repo,
            "--body", f"@{self.author} {msg}{tail}")
 
@@ -116,15 +128,22 @@ def parse(req):
         pkg = f.get("package name", "")
         return "rerender", [pkg] if pkg else [], {}
 
-    m = re.search(r"@hep-bot\b[\s,:]*(?:please\s+)?(rerun|rebuild|rerender|render|new|help)\b(.*)",
+    m = re.search(r"@hep-bot\b[\s,:]*(?:please\s+)?(rerun|rebuild|rerender|render|new|status|help)\b(.*)",
                   req.text, re.I)
     if not m:
         # "@hep-bot <something else>" at the start of a line is meant for
         # us: answer with the help. A mention mid-sentence ("thanks
         # @hep-bot") is not.
-        if re.search(r"^\s*@hep-bot\b", req.text, re.I | re.M):
-            return "help", [], {}
-        return None
+        m = re.search(r"^\s*@hep-bot\b[\s,:]*(.*)", req.text, re.I | re.M)
+        if not m:
+            return None
+        # A question ("@hep-bot how do I publish?") gets the guide of the
+        # first topic word in it, anything else the full help.
+        words = [w.strip(",.:;?!`'\"").lower() for w in m.group(1).split()]
+        for w in words:
+            if w in GUIDES or w in GUIDE_ALIASES:
+                return "help", [w], {}
+        return "help", [], {"unknown": words[0] if words else ""}
     cmd = {"render": "rerender", "rebuild": "rerun"}.get(m.group(1).lower(), m.group(1).lower())
     line = m.group(2).splitlines()[0] if m.group(2) else ""
     kwargs = {}
@@ -170,16 +189,136 @@ def dispatch_meta(req, workflow, fields):
     return True
 
 
-HELP = f"""here is what I can do (org members and collaborators only):
+GUIDE_DIR = Path(__file__).parent / "guide"
+GUIDES = ("new", "recipe", "release", "rerun", "rerender", "updates", "install")
+GUIDE_ALIASES = {
+    "create": "new", "feedstock": "new", "package": "new", "start": "new",
+    "meta.yaml": "recipe", "build": "recipe", "build.sh": "recipe",
+    "publish": "release", "tag": "release", "tags": "release", "version": "release",
+    "head": "release", "label": "release", "labels": "release",
+    "rebuild": "rerun", "render": "rerender",
+    "update": "updates", "bump": "updates", "upstream": "updates",
+    "conda": "install", "use": "install",
+}
+GUIDE_URL = f"https://github.com/{META_REPO}/blob/main/scripts/hep_bot/guide"
+FOOTER = (f"<sub>Comment `@hep-bot help` for the list of commands, or `@hep-bot help <topic>` "
+          f"for a guide: {', '.join(f'`{g}`' for g in GUIDES)}.</sub>")
 
-| Command | What it does |
+COMMANDS = f"""| Command | What it does |
 |---|---|
+| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe |
 | `@hep-bot rerun [<pkg>] <tag>` | Rebuilds and publishes an existing tag (amd64 + arm64) |
 | `@hep-bot rerender [<pkg>]` | Renders the feedstock (CI workflow, bot workflow, README, AGENTS.md) and registers it in `{META_REPO}` |
-| `@hep-bot new <pkg> <upstream-url> [license=<spdx>] [maintainers=a,b] [summary]` | Creates `hep-forge/<pkg>-feedstock` with a starter recipe |
-| `@hep-bot help` | This table |
+| `@hep-bot status [<pkg>]` | Shows the feedstock's tags, its last builds and what is published on anaconda.org |
+| `@hep-bot help [<topic>]` | This message, or one guide |
 
-`<pkg>` defaults to this repo inside a `<pkg>-feedstock` repo. Only a tag publishes: a numeric release tag, or `head` for upstream main/master. The issue forms in [New issue](https://github.com/{META_REPO}/issues/new/choose) do the same as `new` and `rerender`."""
+`<pkg>` defaults to this repo inside a `<pkg>-feedstock` repo. `new`, `rerun` and `rerender` run in issues, for org members and collaborators. Anyone can ask for `status` and `help`, also in pull requests. The forms under [New issue](https://github.com/{META_REPO}/issues/new/choose) do the same as `new` and `rerender`."""
+
+
+def guide(topic):
+    """-> (title, summary, body) of scripts/hep_bot/guide/<topic>.md"""
+    lines = (GUIDE_DIR / f"{topic}.md").read_text().splitlines()
+    return lines[0].lstrip("# ").strip(), lines[1].strip(), "\n".join(lines[2:]).strip()
+
+
+def help_text(topic="", unknown=""):
+    """Full help (commands + folded guides), or one guide when the topic is known."""
+    key = GUIDE_ALIASES.get(topic.lower(), topic.lower())
+    if key in GUIDES:
+        title, summary, body = guide(key)
+        return (f"**{title}**: {summary}\n\n{body}\n\n"
+                f"[Read this on GitHub]({GUIDE_URL}/{key}.md). Not what you were "
+                f"looking for? `@hep-bot help` lists every command and guide.")
+    if topic:
+        intro = f"I have no guide on `{topic}`. Here is everything I can help with:"
+    elif unknown:
+        intro = f"I don't know the command `{unknown}`. Here is what I can do:"
+    else:
+        intro = "here is what I can do:"
+    parts = [intro, "", COMMANDS, "", "### Guides", ""]
+    for g in GUIDES:
+        title, summary, body = guide(g)
+        summary = re.sub(r"`([^`]+)`", r"<code>\1</code>", summary)  # no markdown in <summary>
+        parts += [f"<details>\n<summary><strong>{title}</strong>: {summary} "
+                  f"(<code>@hep-bot help {g}</code>)</summary>\n", body, "\n</details>\n"]
+    parts.append(f"The guides are also [on GitHub]({GUIDE_URL.replace('/blob/', '/tree/')}).")
+    return "\n".join(parts)
+
+
+def version_key(v):
+    """Numeric order where possible ('6.38.04' > '6.4.2'); same as update_readme_status.py."""
+    return [int(x) if x.isdigit() else -1 for x in re.split(r"[._-]", v)]
+
+
+def same_version(a, b):
+    """Tag `X-y` publishes as `X.y`, and conda treats `1` and `1.0` alike."""
+    def norm(v):
+        parts = re.split(r"[._-]", v.lower())
+        while len(parts) > 1 and parts[-1] == "0":
+            parts.pop()
+        return parts
+    return norm(a) == norm(b)
+
+
+def status_text(pkg):
+    """Markdown summary of one feedstock: tags, last builds, published files."""
+    feedstock = f"{ORG}/{pkg}-feedstock"
+    out = subprocess.run(["git", "ls-remote", "--tags", f"https://github.com/{feedstock}.git"],
+                         capture_output=True, text=True).stdout
+    tags = {line.split("refs/tags/", 1)[1].removesuffix("^{}")
+            for line in out.splitlines() if "refs/tags/" in line}
+    numeric = sorted((t for t in tags if re.match(r"\d", t)), key=version_key, reverse=True)
+    shown = numeric[:5] + (["head"] if "head" in tags else [])
+    lines = [f"status of [`{feedstock}`](https://github.com/{feedstock}):", ""]
+    lines.append("**Tags** (each one is a build): " +
+                 (", ".join(f"`{t}`" for t in shown) if shown else
+                  "none yet. Nothing is built until a version tag is pushed "
+                  "(`@hep-bot help release`)."))
+
+    runs = gh("run", "list", "--repo", feedstock, "--workflow", "autoupload.yml", "--limit", "5",
+              "--json", "headBranch,event,status,conclusion,url,createdAt")
+    runs = json.loads(runs.stdout) if runs.returncode == 0 and runs.stdout.strip() else []
+    icon = {"success": "✅", "failure": "❌", "cancelled": "⚪", "skipped": "⚪"}
+    lines += ["", "**Last builds**", ""]
+    if runs:
+        lines += ["| Tag | When | Result |", "|---|---|---|"]
+        for r in runs:
+            result = r["conclusion"] or r["status"]
+            lines.append(f"| `{r['headBranch']}` | {r['createdAt'][:10]} | "
+                         f"[{icon.get(result, '⏳')} {result}]({r['url']}) |")
+        if runs[0]["conclusion"] == "failure":
+            lines += ["", f"The last build failed: its log is behind the ❌. If the cause is outside "
+                          f"the recipe (runner, download, a dependency not yet on the channel), "
+                          f"`@hep-bot rerun {runs[0]['headBranch']}` retries it. A recipe fix needs "
+                          f"the tag moved (`@hep-bot help release`)."]
+    else:
+        lines.append("No build has run yet.")
+
+    try:
+        with urllib.request.urlopen(f"https://api.anaconda.org/package/{ORG}/{pkg}", timeout=15) as r:
+            files = json.load(r).get("files", [])
+    except Exception:
+        files = []
+    lines += ["", f"**Published** on [anaconda.org/{ORG}/{pkg}](https://anaconda.org/{ORG}/{pkg})", ""]
+    if files:
+        by_version = {}
+        for f in files:
+            v = by_version.setdefault(f.get("version", ""), {"arch": set(), "labels": set()})
+            v["arch"].add(f.get("attrs", {}).get("subdir", ""))
+            v["labels"].update(f.get("labels", []))
+        lines += ["| Version | amd64 | arm64 | Labels |", "|---|---|---|---|"]
+        for v in sorted(by_version, key=version_key, reverse=True)[:6]:
+            a = by_version[v]["arch"]
+            mark = lambda sub: "✅" if sub in a or "noarch" in a else "—"
+            lines.append(f"| `{v}` | {mark('linux-64')} | {mark('linux-aarch64')} | "
+                         f"{', '.join(sorted(by_version[v]['labels']))} |")
+        if numeric:
+            if not any(same_version(v, numeric[0]) for v in by_version):
+                lines += ["", f"⚠️ The newest tag `{numeric[0]}` is not published: its build "
+                              "failed or is still running (see *Last builds*)."]
+    else:
+        lines.append("Nothing published yet.")
+    return "\n".join(lines)
 
 
 def handle(req):
@@ -190,7 +329,27 @@ def handle(req):
     req.ack()
 
     if cmd == "help":
-        req.reply(HELP)
+        # "help me publish a tag" -> the first word that names a guide
+        topic = next((t for t in tokens if t.lower() in GUIDES or t.lower() in GUIDE_ALIASES),
+                     tokens[0] if tokens else "")
+        req.reply(help_text(topic, kwargs.get("unknown", "")), footer=False)
+        return True
+
+    if cmd == "status":
+        pkg = (tokens[0] if tokens else req.self_pkg or "").removesuffix("-feedstock").lower()
+        if not pkg:
+            req.reply("which feedstock? `@hep-bot status <package>`. The status of every "
+                      f"package is in the table on [{META_REPO}](https://github.com/{META_REPO}#packages).")
+        elif gh("repo", "view", f"{ORG}/{pkg}-feedstock").returncode != 0:
+            req.reply(f"`{ORG}/{pkg}-feedstock` doesn't exist. To create it: "
+                      f"`@hep-bot new {pkg} <upstream-url>` (`@hep-bot help new`).")
+        else:
+            req.reply(status_text(pkg))
+        return True
+
+    if req.is_pr:
+        req.reply(f"I only answer `help` and `status` in pull requests. Write `@hep-bot {cmd} ...` "
+                  f"in an issue of this repo instead.")
         return True
 
     if not authorized(req):
@@ -278,9 +437,11 @@ def from_event():
                        f"issue-{issue['id']}",
                        f"repos/{repo}/issues/{issue['number']}/reactions")
     c = event["comment"]
-    return Request(repo, issue["number"], c.get("body"), "", c["user"]["login"],
-                   c.get("author_association"), f"comment-{c['id']}",
-                   f"repos/{repo}/issues/comments/{c['id']}/reactions")
+    req = Request(repo, issue["number"], c.get("body"), "", c["user"]["login"],
+                  c.get("author_association"), f"comment-{c['id']}",
+                  f"repos/{repo}/issues/comments/{c['id']}/reactions")
+    req.is_pr = "pull_request" in issue
+    return req
 
 
 # -- sweep mode ----------------------------------------------------------------

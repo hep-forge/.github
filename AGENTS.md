@@ -78,7 +78,7 @@ version check and every Makefile target.
 
 | Piece | Where |
 |---|---|
-| Issue commands (`rerun`, `rerender`, `new`, `help`) | `scripts/hep_bot/comment.py`, run by `hep-bot-comment.yml` in every feedstock and by `hep-bot-sweep.yml` (every 10 min, org-wide) here |
+| Issue commands (`rerun`, `rerender`, `new`, `help [<topic>]`) | `scripts/hep_bot/comment.py` (guides it quotes: `scripts/hep_bot/guide/*.md`), run by `hep-bot-comment.yml` in every feedstock and by `hep-bot-sweep.yml` (every 10 min, org-wide) here |
 | Version check (bump + tag, `head` rebuilds, tracking issue) | `scripts/hep_bot/check_versions.py`, `bump_version.py`, `.github/workflows/hep-bot-check.yml` |
 | Upstream overrides, dependency order, opt-out | `scripts/hep_bot/sources.yaml`, `scripts/hep_bot/dag.yaml` (`auto_update: false`) |
 | Render of one or all feedstocks | `scripts/render_sync.sh`, `.github/workflows/render-sync.yml` |

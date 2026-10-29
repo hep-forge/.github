@@ -111,4 +111,6 @@ jobs:
           # this message as a request.
           gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG
 
+          <sub>Comment \`@hep-bot help\` for the list of commands, or \`@hep-bot help <topic>\` for a guide.</sub>
+
           <!-- hep-bot:reply -->"

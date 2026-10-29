@@ -107,12 +107,16 @@ jobs:
           Next:
           1. Write the real recipe in \`recipe/\` (version + sha256 in the \`versions\` dict, dependencies, \`build.sh\`, a real test). A PR on the feedstock is fine; agents should read its \`AGENTS.md\` first.
           2. After merging, push a numeric tag equal to the version on \`main\`. The tag push builds linux-64 + linux-aarch64 and uploads to anaconda.org/hep-forge.
-          3. Optional: add the package to \`scripts/hep_bot/sources.yaml\` and \`dag.yaml\` here for weekly version checks."
+          3. Nothing else to register: the daily version check picks up new upstream releases from then on.
+
+          \`@hep-bot help recipe\` and \`@hep-bot help release\` explain steps 1 and 2."
           else
             MSG="Scaffolding \`$FS\` failed, see the [log]($RUN_URL). If the repo already has commits, use \`@hep-bot rerender ${NAME}\` instead."
           fi
           # The marker keeps hep-bot from reading the example commands in
           # this message as a request.
           gh issue comment "$ISSUE_NUMBER" --repo "$ISSUE_REPO" --body "$MSG
+
+          <sub>Comment \`@hep-bot help\` for the list of commands, or \`@hep-bot help <topic>\` for a guide.</sub>
 
           <!-- hep-bot:reply -->"
