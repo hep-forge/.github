@@ -267,3 +267,6 @@
 [submodule "feedstocks/scirooplot-feedstock"]
 	path = feedstocks/scirooplot-feedstock
 	url = git@github.com:hep-forge/scirooplot-feedstock.git
+[submodule "feedstocks/lcg-relax-feedstock"]
+	path = feedstocks/lcg-relax-feedstock
+	url = git@github.com:hep-forge/lcg-relax-feedstock.git

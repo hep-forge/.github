@@ -103,3 +103,6 @@ rave:
 
 scirooplot:
   depends_on: [root, root-guard]
+
+lcg-relax:
+  depends_on: [root, root-guard]
