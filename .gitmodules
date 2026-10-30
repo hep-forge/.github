@@ -276,3 +276,6 @@
 [submodule "feedstocks/vgm-feedstock"]
 	path = feedstocks/vgm-feedstock
 	url = git@github.com:hep-forge/vgm-feedstock.git
+[submodule "feedstocks/gaudi-feedstock"]
+	path = feedstocks/gaudi-feedstock
+	url = git@github.com:hep-forge/gaudi-feedstock.git

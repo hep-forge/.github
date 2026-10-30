@@ -112,3 +112,6 @@ hammer:
 
 vgm:
   depends_on: [root, root-guard]
+
+gaudi:
+  depends_on: [root, root-guard]
