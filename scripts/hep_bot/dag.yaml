@@ -115,3 +115,6 @@ vgm:
 
 gaudi:
   depends_on: [root, root-guard]
+
+phlex:
+  depends_on: [root, root-guard]

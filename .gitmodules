@@ -279,3 +279,6 @@
 [submodule "feedstocks/gaudi-feedstock"]
 	path = feedstocks/gaudi-feedstock
 	url = git@github.com:hep-forge/gaudi-feedstock.git
+[submodule "feedstocks/phlex-feedstock"]
+	path = feedstocks/phlex-feedstock
+	url = git@github.com:hep-forge/phlex-feedstock.git
