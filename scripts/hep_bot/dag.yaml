@@ -91,3 +91,15 @@ eic-smear:
 
 escalade:
   depends_on: [root, root-guard, root-plus]
+
+vmc:
+  depends_on: [root, root-guard]
+
+roounfold:
+  depends_on: [root, root-guard]
+
+rave:
+  depends_on: [root, root-guard]
+
+scirooplot:
+  depends_on: [root, root-guard]

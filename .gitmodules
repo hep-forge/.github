@@ -255,3 +255,15 @@
 [submodule "feedstocks/troll-feedstock"]
 	path = feedstocks/troll-feedstock
 	url = git@github.com:hep-forge/troll-feedstock.git
+[submodule "feedstocks/vmc-feedstock"]
+	path = feedstocks/vmc-feedstock
+	url = git@github.com:hep-forge/vmc-feedstock.git
+[submodule "feedstocks/roounfold-feedstock"]
+	path = feedstocks/roounfold-feedstock
+	url = git@github.com:hep-forge/roounfold-feedstock.git
+[submodule "feedstocks/rave-feedstock"]
+	path = feedstocks/rave-feedstock
+	url = git@github.com:hep-forge/rave-feedstock.git
+[submodule "feedstocks/scirooplot-feedstock"]
+	path = feedstocks/scirooplot-feedstock
+	url = git@github.com:hep-forge/scirooplot-feedstock.git
