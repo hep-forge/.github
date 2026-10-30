@@ -118,3 +118,6 @@ gaudi:
 
 phlex:
   depends_on: [root, root-guard]
+
+mg5amcnlo:
+  depends_on: []

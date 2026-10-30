@@ -56,3 +56,8 @@ gaudi:
   type: git_tags
   url: "https://gitlab.cern.ch/gaudi/Gaudi"
   pattern: 'v(\d+)r(\d+)'
+
+mg5amcnlo:
+  type: html_scrape
+  url: "https://launchpad.net/mg5amcnlo/+download"
+  pattern: 'MG5_aMC_v(\d+\.\d+\.\d+)\.tar\.gz'

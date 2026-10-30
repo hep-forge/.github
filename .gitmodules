@@ -282,3 +282,6 @@
 [submodule "feedstocks/phlex-feedstock"]
 	path = feedstocks/phlex-feedstock
 	url = git@github.com:hep-forge/phlex-feedstock.git
+[submodule "feedstocks/mg5amcnlo-feedstock"]
+	path = feedstocks/mg5amcnlo-feedstock
+	url = git@github.com:hep-forge/mg5amcnlo-feedstock.git
