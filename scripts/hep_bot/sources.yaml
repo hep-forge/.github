@@ -51,3 +51,8 @@ applgrid:
 matrix:
   type: anti_bot
   url: "https://matrix.hepforge.org/download.html"
+
+gaudi:
+  type: git_tags
+  url: "https://gitlab.cern.ch/gaudi/Gaudi"
+  pattern: 'v(\d+)r(\d+)'
