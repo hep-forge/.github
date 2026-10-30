@@ -270,3 +270,9 @@
 [submodule "feedstocks/lcg-relax-feedstock"]
 	path = feedstocks/lcg-relax-feedstock
 	url = git@github.com:hep-forge/lcg-relax-feedstock.git
+[submodule "feedstocks/hammer-feedstock"]
+	path = feedstocks/hammer-feedstock
+	url = git@github.com:hep-forge/hammer-feedstock.git
+[submodule "feedstocks/vgm-feedstock"]
+	path = feedstocks/vgm-feedstock
+	url = git@github.com:hep-forge/vgm-feedstock.git

@@ -106,3 +106,9 @@ scirooplot:
 
 lcg-relax:
   depends_on: [root, root-guard]
+
+hammer:
+  depends_on: [hepmc, root, root-guard]
+
+vgm:
+  depends_on: [root, root-guard]
