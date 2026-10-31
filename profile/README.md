@@ -52,7 +52,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-10-30 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-10-31 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -111,6 +111,7 @@ _Last refreshed: 2026-10-30 (`python3 scripts/update_readme_status.py`)_
 | [libdate-tz](https://github.com/hep-forge/libdate-tz-feedstock) | `3.0.5` | [`3.0.5`](https://anaconda.org/hep-forge/libdate-tz) | ✅ | ✅ |
 | [looptools](https://github.com/hep-forge/looptools-feedstock) | `2.16` | [`2.16`](https://anaconda.org/hep-forge/looptools) | ✅ | ✅ |
 | [mcfm](https://github.com/hep-forge/mcfm-feedstock) | `10.3-applgrid` | [`10.3.applgrid`](https://anaconda.org/hep-forge/mcfm) | ✅ | ✅ |
+| [mg5amcnlo](https://github.com/hep-forge/mg5amcnlo-feedstock) | `3.8.1` | [`3.8.1`](https://anaconda.org/hep-forge/mg5amcnlo) | ✅ | ✅ |
 | [minio-cpp](https://github.com/hep-forge/minio-cpp-feedstock) | `0.3.0.1` | [`0.3.0.1`](https://anaconda.org/hep-forge/minio-cpp) | ✅ | ✅ |
 | [mpfun90](https://github.com/hep-forge/mpfun90-feedstock) | `2024.12.06` | [`2024.12.06`](https://anaconda.org/hep-forge/mpfun90) | ✅ | ✅ |
 | [nestdaq](https://github.com/hep-forge/nestdaq-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/nestdaq) | ✅ | ✅ |
@@ -122,7 +123,7 @@ _Last refreshed: 2026-10-30 (`python3 scripts/update_readme_status.py`)_
 | [numdiff](https://github.com/hep-forge/numdiff-feedstock) | `5.9.0` | [`5.9.0`](https://anaconda.org/hep-forge/numdiff) | ✅ | ✅ |
 | [oneloop](https://github.com/hep-forge/oneloop-feedstock) | `3.7.2` | [`3.7.2`](https://anaconda.org/hep-forge/oneloop) | ✅ | ✅ |
 | [pepper](https://github.com/hep-forge/pepper-feedstock) | `1.14.1` | [`1.14.1`](https://anaconda.org/hep-forge/pepper) | ✅ | ✅ |
-| [phlex](https://github.com/hep-forge/phlex-feedstock) | `0.4.3` | — | ❌ | ❌ |
+| [phlex](https://github.com/hep-forge/phlex-feedstock) | `0.4.3` | [`0.4.3`](https://anaconda.org/hep-forge/phlex) | ✅ | ✅ |
 | [pineappl](https://github.com/hep-forge/pineappl-feedstock) | `0.8.6` | [`0.8.6`](https://anaconda.org/hep-forge/pineappl) | ✅ | ✅ |
 | [ploughshare](https://github.com/hep-forge/ploughshare-feedstock) | `0.0.20` | [`0.0.20`](https://anaconda.org/hep-forge/ploughshare) | ✅ | ✅ |
 | [podio](https://github.com/hep-forge/podio-feedstock) | `1.7.0` | [`1.7.0`](https://anaconda.org/hep-forge/podio) | ✅ | ✅ |
