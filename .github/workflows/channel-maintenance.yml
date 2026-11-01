@@ -174,7 +174,10 @@ jobs:
                   key=vkey, reverse=True)
               protect = set(releases[:KEEP_N])
               protect |= {v for v in versions if labels_of[v] - {"main", "master"}}
-              protect |= lts_from_recipe(pkg) & set(versions)
+              protect |= set().union(*lts_from_recipe(pkg).values()) & set(versions)
+              # The rolling upstream-main build is never trimmed (as in
+              # autoupload.yml's Trim step).
+              protect |= {v for v in versions if v == "head"}
               if not releases:
                   fallback = [v for v in versions if "dev" not in v]
                   if fallback:
