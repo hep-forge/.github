@@ -285,3 +285,6 @@
 [submodule "feedstocks/mg5amcnlo-feedstock"]
 	path = feedstocks/mg5amcnlo-feedstock
 	url = git@github.com:hep-forge/mg5amcnlo-feedstock.git
+[submodule "feedstocks/kalman-feedstock"]
+	path = feedstocks/kalman-feedstock
+	url = git@github.com:hep-forge/kalman-feedstock.git
