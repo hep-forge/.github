@@ -52,7 +52,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-11-01 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-11-02 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -105,7 +105,8 @@ _Last refreshed: 2026-11-01 (`python3 scripts/update_readme_status.py`)_
 | [iregi](https://github.com/hep-forge/iregi-feedstock) | `1.1.0` | [`1.1.0`](https://anaconda.org/hep-forge/iregi) | ✅ | ✅ |
 | [jana](https://github.com/hep-forge/jana-feedstock) | `2026.03.01` | [`2026.03.01`](https://anaconda.org/hep-forge/jana) | ✅ | ✅ |
 | [jetphox](https://github.com/hep-forge/jetphox-feedstock) | `1.3.1_4` | [`1.3.1.4`](https://anaconda.org/hep-forge/jetphox) | ✅ | ✅ |
-| [kfrlib](https://github.com/hep-forge/kfrlib-feedstock) | `7.0.1` | [`7.0.1`](https://anaconda.org/hep-forge/kfrlib) | ✅ | ✅ |
+| [kalman](https://github.com/hep-forge/kalman-feedstock) | `1.0.1` | [`1.0.1`](https://anaconda.org/hep-forge/kalman) | ✅ | ✅ |
+| [kfrlib](https://github.com/hep-forge/kfrlib-feedstock) | `7.2.0` | [`7.2.0`](https://anaconda.org/hep-forge/kfrlib) | ✅ | ✅ |
 | [lcg-relax](https://github.com/hep-forge/lcg-relax-feedstock) | `6.1.2` | [`6.1.2`](https://anaconda.org/hep-forge/lcg-relax) | ✅ | ✅ |
 | [lhapdf](https://github.com/hep-forge/lhapdf-feedstock) | `6.5.6` | [`6.5.6`](https://anaconda.org/hep-forge/lhapdf) | ✅ | ✅ |
 | [libdate-tz](https://github.com/hep-forge/libdate-tz-feedstock) | `3.0.5` | [`3.0.5`](https://anaconda.org/hep-forge/libdate-tz) | ✅ | ✅ |
@@ -136,7 +137,7 @@ _Last refreshed: 2026-11-01 (`python3 scripts/update_readme_status.py`)_
 | [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.3` | [`4.1.3`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
 | [root](https://github.com/hep-forge/root-feedstock) | `6.40.04` | [`6.40.04`](https://anaconda.org/hep-forge/root) | ✅ | ✅ |
 | [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `1.0` | [`1`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
-| [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `beta` | [`beta`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
+| [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `gamma` | [`gamma`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
 | [roounfold](https://github.com/hep-forge/roounfold-feedstock) | `3.1.0` | [`3.1.0`](https://anaconda.org/hep-forge/roounfold) | ✅ | ✅ |
 | [scirooplot](https://github.com/hep-forge/scirooplot-feedstock) | `3.3.3` | [`3.3.3`](https://anaconda.org/hep-forge/scirooplot) | ✅ | ✅ |
 | [sherpa](https://github.com/hep-forge/sherpa-feedstock) | `2.2.16` | [`2.2.16`](https://anaconda.org/hep-forge/sherpa) | ✅ | ✅ |
