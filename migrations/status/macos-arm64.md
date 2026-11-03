@@ -1,25 +1,25 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:05 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:25 UTC.
 
-failed: 3 · blocked: 10 · building: 1 · done: 57 · n/a: 25
+failed: 2 · blocked: 3 · building: 2 · waiting: 7 · done: 57 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
-| fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150) Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/user -> 503)', 503) |
-| hoppet | failed | [run](https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236) Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/dist/hep-forge/hoppet/2.2.0/osx-arm64/hop |
+| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029) No such file or directory |
 | acts | blocked | dd4hep |
-| apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo, hoppet |
 | epic | blocked | dd4hep |
-| fastnlo | blocked | hoppet |
 | npsim | blocked | dd4hep |
-| rapgap | blocked | rivet |
-| rivet | blocked | fastjet-contrib |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
-| herwig7 | building | moved 7.3.0 to main 0063f97 |
+| fastjet-contrib | building | moved 1.105, 1.103 to main a7d409c |
+| hoppet | building | moved 2.2.0, 1.2.0 to main 3e21360 |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo, hoppet |
+| fastnlo | waiting | hoppet |
+| rapgap | waiting | rivet |
+| rivet | waiting | fastjet-contrib |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
