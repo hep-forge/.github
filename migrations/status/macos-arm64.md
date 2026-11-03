@@ -1,48 +1,46 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 10:07 UTC.
 
-failed: 3 · blocked: 10 · building: 8 · ready: 1 · waiting: 15 · done: 34 · n/a: 25
+failed: 4 · blocked: 15 · building: 8 · waiting: 8 · done: 36 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41610864709) error: ld returned 1 exit status |
-| fastjet | failed | [run](https://github.com/hep-forge/fastjet-feedstock/actions/runs/41610873577) Error: HTTP 000 CONNECTION FAILED for url <https://fastjet.fr/repo/fastjet-3.5.3.tar.gz> |
 | framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
-| apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo |
-| fastjet-contrib | blocked | fastjet |
-| fastnlo | blocked | fastjet |
-| herwig7 | blocked | fastjet, thepeg |
-| rapgap | blocked | rivet |
-| rivet | blocked | fastjet, fastjet-contrib |
-| thepeg | blocked | fastjet |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
+| hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41613447201) error: no member named 'terminate' in namespace 'std'; did you mean 'template'? |
+| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41613486824) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/pepper_1793699635560/work/conda_build.sh']' returned non-zero e |
+| pythia | failed | [run](https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895) error: linker command failed with exit code 1 (use -v to see invocation) |
+| acts | blocked | dd4hep |
+| afterburner | blocked | hepmc |
+| dd4hep | blocked | hepmc |
+| delphes | blocked | pythia |
+| dyturbo | blocked | hell |
+| eic-smear | blocked | hepmc |
+| epic | blocked | dd4hep |
+| estarlight | blocked | hepmc |
+| hepmc | blocked | pythia |
+| hepmc-merger | blocked | hepmc |
+| npsim | blocked | dd4hep |
+| rapgap | blocked | hepmc, pythia, rivet |
+| rivet | blocked | hepmc |
+| xfitter | blocked | dyturbo |
+| xfitter-dev | blocked | dyturbo |
+| djangoh | building | moved 4.6.21 to main b922735 |
+| edm4hep | building | moved 1.0.0 to main 81a70e2 |
+| fastjet | building | moved 3.5.3 to main 117d9db |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41610892109) |
-| hell | building | moved 3.1 to main b6d01f0 |
-| hoppet | building | moved 2.2.0 to main c76b05a |
+| jana | building | moved 2026.03.01 to main 33af1e2 |
 | jetphox | building | moved 1.3.1_4 to main 2511a9e |
 | nnlojet | building | [run](https://github.com/hep-forge/nnlojet-feedstock/actions/runs/41610931735) |
-| pepper | building | moved 1.14.1 to main cf943d5 |
-| podio | building | moved 1.7.0 to main 745c5b8 |
-| pythia | building | moved 8.3.12 to main 8e93e03 |
-| yoda | ready |  |
-| acts | waiting | dd4hep |
-| afterburner | waiting | hepmc |
-| dd4hep | waiting | edm4hep, g4hepem, geant, hepmc, podio |
-| delphes | waiting | pythia |
-| dyturbo | waiting | hell |
-| edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
+| yoda | building | moved 2.1.4 to main 2c7ebbd |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| fastjet-contrib | waiting | fastjet |
+| fastnlo | waiting | fastjet, yoda |
 | g4hepem | waiting | geant |
-| hepmc | waiting | pythia |
-| hepmc-merger | waiting | hepmc |
-| jana | waiting | podio |
-| npsim | waiting | dd4hep |
+| herwig7 | waiting | fastjet, thepeg |
 | professor | waiting | yoda |
+| thepeg | waiting | fastjet |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -60,6 +58,7 @@ failed: 3 · blocked: 10 · building: 8 · ready: 1 · waiting: 15 · done: 34 �
 | gosam | done |  |
 | hathor | done |  |
 | hellx | done |  |
+| hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
 | kalman | done |  |
@@ -74,6 +73,7 @@ failed: 3 · blocked: 10 · building: 8 · ready: 1 · waiting: 15 · done: 34 �
 | oneloop | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
+| podio | done |  |
 | qcdnum | done |  |
 | root-plus | done |  |
 | sz3 | done |  |

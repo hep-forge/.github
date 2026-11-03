@@ -1,7 +1,7 @@
 {
  "retries": {
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
-  "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 1
+  "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 2
  },
  "transient_runs": {
   "41603478452": true,
@@ -15,7 +15,11 @@
   "41610864709": false,
   "41610873577": true,
   "41610885524": false,
-  "41609758787": true
+  "41609758787": true,
+  "41613447201": false,
+  "41613462186": true,
+  "41613486824": false,
+  "41613497895": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -25,7 +29,10 @@
   "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41609747060": "error: no member named 'vector' in namespace 'std'",
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41610864709": "error: ld returned 1 exit status",
   "https://github.com/hep-forge/fastjet-feedstock/actions/runs/41610873577": "Error: HTTP 000 CONNECTION FAILED for url <https://fastjet.fr/repo/fastjet-3.5.3.tar.gz>",
-  "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524": "Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh"
+  "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524": "Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+  "https://github.com/hep-forge/hell-feedstock/actions/runs/41613447201": "error: no member named 'terminate' in namespace 'std'; did you mean 'template'?",
+  "https://github.com/hep-forge/pepper-feedstock/actions/runs/41613486824": "BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/pepper_1793699635560/work/conda_build.sh']' returned non-zero e",
+  "https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895": "error: linker command failed with exit code 1 (use -v to see invocation)"
  },
  "issues": {
   "djangoh": {
@@ -39,6 +46,18 @@
   "framel-root": {
    "number": 1,
    "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524"
+  },
+  "hell": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/hell-feedstock/actions/runs/41613447201"
+  },
+  "pepper": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41613486824"
+  },
+  "pythia": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895"
   }
  }
 }
