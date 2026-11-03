@@ -1,22 +1,22 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 19:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 20:06 UTC.
 
-failed: 2 · building: 3 · waiting: 10 · done: 56 · n/a: 25
+failed: 1 · blocked: 3 · building: 4 · waiting: 7 · done: 56 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41699854952) error: variable 'nNonCriticalMissing' set but not used [-Werror,-Wunused-but-set-variable] |
-| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41699873358) error: use of undeclared identifier 'random_shuffle' |
-| dd4hep | building | moved 1.37 to main 0b9324a |
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41706011903) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| acts | blocked | dd4hep |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
+| estarlight | building | moved 1.2.0 to main 3a7bab1 |
 | fastjet-contrib | building | moved 1.105, 1.103 to main 2a08431 |
+| herwig7 | building | moved 7.3.0 to main f780a15 |
 | hoppet | building | moved 2.2.0, 1.2.0 to main c76b05a |
-| acts | waiting | dd4hep |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo, hoppet |
-| epic | waiting | dd4hep |
 | fastnlo | waiting | hoppet |
-| npsim | waiting | dd4hep |
 | rapgap | waiting | rivet |
 | rivet | waiting | fastjet-contrib |
 | xfitter | waiting | apfelgrid, applgrid |
