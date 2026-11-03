@@ -1,50 +1,48 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:44 UTC.
 
-failed: 2 · blocked: 6 · building: 8 · ready: 4 · waiting: 19 · done: 32 · n/a: 25
+failed: 3 · blocked: 10 · building: 8 · ready: 1 · waiting: 15 · done: 34 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41609734397) No such file or directory |
-| hoppet | failed | [run](https://github.com/hep-forge/hoppet-feedstock/actions/runs/41609747060) error: no member named 'vector' in namespace 'std' |
+| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41610864709) error: ld returned 1 exit status |
+| fastjet | failed | [run](https://github.com/hep-forge/fastjet-feedstock/actions/runs/41610873577) Error: HTTP 000 CONNECTION FAILED for url <https://fastjet.fr/repo/fastjet-3.5.3.tar.gz> |
+| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
 | apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo, hoppet |
-| dyturbo | blocked | hell |
-| fastnlo | blocked | hoppet |
-| xfitter | blocked | apfelgrid, applgrid, dyturbo |
-| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo |
-| djangoh | building | moved 4.6.21 to main 8faabaf |
-| fastjet | building | moved 3.5.3 to main d5fddba |
-| framel-root | building | moved 1.0.0 to main 0aaead5 |
-| geant | building | moved 11.4.1 to main a72584e |
-| iregi | building | [run](https://github.com/hep-forge/iregi-feedstock/actions/runs/41609753314) |
-| jetphox | building | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/41609758787) |
-| nlojetxx | building | moved 4.1.3 to main f2ebd59 |
-| nnlojet | building | moved 1.0.0 to main fdaa634 |
-| pepper | ready |  |
-| podio | ready |  |
-| pythia | ready |  |
+| applgrid | blocked | fastnlo |
+| fastjet-contrib | blocked | fastjet |
+| fastnlo | blocked | fastjet |
+| herwig7 | blocked | fastjet, thepeg |
+| rapgap | blocked | rivet |
+| rivet | blocked | fastjet, fastjet-contrib |
+| thepeg | blocked | fastjet |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41610892109) |
+| hell | building | moved 3.1 to main b6d01f0 |
+| hoppet | building | moved 2.2.0 to main c76b05a |
+| jetphox | building | moved 1.3.1_4 to main 2511a9e |
+| nnlojet | building | [run](https://github.com/hep-forge/nnlojet-feedstock/actions/runs/41610931735) |
+| pepper | building | moved 1.14.1 to main cf943d5 |
+| podio | building | moved 1.7.0 to main 745c5b8 |
+| pythia | building | moved 8.3.12 to main 8e93e03 |
 | yoda | ready |  |
 | acts | waiting | dd4hep |
 | afterburner | waiting | hepmc |
 | dd4hep | waiting | edm4hep, g4hepem, geant, hepmc, podio |
 | delphes | waiting | pythia |
+| dyturbo | waiting | hell |
 | edm4hep | waiting | podio |
 | eic-smear | waiting | hepmc |
 | epic | waiting | dd4hep |
 | estarlight | waiting | hepmc |
-| fastjet-contrib | waiting | fastjet |
 | g4hepem | waiting | geant |
 | hepmc | waiting | pythia |
 | hepmc-merger | waiting | hepmc |
-| herwig7 | waiting | fastjet, thepeg |
 | jana | waiting | podio |
 | npsim | waiting | dd4hep |
 | professor | waiting | yoda |
-| rapgap | waiting | hepmc, pythia, rivet |
-| rivet | waiting | fastjet, fastjet-contrib, hepmc, yoda |
-| thepeg | waiting | fastjet |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -63,13 +61,15 @@ failed: 2 · blocked: 6 · building: 8 · ready: 4 · waiting: 19 · done: 32 ·
 | hathor | done |  |
 | hellx | done |  |
 | inih | done |  |
+| iregi | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |
-| libdate-tz | done | built; channel not refreshed yet |
+| libdate-tz | done |  |
 | looptools | done |  |
 | minio-cpp | done |  |
 | mpfun90 | done |  |
+| nlojetxx | done |  |
 | numdiff | done |  |
 | oneloop | done |  |
 | pineappl | done |  |
