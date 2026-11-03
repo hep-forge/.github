@@ -11,7 +11,8 @@ name: hep-bot migrate
 # actions write (dispatching non-numeric tags) and variables write
 # (ANACONDA_COMPILE / ANACONDA_PUBLISH for platform migrations). With a
 # fine-grained token these are three separate repository permissions:
-# Contents, Actions and Variables, all read and write.
+# Contents, Actions and Variables, all read and write, plus Issues (one
+# issue per failing package, closed once it builds).
 
 on:
   schedule:

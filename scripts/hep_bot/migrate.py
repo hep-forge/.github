@@ -29,7 +29,8 @@ package the channel and the feedstock's runs say where it is:
 
 A package is started by moving its published tags to the feedstock's main
 (the push starts the build; dispatching an old tag would run that tag's old
-recipe and workflow). Status goes to migrations/status/<name>.md.
+recipe and workflow). Status goes to migrations/status/<name>.md, and each
+failing package gets one issue on its feedstock, closed once it builds.
 
 Usage:
     migrate.py [--only <migration>] [--dry-run]
@@ -362,16 +363,65 @@ class Migration:
             resolve(p)
 
         running = sum(1 for s, _ in final.values() if s == "building")
+        denied = None
         for p in self.members:
             s, d = final[p]
             self.settle_platform_vars(p, s, dry)
-            if s == "ready" and running < self.max_running:
-                try:
-                    final[p] = ("building", self.start(p, dry))
-                except RuntimeError as e:
-                    final[p] = ("failed", f"could not start: {e}")
+            self.report(p, s, d, dry)
+            if s != "ready" or running >= self.max_running:
+                continue
+            if denied:
+                final[p] = ("ready", f"not started: {denied}")
+                continue
+            try:
+                final[p] = ("building", self.start(p, dry))
                 running += 1
+            except RuntimeError as e:
+                # Not the package's fault, so not "failed": it stays ready and
+                # takes no slot. A permission refusal would refuse every other
+                # package the same way, so this pass stops starting any.
+                final[p] = ("ready", f"could not start: {e}")
+                if "HTTP 403" in str(e):
+                    denied = "HEP_BOT_TOKEN was refused (HTTP 403) on an earlier package this pass"
         return final
+
+    # -- failure issues
+
+    def issue_title(self):
+        return f"[{self.name}] build failed"
+
+    def report(self, p, state, detail, dry):
+        """Keep one issue per failing package on its feedstock, conda-forge style:
+        opened when it fails, updated when a new attempt fails, closed once it builds."""
+        issues = self.cache.setdefault("issues", {})
+        repo = f"{ORG}/{p}-feedstock"
+        if state == "failed" and detail.startswith("http"):
+            known = issues.get(p)
+            if known and known["run"] == detail:
+                return
+            why = self.failure_line(detail)
+            body = (f"The `{self.name}` migration failed to build `{p}` at `main` "
+                    f"{(self.w.main_sha(p) or '')[:7]}.\n\n"
+                    f"- Run: {detail}\n- First error: `{why or 'see the run log'}`\n\n"
+                    f"Push a fix to `main` and hep-bot retries by itself on its next pass. "
+                    f"Packages below this one wait meanwhile. Status: "
+                    f"https://github.com/{ORG}/.github/blob/main/migrations/status/{self.name}.md\n\n"
+                    f"<!-- hep-bot: migration {self.name} -->")
+            if dry:
+                return
+            if known:
+                gh("issue", "comment", str(known["number"]), "-R", repo, "--body", body)
+                known["run"] = detail
+            else:
+                r = gh("issue", "create", "-R", repo, "--title", self.issue_title(), "--body", body)
+                m = re.search(r"/issues/(\d+)", r.stdout)
+                if m:
+                    issues[p] = {"number": int(m.group(1)), "run": detail}
+        elif state == "done" and p in issues and not dry:
+            n = issues.pop(p)["number"]
+            gh("issue", "close", str(n), "-R", repo, "--comment",
+               f"Built and published by the `{self.name}` migration. Closing.\n\n"
+               f"<!-- hep-bot: migration {self.name} -->")
 
     def write_status(self, final):
         self.status_dir.mkdir(parents=True, exist_ok=True)
