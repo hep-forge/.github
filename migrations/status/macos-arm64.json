@@ -66,7 +66,12 @@
   "41656860653": false,
   "41663727977": false,
   "41663761347": false,
-  "41663774495": false
+  "41663774495": false,
+  "41666854453": false,
+  "41666878679": false,
+  "41666907839": false,
+  "41666919867": false,
+  "41666972479": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -115,7 +120,12 @@
   "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41656860653": "error: no template named 'insert_iterator' in namespace 'std'",
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/41663727977": "ld: file not found: /Users/runner/miniconda/conda-bld/jetphox_1793719570984/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
   "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41663761347": "Undefined symbols for architecture arm64:",
-  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41663774495": "ld: framework not found -lz"
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41663774495": "ld: framework not found -lz",
+  "https://github.com/hep-forge/afterburner-feedstock/actions/runs/41666854453": "CMake Error at CMakeLists.txt:17 (find_package):",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41666878679": "CMake Error at /Users/runner/miniconda/conda-bld/dd4hep_1793720680040/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
+  "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839": "error: 'HepMC3/Version.h' file not found",
+  "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867": "error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter]",
+  "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479": "CMake Error at CMakeLists.txt:25 (find_package):"
  },
  "issues": {
   "yoda": {
@@ -129,6 +139,26 @@
   "thepeg": {
    "number": 1,
    "run": "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41663761347"
+  },
+  "afterburner": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/afterburner-feedstock/actions/runs/41666854453"
+  },
+  "dd4hep": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41666878679"
+  },
+  "eic-smear": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839"
+  },
+  "estarlight": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867"
+  },
+  "hepmc-merger": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479"
   }
  }
 }
