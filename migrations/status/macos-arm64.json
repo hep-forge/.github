@@ -124,10 +124,6 @@
    "number": 1,
    "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944"
   },
-  "fastjet-contrib": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536"
-  },
   "geant": {
    "number": 1,
    "run": "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960"

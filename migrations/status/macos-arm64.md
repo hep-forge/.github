@@ -1,41 +1,40 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:26 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:40 UTC.
 
-failed: 7 · blocked: 20 · building: 2 · waiting: 1 · done: 41 · n/a: 25
+failed: 1 · building: 7 · waiting: 21 · done: 42 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41641415895) error: use of undeclared identifier 'back_inserter' |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41641940973) error: ^[[0m^[[1munable to load precompiled file^[[0m |
-| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367) No such file or directory |
-| lhapdf | failed | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944) No such file or directory |
-| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535) error: error: no member named 'back_inserter' in namespace 'std'no member named 'back_inserter' in namespace 'std' |
-| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011) ld: framework not found -lz |
-| acts | blocked | dd4hep |
-| afterburner | blocked | hepmc |
-| apfelgrid | blocked | applgrid, lhapdf |
-| applgrid | blocked | fastnlo, lhapdf |
-| dd4hep | blocked | hepmc |
-| dyturbo | blocked | lhapdf |
-| eic-smear | blocked | hepmc |
-| epic | blocked | dd4hep |
-| estarlight | blocked | hepmc |
-| fastnlo | blocked | lhapdf, yoda |
-| hepmc-merger | blocked | hepmc |
-| herwig7 | blocked | lhapdf, thepeg |
-| jetphox | blocked | lhapdf |
-| npsim | blocked | dd4hep |
-| professor | blocked | yoda |
-| rapgap | blocked | hepmc, lhapdf, rivet |
-| rivet | blocked | hepmc, yoda |
-| thepeg | blocked | lhapdf |
-| xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| fastjet-contrib | building | moved 1.105 to main 19b41fa |
-| geant | building | moved 11.4.1 to main a2b62f0 |
+| delphes | building | moved 3.5.1 to main 08090ca |
+| framel-root | building | moved 1.0.2 to main 6e15a12 |
+| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41644315308) |
+| hepmc | building | moved 3.3.1 to main 1e4cfd0 |
+| lhapdf | building | moved 6.5.6 to main 1ac1eea |
+| pepper | building | moved 1.14.1 to main 3de6cfb |
+| yoda | building | moved 2.1.4 to main d86bc9b |
+| acts | waiting | dd4hep |
+| afterburner | waiting | hepmc |
+| apfelgrid | waiting | applgrid, lhapdf |
+| applgrid | waiting | fastnlo, lhapdf |
+| dd4hep | waiting | g4hepem, geant, hepmc |
+| dyturbo | waiting | lhapdf |
+| eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
+| estarlight | waiting | hepmc |
+| fastnlo | waiting | lhapdf, yoda |
 | g4hepem | waiting | geant |
+| hepmc-merger | waiting | hepmc |
+| herwig7 | waiting | lhapdf, thepeg |
+| jetphox | waiting | lhapdf |
+| npsim | waiting | dd4hep |
+| professor | waiting | yoda |
+| rapgap | waiting | hepmc, lhapdf, rivet |
+| rivet | waiting | hepmc, yoda |
+| thepeg | waiting | lhapdf |
+| xfitter | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
+| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -51,6 +50,7 @@ failed: 7 · blocked: 20 · building: 2 · waiting: 1 · done: 41 · n/a: 25
 | emela | done |  |
 | escalade | done |  |
 | fastjet | done |  |
+| fastjet-contrib | done |  |
 | framel | done |  |
 | gosam | done |  |
 | hathor | done |  |
