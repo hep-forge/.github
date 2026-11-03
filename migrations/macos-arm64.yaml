@@ -7,3 +7,7 @@ platform: macos-arm64
 packages: all
 max_running: 8
 exclude: [helloworld]   # template test package
+# Published broken on macOS (Python module linked GCC's libstdc++ next to
+# libc++ and segfaulted); rebuild with lhapdf-feedstock's fix.
+redo:
+  lhapdf: 2026-11-03T10:50:00Z

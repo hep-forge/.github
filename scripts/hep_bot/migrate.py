@@ -178,6 +178,9 @@ class Migration:
             self.created = dt.datetime.fromisoformat(self.created).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.platform = spec.get("platform")
         self.max_running = int(spec.get("max_running", 6))
+        # redo: {package: time}: its build from before that time is known bad
+        # (published broken), so it is not done until rebuilt after it
+        self.redo = {p: str(v).replace("+00:00", "Z") for p, v in (spec.get("redo") or {}).items()}
         names = set(world.feedstocks)
         self.graph = {p: world.deps(p, names) for p in world.feedstocks}
         if "from" in spec:
@@ -202,12 +205,18 @@ class Migration:
     def publish_legs(self, p):
         return self.w.variables(p).get("ANACONDA_PUBLISH", DEFAULT_PUBLISH).split(",")
 
+    @staticmethod
+    def ms(iso):
+        return dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00")).timestamp() * 1000
+
     def is_done(self, p, tags):
         newest = tags[0]
+        since = self.ms(self.redo[p]) if p in self.redo else 0
         if self.platform:
-            return any(norm(m["version"]) == norm(newest) for m in self.w.builds(p, SUBDIRS[self.platform]))
+            return any(norm(m["version"]) == norm(newest) and m.get("timestamp", 0) >= since
+                       for m in self.w.builds(p, SUBDIRS[self.platform]))
         legs = self.legs(p)
-        stamp = dt.datetime.fromisoformat(self.created.replace("Z", "+00:00")).timestamp() * 1000
+        stamp = max(self.ms(self.created), since)
         for leg in legs:
             fresh = [m for m in self.w.builds(p, SUBDIRS[leg])
                      if norm(m["version"]) == norm(newest) and m.get("timestamp", 0) >= stamp]
@@ -230,13 +239,25 @@ class Migration:
         if live:
             return "building", live[0]["url"]
         last = runs[tags[0]][0] if runs[tags[0]] else None
-        if last and last["conclusion"] == "success":
+        if last and last["conclusion"] == "success" and \
+                (p not in self.redo or self.ms(last["createdAt"]) >= self.ms(self.redo[p])):
             # built, but the channel does not show it (yet): publish lag, or the
             # leg was not in ANACONDA_PUBLISH. Treat as done for scheduling.
             return "done", "built; channel not refreshed yet"
-        if last and last["headSha"] == w.main_sha(p) and self.run_failed(p, last):
+        if last and last["headSha"] == w.main_sha(p) and not self.dep_rebuilt_since(p, last) \
+                and self.run_failed(p, last):
             return "failed", last["url"]
         return "todo", ""
+
+    def dep_rebuilt_since(self, p, run):
+        """A failure can be a dependency's fault (a broken build it installed). Once
+        a dependency has a newer build on a leg this migration needs, try again."""
+        when = self.ms(run["createdAt"])
+        subs = [SUBDIRS[l] for l in self.legs(p)]
+        for d in self.graph.get(p, []):
+            if any(m.get("timestamp", 0) > when for s in subs for m in self.w.builds(d, s)):
+                return True
+        return False
 
     def legs(self, p):
         """The build legs this migration needs from p."""
