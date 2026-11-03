@@ -1,34 +1,31 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 15:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 15:44 UTC.
 
-building: 6 · waiting: 17 · done: 48 · n/a: 25
+failed: 3 · blocked: 9 · building: 5 · waiting: 3 · done: 51 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| dyturbo | building | moved 1.4.2 to main 273741a |
-| g4hepem | building | moved 20251114 to main 6b719ec |
-| hepmc | building | moved 3.3.1 to main f445e0e |
-| jetphox | building | moved 1.3.1_4 to main ef194a4 |
-| thepeg | building | moved 2.3.0 to main 8822ab0 |
-| yoda | building | moved 2.1.4 to main fa84ee2 |
+| jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/41663727977) ld: file not found: /Users/runner/miniconda/conda-bld/jetphox_1793719570984/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac |
+| thepeg | failed | [run](https://github.com/hep-forge/thepeg-feedstock/actions/runs/41663761347) Undefined symbols for architecture arm64: |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41663774495) ld: framework not found -lz |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| fastnlo | blocked | yoda |
+| herwig7 | blocked | thepeg |
+| professor | blocked | yoda |
+| rapgap | blocked | rivet |
+| rivet | blocked | yoda |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| afterburner | building | moved 0.2.1 to main d449630 |
+| dd4hep | building | moved 1.37 to main eec505e |
+| eic-smear | building | moved 1.2.3 to main 4fecb41 |
+| estarlight | building | moved 1.2.0 to main a9227c8 |
+| hepmc-merger | building | moved 2.4.0 to main d791b03 |
 | acts | waiting | dd4hep |
-| afterburner | waiting | hepmc |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| dd4hep | waiting | g4hepem, hepmc |
-| eic-smear | waiting | hepmc |
 | epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | yoda |
-| hepmc-merger | waiting | hepmc |
-| herwig7 | waiting | thepeg |
 | npsim | waiting | dd4hep |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet |
-| rivet | waiting | hepmc, yoda |
-| xfitter | waiting | apfelgrid, applgrid, dyturbo |
-| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -42,6 +39,7 @@ building: 6 · waiting: 17 · done: 48 · n/a: 25
 | delphes | done |  |
 | difftop | done |  |
 | djangoh | done |  |
+| dyturbo | done |  |
 | edm4hep | done |  |
 | emela | done |  |
 | escalade | done |  |
@@ -49,11 +47,13 @@ building: 6 · waiting: 17 · done: 48 · n/a: 25
 | fastjet-contrib | done |  |
 | framel | done |  |
 | framel-root | done | built; channel not refreshed yet |
+| g4hepem | done |  |
 | geant | done | built; channel not refreshed yet |
 | gosam | done |  |
 | hathor | done |  |
 | hell | done |  |
 | hellx | done |  |
+| hepmc | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
