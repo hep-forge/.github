@@ -95,7 +95,8 @@
   "41715229101": false,
   "41715244150": false,
   "41715267236": false,
-  "41718542029": false
+  "41718542029": false,
+  "41721620887": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -172,7 +173,8 @@
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):",
   "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150": "Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/user -> 503)', 503)",
   "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236": "Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/dist/hep-forge/hoppet/2.2.0/osx-arm64/hop",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029": "No such file or directory"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029": "No such file or directory",
+  "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887": "error: use of undeclared identifier 'back_inserter'"
  },
  "issues": {
   "dd4hep": {
@@ -193,11 +195,7 @@
   },
   "fastjet-contrib": {
    "number": 2,
-   "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150"
-  },
-  "hoppet": {
-   "number": 3,
-   "run": "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236"
+   "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887"
   }
  }
 }

@@ -1,23 +1,22 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:43 UTC.
 
-failed: 2 · blocked: 3 · building: 2 · waiting: 7 · done: 57 · n/a: 25
+failed: 3 · blocked: 5 · building: 1 · waiting: 4 · done: 58 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887) error: use of undeclared identifier 'back_inserter' |
 | herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029) No such file or directory |
 | acts | blocked | dd4hep |
 | epic | blocked | dd4hep |
 | npsim | blocked | dd4hep |
-| fastjet-contrib | building | moved 1.105, 1.103 to main a7d409c |
-| hoppet | building | moved 2.2.0, 1.2.0 to main 3e21360 |
+| rapgap | blocked | rivet |
+| rivet | blocked | fastjet-contrib |
+| fastnlo | building | moved 2.6.0 to main c0ab739 |
 | apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo, hoppet |
-| fastnlo | waiting | hoppet |
-| rapgap | waiting | rivet |
-| rivet | waiting | fastjet-contrib |
+| applgrid | waiting | fastnlo |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
@@ -51,6 +50,7 @@ failed: 2 · blocked: 3 · building: 2 · waiting: 7 · done: 57 · n/a: 25
 | hellx | done |  |
 | hepmc | done |  |
 | hepmc-merger | done |  |
+| hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
 | jana | done |  |
