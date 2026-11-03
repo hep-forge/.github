@@ -9,7 +9,9 @@ name: hep-bot migrate
 #
 # HEP_BOT_TOKEN needs, on the feedstocks: contents write (moving tags),
 # actions write (dispatching non-numeric tags) and variables write
-# (ANACONDA_COMPILE / ANACONDA_PUBLISH for platform migrations).
+# (ANACONDA_COMPILE / ANACONDA_PUBLISH for platform migrations). With a
+# fine-grained token these are three separate repository permissions:
+# Contents, Actions and Variables, all read and write.
 
 on:
   schedule:
