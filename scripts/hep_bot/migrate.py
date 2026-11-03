@@ -257,7 +257,27 @@ class Migration:
         mine = [c for name, c in jobs.items() if any(name.startswith(f"build ({l},") for l in self.legs(p))]
         if not mine:
             return False
-        return any(c != "success" for c in mine) or jobs.get("publish") not in ("success", "skipped", None)
+        failed = any(c != "success" for c in mine) or jobs.get("publish") not in ("success", "skipped", None)
+        if failed and self.transient(p, run):
+            return False
+        return failed
+
+    TRANSIENT = re.compile(r"CONNECTION FAILED|Could not download|ReadTimeoutError|"
+                           r"Connection reset by peer|Temporary failure in name resolution")
+
+    def transient(self, p, run):
+        """A source download that timed out is the server's fault, not the recipe's:
+        start again, up to three times per feedstock commit."""
+        key = f"{p}@{run['headSha']}"
+        retries = self.cache.setdefault("retries", {})
+        seen = self.cache.setdefault("transient_runs", {})
+        rid = str(run["databaseId"])
+        if rid not in seen:
+            log = gh("run", "view", rid, "-R", f"{ORG}/{p}-feedstock", "--log-failed").stdout
+            seen[rid] = bool(self.TRANSIENT.search(log))
+            if seen[rid]:
+                retries[key] = retries.get(key, 0) + 1
+        return seen[rid] and retries.get(key, 0) <= 3
 
     # -- actions
 
