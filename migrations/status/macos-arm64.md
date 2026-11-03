@@ -1,24 +1,27 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:45 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 19:05 UTC.
 
-failed: 4 · blocked: 5 · building: 1 · waiting: 3 · done: 58 · n/a: 25
+failed: 3 · blocked: 8 · building: 5 · done: 55 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41693744620) error: variable length arrays in C++ are a Clang extension [-Werror,-Wvla-cxx-extension] |
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41696687003) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
 | fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("yoda=1.9.9"), MatchSpec("hoppet=1.2.0")} |
-| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045) error: No ThePEG headers in /Users/runner/miniconda/conda-bld/herwig7_1793730428510/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold |
 | rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("fastjet-contrib==1.103=h75d2b18_1")} |
+| acts | blocked | dd4hep |
 | apfelgrid | blocked | applgrid |
 | applgrid | blocked | fastnlo |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
 | rapgap | blocked | rivet |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| dd4hep | building | moved 1.37 to main fdfa0d1 |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
+| estarlight | building | moved 1.2.0 to main cb241c5 |
+| fastjet-contrib | building | moved 1.105, 1.103 to main 2a08431 |
+| herwig7 | building | moved 7.3.0 to main d7ef6d2 |
+| hoppet | building | moved 2.2.0, 1.2.0 to main c76b05a |
+| yoda | building | moved 2.1.4, 1.9.9 to main f125746 |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -39,18 +42,16 @@ failed: 4 · blocked: 5 · building: 1 · waiting: 3 · done: 58 · n/a: 25
 | emela | done |  |
 | escalade | done |  |
 | fastjet | done |  |
-| fastjet-contrib | done |  |
 | framel | done |  |
 | framel-root | done | built; channel not refreshed yet |
 | g4hepem | done |  |
-| geant | done | built; channel not refreshed yet |
+| geant | done |  |
 | gosam | done |  |
 | hathor | done |  |
 | hell | done |  |
 | hellx | done |  |
 | hepmc | done |  |
 | hepmc-merger | done |  |
-| hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
 | jana | done |  |
@@ -76,7 +77,6 @@ failed: 4 · blocked: 5 · building: 1 · waiting: 3 · done: 58 · n/a: 25
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
-| yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |

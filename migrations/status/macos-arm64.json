@@ -86,7 +86,8 @@
   "41680819372": true,
   "41690660290": false,
   "41693744620": false,
-  "41693764045": false
+  "41693764045": false,
+  "41696687003": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -154,12 +155,13 @@
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"yoda=1.9.9\"), MatchSpec(\"hoppet=1.2.0\")}",
   "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"fastjet-contrib==1.103=h75d2b18_1\")}",
   "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41693744620": "error: variable length arrays in C++ are a Clang extension [-Werror,-Wvla-cxx-extension]",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045": "error: No ThePEG headers in /Users/runner/miniconda/conda-bld/herwig7_1793730428510/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045": "error: No ThePEG headers in /Users/runner/miniconda/conda-bld/herwig7_1793730428510/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41696687003": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):"
  },
  "issues": {
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41680774717"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41696687003"
   },
   "estarlight": {
    "number": 1,
