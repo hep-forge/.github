@@ -1,27 +1,24 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 17:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:06 UTC.
 
-failed: 1 · building: 5 · waiting: 12 · done: 53 · n/a: 25
+failed: 3 · blocked: 4 · building: 3 · waiting: 5 · done: 56 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41686939043) error: unknown type name 'uint'; did you mean 'int'? |
 | herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372) No such file or directory |
-| eic-smear | building | moved 1.2.3 to main d1250b1 |
-| estarlight | building | moved 1.2.0 to main 7b1308a |
-| hepmc-merger | building | moved 2.4.0 to main 79a7e18 |
-| podio | building | moved 1.7.0 to main 558494d |
-| yoda | building | moved 2.1.4 to main f125746 |
-| acts | waiting | dd4hep |
+| podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777) CMake Error at /Users/runner/miniconda/conda-bld/podio_1793727857226/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
+| acts | blocked | dd4hep |
+| dd4hep | blocked | podio |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
+| fastnlo | building | moved 2.6.0 to main c0ab739 |
+| professor | building | moved 2.5.9 to main 9b5f0f8 |
+| rivet | building | moved 4.1.3 to main 83e3efb |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo |
-| dd4hep | waiting | podio |
-| epic | waiting | dd4hep |
-| fastnlo | waiting | yoda |
-| npsim | waiting | dd4hep |
-| professor | waiting | yoda |
 | rapgap | waiting | rivet |
-| rivet | waiting | yoda |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
@@ -40,6 +37,7 @@ failed: 1 · building: 5 · waiting: 12 · done: 53 · n/a: 25
 | djangoh | done |  |
 | dyturbo | done |  |
 | edm4hep | done |  |
+| eic-smear | done |  |
 | emela | done |  |
 | escalade | done |  |
 | fastjet | done |  |
@@ -53,6 +51,7 @@ failed: 1 · building: 5 · waiting: 12 · done: 53 · n/a: 25
 | hell | done |  |
 | hellx | done |  |
 | hepmc | done |  |
+| hepmc-merger | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
@@ -77,6 +76,7 @@ failed: 1 · building: 5 · waiting: 12 · done: 53 · n/a: 25
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
+| yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
