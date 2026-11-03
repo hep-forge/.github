@@ -1,38 +1,35 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:26 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:45 UTC.
 
-failed: 1 · building: 6 · waiting: 20 · done: 44 · n/a: 25
+failed: 3 · blocked: 16 · building: 4 · waiting: 1 · done: 47 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| delphes | building | moved 3.5.1 to main dd7341e |
-| g4hepem | building | moved 20251114 to main e568562 |
-| hepmc | building | moved 3.3.1 to main eb859c4 |
-| lhapdf | building | moved 6.5.6 to main 938908e |
-| pepper | building | moved 1.14.1 to main abe210c |
-| yoda | building | moved 2.1.4 to main 21a9a12 |
-| acts | waiting | dd4hep |
-| afterburner | waiting | hepmc |
-| apfelgrid | waiting | applgrid, lhapdf |
-| applgrid | waiting | fastnlo, lhapdf |
-| dd4hep | waiting | g4hepem, hepmc |
-| dyturbo | waiting | lhapdf |
-| eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | lhapdf, yoda |
-| hepmc-merger | waiting | hepmc |
-| herwig7 | waiting | lhapdf, thepeg |
-| jetphox | waiting | lhapdf |
-| npsim | waiting | dd4hep |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, lhapdf, rivet |
-| rivet | waiting | hepmc, yoda |
-| thepeg | waiting | lhapdf |
-| xfitter | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
-| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
+| g4hepem | failed | [run](https://github.com/hep-forge/g4hepem-feedstock/actions/runs/41653610152) CMake Error at /Users/runner/miniconda/conda-bld/g4hepem_1793715996830/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
+| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41653633225) No such file or directory |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41653703076) No such file or directory |
+| acts | blocked | dd4hep |
+| afterburner | blocked | hepmc |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| dd4hep | blocked | g4hepem, hepmc |
+| eic-smear | blocked | hepmc |
+| epic | blocked | dd4hep |
+| estarlight | blocked | hepmc |
+| fastnlo | blocked | yoda |
+| hepmc-merger | blocked | hepmc |
+| npsim | blocked | dd4hep |
+| professor | blocked | yoda |
+| rapgap | blocked | hepmc, rivet |
+| rivet | blocked | hepmc, yoda |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| djangoh | building | moved 4.6.21 to main b922735 |
+| dyturbo | building | moved 1.4.2 to main 9d59b89 |
+| jetphox | building | moved 1.3.1_4 to main 65e7d31 |
+| thepeg | building | moved 2.3.0 to main 8833da0 |
+| herwig7 | waiting | thepeg |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -43,6 +40,7 @@ failed: 1 · building: 6 · waiting: 20 · done: 44 · n/a: 25
 | cubature | done |  |
 | curlpp | done |  |
 | cuttools | done |  |
+| delphes | done |  |
 | difftop | done |  |
 | edm4hep | done |  |
 | emela | done |  |
@@ -62,6 +60,7 @@ failed: 1 · building: 6 · waiting: 20 · done: 44 · n/a: 25
 | jana | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
+| lhapdf | done |  |
 | libdate-tz | done |  |
 | looptools | done |  |
 | minio-cpp | done |  |
@@ -70,6 +69,7 @@ failed: 1 · building: 6 · waiting: 20 · done: 44 · n/a: 25
 | nnlojet | done |  |
 | numdiff | done |  |
 | oneloop | done |  |
+| pepper | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
 | podio | done |  |
