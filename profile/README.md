@@ -52,7 +52,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-11-02 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-11-03 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -105,7 +105,7 @@ _Last refreshed: 2026-11-02 (`python3 scripts/update_readme_status.py`)_
 | [iregi](https://github.com/hep-forge/iregi-feedstock) | `1.1.0` | [`1.1.0`](https://anaconda.org/hep-forge/iregi) | ✅ | ✅ |
 | [jana](https://github.com/hep-forge/jana-feedstock) | `2026.03.01` | [`2026.03.01`](https://anaconda.org/hep-forge/jana) | ✅ | ✅ |
 | [jetphox](https://github.com/hep-forge/jetphox-feedstock) | `1.3.1_4` | [`1.3.1.4`](https://anaconda.org/hep-forge/jetphox) | ✅ | ✅ |
-| [kalman](https://github.com/hep-forge/kalman-feedstock) | `1.0.1` | [`1.0.1`](https://anaconda.org/hep-forge/kalman) | ✅ | ✅ |
+| [kalman](https://github.com/hep-forge/kalman-feedstock) | `1.0.2` | [`1.0.2`](https://anaconda.org/hep-forge/kalman) | ✅ | ✅ |
 | [kfrlib](https://github.com/hep-forge/kfrlib-feedstock) | `7.2.0` | [`7.2.0`](https://anaconda.org/hep-forge/kfrlib) | ✅ | ✅ |
 | [lcg-relax](https://github.com/hep-forge/lcg-relax-feedstock) | `6.1.2` | [`6.1.2`](https://anaconda.org/hep-forge/lcg-relax) | ✅ | ✅ |
 | [lhapdf](https://github.com/hep-forge/lhapdf-feedstock) | `6.5.6` | [`6.5.6`](https://anaconda.org/hep-forge/lhapdf) | ✅ | ✅ |
