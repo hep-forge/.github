@@ -1,18 +1,17 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 20:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 20:25 UTC.
 
-failed: 1 · blocked: 3 · building: 4 · waiting: 7 · done: 56 · n/a: 25
+failed: 2 · blocked: 3 · building: 2 · waiting: 7 · done: 57 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41706011903) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41709388894) No such file or directory |
 | acts | blocked | dd4hep |
 | epic | blocked | dd4hep |
 | npsim | blocked | dd4hep |
-| estarlight | building | moved 1.2.0 to main 3a7bab1 |
 | fastjet-contrib | building | moved 1.105, 1.103 to main 2a08431 |
-| herwig7 | building | moved 7.3.0 to main f780a15 |
 | hoppet | building | moved 2.2.0, 1.2.0 to main c76b05a |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo, hoppet |
@@ -40,6 +39,7 @@ failed: 1 · blocked: 3 · building: 4 · waiting: 7 · done: 56 · n/a: 25
 | eic-smear | done |  |
 | emela | done |  |
 | escalade | done |  |
+| estarlight | done |  |
 | fastjet | done |  |
 | framel | done |  |
 | framel-root | done | built; channel not refreshed yet |
