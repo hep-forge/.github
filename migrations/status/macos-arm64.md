@@ -1,19 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 08:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 08:28 UTC.
 
-failed: 8 · ready: 15 · waiting: 25 · done: 23 · n/a: 25
+building: 8 · ready: 15 · waiting: 25 · done: 23 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| apfel | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/apfel-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/apfel-feedstock/actions/variables) |
-| apfelxx | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/apfelxx-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/apfelxx-feedstock/actions/variables) |
-| cuttools | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/cuttools-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/cuttools-feedstock/actions/variables) |
-| difftop | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/difftop-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/difftop-feedstock/actions/variables) |
-| djangoh | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/djangoh-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/djangoh-feedstock/actions/variables) |
-| emela | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/emela-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/emela-feedstock/actions/variables) |
-| fastjet | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/fastjet-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/fastjet-feedstock/actions/variables) |
-| framel-root | failed | could not start: gh variable set ANACONDA_COMPILE -R hep-forge/framel-root-feedstock --body macos-arm64: failed to set variable "ANACONDA_COMPILE": HTTP 403: Resource not accessible by personal access token (https://api.github.com/repos/hep-forge/framel-root-feedstock/actions/variables) |
+| apfel | building | moved 3.1.1 to main c8a1038 |
+| apfelxx | building | moved 4.10.0 to main 7b5b147 |
+| cuttools | building | moved 2.0 to main f3c8524 |
+| difftop | building | moved 1.0.0 to main 5fae5e3 |
+| djangoh | building | moved 4.6.21 to main bd69d50 |
+| emela | building | moved 1.0.1 to main fe35d8c |
+| fastjet | building | moved 3.5.3 to main d5fddba |
+| framel-root | building | moved 1.0.0 to main 2c95132 |
 | geant | ready |  |
 | gosam | ready |  |
 | hathor | ready |  |
