@@ -11,3 +11,6 @@ exclude: [helloworld]   # template test package
 # libc++ and segfaulted); rebuild with lhapdf-feedstock's fix.
 redo:
   lhapdf: 2026-11-03T10:50:00Z
+  # macOS package held only rootIO (conda-forge's hepmc3 was already in the
+  # host env); rebuilt depending on hepmc3
+  hepmc: 2026-11-03T16:40:00Z
