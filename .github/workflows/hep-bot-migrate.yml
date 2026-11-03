@@ -1,0 +1,68 @@
+name: hep-bot migrate
+
+# Advances every migration in migrations/*.yaml by one step (see
+# scripts/hep_bot/migrate.py): starts the packages whose dependencies are
+# all done, a few at a time, and writes migrations/status/<name>.md. A pass
+# takes minutes and never waits for a build: the next scheduled pass picks
+# up whatever finished. Packages already done are never rebuilt; a failed
+# one is retried by itself once its feedstock's main changes.
+#
+# HEP_BOT_TOKEN needs, on the feedstocks: contents write (moving tags),
+# actions write (dispatching non-numeric tags) and variables write
+# (ANACONDA_COMPILE / ANACONDA_PUBLISH for platform migrations).
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Advance this migration only (its name); empty = all"
+        default: ""
+      dry_run:
+        description: "Report and plan, change nothing"
+        type: boolean
+        default: false
+
+concurrency:
+  group: hep-bot-migrate
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  migrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.HEP_BOT_TOKEN }}
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Advance migrations
+        env:
+          GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+          ONLY: ${{ inputs.only }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          python3 scripts/hep_bot/migrate.py \
+            $([ -n "$ONLY" ] && echo --only "$ONLY") \
+            $([ "$DRY_RUN" = "true" ] && echo --dry-run) | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit status pages
+        if: inputs.dry_run != true
+        run: |
+          git config user.name "hep-bot"
+          git config user.email "hep-bot@users.noreply.github.com"
+          git add migrations/status
+          if git diff --cached --quiet; then
+            echo "status unchanged"
+          else
+            git commit -qm "migrations: update status"
+            git pull -q --rebase origin main
+            git push -q origin HEAD:main
+          fi

@@ -28,6 +28,23 @@ ROOT = Path(__file__).resolve().parent.parent
 FEEDSTOCKS = ROOT / "feedstocks"
 
 
+def requirement_names(content):
+    """Package names listed in a meta.yaml's top-level requirements: block."""
+    m = re.search(r"\nrequirements:\n(.*?)(\n\S|\Z)", content, re.S)
+    section = m.group(1) if m else ""
+
+    tokens = set()
+    for line in section.splitlines():
+        line = line.strip()
+        if not line.startswith("-"):
+            continue
+        item = line[1:].split("#")[0].strip()
+        mtok = re.match(r"([A-Za-z0-9_.\-]+)", item)
+        if mtok:
+            tokens.add(mtok.group(1).lower())
+    return tokens
+
+
 def parse_internal_deps(name_set):
     deps = {}
     for d in sorted(os.listdir(FEEDSTOCKS)):
@@ -38,21 +55,7 @@ def parse_internal_deps(name_set):
         if not meta_path.exists():
             continue
         content = meta_path.read_text(encoding="utf-8", errors="ignore")
-
-        m = re.search(r"\nrequirements:\n(.*?)(\n\S|\Z)", content, re.S)
-        section = m.group(1) if m else ""
-
-        tokens = set()
-        for line in section.splitlines():
-            line = line.strip()
-            if not line.startswith("-"):
-                continue
-            item = line[1:].split("#")[0].strip()
-            mtok = re.match(r"([A-Za-z0-9_.\-]+)", item)
-            if mtok:
-                tokens.add(mtok.group(1).lower())
-
-        deps[pkg] = sorted(t for t in tokens if t in name_set and t != pkg)
+        deps[pkg] = sorted(t for t in requirement_names(content) if t in name_set and t != pkg)
     return deps
 
 

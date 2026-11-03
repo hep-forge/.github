@@ -81,11 +81,13 @@ version check and every Makefile target.
 | Issue commands (`rerun`, `rerender`, `new`, `help [<topic>]`) | `scripts/hep_bot/comment.py` (guides it quotes: `scripts/hep_bot/guide/*.md`), run by `hep-bot-comment.yml` in every feedstock and by `hep-bot-sweep.yml` (every 10 min, org-wide) here |
 | Version check (bump + tag, `head` rebuilds, tracking issue) | `scripts/hep_bot/check_versions.py`, `bump_version.py`, `.github/workflows/hep-bot-check.yml` |
 | Upstream overrides, dependency order, opt-out | `scripts/hep_bot/sources.yaml`, `scripts/hep_bot/dag.yaml` (`auto_update: false`) |
+| Migrations: a new platform, or a rebuild below a changed package, carried down the dependency graph (conda-forge style; done packages are never rebuilt, a failure holds back only what sits below it) | `migrations/<name>.yaml`, `scripts/hep_bot/migrate.py`, `.github/workflows/hep-bot-migrate.yml` (every 20 min), started from `hep-bot-rebuild.yml`; progress in `migrations/status/<name>.md` |
 | Render of one or all feedstocks | `scripts/render_sync.sh`, `.github/workflows/render-sync.yml` |
 | New feedstock | `scripts/new_feedstock.sh`, `.github/workflows/new-feedstock.yml` |
 
 Before you trigger anything that pushes, run the dry runs:
-`python3 scripts/hep_bot/check_versions.py --dry-run [--only pkg]` and
+`python3 scripts/hep_bot/check_versions.py --dry-run [--only pkg]`,
+`python3 scripts/hep_bot/migrate.py --dry-run [--only <migration>]` and
 `bash scripts/render_sync.sh` without `--commit`.
 
 ## GitHub releases

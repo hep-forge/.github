@@ -1,5 +1,14 @@
 name: hep-bot ordered rebuild
 
+# Starts a rebuild migration: <package> and everything that depends on it,
+# in dependency order. This only writes migrations/<name>.yaml; hep-bot
+# migrate (every 20 min) then starts each package once its dependencies in
+# the migration are rebuilt, skips what is already rebuilt, and holds back
+# whatever sits below a failure. Progress: migrations/status/<name>.md.
+#
+# A new platform for the whole channel is a migration too, with
+# `platform: <leg>` instead of `from:` (see migrations/macos-arm64.yaml).
+
 on:
   workflow_dispatch:
     inputs:
@@ -7,203 +16,54 @@ on:
         description: 'Rebuild from this package and all its dependents (e.g. fastjet)'
         required: true
         default: 'fastjet'
+      name:
+        description: 'Migration name (default: rebuild-<package>-<date>)'
+        default: ''
       dry_run:
-        description: 'Print rebuild order without triggering builds'
-        required: false
-        default: 'false'
+        description: 'Only show the plan, do not create the migration'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 jobs:
-  rebuild:
+  create:
     runs-on: ubuntu-24.04
-    # GitHub-hosted runners hard-cap a job at 6h regardless of this setting.
-    # Waiting tier-by-tier for real builds (ROOT alone takes 4-6h) can bump
-    # into that ceiling on a large rebuild — if it does, re-run starting
-    # from the first tier that didn't finish, or move this job to a
-    # self-hosted runner (see README "Self-hosted runners").
-    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
           token: ${{ secrets.HEP_BOT_TOKEN }}
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
 
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Compute rebuild tiers and trigger builds
+      - name: Write the migration
+        env:
+          PKG: ${{ inputs.root_package }}
+          NAME: ${{ inputs.name }}
+        run: |
+          NAME="${NAME:-rebuild-$PKG-$(date -u +%Y%m%d)}"
+          echo "NAME=$NAME" >> "$GITHUB_ENV"
+          mkdir -p migrations
+          cat > "migrations/$NAME.yaml" <<EOF
+          # Rebuild $PKG and everything that depends on it (started from hep-bot-rebuild.yml).
+          name: $NAME
+          created: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          from: [$PKG]
+          EOF
+
+      - name: Plan
         env:
           GH_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
-          ROOT_PACKAGE: ${{ inputs.root_package }}
-          DRY_RUN: ${{ inputs.dry_run }}
-        run: |
-          python3 - <<'PYEOF'
-          import datetime, json, os, subprocess, sys, time, yaml
-          from pathlib import Path
+        run: python3 scripts/hep_bot/migrate.py --only "$NAME" --dry-run | tee -a "$GITHUB_STEP_SUMMARY"
 
-          dag = yaml.safe_load(Path("scripts/hep_bot/dag.yaml").read_text())
-          root_pkg = os.environ["ROOT_PACKAGE"]
-          dry_run = os.environ["DRY_RUN"].lower() == "true"
-
-          if root_pkg not in dag:
-              print(f"ERROR: '{root_pkg}' is not in scripts/hep_bot/dag.yaml")
-              sys.exit(1)
-
-          # Full transitive dependent set (root_pkg + everything that depends on
-          # it directly or through any chain), via the reverse dependency graph.
-          affected = set()
-          def collect(pkg):
-              if pkg in affected:
-                  return
-              affected.add(pkg)
-              for name, info in dag.items():
-                  if pkg in info.get("depends_on", []):
-                      collect(name)
-          collect(root_pkg)
-
-          # Tier = 1 + max(tier of its in-set deps); deps outside the affected
-          # set are assumed already up to date and don't gate anything.
-          tier_of = {}
-          def compute_tier(pkg):
-              if pkg in tier_of:
-                  return tier_of[pkg]
-              deps_in_set = [d for d in dag.get(pkg, {}).get("depends_on", []) if d in affected]
-              tier_of[pkg] = 1 if not deps_in_set else 1 + max(compute_tier(d) for d in deps_in_set)
-              return tier_of[pkg]
-          for pkg in affected:
-              compute_tier(pkg)
-
-          tiers = {}
-          for pkg, t in tier_of.items():
-              tiers.setdefault(t, []).append(pkg)
-          max_tier = max(tiers)
-
-          print(f"Rebuild plan for '{root_pkg}' ({len(affected)} package(s), {max_tier} tier(s)):")
-          for t in range(1, max_tier + 1):
-              print(f"  Tier {t}: {', '.join(sorted(tiers[t]))}")
-
-          if dry_run:
-              print("\nDry-run mode: no builds triggered.")
-              sys.exit(0)
-
-          def workflows_for(pkg):
-              # Scheme-detect from the submodule checkout, same convention as
-              # scripts/rerun_tags.sh / scripts/feedstock_status.sh.
-              unified = Path(f"feedstocks/{pkg}-feedstock/.github/workflows/autoupload.yml")
-              if unified.exists():
-                  return ["autoupload.yml"]
-              return ["autoupload.amd64.yml", "autoupload.arm64.yml"]
-
-          def latest_tag(pkg):
-              # Builds only run on tag refs (autoupload.yml gates on
-              # github.ref_type == 'tag'); a bare dispatch on the default
-              # branch would be skipped silently. Prefer numeric tags --
-              # the only kind the push trigger accepts.
-              r = subprocess.run(
-                  ["git", "-C", f"feedstocks/{pkg}-feedstock", "tag", "--sort=-v:refname"],
-                  capture_output=True, text=True,
-              )
-              tags = r.stdout.split()
-              numeric = [t for t in tags if t[:1].isdigit()]
-              return (numeric or tags or [None])[0]
-
-          def trigger(repo, workflow, since, ref):
-              cmd = ["gh", "workflow", "run", workflow, "--repo", repo, "--ref", ref]
-              if workflow == "autoupload.yml":
-                  cmd += ["-f", "triggered_by=bot"]
-              result = subprocess.run(cmd, capture_output=True, text=True)
-              if result.returncode != 0:
-                  print(f"  WARNING: failed to trigger {workflow} for {repo}: {result.stderr.strip()}")
-                  return None
-              # workflow_dispatch doesn't return a run id; poll run list for the
-              # run that just appeared.
-              for _ in range(15):
-                  time.sleep(2)
-                  r = subprocess.run(
-                      ["gh", "run", "list", "--repo", repo, "--workflow", workflow,
-                       "--limit", "5", "--json", "databaseId,createdAt,event"],
-                      capture_output=True, text=True,
-                  )
-                  if r.returncode != 0:
-                      continue
-                  try:
-                      runs = json.loads(r.stdout)
-                  except json.JSONDecodeError:
-                      runs = []
-                  for run in runs:
-                      if run["event"] != "workflow_dispatch":
-                          continue
-                      created = datetime.datetime.fromisoformat(run["createdAt"].replace("Z", "+00:00"))
-                      if created >= since:
-                          return run["databaseId"]
-              print(f"  WARNING: triggered {workflow} for {repo} but couldn't find its run id to track")
-              return None
-
-          def wait_for(tracked, poll_seconds=30):
-              pending = set(tracked)
-              failed = []
-              while pending:
-                  time.sleep(poll_seconds)
-                  for item in list(pending):
-                      repo, workflow, run_id = item
-                      r = subprocess.run(
-                          ["gh", "run", "view", str(run_id), "--repo", repo, "--json", "status,conclusion"],
-                          capture_output=True, text=True,
-                      )
-                      if r.returncode != 0:
-                          continue
-                      info = json.loads(r.stdout)
-                      if info["status"] != "completed":
-                          continue
-                      pending.discard(item)
-                      if info["conclusion"] == "success":
-                          print(f"  done: {repo} {workflow} (run {run_id})")
-                      else:
-                          print(f"  FAILED: {repo} {workflow} (run {run_id}): {info['conclusion']}")
-                          failed.append(item)
-              return failed
-
-          for t in range(1, max_tier + 1):
-              pkgs = sorted(tiers[t])
-              print(f"\n=== Tier {t}: {', '.join(pkgs)} ===")
-              since = datetime.datetime.now(datetime.timezone.utc)
-              tracked = []
-              for pkg in pkgs:
-                  repo = f"hep-forge/{pkg}-feedstock"
-                  tag = latest_tag(pkg)
-                  if tag is None:
-                      print(f"  SKIP {repo}: no tags (builds only run on tag refs)")
-                      continue
-                  for workflow in workflows_for(pkg):
-                      print(f"Triggering {workflow} for {repo} at tag {tag}...")
-                      run_id = trigger(repo, workflow, since, tag)
-                      if run_id is not None:
-                          tracked.append((repo, workflow, run_id))
-
-              print(f"Waiting for tier {t} ({len(tracked)} run(s)) to finish before starting the next tier...")
-              failed = wait_for(tracked)
-              if failed:
-                  print(f"\nERROR: tier {t} had {len(failed)} failed run(s); aborting remaining tiers.")
-                  sys.exit(1)
-          PYEOF
-
-      - name: Refresh README status table
-        if: inputs.dry_run != 'true'
-        env:
-          HEP_BOT_TOKEN: ${{ secrets.HEP_BOT_TOKEN }}
+      - name: Commit
+        if: inputs.dry_run != true
         run: |
           git config user.name "hep-bot"
           git config user.email "hep-bot@users.noreply.github.com"
-          python3 scripts/update_readme_status.py
-          # README.md is a symlink to profile/README.md: the script writes
-          # through it, so the real file is the one that changes.
-          if git diff --quiet -- profile/README.md; then
-            echo "README.md: nothing to update"
-          else
-            git add profile/README.md
-            git commit -qm "docs: refresh feedstock status table after DAG rebuild"
-            git push "https://x-access-token:${HEP_BOT_TOKEN}@github.com/hep-forge/hep-feedstocks.git" HEAD:main
-          fi
+          git add "migrations/$NAME.yaml"
+          git commit -qm "migrations: start $NAME"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main
