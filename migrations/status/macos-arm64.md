@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 16:05 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 16:25 UTC.
 
-failed: 5 · blocked: 3 · building: 3 · waiting: 9 · done: 51 · n/a: 25
+failed: 7 · blocked: 12 · done: 52 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -11,21 +11,20 @@ failed: 5 · blocked: 3 · building: 3 · waiting: 9 · done: 51 · n/a: 25
 | eic-smear | failed | [run](https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839) error: 'HepMC3/Version.h' file not found |
 | estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867) error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter] |
 | hepmc-merger | failed | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479) CMake Error at CMakeLists.txt:25 (find_package): |
+| thepeg | failed | [run](https://github.com/hep-forge/thepeg-feedstock/actions/runs/41670653035) No such file or directory |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41670662948) No such file or directory |
 | acts | blocked | dd4hep |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
 | epic | blocked | dd4hep |
+| fastnlo | blocked | yoda |
+| herwig7 | blocked | thepeg |
 | npsim | blocked | dd4hep |
-| jetphox | building | moved 1.3.1_4 to main f0bbb7c |
-| thepeg | building | moved 2.3.0 to main 7c264b8 |
-| yoda | building | moved 2.1.4 to main 49dc26a |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| fastnlo | waiting | yoda |
-| herwig7 | waiting | thepeg |
-| professor | waiting | yoda |
-| rapgap | waiting | rivet |
-| rivet | waiting | yoda |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| professor | blocked | yoda |
+| rapgap | blocked | rivet |
+| rivet | blocked | yoda |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -58,6 +57,7 @@ failed: 5 · blocked: 3 · building: 3 · waiting: 9 · done: 51 · n/a: 25
 | inih | done |  |
 | iregi | done |  |
 | jana | done |  |
+| jetphox | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |

@@ -71,7 +71,9 @@
   "41666878679": false,
   "41666907839": false,
   "41666919867": false,
-  "41666972479": false
+  "41666972479": false,
+  "41670653035": false,
+  "41670662948": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -125,20 +127,18 @@
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41666878679": "CMake Error at /Users/runner/miniconda/conda-bld/dd4hep_1793720680040/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
   "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839": "error: 'HepMC3/Version.h' file not found",
   "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867": "error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter]",
-  "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479": "CMake Error at CMakeLists.txt:25 (find_package):"
+  "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479": "CMake Error at CMakeLists.txt:25 (find_package):",
+  "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41670653035": "No such file or directory",
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41670662948": "No such file or directory"
  },
  "issues": {
   "yoda": {
    "number": 1,
-   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41663774495"
-  },
-  "jetphox": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/jetphox-feedstock/actions/runs/41663727977"
+   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41670662948"
   },
   "thepeg": {
    "number": 1,
-   "run": "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41663761347"
+   "run": "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41670653035"
   },
   "afterburner": {
    "number": 1,
