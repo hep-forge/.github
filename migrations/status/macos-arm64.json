@@ -51,7 +51,13 @@
   "41641461367": false,
   "41641474944": false,
   "41641490535": false,
-  "41641511011": false
+  "41641511011": false,
+  "41646442050": false,
+  "41646467428": false,
+  "41646475142": false,
+  "41646483908": false,
+  "41646496157": false,
+  "41646514942": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -85,7 +91,13 @@
   "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367": "No such file or directory",
   "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944": "No such file or directory",
   "https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535": "error: error: no member named 'back_inserter' in namespace 'std'no member named 'back_inserter' in namespace 'std'",
-  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011": "ld: framework not found -lz"
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011": "ld: framework not found -lz",
+  "https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050": "error: no member named 'prev_permutation' in namespace 'std'",
+  "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428": "error: ^[[0m^[[1mfile '/Users/runner/miniconda/conda-bld/framel-root_1793713279983/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
+  "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142": "error: /Users/runner/miniconda/conda-bld/hepmc_1793713294877/_build_env/bin/arm64-apple-darwin20.0.0-install_name_tool: for: /Users/runner/miniconda/conda-bld/h",
+  "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908": "Segmentation fault: 11  python -c \"import lhapdf; print(lhapdf.version())\"",
+  "https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157": "error: no member named 'getenv' in namespace 'std'",
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942": "ld: framework not found -lz"
  },
  "issues": {
   "djangoh": {
@@ -94,15 +106,15 @@
   },
   "framel-root": {
    "number": 1,
-   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41641940973"
+   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428"
   },
   "pepper": {
    "number": 1,
-   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535"
+   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157"
   },
   "yoda": {
    "number": 1,
-   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011"
+   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942"
   },
   "jetphox": {
    "number": 1,
@@ -114,15 +126,15 @@
   },
   "delphes": {
    "number": 1,
-   "run": "https://github.com/hep-forge/delphes-feedstock/actions/runs/41641415895"
+   "run": "https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050"
   },
   "hepmc": {
    "number": 1,
-   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367"
+   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142"
   },
   "lhapdf": {
    "number": 1,
-   "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944"
+   "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908"
   },
   "geant": {
    "number": 1,

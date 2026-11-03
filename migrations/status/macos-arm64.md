@@ -1,40 +1,40 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:06 UTC.
 
-failed: 1 · building: 7 · waiting: 21 · done: 42 · n/a: 25
+failed: 7 · blocked: 20 · building: 1 · waiting: 1 · done: 42 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050) error: no member named 'prev_permutation' in namespace 'std' |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| delphes | building | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050) |
-| framel-root | building | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428) |
+| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428) error: ^[[0m^[[1mfile '/Users/runner/miniconda/conda-bld/framel-root_1793713279983/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_ |
+| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142) error: /Users/runner/miniconda/conda-bld/hepmc_1793713294877/_build_env/bin/arm64-apple-darwin20.0.0-install_name_tool: for: /Users/runner/miniconda/conda-bld/h |
+| lhapdf | failed | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908) Segmentation fault: 11  python -c "import lhapdf; print(lhapdf.version())" |
+| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157) error: no member named 'getenv' in namespace 'std' |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942) ld: framework not found -lz |
+| acts | blocked | dd4hep |
+| afterburner | blocked | hepmc |
+| apfelgrid | blocked | applgrid, lhapdf |
+| applgrid | blocked | fastnlo, lhapdf |
+| dd4hep | blocked | hepmc |
+| dyturbo | blocked | lhapdf |
+| eic-smear | blocked | hepmc |
+| epic | blocked | dd4hep |
+| estarlight | blocked | hepmc |
+| fastnlo | blocked | lhapdf, yoda |
+| hepmc-merger | blocked | hepmc |
+| herwig7 | blocked | lhapdf, thepeg |
+| jetphox | blocked | lhapdf |
+| npsim | blocked | dd4hep |
+| professor | blocked | yoda |
+| rapgap | blocked | hepmc, lhapdf, rivet |
+| rivet | blocked | hepmc, yoda |
+| thepeg | blocked | lhapdf |
+| xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
+| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41644315308) |
-| hepmc | building | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142) |
-| lhapdf | building | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908) |
-| pepper | building | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157) |
-| yoda | building | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942) |
-| acts | waiting | dd4hep |
-| afterburner | waiting | hepmc |
-| apfelgrid | waiting | applgrid, lhapdf |
-| applgrid | waiting | fastnlo, lhapdf |
-| dd4hep | waiting | g4hepem, geant, hepmc |
-| dyturbo | waiting | lhapdf |
-| eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | lhapdf, yoda |
 | g4hepem | waiting | geant |
-| hepmc-merger | waiting | hepmc |
-| herwig7 | waiting | lhapdf, thepeg |
-| jetphox | waiting | lhapdf |
-| npsim | waiting | dd4hep |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, lhapdf, rivet |
-| rivet | waiting | hepmc, yoda |
-| thepeg | waiting | lhapdf |
-| xfitter | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
-| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
