@@ -4,7 +4,8 @@
   "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
   "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 4,
   "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4,
-  "fastjet-contrib@19b41fad2e76af7b3cfc96dfba438fa2326ae90f": 1
+  "fastjet-contrib@19b41fad2e76af7b3cfc96dfba438fa2326ae90f": 1,
+  "herwig7@e6de32cbb83c368a3876dca5e48c8359fcee68c7": 1
  },
  "transient_runs": {
   "41603478452": true,
@@ -80,7 +81,10 @@
   "41680793161": false,
   "41680807221": false,
   "41686939043": false,
-  "41686977777": false
+  "41686977777": false,
+  "41690593739": false,
+  "41680819372": true,
+  "41690660290": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -144,7 +148,9 @@
   "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41680807221": "CMake Error at CMakeLists.txt:45 (target_link_libraries):",
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372": "No such file or directory",
   "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41686939043": "error: unknown type name 'uint'; did you mean 'int'?",
-  "https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777": "CMake Error at /Users/runner/miniconda/conda-bld/podio_1793727857226/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):"
+  "https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777": "CMake Error at /Users/runner/miniconda/conda-bld/podio_1793727857226/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
+  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"yoda=1.9.9\"), MatchSpec(\"hoppet=1.2.0\")}",
+  "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"fastjet-contrib==1.103=h75d2b18_1\")}"
  },
  "issues": {
   "dd4hep": {
@@ -162,6 +168,14 @@
   "podio": {
    "number": 1,
    "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777"
+  },
+  "fastnlo": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739"
+  },
+  "rivet": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290"
   }
  }
 }

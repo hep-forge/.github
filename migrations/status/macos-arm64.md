@@ -1,26 +1,25 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:26 UTC.
 
-failed: 3 · blocked: 4 · building: 3 · waiting: 5 · done: 56 · n/a: 25
+failed: 2 · blocked: 5 · building: 3 · waiting: 4 · done: 57 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41686939043) error: unknown type name 'uint'; did you mean 'int'? |
-| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372) No such file or directory |
-| podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777) CMake Error at /Users/runner/miniconda/conda-bld/podio_1793727857226/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
-| acts | blocked | dd4hep |
-| dd4hep | blocked | podio |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| fastnlo | building | moved 2.6.0 to main c0ab739 |
-| professor | building | moved 2.5.9 to main 9b5f0f8 |
-| rivet | building | moved 4.1.3 to main 83e3efb |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| rapgap | waiting | rivet |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("yoda=1.9.9"), MatchSpec("hoppet=1.2.0")} |
+| rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("fastjet-contrib==1.103=h75d2b18_1")} |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| rapgap | blocked | rivet |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| estarlight | building | moved 1.2.0 to main 6992096 |
+| herwig7 | building | moved 7.3.0 to main e6de32c |
+| podio | building | moved 1.7.0 to main 16d86e4 |
+| acts | waiting | dd4hep |
+| dd4hep | waiting | podio |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -71,6 +70,7 @@ failed: 3 · blocked: 4 · building: 3 · waiting: 5 · done: 56 · n/a: 25
 | pepper | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
+| professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
 | root-plus | done |  |
