@@ -2,7 +2,7 @@
  "retries": {
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
   "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
-  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 2,
+  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 3,
   "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4
  },
  "transient_runs": {
@@ -40,7 +40,8 @@
   "41624688034": false,
   "41624694438": false,
   "41624722714": false,
-  "41627231536": true
+  "41627231536": true,
+  "41624667290": true
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",

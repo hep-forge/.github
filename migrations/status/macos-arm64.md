@@ -1,6 +1,6 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 11:45 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 12:06 UTC.
 
 failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 
@@ -36,7 +36,7 @@ failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 | rivet | blocked | fastjet-contrib, hepmc, yoda |
 | xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41624667290) |
+| geant | building | moved 11.4.1 to main a72584e |
 | g4hepem | waiting | geant |
 | apfel | done |  |
 | apfelxx | done |  |
