@@ -2,7 +2,7 @@
  "retries": {
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
   "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
-  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 3,
+  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 4,
   "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4
  },
  "transient_runs": {
@@ -41,7 +41,9 @@
   "41624694438": false,
   "41624722714": false,
   "41627231536": true,
-  "41624667290": true
+  "41624667290": true,
+  "41638115968": false,
+  "41632952960": true
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -67,7 +69,9 @@
   "https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034": "error: no member named 'nothrow' in namespace 'std'",
   "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41624694438": "CondaBuildUserError: TESTS FAILED: lhapdf-6.5.6-py312h70343ba_0.conda",
   "https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714": "error: linker command failed with exit code 1 (use -v to see invocation)",
-  "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536": "Error: HTTP 000 CONNECTION FAILED for url <http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.105.tar.gz>"
+  "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536": "Error: HTTP 000 CONNECTION FAILED for url <http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.105.tar.gz>",
+  "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41638115968": "Error: /Users/runner/miniconda/conda-bld/framel-root_1793709849431/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+  "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960": "CondaBuildUserError: TESTS FAILED: geant-1!4.11.4.1-east.conda"
  },
  "issues": {
   "djangoh": {
@@ -76,7 +80,7 @@
   },
   "framel-root": {
    "number": 1,
-   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524"
+   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41638115968"
   },
   "hell": {
    "number": 1,
@@ -117,6 +121,10 @@
   "fastjet-contrib": {
    "number": 1,
    "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536"
+  },
+  "geant": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960"
   }
  }
 }
