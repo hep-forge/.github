@@ -1,40 +1,38 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:26 UTC.
 
-failed: 7 · blocked: 20 · building: 1 · waiting: 1 · done: 42 · n/a: 25
+failed: 1 · building: 6 · waiting: 20 · done: 44 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050) error: no member named 'prev_permutation' in namespace 'std' |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428) error: ^[[0m^[[1mfile '/Users/runner/miniconda/conda-bld/framel-root_1793713279983/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_ |
-| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142) error: /Users/runner/miniconda/conda-bld/hepmc_1793713294877/_build_env/bin/arm64-apple-darwin20.0.0-install_name_tool: for: /Users/runner/miniconda/conda-bld/h |
-| lhapdf | failed | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908) Segmentation fault: 11  python -c "import lhapdf; print(lhapdf.version())" |
-| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157) error: no member named 'getenv' in namespace 'std' |
-| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942) ld: framework not found -lz |
-| acts | blocked | dd4hep |
-| afterburner | blocked | hepmc |
-| apfelgrid | blocked | applgrid, lhapdf |
-| applgrid | blocked | fastnlo, lhapdf |
-| dd4hep | blocked | hepmc |
-| dyturbo | blocked | lhapdf |
-| eic-smear | blocked | hepmc |
-| epic | blocked | dd4hep |
-| estarlight | blocked | hepmc |
-| fastnlo | blocked | lhapdf, yoda |
-| hepmc-merger | blocked | hepmc |
-| herwig7 | blocked | lhapdf, thepeg |
-| jetphox | blocked | lhapdf |
-| npsim | blocked | dd4hep |
-| professor | blocked | yoda |
-| rapgap | blocked | hepmc, lhapdf, rivet |
-| rivet | blocked | hepmc, yoda |
-| thepeg | blocked | lhapdf |
-| xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41644315308) |
-| g4hepem | waiting | geant |
+| delphes | building | moved 3.5.1 to main dd7341e |
+| g4hepem | building | moved 20251114 to main e568562 |
+| hepmc | building | moved 3.3.1 to main eb859c4 |
+| lhapdf | building | moved 6.5.6 to main 938908e |
+| pepper | building | moved 1.14.1 to main abe210c |
+| yoda | building | moved 2.1.4 to main 21a9a12 |
+| acts | waiting | dd4hep |
+| afterburner | waiting | hepmc |
+| apfelgrid | waiting | applgrid, lhapdf |
+| applgrid | waiting | fastnlo, lhapdf |
+| dd4hep | waiting | g4hepem, hepmc |
+| dyturbo | waiting | lhapdf |
+| eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
+| estarlight | waiting | hepmc |
+| fastnlo | waiting | lhapdf, yoda |
+| hepmc-merger | waiting | hepmc |
+| herwig7 | waiting | lhapdf, thepeg |
+| jetphox | waiting | lhapdf |
+| npsim | waiting | dd4hep |
+| professor | waiting | yoda |
+| rapgap | waiting | hepmc, lhapdf, rivet |
+| rivet | waiting | hepmc, yoda |
+| thepeg | waiting | lhapdf |
+| xfitter | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
+| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -52,6 +50,8 @@ failed: 7 · blocked: 20 · building: 1 · waiting: 1 · done: 42 · n/a: 25
 | fastjet | done |  |
 | fastjet-contrib | done |  |
 | framel | done |  |
+| framel-root | done | built; channel not refreshed yet |
+| geant | done | built; channel not refreshed yet |
 | gosam | done |  |
 | hathor | done |  |
 | hell | done |  |

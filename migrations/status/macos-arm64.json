@@ -104,10 +104,6 @@
    "number": 1,
    "run": "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733"
   },
-  "framel-root": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428"
-  },
   "pepper": {
    "number": 1,
    "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157"
@@ -135,10 +131,6 @@
   "lhapdf": {
    "number": 1,
    "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908"
-  },
-  "geant": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960"
   }
  }
 }
