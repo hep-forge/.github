@@ -326,7 +326,13 @@ class Migration:
 
     TRANSIENT = re.compile(r"CONNECTION FAILED|Could not download|ReadTimeoutError|"
                            r"Connection reset by peer|Temporary failure in name resolution|"
-                           r"fatal: unable to access|The requested URL returned error: 50[0234]")
+                           r"fatal: unable to access|The requested URL returned error: 50[0234]|"
+                           r"Response ended prematurely|ChunkedEncodingError")
+    # anything a real build or test failure prints; a failed build with none
+    # of it died for another reason (runner trouble) and is worth another go
+    SAYS_WHY = re.compile(r"error[: ]|Error [0-9]|Error: |TESTS FAILED|Traceback|Unsatisfiable|"
+                          r"nothing provides|Undefined symbols|Segmentation fault|CMake Error|"
+                          r"No such file or directory|not found")
 
     def transient(self, p, run):
         """A source download that timed out is the server's fault, not the recipe's:
@@ -338,7 +344,9 @@ class Migration:
         if rid not in seen:
             log = gh("run", "view", rid, "-R", f"{ORG}/{p}-feedstock", "--log-failed").stdout
             # a dead first URL is not the failure when a mirror then got the source
-            seen[rid] = bool(self.TRANSIENT.search(log)) and not self.downloaded(log)
+            build = "\n".join(l for l in log.splitlines() if "\tBuild Package\t" in l)
+            seen[rid] = (bool(self.TRANSIENT.search(log)) and not self.downloaded(log)) \
+                or (bool(build) and not self.SAYS_WHY.search(build))
             if seen[rid]:
                 retries[key] = retries.get(key, 0) + 1
         return seen[rid] and retries.get(key, 0) <= 3
