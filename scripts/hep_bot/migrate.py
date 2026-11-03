@@ -302,9 +302,15 @@ class Migration:
             # built, but the channel does not show it (yet): publish lag, or the
             # leg was not in ANACONDA_PUBLISH. Treat as done for scheduling.
             return "done", "built; channel not refreshed yet"
-        if last and last["headSha"] == w.main_sha(p) and not self.dep_rebuilt_since(p, last) \
-                and self.run_failed(p, last):
-            return "failed", last["url"]
+        # failed if any published tag's latest run failed at the current main:
+        # with lts tags, a passing newest tag alone would otherwise send the
+        # package back to "ready" and restart both on every pass
+        for t in tags:
+            r = runs[t][0] if runs[t] else None
+            if r and r["status"] == "completed" and r["conclusion"] != "success" \
+                    and r["headSha"] == w.main_sha(p) and not self.dep_rebuilt_since(p, r) \
+                    and self.run_failed(p, r):
+                return "failed", r["url"]
         return "todo", ""
 
     def dep_rebuilt_since(self, p, run):
@@ -350,7 +356,8 @@ class Migration:
     TRANSIENT = re.compile(r"CONNECTION FAILED|Could not download|ReadTimeoutError|"
                            r"Connection reset by peer|Temporary failure in name resolution|"
                            r"fatal: unable to access|The requested URL returned error: 50[0234]|"
-                           r"Response ended prematurely|ChunkedEncodingError")
+                           r"Response ended prematurely|ChunkedEncodingError|"
+                           r"due to a high load|-> 50[234]\b")
     # anything a real build or test failure prints; a failed build with none
     # of it died for another reason (runner trouble) and is worth another go
     SAYS_WHY = re.compile(r"error[: ]|Error [0-9]|Error: |TESTS FAILED|Traceback|Unsatisfiable|"
@@ -369,7 +376,9 @@ class Migration:
             # a dead first URL is not the failure when a mirror then got the source
             build = "\n".join(l for l in log.splitlines() if "\tBuild Package\t" in l)
             # a transfer cut off midway failed that file, whatever others did
-            dropped = bool(re.search(r"Response ended prematurely|ChunkedEncodingError", log))
+            # (and anaconda.org refusing an upload under load: the build was fine)
+            dropped = bool(re.search(r"Response ended prematurely|ChunkedEncodingError|"
+                                     r"due to a high load|api\.anaconda\.org\S* -> 50[234]", log))
             seen[rid] = dropped or (bool(self.TRANSIENT.search(log)) and not self.downloaded(log)) \
                 or (bool(build) and not self.SAYS_WHY.search(build))
             if seen[rid]:
