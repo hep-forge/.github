@@ -1,19 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:40 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:43 UTC.
 
 failed: 1 · building: 7 · waiting: 21 · done: 42 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| delphes | building | moved 3.5.1 to main 08090ca |
-| framel-root | building | moved 1.0.2 to main 6e15a12 |
+| delphes | building | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41646442050) |
+| framel-root | building | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41646467428) |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41644315308) |
-| hepmc | building | moved 3.3.1 to main 1e4cfd0 |
-| lhapdf | building | moved 6.5.6 to main 1ac1eea |
-| pepper | building | moved 1.14.1 to main 3de6cfb |
-| yoda | building | moved 2.1.4 to main d86bc9b |
+| hepmc | building | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41646475142) |
+| lhapdf | building | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41646483908) |
+| pepper | building | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41646496157) |
+| yoda | building | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41646514942) |
 | acts | waiting | dd4hep |
 | afterburner | waiting | hepmc |
 | apfelgrid | waiting | applgrid, lhapdf |
