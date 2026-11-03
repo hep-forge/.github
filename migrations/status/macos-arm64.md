@@ -1,13 +1,14 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 11:24 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 11:45 UTC.
 
-failed: 11 · blocked: 18 · building: 2 · waiting: 1 · done: 39 · n/a: 25
+failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41621710363) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root==6.22.6=py38he9c1451_0"), MatchSpec("root_base==6.22.6=py38h1381eaf_0")} |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
+| fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536) Error: HTTP 000 CONNECTION FAILED for url <http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.105.tar.gz> |
 | framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
 | hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536) error: unknown type name 'pthread_mutex_t'; did you mean 'pthread_attr_t'? |
 | hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root==6.38.00=py313h14255da_0"), MatchSpec("root_base==6.38.0=cxx20_h073445b_0")} |
@@ -32,10 +33,9 @@ failed: 11 · blocked: 18 · building: 2 · waiting: 1 · done: 39 · n/a: 25
 | npsim | blocked | dd4hep |
 | professor | blocked | yoda |
 | rapgap | blocked | hepmc, lhapdf, rivet |
-| rivet | blocked | hepmc, yoda |
+| rivet | blocked | fastjet-contrib, hepmc, yoda |
 | xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
-| fastjet-contrib | building | moved 1.105 to main 0e00958 |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41624667290) |
 | g4hepem | waiting | geant |
 | apfel | done |  |
