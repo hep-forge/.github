@@ -1,26 +1,25 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 20:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:05 UTC.
 
-building: 4 · waiting: 11 · done: 56 · n/a: 25
+failed: 3 · blocked: 10 · building: 1 · done: 57 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | building | moved 1.37 to main e48d657 |
-| fastjet-contrib | building | moved 1.105, 1.103 to main 2a08431 |
-| hoppet | building | moved 2.2.0, 1.2.0 to main c76b05a |
-| thepeg | building | moved 2.3.0 to main 8aab09c |
-| acts | waiting | dd4hep |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo, hoppet |
-| epic | waiting | dd4hep |
-| fastnlo | waiting | hoppet |
-| herwig7 | waiting | thepeg |
-| npsim | waiting | dd4hep |
-| rapgap | waiting | rivet |
-| rivet | waiting | fastjet-contrib |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150) Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/user -> 503)', 503) |
+| hoppet | failed | [run](https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236) Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/dist/hep-forge/hoppet/2.2.0/osx-arm64/hop |
+| acts | blocked | dd4hep |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo, hoppet |
+| epic | blocked | dd4hep |
+| fastnlo | blocked | hoppet |
+| npsim | blocked | dd4hep |
+| rapgap | blocked | rivet |
+| rivet | blocked | fastjet-contrib |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| herwig7 | building | moved 7.3.0 to main 0063f97 |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -76,6 +75,7 @@ building: 4 · waiting: 11 · done: 56 · n/a: 25
 | qcdnum | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
+| thepeg | done |  |
 | yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |

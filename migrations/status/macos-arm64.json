@@ -91,7 +91,10 @@
   "41699854952": false,
   "41699873358": false,
   "41706011903": false,
-  "41709388894": false
+  "41709388894": false,
+  "41715229101": false,
+  "41715244150": false,
+  "41715267236": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -164,12 +167,15 @@
   "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41699854952": "error: variable 'nNonCriticalMissing' set but not used [-Werror,-Wunused-but-set-variable]",
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41699873358": "error: use of undeclared identifier 'random_shuffle'",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41706011903": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41709388894": "No such file or directory"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41709388894": "No such file or directory",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):",
+  "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150": "Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/user -> 503)', 503)",
+  "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236": "Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/dist/hep-forge/hoppet/2.2.0/osx-arm64/hop"
  },
  "issues": {
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41706011903"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101"
   },
   "herwig7": {
    "number": 1,
@@ -182,6 +188,14 @@
   "rivet": {
    "number": 1,
    "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290"
+  },
+  "fastjet-contrib": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41715244150"
+  },
+  "hoppet": {
+   "number": 3,
+   "run": "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236"
   }
  }
 }
