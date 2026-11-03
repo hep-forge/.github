@@ -41,6 +41,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -65,9 +66,26 @@ def gh(*args, check=False):
     return r
 
 
-def gh_json(*args):
-    r = gh(*args)
-    return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else None
+class ReadError(RuntimeError):
+    """GitHub could not be read. Never act on a guess: the package waits."""
+
+
+def gh_read(*args, missing_ok=False):
+    """gh call that reads; retried, then ReadError. With missing_ok a 404 is None."""
+    for attempt in range(3):
+        r = gh(*args)
+        if r.returncode == 0:
+            return r.stdout
+        if missing_ok and ("HTTP 404" in r.stderr or "Not Found" in r.stderr
+                           or "Git Repository is empty" in r.stderr):
+            return None
+        time.sleep(5 * (attempt + 1))
+    raise ReadError(f"gh {' '.join(args[:3])}: {r.stderr.strip()[:200]}")
+
+
+def gh_json(*args, missing_ok=False):
+    out = gh_read(*args, missing_ok=missing_ok)
+    return json.loads(out) if out and out.strip() else None
 
 
 def norm(v):
@@ -100,9 +118,10 @@ class World:
 
     def recipe(self, p):
         if p not in self._recipe:
-            r = gh("api", f"repos/{ORG}/{p}-feedstock/contents/recipe/meta.yaml",
-                   "-H", "Accept: application/vnd.github.raw")
-            self._recipe[p] = r.stdout if r.returncode == 0 else ""
+            # a feedstock without a recipe is "" (nothing to build); a failed
+            # read raises, so an unread recipe is never taken for an empty one
+            self._recipe[p] = gh_read("api", f"repos/{ORG}/{p}-feedstock/contents/recipe/meta.yaml",
+                                      "-H", "Accept: application/vnd.github.raw", missing_ok=True) or ""
         return self._recipe[p]
 
     def deps(self, p, names):
@@ -120,12 +139,15 @@ class World:
     def main_sha(self, p):
         if p not in self._main:
             d = gh_json("api", f"repos/{ORG}/{p}-feedstock/commits/main", "-q", "{sha: .sha}")
-            self._main[p] = d["sha"] if d else None
+            if not d:
+                raise ReadError(f"{p}: no main commit")
+            self._main[p] = d["sha"]
         return self._main[p]
 
     def tags(self, p):
         if p not in self._tags:
-            refs = gh_json("api", f"repos/{ORG}/{p}-feedstock/git/matching-refs/tags", "--paginate") or []
+            refs = gh_json("api", f"repos/{ORG}/{p}-feedstock/git/matching-refs/tags", "--paginate",
+                           missing_ok=True) or []
             self._tags[p] = {r["ref"][len("refs/tags/"):]: r["object"]["sha"] for r in refs}
         return self._tags[p]
 
@@ -182,7 +204,12 @@ class Migration:
         # (published broken), so it is not done until rebuilt after it
         self.redo = {p: str(v).replace("+00:00", "Z") for p, v in (spec.get("redo") or {}).items()}
         names = set(world.feedstocks)
-        self.graph = {p: world.deps(p, names) for p in world.feedstocks}
+        self.graph, self.unreadable = {}, {}
+        for p in world.feedstocks:
+            try:
+                self.graph[p] = world.deps(p, names)
+            except ReadError as e:
+                self.graph[p], self.unreadable[p] = [], str(e)
         if "from" in spec:
             start = set(spec["from"])
             members, todo = set(start), list(start)
@@ -226,6 +253,14 @@ class Migration:
 
     def state(self, p):
         """(state, detail) for one package, ignoring its dependencies."""
+        if p in self.unreadable:
+            return "unknown", f"could not read: {self.unreadable[p]}"
+        try:
+            return self._state(p)
+        except ReadError as e:
+            return "unknown", f"could not read: {e}"
+
+    def _state(self, p):
         w = self.w
         if self.platform and (w.noarch(p) or (self.platform.startswith("macos") and w.linux_only(p))):
             return "n/a", "noarch" if w.noarch(p) else "Linux only"
@@ -331,7 +366,15 @@ class Migration:
         if not self.platform or dry:
             return
         repo = f"{ORG}/{p}-feedstock"
+        if state == "unknown":
+            return
         v = self.w.variables(p)
+        if state == "n/a":
+            # a leg that does not apply must not stay switched to it alone
+            for name in ("ANACONDA_COMPILE", "ANACONDA_PUBLISH"):
+                if v.get(name) == self.platform:
+                    gh("variable", "delete", name, "-R", repo)
+            return
         if state == "done":
             if v.get("ANACONDA_PUBLISH") == self.platform:
                 legs = DEFAULT_PUBLISH.split(",") + [self.platform]
@@ -366,7 +409,7 @@ class Migration:
             if p in final:
                 return final[p]
             s, d = own[p]
-            if s in ("done", "n/a", "building", "failed"):
+            if s in ("done", "n/a", "building", "failed", "unknown"):
                 final[p] = (s, d)
                 return final[p]
             deps = [x for x in self.graph.get(p, []) if x in own and x not in stack]
@@ -447,7 +490,7 @@ class Migration:
 
     def write_status(self, final):
         self.status_dir.mkdir(parents=True, exist_ok=True)
-        order = ["failed", "blocked", "building", "ready", "waiting", "done", "n/a"]
+        order = ["failed", "unknown", "blocked", "building", "ready", "waiting", "done", "n/a"]
         counts = {s: sum(1 for x, _ in final.values() if x == s) for s in order}
         kind = f"platform `{self.platform}`" if self.platform else "rebuild"
         lines = [f"# Migration `{self.name}`", "",
