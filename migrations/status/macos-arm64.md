@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 22:24 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 22:43 UTC.
 
-failed: 4 · blocked: 9 · building: 1 · done: 57 · n/a: 25
+failed: 4 · blocked: 9 · done: 58 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -19,7 +19,6 @@ failed: 4 · blocked: 9 · building: 1 · done: 57 · n/a: 25
 | rivet | blocked | fastjet-contrib |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| framel-root | building | moved 1.0.3 to main c668f26 |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -42,6 +41,7 @@ failed: 4 · blocked: 9 · building: 1 · done: 57 · n/a: 25
 | estarlight | done |  |
 | fastjet | done |  |
 | framel | done |  |
+| framel-root | done |  |
 | g4hepem | done |  |
 | geant | done |  |
 | gosam | done |  |
