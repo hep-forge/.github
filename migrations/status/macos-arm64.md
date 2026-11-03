@@ -1,15 +1,14 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 12:30 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 12:47 UTC.
 
-failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
+failed: 11 · blocked: 17 · building: 6 · waiting: 1 · done: 39 · n/a: 22
 
 | Package | State | Detail |
 |---|---|---|
 | delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41621710363) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root==6.22.6=py38he9c1451_0"), MatchSpec("root_base==6.22.6=py38h1381eaf_0")} |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
 | fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536) Error: HTTP 000 CONNECTION FAILED for url <http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.105.tar.gz> |
-| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
 | hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536) error: unknown type name 'pthread_mutex_t'; did you mean 'pthread_attr_t'? |
 | hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root==6.38.00=py313h14255da_0"), MatchSpec("root_base==6.38.0=cxx20_h073445b_0")} |
 | jana | failed | [run](https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034) error: no member named 'nothrow' in namespace 'std' |
@@ -32,11 +31,15 @@ failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 | herwig7 | blocked | lhapdf, thepeg |
 | npsim | blocked | dd4hep |
 | professor | blocked | yoda |
-| rapgap | blocked | hepmc, lhapdf, rivet |
 | rivet | blocked | fastjet-contrib, hepmc, yoda |
 | xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
+| fairmq | building | moved 1.11.0 to main 97545d2 |
+| framel-root | building | moved 1.0.0 to main 7fb3c12 |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960) |
+| ninja-hep-ph | building | moved 1.2.1 to main 8625381 |
+| rapgap | building | moved 3.310 to main 47ccc5f |
+| troll | building | moved 3.3 to main 2ea072d |
 | g4hepem | waiting | geant |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -80,7 +83,6 @@ failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
-| fairmq | n/a | Linux only |
 | gaudi | n/a | Linux only |
 | hammer | n/a | Linux only |
 | lcg-relax | n/a | Linux only |
@@ -88,7 +90,6 @@ failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 | mcfm | n/a | Linux only |
 | mg5amcnlo | n/a | Linux only |
 | nestdaq | n/a | Linux only |
-| ninja-hep-ph | n/a | Linux only |
 | nnpdf | n/a | noarch |
 | phlex | n/a | Linux only |
 | qcdloop | n/a | Linux only |
@@ -98,7 +99,6 @@ failed: 12 · blocked: 18 · building: 1 · waiting: 1 · done: 39 · n/a: 25
 | roounfold | n/a | Linux only |
 | scirooplot | n/a | Linux only |
 | sherpa | n/a | Linux only |
-| troll | n/a | Linux only |
 | vgm | n/a | Linux only |
 | vmc | n/a | Linux only |
 | yadism | n/a | noarch |
