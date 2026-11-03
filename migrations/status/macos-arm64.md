@@ -1,56 +1,55 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:17 UTC.
 
-building: 8 · ready: 12 · waiting: 25 · done: 26 · n/a: 25
+failed: 3 · blocked: 5 · building: 8 · ready: 6 · waiting: 20 · done: 29 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| apfel | building | moved 3.1.1 to main 90a7c38 |
-| apfelxx | building | moved 4.10.0 to main e535a0e |
-| djangoh | building | moved 4.6.21 to main fb57ac2 |
+| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136) No such file or directory |
+| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41608307988) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/framel-root_1793696831142/work/conda_build.sh']' returned non-z |
+| geant | failed | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41608314259) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/geant_1793696852441/work/conda_build.sh']' returned non-zero ex |
+| acts | blocked | dd4hep |
+| dd4hep | blocked | g4hepem, geant |
+| epic | blocked | dd4hep |
+| g4hepem | blocked | geant |
+| npsim | blocked | dd4hep |
 | fastjet | building | moved 3.5.3 to main d5fddba |
-| framel-root | building | moved 1.0.0 to main 2376318 |
-| geant | building | moved 11.4.1 to main cba4e4a |
-| gosam | building | moved 3.0.3 to main 58d7e79 |
-| hathor | building | moved 2.0 to main 0f10aac |
-| hell | ready |  |
-| hellx | ready |  |
-| hoppet | ready |  |
-| iregi | ready |  |
-| jetphox | ready |  |
-| libdate-tz | ready |  |
+| gosam | building | [run](https://github.com/hep-forge/gosam-feedstock/actions/runs/41608319344) |
+| hell | building | moved 3.1 to main 3935159 |
+| hellx | building | moved 3.0 to main bb0e250 |
+| hoppet | building | moved 2.2.0 to main 1b36ceb |
+| iregi | building | moved 1.1.0 to main 85e37ca |
+| jetphox | building | moved 1.3.1_4 to main 2511a9e |
+| libdate-tz | building | moved 3.0.5 to main b88eb2e |
 | nlojetxx | ready |  |
 | nnlojet | ready |  |
 | pepper | ready |  |
 | podio | ready |  |
 | pythia | ready |  |
 | yoda | ready |  |
-| acts | waiting | dd4hep |
 | afterburner | waiting | hepmc |
-| apfelgrid | waiting | apfel, applgrid |
+| apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo, hoppet |
-| dd4hep | waiting | edm4hep, g4hepem, geant, hepmc, podio |
 | delphes | waiting | pythia |
 | dyturbo | waiting | hell, hellx |
 | edm4hep | waiting | podio |
 | eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
 | estarlight | waiting | hepmc |
 | fastjet-contrib | waiting | fastjet |
 | fastnlo | waiting | fastjet, hoppet, yoda |
-| g4hepem | waiting | geant |
 | hepmc | waiting | pythia |
 | hepmc-merger | waiting | hepmc |
 | herwig7 | waiting | fastjet, thepeg |
 | jana | waiting | podio |
-| npsim | waiting | dd4hep |
 | professor | waiting | yoda |
 | rapgap | waiting | hepmc, pythia, rivet |
 | rivet | waiting | fastjet, fastjet-contrib, hepmc, yoda |
 | thepeg | waiting | fastjet |
-| xfitter | waiting | apfel, apfelgrid, apfelxx, applgrid, dyturbo, hathor |
-| xfitter-dev | waiting | apfel, apfelgrid, apfelxx, applgrid, dyturbo, hathor |
+| xfitter | waiting | apfelgrid, applgrid, dyturbo |
+| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo |
+| apfel | done |  |
+| apfelxx | done |  |
 | chaplin | done |  |
 | collier | done |  |
 | combiner | done |  |
@@ -63,6 +62,7 @@ building: 8 · ready: 12 · waiting: 25 · done: 26 · n/a: 25
 | emela | done |  |
 | escalade | done |  |
 | framel | done |  |
+| hathor | done |  |
 | inih | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
