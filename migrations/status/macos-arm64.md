@@ -1,23 +1,22 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:26 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 18:45 UTC.
 
-failed: 2 · blocked: 5 · building: 3 · waiting: 4 · done: 57 · n/a: 25
+failed: 4 · blocked: 5 · building: 1 · waiting: 3 · done: 58 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41693744620) error: variable length arrays in C++ are a Clang extension [-Werror,-Wvla-cxx-extension] |
 | fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("yoda=1.9.9"), MatchSpec("hoppet=1.2.0")} |
+| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045) error: No ThePEG headers in /Users/runner/miniconda/conda-bld/herwig7_1793730428510/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold |
 | rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("fastjet-contrib==1.103=h75d2b18_1")} |
 | apfelgrid | blocked | applgrid |
 | applgrid | blocked | fastnlo |
 | rapgap | blocked | rivet |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| estarlight | building | moved 1.2.0 to main 6992096 |
-| herwig7 | building | moved 7.3.0 to main e6de32c |
-| podio | building | moved 1.7.0 to main 16d86e4 |
+| dd4hep | building | moved 1.37 to main fdfa0d1 |
 | acts | waiting | dd4hep |
-| dd4hep | waiting | podio |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
 | afterburner | done |  |
@@ -70,6 +69,7 @@ failed: 2 · blocked: 5 · building: 3 · waiting: 4 · done: 57 · n/a: 25
 | pepper | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
+| podio | done |  |
 | professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |

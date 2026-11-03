@@ -84,7 +84,9 @@
   "41686977777": false,
   "41690593739": false,
   "41680819372": true,
-  "41690660290": false
+  "41690660290": false,
+  "41693744620": false,
+  "41693764045": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -150,7 +152,9 @@
   "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41686939043": "error: unknown type name 'uint'; did you mean 'int'?",
   "https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777": "CMake Error at /Users/runner/miniconda/conda-bld/podio_1793727857226/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41690593739": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"yoda=1.9.9\"), MatchSpec(\"hoppet=1.2.0\")}",
-  "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"fastjet-contrib==1.103=h75d2b18_1\")}"
+  "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"fastjet-contrib==1.103=h75d2b18_1\")}",
+  "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41693744620": "error: variable length arrays in C++ are a Clang extension [-Werror,-Wvla-cxx-extension]",
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045": "error: No ThePEG headers in /Users/runner/miniconda/conda-bld/herwig7_1793730428510/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold"
  },
  "issues": {
   "dd4hep": {
@@ -159,15 +163,11 @@
   },
   "estarlight": {
    "number": 1,
-   "run": "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41686939043"
+   "run": "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41693744620"
   },
   "herwig7": {
    "number": 1,
-   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372"
-  },
-  "podio": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/41686977777"
+   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41693764045"
   },
   "fastnlo": {
    "number": 1,
