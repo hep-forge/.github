@@ -1,46 +1,44 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 10:07 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 10:25 UTC.
 
-failed: 4 · blocked: 15 · building: 8 · waiting: 8 · done: 36 · n/a: 25
+failed: 4 · blocked: 8 · building: 8 · waiting: 13 · done: 38 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
 | framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
-| hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41613447201) error: no member named 'terminate' in namespace 'std'; did you mean 'template'? |
-| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41613486824) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/pepper_1793699635560/work/conda_build.sh']' returned non-zero e |
-| pythia | failed | [run](https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895) error: linker command failed with exit code 1 (use -v to see invocation) |
-| acts | blocked | dd4hep |
-| afterburner | blocked | hepmc |
-| dd4hep | blocked | hepmc |
-| delphes | blocked | pythia |
-| dyturbo | blocked | hell |
-| eic-smear | blocked | hepmc |
-| epic | blocked | dd4hep |
-| estarlight | blocked | hepmc |
-| hepmc | blocked | pythia |
-| hepmc-merger | blocked | hepmc |
-| npsim | blocked | dd4hep |
-| rapgap | blocked | hepmc, pythia, rivet |
-| rivet | blocked | hepmc |
-| xfitter | blocked | dyturbo |
-| xfitter-dev | blocked | dyturbo |
-| djangoh | building | moved 4.6.21 to main b922735 |
-| edm4hep | building | moved 1.0.0 to main 81a70e2 |
-| fastjet | building | moved 3.5.3 to main 117d9db |
-| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41610892109) |
-| jana | building | moved 2026.03.01 to main 33af1e2 |
+| jana | failed | [run](https://github.com/hep-forge/jana-feedstock/actions/runs/41616493671) error: field has incomplete type 'std::exception_ptr' |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41616568458) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root_base==6.38.0=cxx20_h073445b_0"), MatchSpec("root==6.38.00=py313h14255da_0")} |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| fastnlo | blocked | yoda |
+| professor | blocked | yoda |
+| rapgap | blocked | rivet |
+| rivet | blocked | yoda |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| fastjet-contrib | building | moved 1.105 to main 0e00958 |
+| geant | building | moved 11.4.1 to main a72584e |
+| hell | building | moved 3.1 to main eea504f |
 | jetphox | building | moved 1.3.1_4 to main 2511a9e |
 | nnlojet | building | [run](https://github.com/hep-forge/nnlojet-feedstock/actions/runs/41610931735) |
-| yoda | building | moved 2.1.4 to main 2c7ebbd |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| fastjet-contrib | waiting | fastjet |
-| fastnlo | waiting | fastjet, yoda |
+| pepper | building | moved 1.14.1 to main 5fd171b |
+| pythia | building | moved 8.3.12 to main bcf8338 |
+| thepeg | building | moved 2.3.0 to main a45bf07 |
+| acts | waiting | dd4hep |
+| afterburner | waiting | hepmc |
+| dd4hep | waiting | g4hepem, geant, hepmc |
+| delphes | waiting | pythia |
+| dyturbo | waiting | hell |
+| eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
+| estarlight | waiting | hepmc |
 | g4hepem | waiting | geant |
-| herwig7 | waiting | fastjet, thepeg |
-| professor | waiting | yoda |
-| thepeg | waiting | fastjet |
+| hepmc | waiting | pythia |
+| hepmc-merger | waiting | hepmc |
+| herwig7 | waiting | thepeg |
+| npsim | waiting | dd4hep |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -52,8 +50,10 @@ failed: 4 · blocked: 15 · building: 8 · waiting: 8 · done: 36 · n/a: 25
 | curlpp | done |  |
 | cuttools | done |  |
 | difftop | done |  |
+| edm4hep | done |  |
 | emela | done |  |
 | escalade | done |  |
+| fastjet | done |  |
 | framel | done |  |
 | gosam | done |  |
 | hathor | done |  |
