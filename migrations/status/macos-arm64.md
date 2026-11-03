@@ -1,31 +1,29 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 16:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 17:06 UTC.
 
-failed: 3 · building: 3 · waiting: 14 · done: 51 · n/a: 25
+failed: 1 · blocked: 8 · building: 6 · waiting: 3 · done: 53 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| afterburner | failed | [run](https://github.com/hep-forge/afterburner-feedstock/actions/runs/41666854453) CMake Error at CMakeLists.txt:17 (find_package): |
-| eic-smear | failed | [run](https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839) error: 'HepMC3/Version.h' file not found |
-| hepmc-merger | failed | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479) CMake Error at CMakeLists.txt:25 (find_package): |
-| hepmc | building | moved 3.3.1 to main 4de9eaf |
-| thepeg | building | moved 2.3.0 to main c408d1a |
-| yoda | building | moved 2.1.4 to main 1e33350 |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41677199212) No such file or directory |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| fastnlo | blocked | yoda |
+| professor | blocked | yoda |
+| rapgap | blocked | rivet |
+| rivet | blocked | yoda |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| afterburner | building | moved 0.2.1 to main d449630 |
+| dd4hep | building | moved 1.37 to main 42be25e |
+| eic-smear | building | moved 1.2.3 to main 4fecb41 |
+| estarlight | building | moved 1.2.0 to main 461fffa |
+| hepmc-merger | building | moved 2.4.0 to main d791b03 |
+| herwig7 | building | moved 7.3.0 to main e6de32c |
 | acts | waiting | dd4hep |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| dd4hep | waiting | hepmc |
 | epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | yoda |
-| herwig7 | waiting | thepeg |
 | npsim | waiting | dd4hep |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet |
-| rivet | waiting | hepmc, yoda |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -53,6 +51,7 @@ failed: 3 · building: 3 · waiting: 14 · done: 51 · n/a: 25
 | hathor | done |  |
 | hell | done |  |
 | hellx | done |  |
+| hepmc | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
@@ -77,6 +76,7 @@ failed: 3 · building: 3 · waiting: 14 · done: 51 · n/a: 25
 | qcdnum | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
+| thepeg | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
