@@ -1,13 +1,16 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 14:45 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 15:06 UTC.
 
-failed: 3 · blocked: 16 · building: 4 · waiting: 1 · done: 47 · n/a: 25
+failed: 6 · blocked: 17 · done: 48 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| dyturbo | failed | [run](https://github.com/hep-forge/dyturbo-feedstock/actions/runs/41656755309) error: variable-sized object may not be initialized |
 | g4hepem | failed | [run](https://github.com/hep-forge/g4hepem-feedstock/actions/runs/41653610152) CMake Error at /Users/runner/miniconda/conda-bld/g4hepem_1793715996830/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
 | hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41653633225) No such file or directory |
+| jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/41656803823) error: use of built-in trait '__decay(decltype((std::__1::__to_address_helper<_Pointer, void>::__call)((declval<const _Pointer&>)())))' in function signature; u |
+| thepeg | failed | [run](https://github.com/hep-forge/thepeg-feedstock/actions/runs/41656860653) error: no template named 'insert_iterator' in namespace 'std' |
 | yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41653703076) No such file or directory |
 | acts | blocked | dd4hep |
 | afterburner | blocked | hepmc |
@@ -19,17 +22,13 @@ failed: 3 · blocked: 16 · building: 4 · waiting: 1 · done: 47 · n/a: 25
 | estarlight | blocked | hepmc |
 | fastnlo | blocked | yoda |
 | hepmc-merger | blocked | hepmc |
+| herwig7 | blocked | thepeg |
 | npsim | blocked | dd4hep |
 | professor | blocked | yoda |
 | rapgap | blocked | hepmc, rivet |
 | rivet | blocked | hepmc, yoda |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
-| djangoh | building | moved 4.6.21 to main b922735 |
-| dyturbo | building | moved 1.4.2 to main 9d59b89 |
-| jetphox | building | moved 1.3.1_4 to main 65e7d31 |
-| thepeg | building | moved 2.3.0 to main 8833da0 |
-| herwig7 | waiting | thepeg |
+| xfitter | blocked | apfelgrid, applgrid, dyturbo |
+| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -42,6 +41,7 @@ failed: 3 · blocked: 16 · building: 4 · waiting: 1 · done: 47 · n/a: 25
 | cuttools | done |  |
 | delphes | done |  |
 | difftop | done |  |
+| djangoh | done |  |
 | edm4hep | done |  |
 | emela | done |  |
 | escalade | done |  |
