@@ -1,43 +1,41 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:07 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 13:26 UTC.
 
-failed: 3 · blocked: 5 · building: 8 · waiting: 16 · done: 39 · n/a: 25
+failed: 7 · blocked: 20 · building: 2 · waiting: 1 · done: 41 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/41641415895) error: use of undeclared identifier 'back_inserter' |
 | djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733) CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda |
-| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41638115968) Error: /Users/runner/miniconda/conda-bld/framel-root_1793709849431/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
-| geant | failed | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960) CondaBuildUserError: TESTS FAILED: geant-1!4.11.4.1-east.conda |
+| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41641940973) error: ^[[0m^[[1munable to load precompiled file^[[0m |
+| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367) No such file or directory |
+| lhapdf | failed | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944) No such file or directory |
+| pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535) error: error: no member named 'back_inserter' in namespace 'std'no member named 'back_inserter' in namespace 'std' |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011) ld: framework not found -lz |
 | acts | blocked | dd4hep |
-| dd4hep | blocked | g4hepem, geant |
+| afterburner | blocked | hepmc |
+| apfelgrid | blocked | applgrid, lhapdf |
+| applgrid | blocked | fastnlo, lhapdf |
+| dd4hep | blocked | hepmc |
+| dyturbo | blocked | lhapdf |
+| eic-smear | blocked | hepmc |
 | epic | blocked | dd4hep |
-| g4hepem | blocked | geant |
+| estarlight | blocked | hepmc |
+| fastnlo | blocked | lhapdf, yoda |
+| hepmc-merger | blocked | hepmc |
+| herwig7 | blocked | lhapdf, thepeg |
+| jetphox | blocked | lhapdf |
 | npsim | blocked | dd4hep |
-| delphes | building | moved 3.5.1 to main 040a7a4 |
+| professor | blocked | yoda |
+| rapgap | blocked | hepmc, lhapdf, rivet |
+| rivet | blocked | hepmc, yoda |
+| thepeg | blocked | lhapdf |
+| xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
+| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | fastjet-contrib | building | moved 1.105 to main 19b41fa |
-| hell | building | moved 3.1 to main 0575041 |
-| hepmc | building | moved 3.3.1 to main 357200d |
-| jana | building | moved 2026.03.01 to main 813a30b |
-| lhapdf | building | moved 6.5.6 to main ac1c0ac |
-| pepper | building | moved 1.14.1 to main 0aa00d5 |
-| yoda | building | moved 2.1.4 to main 7c33318 |
-| afterburner | waiting | hepmc |
-| apfelgrid | waiting | applgrid, lhapdf |
-| applgrid | waiting | fastnlo, lhapdf |
-| dyturbo | waiting | hell, lhapdf |
-| eic-smear | waiting | hepmc |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | lhapdf, yoda |
-| hepmc-merger | waiting | hepmc |
-| herwig7 | waiting | lhapdf, thepeg |
-| jetphox | waiting | lhapdf |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, lhapdf, rivet |
-| rivet | waiting | fastjet-contrib, hepmc, yoda |
-| thepeg | waiting | lhapdf |
-| xfitter | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
-| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo, lhapdf |
+| geant | building | moved 11.4.1 to main a2b62f0 |
+| g4hepem | waiting | geant |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -56,10 +54,12 @@ failed: 3 · blocked: 5 · building: 8 · waiting: 16 · done: 39 · n/a: 25
 | framel | done |  |
 | gosam | done |  |
 | hathor | done |  |
+| hell | done |  |
 | hellx | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
+| jana | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | libdate-tz | done |  |

@@ -3,7 +3,8 @@
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
   "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
   "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 4,
-  "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4
+  "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4,
+  "fastjet-contrib@19b41fad2e76af7b3cfc96dfba438fa2326ae90f": 1
  },
  "transient_runs": {
   "41603478452": true,
@@ -43,7 +44,14 @@
   "41627231536": true,
   "41624667290": true,
   "41638115968": false,
-  "41632952960": true
+  "41632952960": true,
+  "41641415895": false,
+  "41641428408": true,
+  "41641940973": false,
+  "41641461367": false,
+  "41641474944": false,
+  "41641490535": false,
+  "41641511011": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -71,7 +79,13 @@
   "https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714": "error: linker command failed with exit code 1 (use -v to see invocation)",
   "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41627231536": "Error: HTTP 000 CONNECTION FAILED for url <http://fastjet.hepforge.org/contrib/downloads/fjcontrib-1.105.tar.gz>",
   "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41638115968": "Error: /Users/runner/miniconda/conda-bld/framel-root_1793709849431/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
-  "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960": "CondaBuildUserError: TESTS FAILED: geant-1!4.11.4.1-east.conda"
+  "https://github.com/hep-forge/geant-feedstock/actions/runs/41632952960": "CondaBuildUserError: TESTS FAILED: geant-1!4.11.4.1-east.conda",
+  "https://github.com/hep-forge/delphes-feedstock/actions/runs/41641415895": "error: use of undeclared identifier 'back_inserter'",
+  "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41641940973": "error: ^[[0m^[[1munable to load precompiled file^[[0m",
+  "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367": "No such file or directory",
+  "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944": "No such file or directory",
+  "https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535": "error: error: no member named 'back_inserter' in namespace 'std'no member named 'back_inserter' in namespace 'std'",
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011": "ld: framework not found -lz"
  },
  "issues": {
   "djangoh": {
@@ -80,23 +94,15 @@
   },
   "framel-root": {
    "number": 1,
-   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41638115968"
-  },
-  "hell": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536"
+   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41641940973"
   },
   "pepper": {
    "number": 1,
-   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41619131136"
-  },
-  "jana": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034"
+   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41641490535"
   },
   "yoda": {
    "number": 1,
-   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714"
+   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41641511011"
   },
   "jetphox": {
    "number": 1,
@@ -108,15 +114,15 @@
   },
   "delphes": {
    "number": 1,
-   "run": "https://github.com/hep-forge/delphes-feedstock/actions/runs/41621710363"
+   "run": "https://github.com/hep-forge/delphes-feedstock/actions/runs/41641415895"
   },
   "hepmc": {
    "number": 1,
-   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351"
+   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41641461367"
   },
   "lhapdf": {
    "number": 1,
-   "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41624694438"
+   "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41641474944"
   },
   "fastjet-contrib": {
    "number": 1,
