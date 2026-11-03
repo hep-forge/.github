@@ -1,30 +1,31 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 16:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 16:44 UTC.
 
-failed: 7 · blocked: 12 · done: 52 · n/a: 25
+failed: 3 · building: 3 · waiting: 14 · done: 51 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | afterburner | failed | [run](https://github.com/hep-forge/afterburner-feedstock/actions/runs/41666854453) CMake Error at CMakeLists.txt:17 (find_package): |
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41666878679) CMake Error at /Users/runner/miniconda/conda-bld/dd4hep_1793720680040/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
 | eic-smear | failed | [run](https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839) error: 'HepMC3/Version.h' file not found |
-| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867) error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter] |
 | hepmc-merger | failed | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479) CMake Error at CMakeLists.txt:25 (find_package): |
-| thepeg | failed | [run](https://github.com/hep-forge/thepeg-feedstock/actions/runs/41670653035) No such file or directory |
-| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41670662948) No such file or directory |
-| acts | blocked | dd4hep |
-| apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo |
-| epic | blocked | dd4hep |
-| fastnlo | blocked | yoda |
-| herwig7 | blocked | thepeg |
-| npsim | blocked | dd4hep |
-| professor | blocked | yoda |
-| rapgap | blocked | rivet |
-| rivet | blocked | yoda |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
+| hepmc | building | moved 3.3.1 to main 4de9eaf |
+| thepeg | building | moved 2.3.0 to main c408d1a |
+| yoda | building | moved 2.1.4 to main 1e33350 |
+| acts | waiting | dd4hep |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| dd4hep | waiting | hepmc |
+| epic | waiting | dd4hep |
+| estarlight | waiting | hepmc |
+| fastnlo | waiting | yoda |
+| herwig7 | waiting | thepeg |
+| npsim | waiting | dd4hep |
+| professor | waiting | yoda |
+| rapgap | waiting | hepmc, rivet |
+| rivet | waiting | hepmc, yoda |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -52,7 +53,6 @@ failed: 7 · blocked: 12 · done: 52 · n/a: 25
 | hathor | done |  |
 | hell | done |  |
 | hellx | done |  |
-| hepmc | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
