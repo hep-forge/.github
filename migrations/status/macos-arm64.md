@@ -1,24 +1,25 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 21:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 22:05 UTC.
 
-failed: 3 · blocked: 5 · building: 1 · waiting: 4 · done: 58 · n/a: 25
+failed: 4 · blocked: 9 · building: 1 · done: 57 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
 | fastjet-contrib | failed | [run](https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887) error: use of undeclared identifier 'back_inserter' |
+| fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41724372467) error: in '/Users/runner/miniconda/conda-bld/fastnlo_1793742270210/work/v2.6/toolkit': |
 | herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029) No such file or directory |
 | acts | blocked | dd4hep |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
 | epic | blocked | dd4hep |
 | npsim | blocked | dd4hep |
 | rapgap | blocked | rivet |
 | rivet | blocked | fastjet-contrib |
-| fastnlo | building | moved 2.6.0 to main c0ab739 |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| framel-root | building | moved 1.0.3 to main c668f26 |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -41,7 +42,6 @@ failed: 3 · blocked: 5 · building: 1 · waiting: 4 · done: 58 · n/a: 25
 | estarlight | done |  |
 | fastjet | done |  |
 | framel | done |  |
-| framel-root | done | built; channel not refreshed yet |
 | g4hepem | done |  |
 | geant | done |  |
 | gosam | done |  |
