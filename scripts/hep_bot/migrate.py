@@ -345,7 +345,9 @@ class Migration:
             log = gh("run", "view", rid, "-R", f"{ORG}/{p}-feedstock", "--log-failed").stdout
             # a dead first URL is not the failure when a mirror then got the source
             build = "\n".join(l for l in log.splitlines() if "\tBuild Package\t" in l)
-            seen[rid] = (bool(self.TRANSIENT.search(log)) and not self.downloaded(log)) \
+            # a transfer cut off midway failed that file, whatever others did
+            dropped = bool(re.search(r"Response ended prematurely|ChunkedEncodingError", log))
+            seen[rid] = dropped or (bool(self.TRANSIENT.search(log)) and not self.downloaded(log)) \
                 or (bool(build) and not self.SAYS_WHY.search(build))
             if seen[rid]:
                 retries[key] = retries.get(key, 0) + 1
