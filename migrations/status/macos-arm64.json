@@ -1,8 +1,9 @@
 {
  "retries": {
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
-  "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 3,
-  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 1
+  "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
+  "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 1,
+  "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 1
  },
  "transient_runs": {
   "41603478452": true,
@@ -25,7 +26,12 @@
   "41610892109": true,
   "41616493671": false,
   "41616497380": true,
-  "41616568458": false
+  "41616568458": false,
+  "41619073588": true,
+  "41619092536": false,
+  "41619108330": true,
+  "41619131136": false,
+  "41619152984": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -41,7 +47,11 @@
   "https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895": "error: linker command failed with exit code 1 (use -v to see invocation)",
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41616445733": "CondaBuildUserError: TESTS FAILED: djangoh-4.6.21-h32763b8_0.conda",
   "https://github.com/hep-forge/jana-feedstock/actions/runs/41616493671": "error: field has incomplete type 'std::exception_ptr'",
-  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41616568458": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"root_base==6.38.0=cxx20_h073445b_0\"), MatchSpec(\"root==6.38.00=py313h14255da_0\")}"
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41616568458": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"root_base==6.38.0=cxx20_h073445b_0\"), MatchSpec(\"root==6.38.00=py313h14255da_0\")}",
+  "https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536": "error: unknown type name 'pthread_mutex_t'; did you mean 'pthread_attr_t'?",
+  "https://github.com/hep-forge/jetphox-feedstock/actions/runs/41619108330": "Error: HTTP 000 CONNECTION FAILED for url <https://lapth.cnrs.fr/PHOX_FAMILY/src/jetphox_1.3.1_4.tar.gz>",
+  "https://github.com/hep-forge/pepper-feedstock/actions/runs/41619131136": "Error: Failed to download or patch source. Please see build log for info.",
+  "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41619152984": "error: no member named 'mem_fun' in namespace 'std'; did you mean 'mem_fn'?"
  },
  "issues": {
   "djangoh": {
@@ -54,15 +64,11 @@
   },
   "hell": {
    "number": 1,
-   "run": "https://github.com/hep-forge/hell-feedstock/actions/runs/41613447201"
+   "run": "https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536"
   },
   "pepper": {
    "number": 1,
-   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41613486824"
-  },
-  "pythia": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/pythia-feedstock/actions/runs/41613497895"
+   "run": "https://github.com/hep-forge/pepper-feedstock/actions/runs/41619131136"
   },
   "jana": {
    "number": 1,
@@ -71,6 +77,14 @@
   "yoda": {
    "number": 1,
    "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41616568458"
+  },
+  "jetphox": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/jetphox-feedstock/actions/runs/41619108330"
+  },
+  "thepeg": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41619152984"
   }
  }
 }
