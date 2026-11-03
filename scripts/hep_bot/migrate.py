@@ -285,7 +285,8 @@ class Migration:
         return failed
 
     TRANSIENT = re.compile(r"CONNECTION FAILED|Could not download|ReadTimeoutError|"
-                           r"Connection reset by peer|Temporary failure in name resolution")
+                           r"Connection reset by peer|Temporary failure in name resolution|"
+                           r"fatal: unable to access|The requested URL returned error: 50[0234]")
 
     def transient(self, p, run):
         """A source download that timed out is the server's fault, not the recipe's:
