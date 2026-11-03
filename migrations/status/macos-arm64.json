@@ -3,7 +3,7 @@
   "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 4,
   "jetphox@2511a9e417a5544458f739dba16632ad4422046e": 4,
   "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 2,
-  "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 2
+  "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 3
  },
  "transient_runs": {
   "41603478452": true,
@@ -35,7 +35,11 @@
   "41621710363": false,
   "41621722067": true,
   "41619079150": true,
-  "41621749351": false
+  "41621749351": false,
+  "41624657955": true,
+  "41624688034": false,
+  "41624694438": false,
+  "41624722714": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -57,7 +61,10 @@
   "https://github.com/hep-forge/pepper-feedstock/actions/runs/41619131136": "Error: Failed to download or patch source. Please see build log for info.",
   "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41619152984": "error: no member named 'mem_fun' in namespace 'std'; did you mean 'mem_fn'?",
   "https://github.com/hep-forge/delphes-feedstock/actions/runs/41621710363": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"root==6.22.6=py38he9c1451_0\"), MatchSpec(\"root_base==6.22.6=py38h1381eaf_0\")}",
-  "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"root==6.38.00=py313h14255da_0\"), MatchSpec(\"root_base==6.38.0=cxx20_h073445b_0\")}"
+  "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"root==6.38.00=py313h14255da_0\"), MatchSpec(\"root_base==6.38.0=cxx20_h073445b_0\")}",
+  "https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034": "error: no member named 'nothrow' in namespace 'std'",
+  "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41624694438": "CondaBuildUserError: TESTS FAILED: lhapdf-6.5.6-py312h70343ba_0.conda",
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714": "error: linker command failed with exit code 1 (use -v to see invocation)"
  },
  "issues": {
   "djangoh": {
@@ -78,11 +85,11 @@
   },
   "jana": {
    "number": 1,
-   "run": "https://github.com/hep-forge/jana-feedstock/actions/runs/41616493671"
+   "run": "https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034"
   },
   "yoda": {
    "number": 1,
-   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41616568458"
+   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714"
   },
   "jetphox": {
    "number": 1,
@@ -99,6 +106,10 @@
   "hepmc": {
    "number": 1,
    "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351"
+  },
+  "lhapdf": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41624694438"
   }
  }
 }

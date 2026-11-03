@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 11:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 11:24 UTC.
 
-failed: 8 · blocked: 14 · building: 5 · waiting: 5 · done: 39 · n/a: 25
+failed: 11 · blocked: 18 · building: 2 · waiting: 1 · done: 39 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -11,33 +11,33 @@ failed: 8 · blocked: 14 · building: 5 · waiting: 5 · done: 39 · n/a: 25
 | framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41610885524) Error: /Users/runner/miniconda/conda-bld/framel-root_1793697974365/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh |
 | hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41619092536) error: unknown type name 'pthread_mutex_t'; did you mean 'pthread_attr_t'? |
 | hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/41621749351) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root==6.38.00=py313h14255da_0"), MatchSpec("root_base==6.38.0=cxx20_h073445b_0")} |
+| jana | failed | [run](https://github.com/hep-forge/jana-feedstock/actions/runs/41624688034) error: no member named 'nothrow' in namespace 'std' |
 | jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/41619108330) Error: HTTP 000 CONNECTION FAILED for url <https://lapth.cnrs.fr/PHOX_FAMILY/src/jetphox_1.3.1_4.tar.gz> |
+| lhapdf | failed | [run](https://github.com/hep-forge/lhapdf-feedstock/actions/runs/41624694438) CondaBuildUserError: TESTS FAILED: lhapdf-6.5.6-py312h70343ba_0.conda |
 | pepper | failed | [run](https://github.com/hep-forge/pepper-feedstock/actions/runs/41619131136) Error: Failed to download or patch source. Please see build log for info. |
 | thepeg | failed | [run](https://github.com/hep-forge/thepeg-feedstock/actions/runs/41619152984) error: no member named 'mem_fun' in namespace 'std'; did you mean 'mem_fn'? |
+| yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41624722714) error: linker command failed with exit code 1 (use -v to see invocation) |
 | acts | blocked | dd4hep |
 | afterburner | blocked | hepmc |
+| apfelgrid | blocked | applgrid, lhapdf |
+| applgrid | blocked | fastnlo, lhapdf |
 | dd4hep | blocked | hepmc |
-| dyturbo | blocked | hell |
+| dyturbo | blocked | hell, lhapdf |
 | eic-smear | blocked | hepmc |
 | epic | blocked | dd4hep |
 | estarlight | blocked | hepmc |
+| fastnlo | blocked | lhapdf, yoda |
 | hepmc-merger | blocked | hepmc |
-| herwig7 | blocked | thepeg |
+| herwig7 | blocked | lhapdf, thepeg |
 | npsim | blocked | dd4hep |
-| rapgap | blocked | hepmc, rivet |
-| rivet | blocked | hepmc |
-| xfitter | blocked | dyturbo |
-| xfitter-dev | blocked | dyturbo |
+| professor | blocked | yoda |
+| rapgap | blocked | hepmc, lhapdf, rivet |
+| rivet | blocked | hepmc, yoda |
+| xfitter | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
+| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo, lhapdf |
 | fastjet-contrib | building | moved 1.105 to main 0e00958 |
-| geant | building | moved 11.4.1 to main a72584e |
-| jana | building | moved 2026.03.01 to main a1bc77d |
-| lhapdf | building | moved 6.5.6 to main 53198d3 |
-| yoda | building | moved 2.1.4 to main 8ebb17a |
-| apfelgrid | waiting | applgrid, lhapdf |
-| applgrid | waiting | fastnlo, lhapdf |
-| fastnlo | waiting | lhapdf, yoda |
+| geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41624667290) |
 | g4hepem | waiting | geant |
-| professor | waiting | yoda |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
