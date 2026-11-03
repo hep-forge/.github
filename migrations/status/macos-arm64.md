@@ -1,29 +1,29 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 17:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 17:25 UTC.
 
-failed: 1 · blocked: 8 · building: 6 · waiting: 3 · done: 53 · n/a: 25
+failed: 6 · blocked: 11 · done: 54 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41680774717) CMake Error at /Users/runner/miniconda/conda-bld/dd4hep_1793725577573/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
+| eic-smear | failed | [run](https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41680779412) No such file or directory |
+| estarlight | failed | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/41680793161) error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter] |
+| hepmc-merger | failed | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41680807221) CMake Error at CMakeLists.txt:45 (target_link_libraries): |
+| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372) No such file or directory |
 | yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/41677199212) No such file or directory |
+| acts | blocked | dd4hep |
 | apfelgrid | blocked | applgrid |
 | applgrid | blocked | fastnlo |
+| epic | blocked | dd4hep |
 | fastnlo | blocked | yoda |
+| npsim | blocked | dd4hep |
 | professor | blocked | yoda |
 | rapgap | blocked | rivet |
 | rivet | blocked | yoda |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| afterburner | building | moved 0.2.1 to main d449630 |
-| dd4hep | building | moved 1.37 to main 42be25e |
-| eic-smear | building | moved 1.2.3 to main 4fecb41 |
-| estarlight | building | moved 1.2.0 to main 461fffa |
-| hepmc-merger | building | moved 2.4.0 to main d791b03 |
-| herwig7 | building | moved 7.3.0 to main e6de32c |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
+| afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |

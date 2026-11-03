@@ -74,7 +74,12 @@
   "41666972479": false,
   "41670653035": false,
   "41670662948": false,
-  "41677199212": false
+  "41677199212": false,
+  "41680774717": false,
+  "41680779412": false,
+  "41680793161": false,
+  "41680807221": false,
+  "41680819372": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -131,32 +136,37 @@
   "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479": "CMake Error at CMakeLists.txt:25 (find_package):",
   "https://github.com/hep-forge/thepeg-feedstock/actions/runs/41670653035": "No such file or directory",
   "https://github.com/hep-forge/yoda-feedstock/actions/runs/41670662948": "No such file or directory",
-  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41677199212": "No such file or directory"
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/41677199212": "No such file or directory",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41680774717": "CMake Error at /Users/runner/miniconda/conda-bld/dd4hep_1793725577573/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
+  "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41680779412": "No such file or directory",
+  "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41680793161": "error: argument 'X' of type 'double[]' with mismatched bound [-Werror,-Warray-parameter]",
+  "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41680807221": "CMake Error at CMakeLists.txt:45 (target_link_libraries):",
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372": "No such file or directory"
  },
  "issues": {
   "yoda": {
    "number": 1,
    "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/41677199212"
   },
-  "afterburner": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/afterburner-feedstock/actions/runs/41666854453"
-  },
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41666878679"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41680774717"
   },
   "eic-smear": {
    "number": 1,
-   "run": "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41666907839"
+   "run": "https://github.com/hep-forge/eic-smear-feedstock/actions/runs/41680779412"
   },
   "estarlight": {
    "number": 1,
-   "run": "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41666919867"
+   "run": "https://github.com/hep-forge/estarlight-feedstock/actions/runs/41680793161"
   },
   "hepmc-merger": {
    "number": 1,
-   "run": "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41666972479"
+   "run": "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/41680807221"
+  },
+  "herwig7": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41680819372"
   }
  }
 }
