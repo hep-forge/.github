@@ -14,3 +14,5 @@ redo:
   # macOS package held only rootIO (conda-forge's hepmc3 was already in the
   # host env); rebuilt depending on hepmc3
   hepmc: 2026-11-03T16:40:00Z
+  # podioConfig recorded the build env's python 3.14; rebuilt against 3.12
+  podio: 2026-11-03T17:45:00Z
