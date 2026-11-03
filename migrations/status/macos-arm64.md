@@ -1,22 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 08:28 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:06 UTC.
 
-building: 8 · ready: 15 · waiting: 25 · done: 23 · n/a: 25
+building: 8 · ready: 12 · waiting: 25 · done: 26 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| apfel | building | moved 3.1.1 to main c8a1038 |
-| apfelxx | building | moved 4.10.0 to main 7b5b147 |
-| cuttools | building | moved 2.0 to main f3c8524 |
-| difftop | building | moved 1.0.0 to main 5fae5e3 |
-| djangoh | building | moved 4.6.21 to main bd69d50 |
-| emela | building | moved 1.0.1 to main fe35d8c |
+| apfel | building | moved 3.1.1 to main 90a7c38 |
+| apfelxx | building | moved 4.10.0 to main e535a0e |
+| djangoh | building | moved 4.6.21 to main fb57ac2 |
 | fastjet | building | moved 3.5.3 to main d5fddba |
-| framel-root | building | moved 1.0.0 to main 2c95132 |
-| geant | ready |  |
-| gosam | ready |  |
-| hathor | ready |  |
+| framel-root | building | moved 1.0.0 to main 2376318 |
+| geant | building | moved 11.4.1 to main cba4e4a |
+| gosam | building | moved 3.0.3 to main 58d7e79 |
+| hathor | building | moved 2.0 to main 0f10aac |
 | hell | ready |  |
 | hellx | ready |  |
 | hoppet | ready |  |
@@ -61,6 +58,9 @@ building: 8 · ready: 15 · waiting: 25 · done: 23 · n/a: 25
 | cuba | done |  |
 | cubature | done |  |
 | curlpp | done |  |
+| cuttools | done |  |
+| difftop | done |  |
+| emela | done |  |
 | escalade | done |  |
 | framel | done |  |
 | inih | done |  |
