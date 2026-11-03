@@ -162,6 +162,24 @@ class World:
                     "-L", "5", "--json", "databaseId,status,conclusion,createdAt,headSha,url") or []
         return [r for r in d if r["createdAt"] >= since]
 
+    @staticmethod
+    def lts(text):
+        """extra.lts versions, as an inline list (lts: [a, b]) or as a block
+        (lts: / main: / - "a"), the form most recipes use."""
+        m = re.search(r"^(\s*)lts:[ \t]*(\[[^\]]*\])?[ \t]*(#.*)?$", text, re.M)
+        if not m:
+            return []
+        if m.group(2):
+            return [v.strip(" '\"") for v in m.group(2)[1:-1].split(",") if v.strip(" '\"")]
+        out, indent = [], len(m.group(1))
+        for line in text[m.end():].splitlines()[1:]:
+            if line.strip() and len(line) - len(line.lstrip()) <= indent:
+                break
+            item = re.match(r"\s*-\s*['\"]?([^'\"#\s]+)", line)
+            if item:
+                out.append(item.group(1))
+        return out
+
     def published_tags(self, p):
         """Tags of the versions the channel serves: the newest, plus extra.lts / release_tags."""
         text = self.recipe(p)
@@ -173,9 +191,7 @@ class World:
         if not versions:
             return []
         want = [versions[-1]]
-        lts = re.search(r"\blts:\s*\[([^\]]*)\]", text)
-        if lts:
-            want += [v.strip(" '\"") for v in lts.group(1).split(",")]
+        want += self.lts(text)
         out = []
         for v in want:
             for t in sorted(tags):
@@ -240,8 +256,11 @@ class Migration:
         newest = tags[0]
         since = self.ms(self.redo[p]) if p in self.redo else 0
         if self.platform:
-            return any(norm(m["version"]) == norm(newest) and m.get("timestamp", 0) >= since
-                       for m in self.w.builds(p, SUBDIRS[self.platform]))
+            # every published tag, not just the newest: consumers pin lts lines
+            # (rivet: fastjet-contrib ==1.103, fastnlo: yoda ==1.9.9)
+            have = [m for m in self.w.builds(p, SUBDIRS[self.platform]) if m.get("timestamp", 0) >= since]
+            return all(any(norm(m["version"]) == norm(t) or norm(m["version"]).endswith("." + norm(t))
+                           for m in have) for t in tags)
         legs = self.legs(p)
         stamp = max(self.ms(self.created), since)
         for leg in legs:
@@ -274,8 +293,12 @@ class Migration:
         if live:
             return "building", live[0]["url"]
         last = runs[tags[0]][0] if runs[tags[0]] else None
-        if last and last["conclusion"] == "success" and \
-                (p not in self.redo or self.ms(last["createdAt"]) >= self.ms(self.redo[p])):
+
+        def built(t):
+            r = runs[t][0] if runs[t] else None
+            return bool(r) and r["conclusion"] == "success" and \
+                (p not in self.redo or self.ms(r["createdAt"]) >= self.ms(self.redo[p]))
+        if all(built(t) for t in tags):
             # built, but the channel does not show it (yet): publish lag, or the
             # leg was not in ANACONDA_PUBLISH. Treat as done for scheduling.
             return "done", "built; channel not refreshed yet"
