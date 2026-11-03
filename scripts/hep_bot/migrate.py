@@ -319,6 +319,11 @@ class Migration:
             return False
         return failed
 
+    @staticmethod
+    def downloaded(log):
+        """conda-build printed Success after a Downloading line: the source arrived."""
+        return bool(re.search(r"Downloading \S+\n[^\n]*\bSuccess\s*$", log, re.M))
+
     TRANSIENT = re.compile(r"CONNECTION FAILED|Could not download|ReadTimeoutError|"
                            r"Connection reset by peer|Temporary failure in name resolution|"
                            r"fatal: unable to access|The requested URL returned error: 50[0234]")
@@ -332,7 +337,8 @@ class Migration:
         rid = str(run["databaseId"])
         if rid not in seen:
             log = gh("run", "view", rid, "-R", f"{ORG}/{p}-feedstock", "--log-failed").stdout
-            seen[rid] = bool(self.TRANSIENT.search(log))
+            # a dead first URL is not the failure when a mirror then got the source
+            seen[rid] = bool(self.TRANSIENT.search(log)) and not self.downloaded(log)
             if seen[rid]:
                 retries[key] = retries.get(key, 0) + 1
         return seen[rid] and retries.get(key, 0) <= 3
@@ -393,9 +399,19 @@ class Migration:
         rid = url.rstrip("/").split("/")[-1]
         repo = "/".join(url.split("/")[3:5])
         log = gh("run", "view", rid, "-R", repo, "--log-failed").stdout
-        pat = re.compile(r"(error:.*|Error: .*|nothing provides .*|Unsatisfiable .*|"
-                         r"CondaBuildUserError: .*|BuildScriptException.*|No such file or directory.*)")
-        why = next((m.group(1)[:160] for line in log.splitlines() if (m := pat.search(line))), "")
+        # most specific first: a compiler or linker error beats the generic
+        # conda-build lines, and a download warning only counts when no
+        # mirror got the source after it
+        pats = [r"(error: .*|ld: .*not found.*|ld: unknown option.*|Undefined symbols.*)",
+                r"(Unsatisfiable .*|nothing provides .*|CMake Error.*|Could NOT find .*|"
+                r"Segmentation fault.*|malformed patch.*|No such file or directory.*)",
+                r"(CondaBuildUserError: .*|BuildScriptException.*|Error: .*)"]
+        lines = [l for l in log.splitlines() if not self.downloaded(log) or "CONNECTION FAILED" not in l]
+        why = ""
+        for pat in map(re.compile, pats):
+            why = next((m.group(1)[:160] for l in lines if (m := pat.search(l))), "")
+            if why:
+                break
         self.cache.setdefault("why", {})[url] = why
         return why
 
