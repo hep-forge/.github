@@ -1,17 +1,22 @@
 {
  "retries": {
-  "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 2
+  "fastjet@d5fddba6e2c12954a40d8989bb54939f5e11ed52": 3
  },
  "transient_runs": {
   "41603478452": true,
   "41608285136": false,
   "41608297535": true,
   "41608307988": false,
-  "41608314259": false
+  "41608314259": false,
+  "41609707026": true,
+  "41609734397": false,
+  "41609747060": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
   "https://github.com/hep-forge/framel-root-feedstock/actions/runs/41608307988": "BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/framel-root_1793696831142/work/conda_build.sh']' returned non-z",
-  "https://github.com/hep-forge/geant-feedstock/actions/runs/41608314259": "BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/geant_1793696852441/work/conda_build.sh']' returned non-zero ex"
+  "https://github.com/hep-forge/geant-feedstock/actions/runs/41608314259": "BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/geant_1793696852441/work/conda_build.sh']' returned non-zero ex",
+  "https://github.com/hep-forge/hell-feedstock/actions/runs/41609734397": "No such file or directory",
+  "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41609747060": "error: no member named 'vector' in namespace 'std'"
  }
 }

@@ -1,53 +1,50 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:17 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 09:25 UTC.
 
-failed: 3 · blocked: 5 · building: 8 · ready: 6 · waiting: 20 · done: 29 · n/a: 25
+failed: 2 · blocked: 6 · building: 8 · ready: 4 · waiting: 19 · done: 32 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| djangoh | failed | [run](https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136) No such file or directory |
-| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/41608307988) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/framel-root_1793696831142/work/conda_build.sh']' returned non-z |
-| geant | failed | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41608314259) BuildScriptException: Command '['/bin/bash', '-o', 'errexit', '/Users/runner/miniconda/conda-bld/geant_1793696852441/work/conda_build.sh']' returned non-zero ex |
-| acts | blocked | dd4hep |
-| dd4hep | blocked | g4hepem, geant |
-| epic | blocked | dd4hep |
-| g4hepem | blocked | geant |
-| npsim | blocked | dd4hep |
+| hell | failed | [run](https://github.com/hep-forge/hell-feedstock/actions/runs/41609734397) No such file or directory |
+| hoppet | failed | [run](https://github.com/hep-forge/hoppet-feedstock/actions/runs/41609747060) error: no member named 'vector' in namespace 'std' |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo, hoppet |
+| dyturbo | blocked | hell |
+| fastnlo | blocked | hoppet |
+| xfitter | blocked | apfelgrid, applgrid, dyturbo |
+| xfitter-dev | blocked | apfelgrid, applgrid, dyturbo |
+| djangoh | building | moved 4.6.21 to main 8faabaf |
 | fastjet | building | moved 3.5.3 to main d5fddba |
-| gosam | building | [run](https://github.com/hep-forge/gosam-feedstock/actions/runs/41608319344) |
-| hell | building | moved 3.1 to main 3935159 |
-| hellx | building | moved 3.0 to main bb0e250 |
-| hoppet | building | moved 2.2.0 to main 1b36ceb |
-| iregi | building | moved 1.1.0 to main 85e37ca |
-| jetphox | building | moved 1.3.1_4 to main 2511a9e |
-| libdate-tz | building | moved 3.0.5 to main b88eb2e |
-| nlojetxx | ready |  |
-| nnlojet | ready |  |
+| framel-root | building | moved 1.0.0 to main 0aaead5 |
+| geant | building | moved 11.4.1 to main a72584e |
+| iregi | building | [run](https://github.com/hep-forge/iregi-feedstock/actions/runs/41609753314) |
+| jetphox | building | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/41609758787) |
+| nlojetxx | building | moved 4.1.3 to main f2ebd59 |
+| nnlojet | building | moved 1.0.0 to main fdaa634 |
 | pepper | ready |  |
 | podio | ready |  |
 | pythia | ready |  |
 | yoda | ready |  |
+| acts | waiting | dd4hep |
 | afterburner | waiting | hepmc |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo, hoppet |
+| dd4hep | waiting | edm4hep, g4hepem, geant, hepmc, podio |
 | delphes | waiting | pythia |
-| dyturbo | waiting | hell, hellx |
 | edm4hep | waiting | podio |
 | eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
 | estarlight | waiting | hepmc |
 | fastjet-contrib | waiting | fastjet |
-| fastnlo | waiting | fastjet, hoppet, yoda |
+| g4hepem | waiting | geant |
 | hepmc | waiting | pythia |
 | hepmc-merger | waiting | hepmc |
 | herwig7 | waiting | fastjet, thepeg |
 | jana | waiting | podio |
+| npsim | waiting | dd4hep |
 | professor | waiting | yoda |
 | rapgap | waiting | hepmc, pythia, rivet |
 | rivet | waiting | fastjet, fastjet-contrib, hepmc, yoda |
 | thepeg | waiting | fastjet |
-| xfitter | waiting | apfelgrid, applgrid, dyturbo |
-| xfitter-dev | waiting | apfelgrid, applgrid, dyturbo |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -62,11 +59,14 @@ failed: 3 · blocked: 5 · building: 8 · ready: 6 · waiting: 20 · done: 29 ·
 | emela | done |  |
 | escalade | done |  |
 | framel | done |  |
+| gosam | done |  |
 | hathor | done |  |
+| hellx | done |  |
 | inih | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |
+| libdate-tz | done | built; channel not refreshed yet |
 | looptools | done |  |
 | minio-cpp | done |  |
 | mpfun90 | done |  |
