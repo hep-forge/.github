@@ -16,3 +16,5 @@ redo:
   hepmc: 2026-11-03T16:40:00Z
   # podioConfig recorded the build env's python 3.14; rebuilt against 3.12
   podio: 2026-11-03T17:45:00Z
+  # linked with a global -undefined dynamic_lookup; rebuilt with the libtool fix
+  thepeg: 2026-11-03T20:45:00Z
