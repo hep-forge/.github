@@ -120,7 +120,8 @@
   "41804661504": false,
   "41804694279": true,
   "41804717005": false,
-  "41804722008": false
+  "41804722008": false,
+  "41807523045": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -220,7 +221,8 @@
   "https://github.com/hep-forge/acts-feedstock/actions/runs/41804624319": "CMake Error at cmake/ActsCompilerOptions.cmake:91 (message):",
   "https://github.com/hep-forge/epic-feedstock/actions/runs/41804661504": "CMake Error at /Users/runner/miniconda/conda-bld/epic_1793783221322/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
   "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41804717005": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"numdiff==5.9.0=h1a9a430_0\"), MatchSpec(\"libintl[version='>=1.0,<2.0a0']\")}",
-  "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"libintl[version='>=1.0,<2.0a0']\"), MatchSpec(\"numdiff==5.9.0=h1a9a430_0\")}"
+  "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"libintl[version='>=1.0,<2.0a0']\"), MatchSpec(\"numdiff==5.9.0=h1a9a430_0\")}",
+  "https://github.com/hep-forge/npsim-feedstock/actions/runs/41807523045": "CMake Error at /Users/runner/miniconda/conda-bld/npsim_1793784450146/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):"
  },
  "issues": {
   "herwig7": {
@@ -242,6 +244,10 @@
   "xfitter-dev": {
    "number": 1,
    "run": "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008"
+  },
+  "npsim": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/npsim-feedstock/actions/runs/41807523045"
   }
  }
 }

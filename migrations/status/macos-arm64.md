@@ -1,16 +1,16 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 09:26 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 09:44 UTC.
 
-failed: 4 · building: 1 · done: 65 · n/a: 26
+failed: 5 · done: 65 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
 | acts | failed | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/41804624319) CMake Error at cmake/ActsCompilerOptions.cmake:91 (message): |
 | epic | failed | [run](https://github.com/hep-forge/epic-feedstock/actions/runs/41804661504) CMake Error at /Users/runner/miniconda/conda-bld/epic_1793783221322/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
+| npsim | failed | [run](https://github.com/hep-forge/npsim-feedstock/actions/runs/41807523045) CMake Error at /Users/runner/miniconda/conda-bld/npsim_1793784450146/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
 | xfitter | failed | [run](https://github.com/hep-forge/xfitter-feedstock/actions/runs/41804717005) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("numdiff==5.9.0=h1a9a430_0"), MatchSpec("libintl[version='>=1.0,<2.0a0']")} |
 | xfitter-dev | failed | [run](https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("libintl[version='>=1.0,<2.0a0']"), MatchSpec("numdiff==5.9.0=h1a9a430_0")} |
-| npsim | building | moved 1.6.1 to main 1be8037 |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelgrid | done |  |
