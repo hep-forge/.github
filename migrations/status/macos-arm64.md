@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 02:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 02:26 UTC.
 
-failed: 3 · blocked: 7 · building: 1 · done: 60 · n/a: 25
+failed: 3 · blocked: 7 · done: 61 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -16,7 +16,6 @@ failed: 3 · blocked: 7 · building: 1 · done: 60 · n/a: 25
 | npsim | blocked | dd4hep |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| rapgap | building | moved 3.310 to main ff58d5f |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -72,6 +71,7 @@ failed: 3 · blocked: 7 · building: 1 · done: 60 · n/a: 25
 | professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
+| rapgap | done |  |
 | rivet | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
