@@ -110,7 +110,8 @@
   "41773085572": false,
   "41777035110": false,
   "41779208051": false,
-  "41781004196": false
+  "41781004196": false,
+  "41783451939": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -202,7 +203,8 @@
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572": "No such file or directory",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41777035110": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) ",
   "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41779208051": "error: /bin/sh ./config.sub arm64-apple-darwin20.0.0 failed",
-  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41781004196": "error: header '__configuration/abi.h' not found"
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41781004196": "error: header '__configuration/abi.h' not found",
+  "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41783451939": "error: require no space between '-L' and '-lgfortran'"
  },
  "issues": {
   "dd4hep": {
@@ -215,7 +217,7 @@
   },
   "applgrid": {
    "number": 1,
-   "run": "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41779208051"
+   "run": "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41783451939"
   }
  }
 }
