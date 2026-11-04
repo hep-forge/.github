@@ -1,22 +1,22 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 08:27 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 08:43 UTC.
 
-building: 2 · waiting: 6 · done: 62 · n/a: 26
+building: 2 · waiting: 5 · done: 63 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| applgrid | building | moved 1.6.49 to main b360078 |
-| dd4hep | building | moved 1.37 to main a4355bd |
+| apfelgrid | building | moved 1.0.1 to main cd131b8 |
+| dd4hep | building | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41799587366) |
 | acts | waiting | dd4hep |
-| apfelgrid | waiting | applgrid |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| xfitter | waiting | apfelgrid |
+| xfitter-dev | waiting | apfelgrid |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
+| applgrid | done |  |
 | chaplin | done |  |
 | collier | done |  |
 | combiner | done |  |

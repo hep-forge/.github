@@ -220,10 +220,6 @@
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "applgrid": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41792182858"
   }
  }
 }
