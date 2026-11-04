@@ -1,22 +1,21 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-03 23:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 00:10 UTC.
 
-building: 4 · waiting: 9 · done: 58 · n/a: 25
+failed: 2 · blocked: 3 · building: 2 · waiting: 5 · done: 59 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | building | moved 1.37 to main dd6b43d |
-| fastjet-contrib | building | moved 1.105, 1.103 to main feffe4d |
-| fastnlo | building | moved 2.6.0 to main 8952427 |
-| herwig7 | building | moved 7.3.0 to main fbe24ca |
-| acts | waiting | dd4hep |
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41741411441) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581) No such file or directory |
+| acts | blocked | dd4hep |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
+| fastnlo | building | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930) |
+| rivet | building | moved 4.1.3, 3.1.11 to main 83e3efb |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
 | rapgap | waiting | rivet |
-| rivet | waiting | fastjet-contrib |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
@@ -40,6 +39,7 @@ building: 4 · waiting: 9 · done: 58 · n/a: 25
 | escalade | done |  |
 | estarlight | done |  |
 | fastjet | done |  |
+| fastjet-contrib | done |  |
 | framel | done |  |
 | framel-root | done |  |
 | g4hepem | done |  |

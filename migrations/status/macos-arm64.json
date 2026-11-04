@@ -97,7 +97,9 @@
   "41715267236": false,
   "41718542029": false,
   "41721620887": false,
-  "41724372467": false
+  "41724372467": false,
+  "41741411441": false,
+  "41741439581": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -176,16 +178,18 @@
   "https://github.com/hep-forge/hoppet-feedstock/actions/runs/41715267236": "Error: ('Service Unavailable: The server cannot process the request due to a high load ([GET] https://api.anaconda.org/dist/hep-forge/hoppet/2.2.0/osx-arm64/hop",
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029": "No such file or directory",
   "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887": "error: use of undeclared identifier 'back_inserter'",
-  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41724372467": "error: in '/Users/runner/miniconda/conda-bld/fastnlo_1793742270210/work/v2.6/toolkit':"
+  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41724372467": "error: in '/Users/runner/miniconda/conda-bld/fastnlo_1793742270210/work/v2.6/toolkit':",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41741411441": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):",
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581": "No such file or directory"
  },
  "issues": {
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41715229101"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41741411441"
   },
   "herwig7": {
    "number": 1,
-   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41718542029"
+   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581"
   },
   "fastnlo": {
    "number": 1,
@@ -194,10 +198,6 @@
   "rivet": {
    "number": 1,
    "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290"
-  },
-  "fastjet-contrib": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887"
   }
  }
 }
