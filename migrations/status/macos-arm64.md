@@ -1,21 +1,21 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 04:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 04:25 UTC.
 
-failed: 3 · blocked: 7 · done: 61 · n/a: 25
+building: 3 · waiting: 7 · done: 61 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41748796212) Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) |
-| fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187) error: does not use standard frame |
-| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692) No such file or directory |
-| acts | blocked | dd4hep |
-| apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
+| dd4hep | building | moved 1.37 to main 31f7afd |
+| fastnlo | building | moved 2.6.0 to main e8971fc |
+| herwig7 | building | moved 7.3.0 to main 9295ae1 |
+| acts | waiting | dd4hep |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
