@@ -52,7 +52,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-11-03 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-11-04 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -88,7 +88,7 @@ _Last refreshed: 2026-11-03 (`python3 scripts/update_readme_status.py`)_
 | [fastjet](https://github.com/hep-forge/fastjet-feedstock) | `3.5.3` | [`3.5.3`](https://anaconda.org/hep-forge/fastjet) | ✅ | ✅ |
 | [fastnlo](https://github.com/hep-forge/fastnlo-feedstock) | `2.6.0` | [`2.6.0`](https://anaconda.org/hep-forge/fastnlo) | ✅ | ✅ |
 | [framel](https://github.com/hep-forge/framel-feedstock) | `8.50.3` | [`8.50.3`](https://anaconda.org/hep-forge/framel) | ✅ | ✅ |
-| [framel-root](https://github.com/hep-forge/framel-root-feedstock) | `1.0.0` | [`1.0.0`](https://anaconda.org/hep-forge/framel-root) | ✅ | ✅ |
+| [framel-root](https://github.com/hep-forge/framel-root-feedstock) | `1.0.3` | [`1.0.3`](https://anaconda.org/hep-forge/framel-root) | ✅ | ✅ |
 | [g4hepem](https://github.com/hep-forge/g4hepem-feedstock) | `20251114` | [`20251114`](https://anaconda.org/hep-forge/g4hepem) | ✅ | ✅ |
 | [gaudi](https://github.com/hep-forge/gaudi-feedstock) | `40.6` | [`40.6`](https://anaconda.org/hep-forge/gaudi) | ✅ | ✅ |
 | [geant](https://github.com/hep-forge/geant-feedstock) | `11.4.1` | [`11.4.1`](https://anaconda.org/hep-forge/geant) | ✅ | ✅ |
