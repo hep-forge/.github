@@ -104,7 +104,10 @@
   "41744872369": false,
   "41748796212": false,
   "41751554187": false,
-  "41751562692": false
+  "41751562692": false,
+  "41773069884": false,
+  "41773078387": false,
+  "41773085572": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -190,20 +193,23 @@
   "https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369": "error: a template argument list is expected after a name prefixed by the template keyword [-Wmissing-template-arg-list-after-template-kw]",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41748796212": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) ",
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187": "error: does not use standard frame",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692": "No such file or directory"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692": "No such file or directory",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41773069884": "error: header '__type_traits/add_lvalue_reference.h' not found",
+  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41773078387": "error: does not use standard frame",
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572": "No such file or directory"
  },
  "issues": {
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41748796212"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41773069884"
   },
   "herwig7": {
    "number": 1,
-   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692"
+   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
   },
   "fastnlo": {
    "number": 1,
-   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187"
+   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41773078387"
   }
  }
 }
