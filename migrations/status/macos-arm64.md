@@ -1,6 +1,6 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 06:38 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 06:45 UTC.
 
 failed: 1 · blocked: 3 · building: 1 · waiting: 3 · done: 62 · n/a: 26
 
@@ -10,7 +10,7 @@ failed: 1 · blocked: 3 · building: 1 · waiting: 3 · done: 62 · n/a: 26
 | apfelgrid | blocked | applgrid |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| dd4hep | building | moved 1.37 to main 554631f |
+| dd4hep | building | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41786826170) |
 | acts | waiting | dd4hep |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
