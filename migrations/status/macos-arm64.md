@@ -1,19 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 07:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 07:44 UTC.
 
 failed: 1 · blocked: 3 · building: 1 · waiting: 3 · done: 62 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41786826170) error: header '__configuration/abi.h' not found |
-| acts | blocked | dd4hep |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| applgrid | building | moved 1.6.49 to main ea495b0 |
-| apfelgrid | waiting | applgrid |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| applgrid | failed | [run](https://github.com/hep-forge/applgrid-feedstock/actions/runs/41792182858) error: require no space between '-L' and '-lgfortran' |
+| apfelgrid | blocked | applgrid |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| dd4hep | building | moved 1.37 to main ac35199 |
+| acts | waiting | dd4hep |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
