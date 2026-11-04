@@ -5,7 +5,8 @@
   "geant@a72584e1b7ec8e6d9f70401e8047aa28255c89bd": 4,
   "fastjet-contrib@0e00958d1b881ab0b06f9de37b55e2a490e4892f": 4,
   "fastjet-contrib@19b41fad2e76af7b3cfc96dfba438fa2326ae90f": 1,
-  "herwig7@e6de32cbb83c368a3876dca5e48c8359fcee68c7": 1
+  "herwig7@e6de32cbb83c368a3876dca5e48c8359fcee68c7": 1,
+  "npsim@1be8037f34234d589fdccf0d4d617e2348f64d02": 1
  },
  "transient_runs": {
   "41603478452": true,
@@ -114,7 +115,12 @@
   "41783451939": false,
   "41786826170": false,
   "41792182858": false,
-  "41794305456": false
+  "41794305456": false,
+  "41804624319": false,
+  "41804661504": false,
+  "41804694279": true,
+  "41804717005": false,
+  "41804722008": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -210,12 +216,32 @@
   "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41783451939": "error: require no space between '-L' and '-lgfortran'",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41786826170": "error: header '__configuration/abi.h' not found",
   "https://github.com/hep-forge/applgrid-feedstock/actions/runs/41792182858": "error: require no space between '-L' and '-lgfortran'",
-  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41794305456": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) "
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41794305456": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) ",
+  "https://github.com/hep-forge/acts-feedstock/actions/runs/41804624319": "CMake Error at cmake/ActsCompilerOptions.cmake:91 (message):",
+  "https://github.com/hep-forge/epic-feedstock/actions/runs/41804661504": "CMake Error at /Users/runner/miniconda/conda-bld/epic_1793783221322/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
+  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41804717005": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"numdiff==5.9.0=h1a9a430_0\"), MatchSpec(\"libintl[version='>=1.0,<2.0a0']\")}",
+  "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"libintl[version='>=1.0,<2.0a0']\"), MatchSpec(\"numdiff==5.9.0=h1a9a430_0\")}"
  },
  "issues": {
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
+  },
+  "acts": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/acts-feedstock/actions/runs/41804624319"
+  },
+  "epic": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/epic-feedstock/actions/runs/41804661504"
+  },
+  "xfitter": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41804717005"
+  },
+  "xfitter-dev": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008"
   }
  }
 }
