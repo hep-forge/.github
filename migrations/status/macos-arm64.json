@@ -99,7 +99,9 @@
   "41721620887": false,
   "41724372467": false,
   "41741411441": false,
-  "41741439581": false
+  "41741439581": false,
+  "41741429930": false,
+  "41744872369": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -180,7 +182,9 @@
   "https://github.com/hep-forge/fastjet-contrib-feedstock/actions/runs/41721620887": "error: use of undeclared identifier 'back_inserter'",
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41724372467": "error: in '/Users/runner/miniconda/conda-bld/fastnlo_1793742270210/work/v2.6/toolkit':",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41741411441": "CMake Error at cmake/DD4hepBuild.cmake:72 (message):",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581": "No such file or directory"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581": "No such file or directory",
+  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930": "No such file or directory",
+  "https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369": "error: a template argument list is expected after a name prefixed by the template keyword [-Wmissing-template-arg-list-after-template-kw]"
  },
  "issues": {
   "dd4hep": {
@@ -193,11 +197,11 @@
   },
   "fastnlo": {
    "number": 1,
-   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41724372467"
+   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930"
   },
   "rivet": {
    "number": 1,
-   "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41690660290"
+   "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369"
   }
  }
 }

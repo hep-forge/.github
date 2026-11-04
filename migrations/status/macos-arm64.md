@@ -1,23 +1,23 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 00:10 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 00:42 UTC.
 
-failed: 2 · blocked: 3 · building: 2 · waiting: 5 · done: 59 · n/a: 25
+failed: 3 · blocked: 5 · building: 1 · waiting: 3 · done: 59 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41741411441) CMake Error at cmake/DD4hepBuild.cmake:72 (message): |
+| fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930) No such file or directory |
 | herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581) No such file or directory |
-| acts | blocked | dd4hep |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| fastnlo | building | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930) |
-| rivet | building | moved 4.1.3, 3.1.11 to main 83e3efb |
-| apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| rapgap | waiting | rivet |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369) error: a template argument list is expected after a name prefixed by the template keyword [-Wmissing-template-arg-list-after-template-kw] |
+| apfelgrid | blocked | applgrid |
+| applgrid | blocked | fastnlo |
+| rapgap | blocked | rivet |
+| xfitter | blocked | apfelgrid, applgrid |
+| xfitter-dev | blocked | apfelgrid, applgrid |
+| dd4hep | building | moved 1.37 to main 773262f |
+| acts | waiting | dd4hep |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
