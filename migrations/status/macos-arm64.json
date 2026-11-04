@@ -236,10 +236,6 @@
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "xfitter": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41823247523"
   }
  }
 }

@@ -1,12 +1,11 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 13:05 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 13:24 UTC.
 
-building: 1 · done: 69 · n/a: 26
+done: 70 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| xfitter | building | moved 2.2.1 to main 18a49a8 |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -74,6 +73,7 @@ building: 1 · done: 69 · n/a: 26
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
+| xfitter | done |  |
 | xfitter-dev | done |  |
 | yoda | done |  |
 | applfast | n/a | nothing published |
