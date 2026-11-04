@@ -1,18 +1,17 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 05:05 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 05:26 UTC.
 
-building: 2 · waiting: 7 · done: 61 · n/a: 26
+failed: 1 · blocked: 3 · building: 1 · waiting: 3 · done: 62 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | building | moved 1.37 to main ad1bfa2 |
-| fastnlo | building | moved 2.6.0 to main 168e5e4 |
-| acts | waiting | dd4hep |
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41777035110) Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) |
+| acts | blocked | dd4hep |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
+| applgrid | building | moved 1.6.49 to main bb40195 |
 | apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
@@ -37,6 +36,7 @@ building: 2 · waiting: 7 · done: 61 · n/a: 26
 | estarlight | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
+| fastnlo | done |  |
 | framel | done |  |
 | framel-root | done |  |
 | g4hepem | done |  |

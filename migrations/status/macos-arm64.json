@@ -107,7 +107,8 @@
   "41751562692": false,
   "41773069884": false,
   "41773078387": false,
-  "41773085572": false
+  "41773085572": false,
+  "41777035110": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -196,20 +197,17 @@
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692": "No such file or directory",
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41773069884": "error: header '__type_traits/add_lvalue_reference.h' not found",
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41773078387": "error: does not use standard frame",
-  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572": "No such file or directory"
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572": "No such file or directory",
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41777035110": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) "
  },
  "issues": {
   "dd4hep": {
    "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41773069884"
+   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41777035110"
   },
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "fastnlo": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41773078387"
   }
  }
 }
