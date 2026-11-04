@@ -66,6 +66,11 @@ jobs:
             echo "status unchanged"
           else
             git commit -qm "migrations: update status"
-            git pull -q --rebase origin main
-            git push -q origin HEAD:main
+            # GitHub answers pushes with an occasional HTTP 500; the status
+            # file also carries the retry counts, so try again before giving up
+            for attempt in 1 2 3 4 5; do
+              git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+              sleep $((attempt * 10))
+            done
+            exit 1
           fi
