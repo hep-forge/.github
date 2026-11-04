@@ -1,13 +1,13 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 11:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 11:25 UTC.
 
-building: 2 · done: 68 · n/a: 26
+failed: 1 · done: 69 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| acts | building | moved 46.8.1 to main 37e0d58 |
-| xfitter | building | moved 2.2.1 to main c959747 |
+| xfitter | failed | [run](https://github.com/hep-forge/xfitter-feedstock/actions/runs/41818601764) Undefined symbols for architecture arm64: |
+| acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelgrid | done |  |

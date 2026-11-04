@@ -123,7 +123,8 @@
   "41804722008": false,
   "41807523045": false,
   "41814140039": false,
-  "41814263581": false
+  "41814263581": false,
+  "41818601764": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -226,20 +227,17 @@
   "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"libintl[version='>=1.0,<2.0a0']\"), MatchSpec(\"numdiff==5.9.0=h1a9a430_0\")}",
   "https://github.com/hep-forge/npsim-feedstock/actions/runs/41807523045": "CMake Error at /Users/runner/miniconda/conda-bld/npsim_1793784450146/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
   "https://github.com/hep-forge/acts-feedstock/actions/runs/41814140039": "error: no member named 'is_base_of_v' in namespace 'std'",
-  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41814263581": "ld: library not found for -lrt"
+  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41814263581": "ld: library not found for -lrt",
+  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41818601764": "Undefined symbols for architecture arm64:"
  },
  "issues": {
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
   },
-  "acts": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/acts-feedstock/actions/runs/41814140039"
-  },
   "xfitter": {
    "number": 1,
-   "run": "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41814263581"
+   "run": "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41818601764"
   }
  }
 }
