@@ -233,10 +233,6 @@
    "number": 1,
    "run": "https://github.com/hep-forge/acts-feedstock/actions/runs/41804624319"
   },
-  "epic": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/epic-feedstock/actions/runs/41804661504"
-  },
   "xfitter": {
    "number": 1,
    "run": "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41804717005"
@@ -244,10 +240,6 @@
   "xfitter-dev": {
    "number": 1,
    "run": "https://github.com/hep-forge/xfitter-dev-feedstock/actions/runs/41804722008"
-  },
-  "npsim": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/npsim-feedstock/actions/runs/41807523045"
   }
  }
 }
