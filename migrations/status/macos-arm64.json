@@ -204,10 +204,6 @@
   "fastnlo": {
    "number": 1,
    "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187"
-  },
-  "rivet": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369"
   }
  }
 }
