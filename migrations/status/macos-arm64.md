@@ -1,14 +1,13 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 10:27 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 10:44 UTC.
 
-building: 3 · done: 67 · n/a: 26
+failed: 2 · done: 68 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| acts | building | moved 46.8.1 to main cccccfb |
-| xfitter | building | moved 2.2.1 to main 294dac0 |
-| xfitter-dev | building | moved 2.2.1 to main 9a146c1 |
+| acts | failed | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/41814140039) error: no member named 'is_base_of_v' in namespace 'std' |
+| xfitter | failed | [run](https://github.com/hep-forge/xfitter-feedstock/actions/runs/41814263581) ld: library not found for -lrt |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelgrid | done |  |
@@ -75,6 +74,7 @@ building: 3 · done: 67 · n/a: 26
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
+| xfitter-dev | done |  |
 | yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
