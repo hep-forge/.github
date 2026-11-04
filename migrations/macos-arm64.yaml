@@ -18,3 +18,5 @@ redo:
   podio: 2026-11-03T17:45:00Z
   # linked with a global -undefined dynamic_lookup; rebuilt with the libtool fix
   thepeg: 2026-11-03T20:45:00Z
+  # linked libintl 1.x, which the stack's libintl < 1.0 rules out (xfitter)
+  numdiff: 2026-11-04T09:50:00Z
