@@ -102,7 +102,9 @@
   "41741439581": false,
   "41741429930": false,
   "41744872369": false,
-  "41748796212": false
+  "41748796212": false,
+  "41751554187": false,
+  "41751562692": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -186,7 +188,9 @@
   "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581": "No such file or directory",
   "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930": "No such file or directory",
   "https://github.com/hep-forge/rivet-feedstock/actions/runs/41744872369": "error: a template argument list is expected after a name prefixed by the template keyword [-Wmissing-template-arg-list-after-template-kw]",
-  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41748796212": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) "
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41748796212": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) ",
+  "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187": "error: does not use standard frame",
+  "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692": "No such file or directory"
  },
  "issues": {
   "dd4hep": {
@@ -195,11 +199,11 @@
   },
   "herwig7": {
    "number": 1,
-   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41741439581"
+   "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41751562692"
   },
   "fastnlo": {
    "number": 1,
-   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41741429930"
+   "run": "https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41751554187"
   },
   "rivet": {
    "number": 1,
