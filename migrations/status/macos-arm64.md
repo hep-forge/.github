@@ -1,19 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 08:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 08:27 UTC.
 
-failed: 2 · blocked: 6 · done: 62 · n/a: 26
+building: 2 · waiting: 6 · done: 62 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| applgrid | failed | [run](https://github.com/hep-forge/applgrid-feedstock/actions/runs/41792182858) error: require no space between '-L' and '-lgfortran' |
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41794305456) Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) |
-| acts | blocked | dd4hep |
-| apfelgrid | blocked | applgrid |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
+| applgrid | building | moved 1.6.49 to main b360078 |
+| dd4hep | building | moved 1.37 to main a4355bd |
+| acts | waiting | dd4hep |
+| apfelgrid | waiting | applgrid |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
