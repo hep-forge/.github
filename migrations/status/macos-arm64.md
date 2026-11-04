@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 12:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 13:05 UTC.
 
-failed: 1 · done: 69 · n/a: 26
+building: 1 · done: 69 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| xfitter | failed | [run](https://github.com/hep-forge/xfitter-feedstock/actions/runs/41823247523) No such file or directory |
+| xfitter | building | moved 2.2.1 to main 18a49a8 |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
