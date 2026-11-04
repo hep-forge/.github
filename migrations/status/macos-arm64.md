@@ -1,20 +1,19 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 08:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 09:06 UTC.
 
-building: 2 · waiting: 5 · done: 63 · n/a: 26
+building: 5 · done: 65 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| apfelgrid | building | moved 1.0.1 to main cd131b8 |
-| dd4hep | building | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41799587366) |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
-| xfitter | waiting | apfelgrid |
-| xfitter-dev | waiting | apfelgrid |
+| acts | building | moved 46.8.1 to main be0744e |
+| epic | building | moved 26.06.0 to main e9a6e29 |
+| npsim | building | moved 1.6.1 to main 1be8037 |
+| xfitter | building | moved 2.2.1 to main 294dac0 |
+| xfitter-dev | building | moved 2.2.1 to main 9a146c1 |
 | afterburner | done |  |
 | apfel | done |  |
+| apfelgrid | done |  |
 | apfelxx | done |  |
 | applgrid | done |  |
 | chaplin | done |  |
@@ -25,6 +24,7 @@ building: 2 · waiting: 5 · done: 63 · n/a: 26
 | cubature | done |  |
 | curlpp | done |  |
 | cuttools | done |  |
+| dd4hep | done |  |
 | delphes | done |  |
 | difftop | done |  |
 | djangoh | done |  |

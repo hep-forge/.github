@@ -213,10 +213,6 @@
   "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41794305456": "Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) "
  },
  "issues": {
-  "dd4hep": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41794305456"
-  },
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
