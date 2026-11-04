@@ -13,6 +13,7 @@ Usage:
   python3 scripts/channel_packages.py --trim root --keep-versions 6.32.16,6.38.04
   python3 scripts/channel_packages.py --purge-dev         # drop *dev* versions
   python3 scripts/channel_packages.py --purge-dev --yes   # ... for real
+  python3 scripts/channel_packages.py --retire-root-slots # builds of ROOT slots not in channel.yaml
 
 Trim/purge are DRY-RUN unless --yes is given. Removal shells out to
 `anaconda remove` and therefore needs anaconda-client logged in or
@@ -22,11 +23,13 @@ import argparse
 import concurrent.futures
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
 from collections import defaultdict
 
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://api.anaconda.org"
 ORG = "hep-forge"
 
@@ -202,6 +205,69 @@ def purge_dev(org: str, yes: bool):
                 remove_spec(org, f"{org}/{p['name']}/{v}", yes)
 
 
+def root_slots():
+    """The ROOT minors channel.yaml keeps, e.g. {"6.38", "6.40"}."""
+    import yaml
+    with open(os.path.join(REPO, "channel.yaml")) as f:
+        return {str(s) for s in (yaml.safe_load(f) or {}).get("root_slots", [])}
+
+
+def root_slot(pkg: str, f: dict):
+    """The ROOT minor a file belongs to: ROOT's own version, or the root6xx
+    build string / root 6.xx.* dependency of a ROOT-dependent build."""
+    if pkg == "root":
+        m = re.match(r"(\d+)\.(\d+)\.", f.get("version", ""))
+        return f"{m.group(1)}.{m.group(2)}" if m else None
+    m = re.search(r"(?:^|_)root(\d)(\d\d)(?:_|$)", f.get("attrs", {}).get("build", ""))
+    if m:
+        return f"{m.group(1)}.{m.group(2)}"
+    for dep in f.get("attrs", {}).get("depends", []) or []:
+        m = re.match(r"root (\d+)\.(\d+)\.\*", dep)
+        if m:
+            return f"{m.group(1)}.{m.group(2)}"
+    return None
+
+
+def recipe_root_variants():
+    """Feedstocks whose conda_build_config.yaml still builds a ROOT slot."""
+    out = {}
+    base = os.path.join(REPO, "feedstocks")
+    for d in sorted(os.listdir(base)) if os.path.isdir(base) else []:
+        path = os.path.join(base, d, "recipe", "conda_build_config.yaml")
+        if not os.path.exists(path):
+            continue
+        m = re.search(r"^root:\s*\n((?:\s+-.*\n|\s*#.*\n)+)", open(path).read(), re.M)
+        if m:
+            vals = re.findall(r"^\s+-\s*['\"]?(\d+\.\d+)", m.group(1), re.M)
+            if vals:
+                out[d[: -len("-feedstock")]] = set(vals)
+    return out
+
+
+def retire_root_slots(org: str, yes: bool):
+    keep = root_slots()
+    print(f"ROOT slots kept (channel.yaml): {', '.join(sorted(keep))}")
+    for pkg, vals in recipe_root_variants().items():
+        if vals - keep:
+            print(f"WARNING: {pkg} still builds ROOT {', '.join(sorted(vals - keep))}; "
+                  f"drop it from recipe/conda_build_config.yaml")
+    names = [p["name"] for p in channel_packages(org)]
+    with concurrent.futures.ThreadPoolExecutor(8) as pool:
+        files = dict(zip(names, pool.map(lambda n: package_files(org, n), names)))
+    total, count = 0, 0
+    for pkg in sorted(files):
+        for f in sorted(files[pkg], key=lambda f: f.get("basename", "")):
+            slot = root_slot(pkg, f)
+            if slot is None or slot in keep:
+                continue
+            total += f.get("size") or 0
+            count += 1
+            print(f"  ROOT {slot}  {human_size(f.get('size') or 0):>9}  ", end="")
+            remove_spec(org, f"{org}/{pkg}/{f['version']}/{f['basename']}", yes)
+    print(f"{count} files, {human_size(total)} in ROOT slots outside channel.yaml"
+          + ("" if yes else " (dry run: nothing removed)"))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--files", metavar="PKG", help="list every file of one package")
@@ -210,6 +276,8 @@ def main():
     ap.add_argument("--keep", type=int, default=3, help="versions to keep with --trim (default 3, keeps the N latest)")
     ap.add_argument("--keep-versions", metavar="V1,V2,...", help="with --trim: keep exactly these versions (overrides --keep), for non-contiguous keeps")
     ap.add_argument("--purge-dev", action="store_true", help="remove every *dev* version channel-wide")
+    ap.add_argument("--retire-root-slots", action="store_true",
+                    help="remove builds of ROOT slots not listed in channel.yaml (ROOT itself and root6xx builds)")
     ap.add_argument("--yes", action="store_true", help="actually delete (default: dry-run)")
     ap.add_argument("--org", default=ORG)
     args = ap.parse_args()
@@ -223,6 +291,8 @@ def main():
         trim(args.org, args.trim, args.keep, args.yes, keep_versions)
     elif args.purge_dev:
         purge_dev(args.org, args.yes)
+    elif args.retire_root_slots:
+        retire_root_slots(args.org, args.yes)
     else:
         overview(args.org)
 

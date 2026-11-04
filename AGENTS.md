@@ -82,6 +82,7 @@ version check and every Makefile target.
 | Version check (bump + tag, `head` rebuilds, tracking issue) | `scripts/hep_bot/check_versions.py`, `bump_version.py`, `.github/workflows/hep-bot-check.yml` |
 | Upstream overrides, dependency order, opt-out | `scripts/hep_bot/sources.yaml`, `scripts/hep_bot/dag.yaml` (`auto_update: false`) |
 | Migrations: a new platform, or a rebuild below a changed package, carried down the dependency graph (conda-forge style; done packages are never rebuilt, a failure holds back only what sits below it) | `migrations/<name>.yaml`, `scripts/hep_bot/migrate.py`, `.github/workflows/hep-bot-migrate.yml` (every 20 min), started from `hep-bot-rebuild.yml`; progress in `migrations/status/<name>.md` |
+| ROOT slots the channel keeps (one ROOT minor + Python 3.12 + GCC 14 floor each; others are removed weekly, ROOT and all root6xx builds) | `channel.yaml` `root_slots`, `scripts/channel_packages.py --retire-root-slots`, `.github/workflows/channel-maintenance.yml` (deletes only with repo variable `RETIRE_ROOT_SLOTS=apply`) |
 | Render of one or all feedstocks | `scripts/render_sync.sh`, `.github/workflows/render-sync.yml` |
 | New feedstock | `scripts/new_feedstock.sh`, `.github/workflows/new-feedstock.yml` |
 

@@ -1,0 +1,13 @@
+# hep-forge channel policy.
+#
+# root_slots: the ROOT minor versions the channel keeps. A slot is one ROOT
+# minor (6.38) with one Python (3.12) and the GCC 14 floor, and every
+# ROOT-dependent package is built once per slot (build string root638).
+#
+# Dropping a slot from this list retires it: the weekly channel-maintenance
+# run removes that ROOT and every package build of that slot, and keeps the
+# newest ROOT of each listed slot however many newer versions exist.
+# Drop a slot only once the rebuild migration to its successor is done
+# (migrations/status/<name>.md). Deletion is a dry run until the repository
+# variable RETIRE_ROOT_SLOTS is set to "apply".
+root_slots: ["6.38", "6.40"]
