@@ -1,21 +1,20 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 04:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-04 05:05 UTC.
 
-failed: 3 · blocked: 7 · done: 61 · n/a: 25
+building: 2 · waiting: 7 · done: 61 · n/a: 26
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/41773069884) error: header '__type_traits/add_lvalue_reference.h' not found |
-| fastnlo | failed | [run](https://github.com/hep-forge/fastnlo-feedstock/actions/runs/41773078387) error: does not use standard frame |
-| herwig7 | failed | [run](https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572) No such file or directory |
-| acts | blocked | dd4hep |
-| apfelgrid | blocked | applgrid |
-| applgrid | blocked | fastnlo |
-| epic | blocked | dd4hep |
-| npsim | blocked | dd4hep |
-| xfitter | blocked | apfelgrid, applgrid |
-| xfitter-dev | blocked | apfelgrid, applgrid |
+| dd4hep | building | moved 1.37 to main ad1bfa2 |
+| fastnlo | building | moved 2.6.0 to main 168e5e4 |
+| acts | waiting | dd4hep |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| epic | waiting | dd4hep |
+| npsim | waiting | dd4hep |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -83,6 +82,7 @@ failed: 3 · blocked: 7 · done: 61 · n/a: 25
 | fairmq | n/a | Linux only |
 | gaudi | n/a | Linux only |
 | hammer | n/a | Linux only |
+| herwig7 | n/a | Linux only |
 | lcg-relax | n/a | Linux only |
 | lhapdf5 | n/a | nothing published |
 | mcfm | n/a | Linux only |
