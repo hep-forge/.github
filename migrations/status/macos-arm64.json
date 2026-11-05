@@ -125,7 +125,8 @@
   "41814140039": false,
   "41814263581": false,
   "41818601764": false,
-  "41823247523": false
+  "41823247523": false,
+  "42034019724": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -230,12 +231,17 @@
   "https://github.com/hep-forge/acts-feedstock/actions/runs/41814140039": "error: no member named 'is_base_of_v' in namespace 'std'",
   "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41814263581": "ld: library not found for -lrt",
   "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41818601764": "Undefined symbols for architecture arm64:",
-  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41823247523": "No such file or directory"
+  "https://github.com/hep-forge/xfitter-feedstock/actions/runs/41823247523": "No such file or directory",
+  "https://github.com/hep-forge/root-feedstock/actions/runs/42034019724": "error: header 'locale.h' not found"
  },
  "issues": {
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
+  },
+  "root": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/root-feedstock/actions/runs/42034019724"
   }
  }
 }

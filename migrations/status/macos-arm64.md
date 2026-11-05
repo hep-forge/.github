@@ -1,39 +1,37 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:43 UTC.
 
-building: 1 · waiting: 27 · done: 43 · n/a: 25
+failed: 1 · blocked: 24 · building: 1 · done: 45 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root | building | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42034019724) |
-| acts | waiting | dd4hep, root |
-| afterburner | waiting | hepmc, root |
-| apfelgrid | waiting | applgrid, root |
-| applgrid | waiting | fastnlo, root |
-| combiner | waiting | root |
-| dd4hep | waiting | edm4hep, hepmc, podio, root |
-| delphes | waiting | root |
-| edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc, root |
-| epic | waiting | dd4hep, root |
-| escalade | waiting | root, root-plus |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | root, yoda |
-| framel-root | waiting | root-plus |
-| hepmc | waiting | root |
-| hepmc-merger | waiting | hepmc, root |
-| jana | waiting | podio, root |
-| jetphox | waiting | root |
-| npsim | waiting | dd4hep, root |
-| podio | waiting | root |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet, root |
-| rivet | waiting | hepmc, root, yoda |
-| root-plus | waiting | root |
-| xfitter | waiting | apfelgrid, applgrid, root |
-| xfitter-dev | waiting | apfelgrid, applgrid, root |
-| yoda | waiting | root |
+| root | failed | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42034019724) error: header 'locale.h' not found |
+| afterburner | blocked | hepmc, root |
+| apfelgrid | blocked | applgrid, root |
+| applgrid | blocked | fastnlo, root |
+| combiner | blocked | root |
+| dd4hep | blocked | edm4hep, hepmc, podio, root |
+| delphes | blocked | root |
+| edm4hep | blocked | podio |
+| eic-smear | blocked | hepmc, root |
+| escalade | blocked | root, root-plus |
+| estarlight | blocked | hepmc |
+| fastnlo | blocked | root, yoda |
+| framel-root | blocked | root-plus |
+| hepmc | blocked | root |
+| hepmc-merger | blocked | hepmc, root |
+| jana | blocked | podio, root |
+| jetphox | blocked | root |
+| podio | blocked | root |
+| professor | blocked | yoda |
+| rapgap | blocked | hepmc, rivet, root |
+| rivet | blocked | hepmc, root, yoda |
+| root-plus | blocked | root |
+| xfitter | blocked | apfelgrid, applgrid, root |
+| xfitter-dev | blocked | apfelgrid, applgrid, root |
+| yoda | blocked | root |
+| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/42035640308) |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -47,6 +45,7 @@ building: 1 · waiting: 27 · done: 43 · n/a: 25
 | djangoh | done |  |
 | dyturbo | done |  |
 | emela | done |  |
+| epic | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
 | framel | done |  |
@@ -68,6 +67,7 @@ building: 1 · waiting: 27 · done: 43 · n/a: 25
 | mpfun90 | done |  |
 | nlojetxx | done |  |
 | nnlojet | done |  |
+| npsim | done |  |
 | numdiff | done |  |
 | oneloop | done |  |
 | pepper | done |  |
