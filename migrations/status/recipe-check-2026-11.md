@@ -1,21 +1,21 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 11:44 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:06 UTC.
 
-failed: 1 · blocked: 9 · done: 17
+building: 1 · waiting: 9 · done: 17
 
 | Package | State | Detail |
 |---|---|---|
-| pythia | failed | [run](https://github.com/hep-forge/pythia-feedstock/actions/runs/41989326125) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("gxx_linux-aarch64=14[build='^14.*$']"), MatchSpec("gcc_linux-aarch64=14[build='^14.*$']"), Ma |
-| acts | blocked | dd4hep |
-| dd4hep | blocked | hepmc |
-| eic-smear | blocked | hepmc |
-| epic | blocked | dd4hep |
-| estarlight | blocked | hepmc |
-| hepmc | blocked | pythia |
-| hepmc-merger | blocked | hepmc |
-| npsim | blocked | dd4hep |
-| rapgap | blocked | hepmc, pythia |
+| pythia | building | moved 8.3.12 to main 2cdb691 |
+| acts | waiting | dd4hep |
+| dd4hep | waiting | hepmc |
+| eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
+| estarlight | waiting | hepmc |
+| hepmc | waiting | pythia |
+| hepmc-merger | waiting | hepmc |
+| npsim | waiting | dd4hep |
+| rapgap | waiting | hepmc, pythia |
 | apfel | done |  |
 | applgrid | done |  |
 | djangoh | done |  |
