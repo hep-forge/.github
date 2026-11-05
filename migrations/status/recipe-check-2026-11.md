@@ -1,8 +1,8 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 08:28 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 08:43 UTC.
 
-failed: 1 · blocked: 9 · building: 2 · done: 15
+failed: 1 · blocked: 9 · done: 17
 
 | Package | State | Detail |
 |---|---|---|
@@ -16,14 +16,13 @@ failed: 1 · blocked: 9 · building: 2 · done: 15
 | hepmc-merger | blocked | hepmc |
 | npsim | blocked | dd4hep |
 | rapgap | blocked | hepmc, pythia |
-| g4hepem | building | moved 20251114 to main 6b719ec |
-| xfitter | building | moved 2.2.1 to main 18a49a8 |
 | apfel | done |  |
 | applgrid | done |  |
 | djangoh | done |  |
 | fastjet | done |  |
 | fastnlo | done |  |
 | framel-root | done |  |
+| g4hepem | done |  |
 | geant | done | built; channel not refreshed yet |
 | hell | done |  |
 | hellx | done |  |
@@ -33,3 +32,4 @@ failed: 1 · blocked: 9 · building: 2 · done: 15
 | numdiff | done |  |
 | podio | done |  |
 | thepeg | done |  |
+| xfitter | done |  |
