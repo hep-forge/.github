@@ -1,54 +1,64 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 12:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:14 UTC.
 
-done: 70 · n/a: 26
+building: 1 · waiting: 27 · done: 43 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| acts | done |  |
-| afterburner | done |  |
+| root | building | moved 6.40.04, 6.38.04 to main daf0f8c |
+| acts | waiting | dd4hep, root |
+| afterburner | waiting | hepmc, root |
+| apfelgrid | waiting | applgrid, root |
+| applgrid | waiting | fastnlo, root |
+| combiner | waiting | root |
+| dd4hep | waiting | edm4hep, hepmc, podio, root |
+| delphes | waiting | root |
+| edm4hep | waiting | podio |
+| eic-smear | waiting | hepmc, root |
+| epic | waiting | dd4hep, root |
+| escalade | waiting | root, root-plus |
+| estarlight | waiting | hepmc |
+| fastnlo | waiting | root, yoda |
+| framel-root | waiting | root-plus |
+| hepmc | waiting | root |
+| hepmc-merger | waiting | hepmc, root |
+| jana | waiting | podio, root |
+| jetphox | waiting | root |
+| npsim | waiting | dd4hep, root |
+| podio | waiting | root |
+| professor | waiting | yoda |
+| rapgap | waiting | hepmc, rivet, root |
+| rivet | waiting | hepmc, root, yoda |
+| root-plus | waiting | root |
+| xfitter | waiting | apfelgrid, applgrid, root |
+| xfitter-dev | waiting | apfelgrid, applgrid, root |
+| yoda | waiting | root |
 | apfel | done |  |
-| apfelgrid | done |  |
 | apfelxx | done |  |
-| applgrid | done |  |
 | chaplin | done |  |
 | collier | done |  |
-| combiner | done |  |
 | covfie | done |  |
 | cuba | done |  |
 | cubature | done |  |
 | curlpp | done |  |
 | cuttools | done |  |
-| dd4hep | done |  |
-| delphes | done |  |
 | difftop | done |  |
 | djangoh | done |  |
 | dyturbo | done |  |
-| edm4hep | done |  |
-| eic-smear | done |  |
 | emela | done |  |
-| epic | done |  |
-| escalade | done |  |
-| estarlight | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
-| fastnlo | done |  |
 | framel | done |  |
-| framel-root | done |  |
 | g4hepem | done |  |
 | geant | done |  |
 | gosam | done |  |
 | hathor | done |  |
 | hell | done |  |
 | hellx | done |  |
-| hepmc | done |  |
-| hepmc-merger | done |  |
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
-| jana | done |  |
-| jetphox | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |
@@ -58,24 +68,15 @@ done: 70 · n/a: 26
 | mpfun90 | done |  |
 | nlojetxx | done |  |
 | nnlojet | done |  |
-| npsim | done |  |
 | numdiff | done |  |
 | oneloop | done |  |
 | pepper | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
-| podio | done |  |
-| professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
-| rapgap | done |  |
-| rivet | done |  |
-| root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
-| xfitter | done |  |
-| xfitter-dev | done |  |
-| yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
@@ -93,7 +94,6 @@ done: 70 · n/a: 26
 | phlex | n/a | Linux only |
 | qcdloop | n/a | Linux only |
 | rave | n/a | Linux only |
-| root | n/a | Linux only |
 | root-guard | n/a | noarch |
 | roounfold | n/a | Linux only |
 | scirooplot | n/a | Linux only |
