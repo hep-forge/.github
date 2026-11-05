@@ -1,20 +1,19 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:30 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:43 UTC.
 
-building: 1 · waiting: 8 · done: 18
+building: 5 · waiting: 3 · done: 19
 
 | Package | State | Detail |
 |---|---|---|
-| hepmc | building | moved 3.3.1 to main 4de9eaf |
+| dd4hep | building | moved 1.37 to main a4355bd |
+| eic-smear | building | moved 1.2.3 to main d1250b1 |
+| estarlight | building | moved 1.2.0 to main 3a7bab1 |
+| hepmc-merger | building | moved 2.4.0 to main 79a7e18 |
+| rapgap | building | moved 3.310 to main ff58d5f |
 | acts | waiting | dd4hep |
-| dd4hep | waiting | hepmc |
-| eic-smear | waiting | hepmc |
 | epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
-| hepmc-merger | waiting | hepmc |
 | npsim | waiting | dd4hep |
-| rapgap | waiting | hepmc |
 | apfel | done |  |
 | applgrid | done |  |
 | djangoh | done |  |
@@ -25,6 +24,7 @@ building: 1 · waiting: 8 · done: 18
 | geant | done | built; channel not refreshed yet |
 | hell | done |  |
 | hellx | done |  |
+| hepmc | done |  |
 | jetphox | done |  |
 | lhapdf | done |  |
 | nlojetxx | done |  |
