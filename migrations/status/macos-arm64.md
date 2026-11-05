@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:14 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:25 UTC.
 
 building: 1 · waiting: 27 · done: 43 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root | building | moved 6.40.04, 6.38.04 to main daf0f8c |
+| root | building | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42034019724) |
 | acts | waiting | dd4hep, root |
 | afterburner | waiting | hepmc, root |
 | apfelgrid | waiting | applgrid, root |

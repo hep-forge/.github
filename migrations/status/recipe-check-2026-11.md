@@ -1,22 +1,20 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:43 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 13:25 UTC.
 
-building: 5 · waiting: 3 · done: 19
+building: 3 · done: 24
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | building | moved 1.37 to main a4355bd |
-| eic-smear | building | moved 1.2.3 to main d1250b1 |
-| estarlight | building | moved 1.2.0 to main 3a7bab1 |
-| hepmc-merger | building | moved 2.4.0 to main 79a7e18 |
-| rapgap | building | moved 3.310 to main ff58d5f |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
+| acts | building | moved 46.8.1 to main 37e0d58 |
+| epic | building | moved 26.06.0 to main bf7c802 |
+| npsim | building | moved 1.6.1 to main 1c6dced |
 | apfel | done |  |
 | applgrid | done |  |
+| dd4hep | done |  |
 | djangoh | done |  |
+| eic-smear | done |  |
+| estarlight | done |  |
 | fastjet | done |  |
 | fastnlo | done |  |
 | framel-root | done |  |
@@ -25,11 +23,13 @@ building: 5 · waiting: 3 · done: 19
 | hell | done |  |
 | hellx | done |  |
 | hepmc | done |  |
+| hepmc-merger | done |  |
 | jetphox | done |  |
 | lhapdf | done |  |
 | nlojetxx | done |  |
 | numdiff | done |  |
 | podio | done |  |
 | pythia | done |  |
+| rapgap | done |  |
 | thepeg | done |  |
 | xfitter | done |  |
