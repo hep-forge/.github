@@ -1,21 +1,20 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:06 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 12:30 UTC.
 
-building: 1 · waiting: 9 · done: 17
+building: 1 · waiting: 8 · done: 18
 
 | Package | State | Detail |
 |---|---|---|
-| pythia | building | moved 8.3.12 to main 2cdb691 |
+| hepmc | building | moved 3.3.1 to main 4de9eaf |
 | acts | waiting | dd4hep |
 | dd4hep | waiting | hepmc |
 | eic-smear | waiting | hepmc |
 | epic | waiting | dd4hep |
 | estarlight | waiting | hepmc |
-| hepmc | waiting | pythia |
 | hepmc-merger | waiting | hepmc |
 | npsim | waiting | dd4hep |
-| rapgap | waiting | hepmc, pythia |
+| rapgap | waiting | hepmc |
 | apfel | done |  |
 | applgrid | done |  |
 | djangoh | done |  |
@@ -31,5 +30,6 @@ building: 1 · waiting: 9 · done: 17
 | nlojetxx | done |  |
 | numdiff | done |  |
 | podio | done |  |
+| pythia | done |  |
 | thepeg | done |  |
 | xfitter | done |  |

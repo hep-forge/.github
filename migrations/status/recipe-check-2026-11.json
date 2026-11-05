@@ -1,10 +1,5 @@
 {
- "issues": {
-  "pythia": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/pythia-feedstock/actions/runs/41989326125"
-  }
- },
+ "issues": {},
  "retries": {
   "nlojetxx@f2ebd59446ea7d9354ce6ba62f90800488db7a2a": 1
  },
