@@ -1,35 +1,35 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 07:44 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 08:06 UTC.
 
-building: 8 · ready: 1 · waiting: 12 · done: 6
+failed: 1 · blocked: 9 · building: 3 · waiting: 2 · done: 12
 
 | Package | State | Detail |
 |---|---|---|
-| apfel | building | moved 3.1.1 to main 90a7c38 |
-| djangoh | building | moved 4.6.21 to main b922735 |
-| fastnlo | building | moved 2.6.0 to main 168e5e4 |
+| pythia | failed | [run](https://github.com/hep-forge/pythia-feedstock/actions/runs/41989326125) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("gxx_linux-aarch64=14[build='^14.*$']"), MatchSpec("gcc_linux-aarch64=14[build='^14.*$']"), Ma |
+| acts | blocked | dd4hep |
+| dd4hep | blocked | hepmc |
+| eic-smear | blocked | hepmc |
+| epic | blocked | dd4hep |
+| estarlight | blocked | hepmc |
+| hepmc | blocked | pythia |
+| hepmc-merger | blocked | hepmc |
+| npsim | blocked | dd4hep |
+| rapgap | blocked | hepmc, pythia |
+| applgrid | building | moved 1.6.49 to main b360078 |
 | geant | building | [run](https://github.com/hep-forge/geant-feedstock/actions/runs/41987139892) |
-| jetphox | building | moved 1.3.1_4 to main f0bbb7c |
-| nlojetxx | building | moved 4.1.3 to main f2ebd59 |
-| podio | building | moved 1.7.0 to main 16d86e4 |
-| pythia | building | moved 8.3.12 to main bcf8338 |
-| thepeg | ready |  |
-| acts | waiting | dd4hep |
-| applgrid | waiting | fastnlo |
-| dd4hep | waiting | g4hepem, geant, hepmc, podio |
-| eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
-| estarlight | waiting | hepmc |
+| thepeg | building | moved 2.3.0 to main 8aab09c |
 | g4hepem | waiting | geant |
-| hepmc | waiting | pythia |
-| hepmc-merger | waiting | hepmc |
-| npsim | waiting | dd4hep |
-| rapgap | waiting | hepmc, pythia |
-| xfitter | waiting | apfel, applgrid |
+| xfitter | waiting | applgrid |
+| apfel | done |  |
+| djangoh | done |  |
 | fastjet | done |  |
+| fastnlo | done |  |
 | framel-root | done |  |
 | hell | done |  |
 | hellx | done |  |
+| jetphox | done |  |
 | lhapdf | done |  |
+| nlojetxx | done |  |
 | numdiff | done |  |
+| podio | done |  |
