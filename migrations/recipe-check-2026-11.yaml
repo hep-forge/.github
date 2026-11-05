@@ -1,0 +1,7 @@
+# Rebuild the recipes the macOS migration changed in ways that also reach
+# their Linux build (27 feedstocks), to check they still pass there. Only
+# these packages: their dependents are ABI-compatible and are not rebuilt.
+name: recipe-check-2026-11
+created: 2026-11-05T07:09:33Z
+packages: [acts, apfel, applgrid, dd4hep, djangoh, eic-smear, epic, estarlight, fastjet, fastnlo, framel-root, g4hepem, geant, hell, hellx, hepmc, hepmc-merger, jetphox, lhapdf, nlojetxx, npsim, numdiff, podio, pythia, rapgap, thepeg, xfitter]
+max_running: 8
