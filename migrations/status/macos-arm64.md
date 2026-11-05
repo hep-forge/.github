@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 13:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-05 14:06 UTC.
 
-failed: 1 · blocked: 24 · building: 1 · done: 45 · n/a: 25
+failed: 1 · blocked: 24 · done: 46 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -31,7 +31,7 @@ failed: 1 · blocked: 24 · building: 1 · done: 45 · n/a: 25
 | xfitter | blocked | apfelgrid, applgrid, root |
 | xfitter-dev | blocked | apfelgrid, applgrid, root |
 | yoda | blocked | root |
-| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/42035640308) |
+| acts | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |

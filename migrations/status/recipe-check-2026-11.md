@@ -1,12 +1,12 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 13:43 UTC.
+rebuild, started 2026-11-05 07:09:33Z, updated 2026-11-05 14:06 UTC.
 
-building: 1 · done: 26
+done: 27
 
 | Package | State | Detail |
 |---|---|---|
-| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/42035640308) |
+| acts | done |  |
 | apfel | done |  |
 | applgrid | done |  |
 | dd4hep | done |  |
