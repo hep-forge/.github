@@ -1,18 +1,18 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 05:11 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 05:24 UTC.
 
-failed: 1 · blocked: 2 · building: 2 · waiting: 23 · done: 43 · n/a: 25
+failed: 1 · blocked: 2 · building: 1 · waiting: 24 · done: 43 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
 | root-plus | failed | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("macosx_deployment_target_osx-arm64=11.0"), MatchSpec("root==6.38.04=py312_clang20")} |
 | escalade | blocked | root-plus |
 | framel-root | blocked | root-plus |
-| apfelgrid | building | [run](https://github.com/hep-forge/apfelgrid-feedstock/actions/runs/42166270193) |
-| root | building | moved 6.40.04, 6.38.04 to main 24795a5 |
+| root | building | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42166939682) |
 | acts | waiting | dd4hep, root |
 | afterburner | waiting | hepmc, root |
+| apfelgrid | waiting | applgrid, root |
 | applgrid | waiting | fastnlo, root |
 | combiner | waiting | root |
 | dd4hep | waiting | edm4hep, hepmc, podio, root |
