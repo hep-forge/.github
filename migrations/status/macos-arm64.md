@@ -1,33 +1,29 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:07 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:26 UTC.
 
-building: 7 · waiting: 17 · done: 47 · n/a: 25
+failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| combiner | building | moved 0.1.1 to main 14ff58c |
-| delphes | building | moved 3.5.1 to main c53cde9 |
-| hepmc | building | moved 3.3.1 to main 139b62c |
-| jetphox | building | moved 1.3.1_4 to main 3abea07 |
-| podio | building | moved 1.7.0 to main 2b3d392 |
-| root-plus | building | moved gamma to main 2ffe4ac |
-| yoda | building | moved 2.1.4, 1.9.9 to main c040a51 |
-| afterburner | waiting | hepmc |
+| delphes | failed | [run](https://github.com/hep-forge/delphes-feedstock/actions/runs/42160493774) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("pythia[version='>=8.3.12,<8.3.13.0a0']"), MatchSpec("root==6.38.04=py312_clang20")} |
+| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/42160511464) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("pythia[version='>=8.3.12,<8.3.13.0a0']"), MatchSpec("root==6.38.04=py312_clang20")} |
+| root-plus | failed | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("macosx_deployment_target_osx-arm64=11.0"), MatchSpec("root==6.38.04=py312_clang20")} |
+| afterburner | blocked | hepmc |
+| dd4hep | blocked | hepmc |
+| eic-smear | blocked | hepmc |
+| escalade | blocked | root-plus |
+| estarlight | blocked | hepmc |
+| framel-root | blocked | root-plus |
+| hepmc-merger | blocked | hepmc |
+| rapgap | blocked | hepmc, rivet |
+| rivet | blocked | hepmc |
+| edm4hep | building | moved 1.0.0 to main 6202384 |
+| fastnlo | building | moved 2.6.0 to main d3fa4bf |
+| jana | building | moved 2026.03.01 to main a621b51 |
+| professor | building | moved 2.5.9 to main b459dbe |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo |
-| dd4hep | waiting | edm4hep, hepmc, podio |
-| edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc |
-| escalade | waiting | root-plus |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | yoda |
-| framel-root | waiting | root-plus |
-| hepmc-merger | waiting | hepmc |
-| jana | waiting | podio |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet |
-| rivet | waiting | hepmc, yoda |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | acts | done |  |
@@ -35,6 +31,7 @@ building: 7 · waiting: 17 · done: 47 · n/a: 25
 | apfelxx | done |  |
 | chaplin | done |  |
 | collier | done |  |
+| combiner | done |  |
 | covfie | done |  |
 | cuba | done |  |
 | cubature | done |  |
@@ -57,6 +54,7 @@ building: 7 · waiting: 17 · done: 47 · n/a: 25
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
+| jetphox | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |
@@ -72,11 +70,13 @@ building: 7 · waiting: 17 · done: 47 · n/a: 25
 | pepper | done |  |
 | pineappl | done |  |
 | ploughshare | done |  |
+| podio | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
 | root | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
+| yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
