@@ -1,21 +1,18 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 07:05 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 07:24 UTC.
 
-building: 5 · waiting: 3 · done: 63 · n/a: 25
+building: 4 · done: 67 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| acts | building | moved 46.8.1 to main cf79351 |
-| apfelgrid | building | moved 1.0.1 to main ef9aa9f |
-| epic | building | moved 26.06.0 to main ce8315a |
-| npsim | building | moved 1.6.1 to main 491bd12 |
-| rivet | building | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/42176421461) |
-| rapgap | waiting | rivet |
-| xfitter | waiting | apfelgrid |
-| xfitter-dev | waiting | apfelgrid |
+| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/42178529731) |
+| rapgap | building | moved 3.310 to main 1248784 |
+| xfitter | building | moved 2.2.1 to main c90392e |
+| xfitter-dev | building | moved 2.2.1 to main a8f5972 |
 | afterburner | done |  |
 | apfel | done |  |
+| apfelgrid | done |  |
 | apfelxx | done |  |
 | applgrid | done |  |
 | chaplin | done |  |
@@ -34,6 +31,7 @@ building: 5 · waiting: 3 · done: 63 · n/a: 25
 | edm4hep | done |  |
 | eic-smear | done |  |
 | emela | done |  |
+| epic | done |  |
 | escalade | done |  |
 | estarlight | done |  |
 | fastjet | done |  |
@@ -63,6 +61,7 @@ building: 5 · waiting: 3 · done: 63 · n/a: 25
 | mpfun90 | done |  |
 | nlojetxx | done |  |
 | nnlojet | done |  |
+| npsim | done |  |
 | numdiff | done |  |
 | oneloop | done |  |
 | pepper | done |  |
@@ -72,6 +71,7 @@ building: 5 · waiting: 3 · done: 63 · n/a: 25
 | professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
+| rivet | done |  |
 | root | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
