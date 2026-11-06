@@ -246,18 +246,6 @@
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "delphes": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/delphes-feedstock/actions/runs/42160493774"
-  },
-  "hepmc": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42160511464"
-  },
-  "root-plus": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045"
   }
  }
 }
