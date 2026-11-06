@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:26 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:43 UTC.
 
-failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
+failed: 3 · blocked: 9 · building: 1 · waiting: 3 · done: 55 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -18,12 +18,8 @@ failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
 | hepmc-merger | blocked | hepmc |
 | rapgap | blocked | hepmc, rivet |
 | rivet | blocked | hepmc |
-| edm4hep | building | moved 1.0.0 to main 6202384 |
-| fastnlo | building | moved 2.6.0 to main d3fa4bf |
-| jana | building | moved 2026.03.01 to main a621b51 |
-| professor | building | moved 2.5.9 to main b459dbe |
+| applgrid | building | moved 1.6.49 to main 5d259a4 |
 | apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | acts | done |  |
@@ -40,10 +36,12 @@ failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
 | difftop | done |  |
 | djangoh | done |  |
 | dyturbo | done |  |
+| edm4hep | done |  |
 | emela | done |  |
 | epic | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
+| fastnlo | done |  |
 | framel | done |  |
 | g4hepem | done |  |
 | geant | done |  |
@@ -54,6 +52,7 @@ failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
 | hoppet | done |  |
 | inih | done |  |
 | iregi | done |  |
+| jana | done |  |
 | jetphox | done |  |
 | kalman | done |  |
 | kfrlib | done |  |
@@ -71,6 +70,7 @@ failed: 3 · blocked: 9 · building: 4 · waiting: 4 · done: 51 · n/a: 25
 | pineappl | done |  |
 | ploughshare | done |  |
 | podio | done |  |
+| professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
 | root | done |  |
