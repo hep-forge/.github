@@ -52,7 +52,7 @@ conda env create -f environment.yml && conda activate myhep
 render-sync refreshes this table every day.
 
 <!-- status:begin -->
-_Last refreshed: 2026-11-05 (`python3 scripts/update_readme_status.py`)_
+_Last refreshed: 2026-11-06 (`python3 scripts/update_readme_status.py`)_
 
 | Feedstock | Latest tag | Published | amd64 | arm64 |
 |-----------|------------|-----------|-------|-------|
@@ -136,7 +136,7 @@ _Last refreshed: 2026-11-05 (`python3 scripts/update_readme_status.py`)_
 | [rave](https://github.com/hep-forge/rave-feedstock) | `0.6.25` | [`0.6.25`](https://anaconda.org/hep-forge/rave) | ✅ | ✅ |
 | [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.3` | [`4.1.3`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
 | [root](https://github.com/hep-forge/root-feedstock) | `6.40.04` | [`6.40.04`](https://anaconda.org/hep-forge/root) | ✅ | ✅ |
-| [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `1.0` | [`1`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
+| [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `2` | [`2`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
 | [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `gamma` | [`gamma`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
 | [roounfold](https://github.com/hep-forge/roounfold-feedstock) | `3.1.0` | [`3.1.0`](https://anaconda.org/hep-forge/roounfold) | ✅ | ✅ |
 | [scirooplot](https://github.com/hep-forge/scirooplot-feedstock) | `3.3.3` | [`3.3.3`](https://anaconda.org/hep-forge/scirooplot) | ✅ | ✅ |
