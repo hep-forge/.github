@@ -1,15 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 07:24 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 07:43 UTC.
 
-building: 4 · done: 67 · n/a: 25
+done: 71 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/42178529731) |
-| rapgap | building | moved 3.310 to main 1248784 |
-| xfitter | building | moved 2.2.1 to main c90392e |
-| xfitter-dev | building | moved 2.2.1 to main a8f5972 |
+| acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
 | apfelgrid | done |  |
@@ -71,11 +68,14 @@ building: 4 · done: 67 · n/a: 25
 | professor | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
+| rapgap | done |  |
 | rivet | done |  |
 | root | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
+| xfitter | done |  |
+| xfitter-dev | done |  |
 | yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
