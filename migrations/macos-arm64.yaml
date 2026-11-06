@@ -13,37 +13,39 @@ redo:
   lhapdf: 2026-11-03T10:50:00Z
   # macOS package held only rootIO (conda-forge's hepmc3 was already in the
   # host env); rebuilt depending on hepmc3
-  hepmc: 2026-11-05T13:13:00Z
+  hepmc: 2026-11-06T05:12:00Z
   # podioConfig recorded the build env's python 3.14; rebuilt against 3.12
-  podio: 2026-11-05T13:13:00Z
+  podio: 2026-11-06T05:12:00Z
   # linked with a global -undefined dynamic_lookup; rebuilt with the libtool fix
   thepeg: 2026-11-03T20:45:00Z
   # linked libintl 1.x, which the stack's libintl < 1.0 rules out (xfitter)
   numdiff: 2026-11-04T09:50:00Z
   # built against conda-forge's ROOT; hep-forge builds ROOT for macOS now
   # (6.38/6.40, root-guard 2 keeps conda-forge's out), so rebuilt on it
-  acts: 2026-11-05T13:13:00Z
-  afterburner: 2026-11-05T13:13:00Z
-  apfelgrid: 2026-11-05T13:13:00Z
-  applgrid: 2026-11-05T13:13:00Z
-  combiner: 2026-11-05T13:13:00Z
-  dd4hep: 2026-11-05T13:13:00Z
-  delphes: 2026-11-05T13:13:00Z
-  edm4hep: 2026-11-05T13:13:00Z
-  eic-smear: 2026-11-05T13:13:00Z
-  epic: 2026-11-05T13:13:00Z
-  escalade: 2026-11-05T13:13:00Z
-  estarlight: 2026-11-05T13:13:00Z
-  fastnlo: 2026-11-05T13:13:00Z
-  framel-root: 2026-11-05T13:13:00Z
-  hepmc-merger: 2026-11-05T13:13:00Z
-  jana: 2026-11-05T13:13:00Z
-  jetphox: 2026-11-05T13:13:00Z
-  npsim: 2026-11-05T13:13:00Z
-  professor: 2026-11-05T13:13:00Z
-  rapgap: 2026-11-05T13:13:00Z
-  rivet: 2026-11-05T13:13:00Z
-  root-plus: 2026-11-05T13:13:00Z
-  xfitter: 2026-11-05T13:13:00Z
-  xfitter-dev: 2026-11-05T13:13:00Z
-  yoda: 2026-11-05T13:13:00Z
+  acts: 2026-11-06T05:12:00Z
+  afterburner: 2026-11-06T05:12:00Z
+  apfelgrid: 2026-11-06T05:12:00Z
+  applgrid: 2026-11-06T05:12:00Z
+  combiner: 2026-11-06T05:12:00Z
+  dd4hep: 2026-11-06T05:12:00Z
+  delphes: 2026-11-06T05:12:00Z
+  edm4hep: 2026-11-06T05:12:00Z
+  eic-smear: 2026-11-06T05:12:00Z
+  epic: 2026-11-06T05:12:00Z
+  escalade: 2026-11-06T05:12:00Z
+  estarlight: 2026-11-06T05:12:00Z
+  fastnlo: 2026-11-06T05:12:00Z
+  framel-root: 2026-11-06T05:12:00Z
+  hepmc-merger: 2026-11-06T05:12:00Z
+  jana: 2026-11-06T05:12:00Z
+  jetphox: 2026-11-06T05:12:00Z
+  npsim: 2026-11-06T05:12:00Z
+  professor: 2026-11-06T05:12:00Z
+  rapgap: 2026-11-06T05:12:00Z
+  rivet: 2026-11-06T05:12:00Z
+  root-plus: 2026-11-06T05:12:00Z
+  xfitter: 2026-11-06T05:12:00Z
+  xfitter-dev: 2026-11-06T05:12:00Z
+  yoda: 2026-11-06T05:12:00Z
+  # ROOT's first macOS build pinned deployment target 11.0 in run_exports
+  root: 2026-11-06T05:12:00Z
