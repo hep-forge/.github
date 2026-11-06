@@ -1,39 +1,38 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 05:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 06:08 UTC.
 
-failed: 1 · blocked: 2 · building: 1 · waiting: 24 · done: 43 · n/a: 25
+building: 7 · waiting: 20 · done: 44 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root-plus | failed | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("macosx_deployment_target_osx-arm64=11.0"), MatchSpec("root==6.38.04=py312_clang20")} |
-| escalade | blocked | root-plus |
-| framel-root | blocked | root-plus |
-| root | building | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42166939682) |
-| acts | waiting | dd4hep, root |
-| afterburner | waiting | hepmc, root |
-| apfelgrid | waiting | applgrid, root |
-| applgrid | waiting | fastnlo, root |
-| combiner | waiting | root |
-| dd4hep | waiting | edm4hep, hepmc, podio, root |
-| delphes | waiting | root |
+| combiner | building | moved 0.1.1 to main 14ff58c |
+| delphes | building | moved 3.5.1 to main 5111acc |
+| hepmc | building | moved 3.3.1 to main 952316f |
+| jetphox | building | moved 1.3.1_4 to main 3abea07 |
+| podio | building | moved 1.7.0 to main 2b3d392 |
+| root-plus | building | moved gamma to main 2ffe4ac |
+| yoda | building | moved 2.1.4, 1.9.9 to main c040a51 |
+| acts | waiting | dd4hep |
+| afterburner | waiting | hepmc |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| dd4hep | waiting | edm4hep, hepmc, podio |
 | edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc, root |
-| epic | waiting | dd4hep, root |
+| eic-smear | waiting | hepmc |
+| epic | waiting | dd4hep |
+| escalade | waiting | root-plus |
 | estarlight | waiting | hepmc |
-| fastnlo | waiting | root, yoda |
-| hepmc | waiting | root |
-| hepmc-merger | waiting | hepmc, root |
-| jana | waiting | podio, root |
-| jetphox | waiting | root |
-| npsim | waiting | dd4hep, root |
-| podio | waiting | root |
+| fastnlo | waiting | yoda |
+| framel-root | waiting | root-plus |
+| hepmc-merger | waiting | hepmc |
+| jana | waiting | podio |
+| npsim | waiting | dd4hep |
 | professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet, root |
-| rivet | waiting | hepmc, root, yoda |
-| xfitter | waiting | apfelgrid, applgrid, root |
-| xfitter-dev | waiting | apfelgrid, applgrid, root |
-| yoda | waiting | root |
+| rapgap | waiting | hepmc, rivet |
+| rivet | waiting | hepmc, yoda |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -75,6 +74,7 @@ failed: 1 · blocked: 2 · building: 1 · waiting: 24 · done: 43 · n/a: 25
 | ploughshare | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
+| root | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
 | applfast | n/a | nothing published |
