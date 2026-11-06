@@ -1,36 +1,35 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 03:44 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:07 UTC.
 
-building: 1 · waiting: 24 · done: 46 · n/a: 25
+building: 7 · waiting: 17 · done: 47 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root | building | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42152586779) |
-| afterburner | waiting | hepmc, root |
-| apfelgrid | waiting | applgrid, root |
-| applgrid | waiting | fastnlo, root |
-| combiner | waiting | root |
-| dd4hep | waiting | edm4hep, hepmc, podio, root |
-| delphes | waiting | root |
+| combiner | building | moved 0.1.1 to main 14ff58c |
+| delphes | building | moved 3.5.1 to main c53cde9 |
+| hepmc | building | moved 3.3.1 to main 139b62c |
+| jetphox | building | moved 1.3.1_4 to main 3abea07 |
+| podio | building | moved 1.7.0 to main 2b3d392 |
+| root-plus | building | moved gamma to main 2ffe4ac |
+| yoda | building | moved 2.1.4, 1.9.9 to main c040a51 |
+| afterburner | waiting | hepmc |
+| apfelgrid | waiting | applgrid |
+| applgrid | waiting | fastnlo |
+| dd4hep | waiting | edm4hep, hepmc, podio |
 | edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc, root |
-| escalade | waiting | root, root-plus |
+| eic-smear | waiting | hepmc |
+| escalade | waiting | root-plus |
 | estarlight | waiting | hepmc |
-| fastnlo | waiting | root, yoda |
+| fastnlo | waiting | yoda |
 | framel-root | waiting | root-plus |
-| hepmc | waiting | root |
-| hepmc-merger | waiting | hepmc, root |
-| jana | waiting | podio, root |
-| jetphox | waiting | root |
-| podio | waiting | root |
+| hepmc-merger | waiting | hepmc |
+| jana | waiting | podio |
 | professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet, root |
-| rivet | waiting | hepmc, root, yoda |
-| root-plus | waiting | root |
-| xfitter | waiting | apfelgrid, applgrid, root |
-| xfitter-dev | waiting | apfelgrid, applgrid, root |
-| yoda | waiting | root |
+| rapgap | waiting | hepmc, rivet |
+| rivet | waiting | hepmc, yoda |
+| xfitter | waiting | apfelgrid, applgrid |
+| xfitter-dev | waiting | apfelgrid, applgrid |
 | acts | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
@@ -75,6 +74,7 @@ building: 1 · waiting: 24 · done: 46 · n/a: 25
 | ploughshare | done |  |
 | pythia | done |  |
 | qcdnum | done |  |
+| root | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
 | applfast | n/a | nothing published |
