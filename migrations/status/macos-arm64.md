@@ -1,31 +1,27 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 06:34 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 06:45 UTC.
 
-building: 8 · ready: 3 · waiting: 9 · done: 51 · n/a: 25
+building: 8 · waiting: 7 · done: 56 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| afterburner | building | moved 0.2.1 to main e112344 |
-| edm4hep | building | moved 1.0.0 to main 6202384 |
-| eic-smear | building | moved 1.2.3 to main 852e022 |
-| escalade | building | moved v9.08.26 to main 5d2fd1d |
-| estarlight | building | moved 1.2.0 to main cafed68 |
-| fastnlo | building | moved 2.6.0 to main d3fa4bf |
-| framel-root | building | moved 1.0.3 to main 32c65f0 |
-| hepmc-merger | building | moved 2.4.0 to main 829073b |
-| jana | ready |  |
-| professor | ready |  |
-| rivet | ready |  |
+| applgrid | building | moved 1.6.49 to main 5d259a4 |
+| dd4hep | building | moved 1.37 to main be807f4 |
+| estarlight | building | [run](https://github.com/hep-forge/estarlight-feedstock/actions/runs/42175270955) |
+| framel-root | building | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/42175280191) |
+| hepmc-merger | building | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/42175294471) |
+| jana | building | moved 2026.03.01 to main a621b51 |
+| professor | building | moved 2.5.9 to main b459dbe |
+| rivet | building | moved 4.1.3, 3.1.11 to main 6cf9deb |
 | acts | waiting | dd4hep |
 | apfelgrid | waiting | applgrid |
-| applgrid | waiting | fastnlo |
-| dd4hep | waiting | edm4hep |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
 | rapgap | waiting | rivet |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
+| afterburner | done | built; channel not refreshed yet |
 | apfel | done |  |
 | apfelxx | done |  |
 | chaplin | done |  |
@@ -40,9 +36,13 @@ building: 8 · ready: 3 · waiting: 9 · done: 51 · n/a: 25
 | difftop | done |  |
 | djangoh | done |  |
 | dyturbo | done |  |
+| edm4hep | done |  |
+| eic-smear | done |  |
 | emela | done |  |
+| escalade | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
+| fastnlo | done |  |
 | framel | done |  |
 | g4hepem | done |  |
 | geant | done |  |
