@@ -1,36 +1,36 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 02:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 02:27 UTC.
 
-failed: 1 · blocked: 24 · done: 46 · n/a: 25
+building: 1 · waiting: 24 · done: 46 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root | failed | [run](https://github.com/hep-forge/root-feedstock/actions/runs/42132152070) No such file or directory |
-| afterburner | blocked | hepmc, root |
-| apfelgrid | blocked | applgrid, root |
-| applgrid | blocked | fastnlo, root |
-| combiner | blocked | root |
-| dd4hep | blocked | edm4hep, hepmc, podio, root |
-| delphes | blocked | root |
-| edm4hep | blocked | podio |
-| eic-smear | blocked | hepmc, root |
-| escalade | blocked | root, root-plus |
-| estarlight | blocked | hepmc |
-| fastnlo | blocked | root, yoda |
-| framel-root | blocked | root-plus |
-| hepmc | blocked | root |
-| hepmc-merger | blocked | hepmc, root |
-| jana | blocked | podio, root |
-| jetphox | blocked | root |
-| podio | blocked | root |
-| professor | blocked | yoda |
-| rapgap | blocked | hepmc, rivet, root |
-| rivet | blocked | hepmc, root, yoda |
-| root-plus | blocked | root |
-| xfitter | blocked | apfelgrid, applgrid, root |
-| xfitter-dev | blocked | apfelgrid, applgrid, root |
-| yoda | blocked | root |
+| root | building | moved 6.40.04, 6.38.04 to main 463a41e |
+| afterburner | waiting | hepmc, root |
+| apfelgrid | waiting | applgrid, root |
+| applgrid | waiting | fastnlo, root |
+| combiner | waiting | root |
+| dd4hep | waiting | edm4hep, hepmc, podio, root |
+| delphes | waiting | root |
+| edm4hep | waiting | podio |
+| eic-smear | waiting | hepmc, root |
+| escalade | waiting | root, root-plus |
+| estarlight | waiting | hepmc |
+| fastnlo | waiting | root, yoda |
+| framel-root | waiting | root-plus |
+| hepmc | waiting | root |
+| hepmc-merger | waiting | hepmc, root |
+| jana | waiting | podio, root |
+| jetphox | waiting | root |
+| podio | waiting | root |
+| professor | waiting | yoda |
+| rapgap | waiting | hepmc, rivet, root |
+| rivet | waiting | hepmc, root, yoda |
+| root-plus | waiting | root |
+| xfitter | waiting | apfelgrid, applgrid, root |
+| xfitter-dev | waiting | apfelgrid, applgrid, root |
+| yoda | waiting | root |
 | acts | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
