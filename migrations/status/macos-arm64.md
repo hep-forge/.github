@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 04:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-06 05:05 UTC.
 
-failed: 3 · blocked: 9 · building: 1 · waiting: 3 · done: 55 · n/a: 25
+failed: 3 · blocked: 9 · building: 1 · waiting: 2 · done: 56 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -18,13 +18,13 @@ failed: 3 · blocked: 9 · building: 1 · waiting: 3 · done: 55 · n/a: 25
 | hepmc-merger | blocked | hepmc |
 | rapgap | blocked | hepmc, rivet |
 | rivet | blocked | hepmc |
-| applgrid | building | moved 1.6.49 to main 5d259a4 |
-| apfelgrid | waiting | applgrid |
-| xfitter | waiting | apfelgrid, applgrid |
-| xfitter-dev | waiting | apfelgrid, applgrid |
+| apfelgrid | building | moved 1.0.1 to main ef9aa9f |
+| xfitter | waiting | apfelgrid |
+| xfitter-dev | waiting | apfelgrid |
 | acts | done |  |
 | apfel | done |  |
 | apfelxx | done |  |
+| applgrid | done |  |
 | chaplin | done |  |
 | collier | done |  |
 | combiner | done |  |
