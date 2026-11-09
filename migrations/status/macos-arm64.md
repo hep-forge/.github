@@ -1,11 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-09 05:25 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-09 05:43 UTC.
 
-done: 71 · n/a: 25
+building: 1 · done: 70 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
+| root-plus | building | moved beta to main 2ffe4ac |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -71,7 +72,6 @@ done: 71 · n/a: 25
 | rapgap | done |  |
 | rivet | done |  |
 | root | done |  |
-| root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
 | xfitter | done |  |
