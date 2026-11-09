@@ -130,7 +130,8 @@
   "42132152070": false,
   "42160493774": false,
   "42160511464": false,
-  "42160552045": false
+  "42160552045": false,
+  "42568892854": false
  },
  "why": {
   "https://github.com/hep-forge/djangoh-feedstock/actions/runs/41608285136": "No such file or directory",
@@ -240,12 +241,17 @@
   "https://github.com/hep-forge/root-feedstock/actions/runs/42132152070": "No such file or directory",
   "https://github.com/hep-forge/delphes-feedstock/actions/runs/42160493774": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"pythia[version='>=8.3.12,<8.3.13.0a0']\"), MatchSpec(\"root==6.38.04=py312_clang20\")}",
   "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42160511464": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"pythia[version='>=8.3.12,<8.3.13.0a0']\"), MatchSpec(\"root==6.38.04=py312_clang20\")}",
-  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"macosx_deployment_target_osx-arm64=11.0\"), MatchSpec(\"root==6.38.04=py312_clang20\")}"
+  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42160552045": "Unsatisfiable dependencies for platform osx-arm64: {MatchSpec(\"macosx_deployment_target_osx-arm64=11.0\"), MatchSpec(\"root==6.38.04=py312_clang20\")}",
+  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42568892854": "CMake Error at src/Core/cmake_install.cmake:77 (file):"
  },
  "issues": {
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
+  },
+  "root-plus": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42568892854"
   }
  }
 }
