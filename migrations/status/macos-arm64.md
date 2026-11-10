@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 05:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 06:07 UTC.
 
-failed: 1 · done: 70 · n/a: 25
+building: 1 · done: 70 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| root-plus | failed | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42568892854) CMake Error at src/Core/cmake_install.cmake:77 (file): |
+| root-plus | building | moved beta to main 596f40b |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
