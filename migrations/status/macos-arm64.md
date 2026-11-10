@@ -1,13 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 15:06 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 15:24 UTC.
 
-building: 1 · waiting: 1 · done: 71 · n/a: 23
+building: 1 · done: 72 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
-| fairmq | building | moved 1.11.0 to main 5fe6363 |
-| nestdaq | waiting | fairmq |
+| nestdaq | building | moved head to main a5527c7 |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -33,6 +32,7 @@ building: 1 · waiting: 1 · done: 71 · n/a: 23
 | epic | done |  |
 | escalade | done |  |
 | estarlight | done |  |
+| fairmq | done |  |
 | fastjet | done |  |
 | fastjet-contrib | done |  |
 | fastnlo | done |  |
