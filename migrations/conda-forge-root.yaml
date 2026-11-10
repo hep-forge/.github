@@ -1,0 +1,12 @@
+# Move every ROOT-dependent package from hep-forge's ROOT to conda-forge's
+# root_base (exact build pinned, C++23, Python 3.12, GCC 16), drop
+# root-guard, and point pythia (major 8) and geant (Geant4) at
+# conda-forge's pythia8 / geant4. Rebuilds these and everything that
+# depends on them (edm4hep via podio, framel-root via root-plus, g4hepem
+# via geant, ...). hep-forge's own ROOT stays published but is not
+# rebuilt.
+name: conda-forge-root
+created: 2026-11-10T16:33:00Z
+from: [pythia, geant, acts, afterburner, apfelgrid, applgrid, combiner, dd4hep, delphes, eic-smear, epic, escalade, fastnlo, gaudi, hammer, hepmc, hepmc-merger, jana, jetphox, lcg-relax, mcfm, nestdaq, npsim, phlex, podio, rapgap, rave, rivet, root-plus, roounfold, scirooplot, vgm, vmc, xfitter-dev, xfitter, yoda]
+exclude: [root, root-guard]
+max_running: 8
