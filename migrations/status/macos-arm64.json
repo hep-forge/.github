@@ -248,10 +248,6 @@
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "root-plus": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42568892854"
   }
  }
 }
