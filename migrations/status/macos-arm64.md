@@ -1,11 +1,13 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 14:43 UTC.
+platform `macos-arm64`, started 2026-11-03 02:37:00Z, updated 2026-11-10 15:06 UTC.
 
-done: 71 · n/a: 25
+building: 1 · waiting: 1 · done: 71 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
+| fairmq | building | moved 1.11.0 to main 5fe6363 |
+| nestdaq | waiting | fairmq |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -80,7 +82,6 @@ done: 71 · n/a: 25
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
-| fairmq | n/a | Linux only |
 | gaudi | n/a | Linux only |
 | hammer | n/a | Linux only |
 | herwig7 | n/a | Linux only |
@@ -88,7 +89,6 @@ done: 71 · n/a: 25
 | lhapdf5 | n/a | nothing published |
 | mcfm | n/a | Linux only |
 | mg5amcnlo | n/a | Linux only |
-| nestdaq | n/a | Linux only |
 | ninja-hep-ph | n/a | Linux only |
 | nnpdf | n/a | noarch |
 | phlex | n/a | Linux only |
