@@ -8,17 +8,9 @@
    "number": 2,
    "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613"
   },
-  "combiner": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757"
-  },
   "gaudi": {
    "number": 1,
    "run": "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087"
-  },
-  "roounfold": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617"
   },
   "root-plus": {
    "number": 3,
@@ -31,6 +23,10 @@
   "sherpa": {
    "number": 1,
    "run": "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743"
+  },
+  "rivet": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904"
   }
  },
  "retries": {
@@ -40,7 +36,7 @@
   "root-plus@00f4f12e4cd9e64c0351850ee6bcf1942996ed69": 3,
   "roounfold@adfa9169738934fb1ccbc3bde71181ce5bfc6cb3": 4,
   "root-plus@10793b77d31e25d0a61802162b1eb08304c242ca": 1,
-  "mcfm@fa17657cd782f5285c43efc215ef054b6efe5899": 1
+  "mcfm@fa17657cd782f5285c43efc215ef054b6efe5899": 2
  },
  "transient_runs": {
   "42943585479": true,
@@ -72,7 +68,9 @@
   "42995089475": false,
   "42995105019": false,
   "42995114743": false,
-  "42997667795": true
+  "42997667795": true,
+  "43000605471": true,
+  "42995105904": false
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
@@ -87,6 +85,7 @@
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42987163534": "error: conflicting types for 'sysconf'; have 'long int(void)'",
   "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/42995089475": "CMake Error at CMakeLists.txt:45 (target_link_libraries):",
   "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42995105019": "error: namespaces can only be defined in global or namespace scope",
-  "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"hepmc=2.6\")}"
+  "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"hepmc=2.6\")}",
+  "https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904": "error: '*(const std::vector<long unsigned int, std::allocator<long unsigned int> >*)((char*)0 + 8).std::vector<long unsigned int>::std::_Vector_base<long unsign"
  }
 }

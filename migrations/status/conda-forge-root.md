@@ -1,36 +1,33 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:05 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:24 UTC.
 
-failed: 8 · blocked: 9 · building: 4 · waiting: 1 · done: 20
+failed: 2 · blocked: 1 · building: 6 · waiting: 9 · done: 24
 
 | Package | State | Detail |
 |---|---|---|
-| combiner | failed | [run](https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757) No such file or directory |
-| gaudi | failed | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) No such file or directory |
-| hepmc-merger | failed | [run](https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/42995089475) CMake Error at CMakeLists.txt:45 (target_link_libraries): |
-| jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/42987163534) error: conflicting types for 'sysconf'; have 'long int(void)' |
-| podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613) CMake Error at cmake/podioBuild.cmake:205 (message): |
-| root-plus | failed | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42995105019) error: namespaces can only be defined in global or namespace scope |
-| roounfold | failed | [run](https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617) No such file or directory |
+| rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904) error: '*(const std::vector<long unsigned int, std::allocator<long unsigned int> >*)((char*)0 + 8).std::vector<long unsigned int>::std::_Vector_base<long unsign |
 | sherpa | failed | [run](https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("hepmc=2.6")} |
-| acts | blocked | dd4hep |
-| dd4hep | blocked | edm4hep, podio |
-| edm4hep | blocked | podio |
-| epic | blocked | dd4hep |
-| escalade | blocked | root-plus |
-| framel-root | blocked | root-plus |
-| jana | blocked | podio |
-| nestdaq | blocked | root-plus |
-| npsim | blocked | dd4hep |
+| rapgap | blocked | rivet |
+| gaudi | building | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) |
+| hepmc-merger | building | moved 2.4.0 to main 8c3d8b8 |
+| jetphox | building | moved 1.3.1_4 to main f6eabe3 |
 | mcfm | building | moved 10.3-applgrid to main fa17657 |
-| rivet | building | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904) |
-| xfitter | building | moved 2.2.1 to main 710fe78 |
-| xfitter-dev | building | moved 2.2.1 to main 4a75de9 |
-| rapgap | waiting | rivet |
+| podio | building | moved 1.7.0 to main 9d3a2df |
+| root-plus | building | moved gamma to main 4fb3dff |
+| acts | waiting | dd4hep |
+| dd4hep | waiting | edm4hep, podio |
+| edm4hep | waiting | podio |
+| epic | waiting | dd4hep |
+| escalade | waiting | root-plus |
+| framel-root | waiting | root-plus |
+| jana | waiting | podio |
+| nestdaq | waiting | root-plus |
+| npsim | waiting | dd4hep |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
+| combiner | done |  |
 | delphes | done |  |
 | eic-smear | done |  |
 | estarlight | done |  |
@@ -44,7 +41,10 @@ failed: 8 · blocked: 9 · building: 4 · waiting: 1 · done: 20
 | professor | done |  |
 | pythia | done | built; channel not refreshed yet |
 | rave | done |  |
+| roounfold | done |  |
 | scirooplot | done |  |
 | vgm | done |  |
 | vmc | done |  |
+| xfitter | done |  |
+| xfitter-dev | done |  |
 | yoda | done |  |
