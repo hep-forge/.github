@@ -4,10 +4,6 @@
    "number": 1,
    "run": "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743"
   },
-  "escalade": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001"
-  },
   "mcfm": {
    "number": 1,
    "run": "https://github.com/hep-forge/mcfm-feedstock/actions/runs/43006036545"

@@ -1,12 +1,11 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 13:24 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 13:43 UTC.
 
-building: 2 · done: 39
+building: 1 · done: 40
 
 | Package | State | Detail |
 |---|---|---|
-| escalade | building | moved v9.08.26 to main 3d67568 |
 | mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
 | acts | done |  |
 | afterburner | done |  |
@@ -18,6 +17,7 @@ building: 2 · done: 39
 | edm4hep | done |  |
 | eic-smear | done |  |
 | epic | done |  |
+| escalade | done |  |
 | estarlight | done |  |
 | fastnlo | done |  |
 | framel-root | done |  |
