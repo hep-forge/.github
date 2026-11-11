@@ -7,14 +7,18 @@
   "podio": {
    "number": 2,
    "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803"
+  },
+  "yoda": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051"
   }
  },
  "retries": {
-  "combiner@178e2f9d95ca2d635d2ad31d642402281c58fa5a": 2,
-  "gaudi@f3acfc7d4d909327168c6dafb2ce2f7ea0451f0f": 2,
-  "hepmc@f35a7d2ce7d75693a217fd515ca0b0ce6987cc9c": 1,
-  "root-plus@00f4f12e4cd9e64c0351850ee6bcf1942996ed69": 1,
-  "roounfold@adfa9169738934fb1ccbc3bde71181ce5bfc6cb3": 1
+  "combiner@178e2f9d95ca2d635d2ad31d642402281c58fa5a": 3,
+  "gaudi@f3acfc7d4d909327168c6dafb2ce2f7ea0451f0f": 3,
+  "hepmc@f35a7d2ce7d75693a217fd515ca0b0ce6987cc9c": 2,
+  "root-plus@00f4f12e4cd9e64c0351850ee6bcf1942996ed69": 2,
+  "roounfold@adfa9169738934fb1ccbc3bde71181ce5bfc6cb3": 2
  },
  "transient_runs": {
   "42943585479": true,
@@ -25,10 +29,17 @@
   "42945955558": true,
   "42945961707": true,
   "42945974262": true,
-  "42945980327": true
+  "42945980327": true,
+  "42947929695": true,
+  "42947932970": true,
+  "42947936471": true,
+  "42947939704": true,
+  "42947943447": true,
+  "42947953051": false
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
-  "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803": "CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):"
+  "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803": "CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
+  "https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051": "error: Cython is required for --enable-pyext."
  }
 }
