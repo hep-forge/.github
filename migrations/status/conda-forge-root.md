@@ -1,11 +1,13 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 03:05 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 03:26 UTC.
 
-failed: 3 · blocked: 15 · building: 5 · waiting: 9 · done: 10
+failed: 5 · blocked: 15 · building: 3 · waiting: 9 · done: 10
 
 | Package | State | Detail |
 |---|---|---|
+| combiner | failed | [run](https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757) No such file or directory |
+| gaudi | failed | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) No such file or directory |
 | jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("root_base[version='>=6.38.6,<6.38.7.0a0']"), MatchSpec("root"), MatchSpec("gl2ps[version='>=1 |
 | podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803) CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
 | yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051) error: Cython is required for --enable-pyext. |
@@ -24,8 +26,6 @@ failed: 3 · blocked: 15 · building: 5 · waiting: 9 · done: 10
 | rivet | blocked | yoda |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| combiner | building | moved 0.1.1 to main 178e2f9 |
-| gaudi | building | moved 40.6 to main f3acfc7 |
 | hepmc | building | moved 3.3.1 to main f35a7d2 |
 | root-plus | building | moved gamma to main 00f4f12 |
 | roounfold | building | moved 3.1.0 to main adfa916 |
