@@ -1,12 +1,12 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 22:43 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 23:04 UTC.
 
-failed: 1 · done: 40
+building: 1 · done: 39 · n/a: 1
 
 | Package | State | Detail |
 |---|---|---|
-| mcfm | failed | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) No such file or directory |
+| mcfm | building | moved 10.3-applgrid to main 0e0efeb |
 | acts | done |  |
 | afterburner | done |  |
 | apfelgrid | done |  |
@@ -35,7 +35,6 @@ failed: 1 · done: 40
 | phlex | done |  |
 | podio | done |  |
 | professor | done |  |
-| pythia | done | built; channel not refreshed yet |
 | rapgap | done |  |
 | rave | done |  |
 | rivet | done |  |
@@ -47,3 +46,4 @@ failed: 1 · done: 40
 | xfitter | done |  |
 | xfitter-dev | done |  |
 | yoda | done |  |
+| pythia | n/a | nothing published |

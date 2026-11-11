@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 22:44 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 23:04 UTC.
 
-failed: 1 · done: 72 · n/a: 23
+failed: 1 · done: 71 · n/a: 24
 
 | Package | State | Detail |
 |---|---|---|
@@ -68,7 +68,6 @@ failed: 1 · done: 72 · n/a: 23
 | ploughshare | done |  |
 | podio | done |  |
 | professor | done |  |
-| pythia | done |  |
 | qcdnum | done |  |
 | rapgap | done |  |
 | rivet | done |  |
@@ -92,6 +91,7 @@ failed: 1 · done: 72 · n/a: 23
 | ninja-hep-ph | n/a | Linux only |
 | nnpdf | n/a | noarch |
 | phlex | n/a | Linux only |
+| pythia | n/a | nothing published |
 | qcdloop | n/a | Linux only |
 | rave | n/a | Linux only |
 | root-guard | n/a | noarch |

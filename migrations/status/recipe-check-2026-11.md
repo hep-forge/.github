@@ -1,8 +1,8 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-11 22:44 UTC.
+rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-11 23:04 UTC.
 
-done: 27
+done: 26 · n/a: 1
 
 | Package | State | Detail |
 |---|---|---|
@@ -29,7 +29,7 @@ done: 27
 | npsim | done |  |
 | numdiff | done |  |
 | podio | done |  |
-| pythia | done |  |
 | rapgap | done |  |
 | thepeg | done |  |
 | xfitter | done |  |
+| pythia | n/a | nothing published |
