@@ -1,8 +1,8 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 02:25 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 02:43 UTC.
 
-failed: 2 · blocked: 6 · building: 8 · ready: 3 · waiting: 18 · done: 5
+failed: 2 · blocked: 6 · building: 8 · waiting: 18 · done: 8
 
 | Package | State | Detail |
 |---|---|---|
@@ -15,16 +15,13 @@ failed: 2 · blocked: 6 · building: 8 · ready: 3 · waiting: 18 · done: 5
 | jana | blocked | podio |
 | npsim | blocked | dd4hep |
 | combiner | building | moved 0.1.1 to main 178e2f9 |
-| delphes | building | moved 3.5.1 to main e7f045f |
 | gaudi | building | moved 40.6 to main f3acfc7 |
 | hepmc | building | moved 3.3.1 to main f35a7d2 |
-| rave | building | moved 0.6.25 to main 995d2de |
 | root-plus | building | moved gamma to main 00f4f12 |
 | roounfold | building | moved 3.1.0 to main adfa916 |
-| scirooplot | building | moved 3.3.3 to main 6b86fe2 |
-| vgm | ready |  |
-| vmc | ready |  |
-| yoda | ready |  |
+| vgm | building | moved 5.5 to main cec7ab3 |
+| vmc | building | moved 2.2 to main f4d9b4e |
+| yoda | building | moved 2.1.4, 1.9.9 to main f802357 |
 | afterburner | waiting | hepmc |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo |
@@ -43,8 +40,11 @@ failed: 2 · blocked: 6 · building: 8 · ready: 3 · waiting: 18 · done: 5
 | sherpa | waiting | hepmc |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
+| delphes | done |  |
 | g4hepem | done |  |
 | geant | done | built; channel not refreshed yet |
 | lcg-relax | done |  |
 | phlex | done |  |
 | pythia | done | built; channel not refreshed yet |
+| rave | done |  |
+| scirooplot | done |  |
