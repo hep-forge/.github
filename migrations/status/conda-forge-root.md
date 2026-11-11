@@ -1,14 +1,14 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 13:05 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 13:24 UTC.
 
-failed: 1 · building: 2 · done: 38
+building: 2 · done: 39
 
 | Package | State | Detail |
 |---|---|---|
-| escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001) Could NOT find MPI (missing: MPI_LIBRARIES MPI_INCLUDE_DIRS) |
-| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/43022701670) |
+| escalade | building | moved v9.08.26 to main 3d67568 |
 | mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
+| acts | done |  |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
