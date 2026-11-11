@@ -1,20 +1,19 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 11:05 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 11:23 UTC.
 
-failed: 3 · building: 2 · waiting: 4 · done: 32
+failed: 4 · blocked: 3 · building: 1 · done: 33
 
 | Package | State | Detail |
 |---|---|---|
+| dd4hep | failed | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43008992741) error: use of undeclared identifier 'requires' |
 | escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43006008850) error: module map file '/home/runner/miniconda/conda-bld/escalade_1794393851392/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla |
 | framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/43006014543) error: module map file '/home/runner/miniconda/conda-bld/framel-root_1794393850527/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_ |
 | mcfm | failed | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43006036545) No such file or directory |
-| dd4hep | building | moved 1.37 to main 37b4bbf |
-| rivet | building | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/43006051468) |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
-| rapgap | waiting | rivet |
+| acts | blocked | dd4hep |
+| epic | blocked | dd4hep |
+| npsim | blocked | dd4hep |
+| rapgap | building | moved 3.310 to main 4840893 |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
@@ -39,6 +38,7 @@ failed: 3 · building: 2 · waiting: 4 · done: 32
 | professor | done |  |
 | pythia | done | built; channel not refreshed yet |
 | rave | done |  |
+| rivet | done |  |
 | root-plus | done |  |
 | roounfold | done |  |
 | scirooplot | done |  |
