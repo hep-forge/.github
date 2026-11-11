@@ -1,8 +1,8 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 09:44 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:05 UTC.
 
-failed: 8 · blocked: 9 · building: 3 · waiting: 3 · done: 19
+failed: 8 · blocked: 9 · building: 4 · waiting: 1 · done: 20
 
 | Package | State | Detail |
 |---|---|---|
@@ -23,13 +23,13 @@ failed: 8 · blocked: 9 · building: 3 · waiting: 3 · done: 19
 | jana | blocked | podio |
 | nestdaq | blocked | root-plus |
 | npsim | blocked | dd4hep |
-| apfelgrid | building | moved 1.0.1 to main e909d55 |
 | mcfm | building | moved 10.3-applgrid to main fa17657 |
 | rivet | building | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904) |
+| xfitter | building | moved 2.2.1 to main 710fe78 |
+| xfitter-dev | building | moved 2.2.1 to main 4a75de9 |
 | rapgap | waiting | rivet |
-| xfitter | waiting | apfelgrid |
-| xfitter-dev | waiting | apfelgrid |
 | afterburner | done |  |
+| apfelgrid | done |  |
 | applgrid | done |  |
 | delphes | done |  |
 | eic-smear | done |  |
