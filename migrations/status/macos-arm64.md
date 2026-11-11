@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 10:25 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 10:44 UTC.
 
-failed: 1 · done: 72 · n/a: 23
+building: 1 · done: 72 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/42941001961) Unsatisfiable dependencies for platform osx-arm64: {MatchSpec("root_base=6.38[build=cxx23*]"), MatchSpec("root-plus[build=*_root638]"), MatchSpec("pythia[versio |
+| nestdaq | building | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43006040841) |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |

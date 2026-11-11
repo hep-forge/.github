@@ -1,29 +1,23 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:24 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:43 UTC.
 
-failed: 2 · blocked: 1 · building: 6 · waiting: 9 · done: 24
+building: 7 · waiting: 5 · done: 29
 
 | Package | State | Detail |
 |---|---|---|
-| rivet | failed | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/42995105904) error: '*(const std::vector<long unsigned int, std::allocator<long unsigned int> >*)((char*)0 + 8).std::vector<long unsigned int>::std::_Vector_base<long unsign |
-| sherpa | failed | [run](https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("hepmc=2.6")} |
-| rapgap | blocked | rivet |
-| gaudi | building | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) |
-| hepmc-merger | building | moved 2.4.0 to main 8c3d8b8 |
-| jetphox | building | moved 1.3.1_4 to main f6eabe3 |
+| edm4hep | building | moved 1.0.0 to main 6202384 |
+| escalade | building | moved v9.08.26 to main 55ed69e |
+| framel-root | building | moved 1.0.3 to main 32c65f0 |
+| jana | building | moved 2026.03.01 to main 92e81dc |
 | mcfm | building | moved 10.3-applgrid to main fa17657 |
-| podio | building | moved 1.7.0 to main 9d3a2df |
-| root-plus | building | moved gamma to main 4fb3dff |
+| nestdaq | building | moved head to main 4911c9f |
+| rivet | building | moved 4.1.3, 3.1.11 to main fe904d7 |
 | acts | waiting | dd4hep |
-| dd4hep | waiting | edm4hep, podio |
-| edm4hep | waiting | podio |
+| dd4hep | waiting | edm4hep |
 | epic | waiting | dd4hep |
-| escalade | waiting | root-plus |
-| framel-root | waiting | root-plus |
-| jana | waiting | podio |
-| nestdaq | waiting | root-plus |
 | npsim | waiting | dd4hep |
+| rapgap | waiting | rivet |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
@@ -33,14 +27,19 @@ failed: 2 · blocked: 1 · building: 6 · waiting: 9 · done: 24
 | estarlight | done |  |
 | fastnlo | done |  |
 | g4hepem | done |  |
+| gaudi | done |  |
 | geant | done | built; channel not refreshed yet |
 | hammer | done |  |
 | hepmc | done |  |
+| hepmc-merger | done |  |
+| jetphox | done |  |
 | lcg-relax | done |  |
 | phlex | done |  |
+| podio | done |  |
 | professor | done |  |
 | pythia | done | built; channel not refreshed yet |
 | rave | done |  |
+| root-plus | done |  |
 | roounfold | done |  |
 | scirooplot | done |  |
 | vgm | done |  |
