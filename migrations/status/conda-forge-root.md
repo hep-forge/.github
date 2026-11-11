@@ -1,43 +1,43 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 03:26 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 03:43 UTC.
 
-failed: 5 · blocked: 15 · building: 3 · waiting: 9 · done: 10
+failed: 7 · blocked: 21 · building: 1 · waiting: 3 · done: 10
 
 | Package | State | Detail |
 |---|---|---|
 | combiner | failed | [run](https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757) No such file or directory |
 | gaudi | failed | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) No such file or directory |
+| hepmc | failed | [run](https://github.com/hep-forge/hepmc-feedstock/actions/runs/42952808775) No such file or directory |
 | jetphox | failed | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449) Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec("root_base[version='>=6.38.6,<6.38.7.0a0']"), MatchSpec("root"), MatchSpec("gl2ps[version='>=1 |
 | podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803) CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message): |
+| roounfold | failed | [run](https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617) No such file or directory |
 | yoda | failed | [run](https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051) error: Cython is required for --enable-pyext. |
 | acts | blocked | dd4hep |
+| afterburner | blocked | hepmc |
 | apfelgrid | blocked | applgrid |
 | applgrid | blocked | fastnlo |
-| dd4hep | blocked | edm4hep, podio |
+| dd4hep | blocked | edm4hep, hepmc, podio |
 | edm4hep | blocked | podio |
+| eic-smear | blocked | hepmc |
 | epic | blocked | dd4hep |
+| estarlight | blocked | hepmc |
 | fastnlo | blocked | yoda |
+| hammer | blocked | hepmc |
+| hepmc-merger | blocked | hepmc |
 | jana | blocked | podio |
 | mcfm | blocked | applgrid |
 | npsim | blocked | dd4hep |
 | professor | blocked | yoda |
-| rapgap | blocked | rivet |
-| rivet | blocked | yoda |
+| rapgap | blocked | hepmc, rivet |
+| rivet | blocked | hepmc, yoda |
+| sherpa | blocked | hepmc |
 | xfitter | blocked | apfelgrid, applgrid |
 | xfitter-dev | blocked | apfelgrid, applgrid |
-| hepmc | building | moved 3.3.1 to main f35a7d2 |
-| root-plus | building | moved gamma to main 00f4f12 |
-| roounfold | building | moved 3.1.0 to main adfa916 |
-| afterburner | waiting | hepmc |
-| eic-smear | waiting | hepmc |
+| root-plus | building | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42952812043) |
 | escalade | waiting | root-plus |
-| estarlight | waiting | hepmc |
 | framel-root | waiting | root-plus |
-| hammer | waiting | hepmc |
-| hepmc-merger | waiting | hepmc |
 | nestdaq | waiting | root-plus |
-| sherpa | waiting | hepmc |
 | delphes | done |  |
 | g4hepem | done |  |
 | geant | done | built; channel not refreshed yet |

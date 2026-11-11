@@ -19,14 +19,22 @@
   "gaudi": {
    "number": 1,
    "run": "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087"
+  },
+  "hepmc": {
+   "number": 3,
+   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42952808775"
+  },
+  "roounfold": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617"
   }
  },
  "retries": {
   "combiner@178e2f9d95ca2d635d2ad31d642402281c58fa5a": 4,
   "gaudi@f3acfc7d4d909327168c6dafb2ce2f7ea0451f0f": 4,
-  "hepmc@f35a7d2ce7d75693a217fd515ca0b0ce6987cc9c": 3,
+  "hepmc@f35a7d2ce7d75693a217fd515ca0b0ce6987cc9c": 4,
   "root-plus@00f4f12e4cd9e64c0351850ee6bcf1942996ed69": 3,
-  "roounfold@adfa9169738934fb1ccbc3bde71181ce5bfc6cb3": 3
+  "roounfold@adfa9169738934fb1ccbc3bde71181ce5bfc6cb3": 4
  },
  "transient_runs": {
   "42943585479": true,
@@ -48,13 +56,17 @@
   "42950439087": true,
   "42950442833": true,
   "42950446265": true,
-  "42950449842": true
+  "42950449842": true,
+  "42952808775": true,
+  "42952815617": true
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
   "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803": "CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):",
   "https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051": "error: Cython is required for --enable-pyext.",
   "https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757": "No such file or directory",
-  "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087": "No such file or directory"
+  "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087": "No such file or directory",
+  "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42952808775": "No such file or directory",
+  "https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617": "No such file or directory"
  }
 }
