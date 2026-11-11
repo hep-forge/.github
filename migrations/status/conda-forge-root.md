@@ -1,16 +1,14 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 12:42 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 13:05 UTC.
 
-failed: 1 · building: 4 · done: 36
+failed: 1 · building: 2 · done: 38
 
 | Package | State | Detail |
 |---|---|---|
 | escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001) Could NOT find MPI (missing: MPI_LIBRARIES MPI_INCLUDE_DIRS) |
-| acts | building | moved 46.8.1 to main e4de874 |
-| epic | building | moved 26.06.0 to main 0212f6c |
+| acts | building | [run](https://github.com/hep-forge/acts-feedstock/actions/runs/43022701670) |
 | mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
-| npsim | building | moved 1.6.1 to main 1f8cb2b |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
@@ -19,6 +17,7 @@ failed: 1 · building: 4 · done: 36
 | delphes | done |  |
 | edm4hep | done |  |
 | eic-smear | done |  |
+| epic | done |  |
 | estarlight | done |  |
 | fastnlo | done |  |
 | framel-root | done |  |
@@ -32,6 +31,7 @@ failed: 1 · building: 4 · done: 36
 | jetphox | done |  |
 | lcg-relax | done |  |
 | nestdaq | done |  |
+| npsim | done |  |
 | phlex | done |  |
 | podio | done |  |
 | professor | done |  |
