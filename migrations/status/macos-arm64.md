@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 23:24 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 23:43 UTC.
 
-building: 1 · done: 71 · n/a: 24
+failed: 1 · done: 70 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | building | moved head to main 0857559 |
+| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43119577311) error: no matching constructor for initialization of 'const std::pair<std::chrono::nanoseconds, std::chrono::system_clock::time_point>' (aka 'const pair<duratio |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -39,7 +39,6 @@ building: 1 · done: 71 · n/a: 24
 | framel | done |  |
 | framel-root | done |  |
 | g4hepem | done |  |
-| geant | done | built; channel not refreshed yet |
 | gosam | done |  |
 | hathor | done |  |
 | hell | done |  |
@@ -82,6 +81,7 @@ building: 1 · done: 71 · n/a: 24
 | cernlib | n/a | Linux only |
 | eko | n/a | noarch |
 | gaudi | n/a | Linux only |
+| geant | n/a | Linux only |
 | hammer | n/a | Linux only |
 | herwig7 | n/a | Linux only |
 | lcg-relax | n/a | Linux only |
