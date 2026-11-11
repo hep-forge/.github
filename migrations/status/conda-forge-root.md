@@ -1,12 +1,12 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 15:04 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 15:24 UTC.
 
-building: 1 · done: 40
+failed: 1 · done: 40
 
 | Package | State | Detail |
 |---|---|---|
-| mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
+| mcfm | failed | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) No such file or directory |
 | acts | done |  |
 | afterburner | done |  |
 | apfelgrid | done |  |
