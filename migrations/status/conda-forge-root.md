@@ -1,15 +1,14 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 12:06 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 12:30 UTC.
 
-building: 4 · waiting: 3 · done: 34
+failed: 1 · building: 2 · waiting: 3 · done: 35
 
 | Package | State | Detail |
 |---|---|---|
-| dd4hep | building | moved 1.37 to main 03bcf4f |
-| escalade | building | moved v9.08.26 to main f81b1ed |
-| framel-root | building | moved 1.0.3 to main 996c55a |
-| mcfm | building | moved 10.3-applgrid to main 5cc9553 |
+| escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001) Could NOT find MPI (missing: MPI_LIBRARIES MPI_INCLUDE_DIRS) |
+| dd4hep | building | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43017455352) |
+| mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
 | acts | waiting | dd4hep |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
@@ -22,6 +21,7 @@ building: 4 · waiting: 3 · done: 34
 | eic-smear | done |  |
 | estarlight | done |  |
 | fastnlo | done |  |
+| framel-root | done |  |
 | g4hepem | done |  |
 | gaudi | done |  |
 | geant | done | built; channel not refreshed yet |

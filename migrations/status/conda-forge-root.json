@@ -6,11 +6,7 @@
   },
   "escalade": {
    "number": 1,
-   "run": "https://github.com/hep-forge/escalade-feedstock/actions/runs/43006008850"
-  },
-  "framel-root": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/framel-root-feedstock/actions/runs/43006014543"
+   "run": "https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001"
   },
   "mcfm": {
    "number": 1,
@@ -67,7 +63,8 @@
   "43006008850": false,
   "43006014543": false,
   "43006036545": true,
-  "43008992741": false
+  "43008992741": false,
+  "43017457001": false
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
@@ -87,6 +84,7 @@
   "https://github.com/hep-forge/escalade-feedstock/actions/runs/43006008850": "error: module map file '/home/runner/miniconda/conda-bld/escalade_1794393851392/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
   "https://github.com/hep-forge/framel-root-feedstock/actions/runs/43006014543": "error: module map file '/home/runner/miniconda/conda-bld/framel-root_1794393850527/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
   "https://github.com/hep-forge/mcfm-feedstock/actions/runs/43006036545": "No such file or directory",
-  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43008992741": "error: use of undeclared identifier 'requires'"
+  "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43008992741": "error: use of undeclared identifier 'requires'",
+  "https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001": "Could NOT find MPI (missing: MPI_LIBRARIES MPI_INCLUDE_DIRS) "
  }
 }
