@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 23:04 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-11 23:24 UTC.
 
-failed: 1 · done: 71 · n/a: 24
+building: 1 · done: 71 · n/a: 24
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43006040841) error: no matching constructor for initialization of 'const std::pair<std::chrono::nanoseconds, std::chrono::system_clock::time_point>' (aka 'const pair<duratio |
+| nestdaq | building | moved head to main 0857559 |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |

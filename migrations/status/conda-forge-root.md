@@ -1,12 +1,12 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 23:04 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 23:24 UTC.
 
 building: 1 · done: 39 · n/a: 1
 
 | Package | State | Detail |
 |---|---|---|
-| mcfm | building | moved 10.3-applgrid to main 0e0efeb |
+| mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43116930752) |
 | acts | done |  |
 | afterburner | done |  |
 | apfelgrid | done |  |
