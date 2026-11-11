@@ -65,11 +65,14 @@ def bump(feedstock: str, new_version: str) -> None:
     if not meta_path.exists():
         raise FileNotFoundError(f"No recipe at {meta_path}")
 
-    url = tarball_url(feedstock, new_version)
-    if not url:
-        raise ValueError(f"Could not determine tarball URL for {feedstock}")
-
-    sha256 = fetch_sha256(url)
+    if (SOURCES.get(feedstock) or {}).get("type") == "conda_forge":
+        # The recipe only points at a conda-forge package: no source to hash.
+        sha256 = ""
+    else:
+        url = tarball_url(feedstock, new_version)
+        if not url:
+            raise ValueError(f"Could not determine tarball URL for {feedstock}")
+        sha256 = fetch_sha256(url)
 
     text = meta_path.read_text()
 

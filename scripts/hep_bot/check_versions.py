@@ -239,6 +239,30 @@ def upstream_from_recipe(rec):
     return latest_listed(page, fname)
 
 
+def latest_conda_forge(src):
+    """Newest version of a conda-forge package, for recipes that only point at
+    it (pythia -> pythia8, geant -> geant4). An optional `pattern` maps
+    conda-forge's spelling to the recipe's, its groups joined with dots
+    (pythia8 8.312 -> 8.3.12); versions it does not match are ignored."""
+    try:
+        r = requests.get(f"https://api.anaconda.org/package/conda-forge/{src['package']}", timeout=20)
+        r.raise_for_status()
+        versions = r.json().get("versions", [])
+    except Exception as e:
+        print(f"  WARNING: could not read conda-forge/{src['package']}: {e}", file=sys.stderr)
+        return None
+    if src.get("pattern"):
+        found = []
+        for v in versions:
+            m = re.fullmatch(src["pattern"], v)
+            if m:
+                found.append(".".join(str(int(g)) for g in m.groups()) if m.groups() else v)
+    else:
+        found = list(versions)
+    found = [v for v in found if V(v)]
+    return max(found, key=V) if found else None
+
+
 def upstream_from_sources(name):
     src = SOURCES[name]
     if src["type"] == "anti_bot":
@@ -257,6 +281,8 @@ def upstream_from_sources(name):
         return max(found, key=V) if found else None
     if src["type"] in ("git_tags", "gitlab_tags"):
         return latest_tag(src["url"], src.get("prefix"), src.get("pattern"))
+    if src["type"] == "conda_forge":
+        return latest_conda_forge(src)
     if src["type"] == "github_releases":
         headers = {}
         if token := os.environ.get("GITHUB_TOKEN"):
@@ -479,6 +505,8 @@ def main() -> None:
             if up and V(up) > V(cur):
                 if breaking(cur, up):
                     why = "new major version"
+                elif (SOURCES.get(name) or {}).get("type") == "conda_forge":
+                    why = None   # a pointer to conda-forge: nothing to download
                 elif rec["git_url"] or not plain_tarball(rec["url"]):
                     why = "git or templated source"
                 else:

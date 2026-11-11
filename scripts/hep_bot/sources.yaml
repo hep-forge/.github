@@ -7,6 +7,9 @@
 #   github_releases: repo (owner/name)
 #   anti_bot:    url only -- the site serves browsers only (anti-bot page);
 #                hep-bot doesn't query it and lists the package for a human
+#   conda_forge: package (+ optional pattern) -- the recipe only points at a
+#                conda-forge package; follow that package's versions and bump
+#                without downloading anything
 
 fastjet:
   type: html_scrape
@@ -33,10 +36,17 @@ hepmc:
   url: "https://gitlab.cern.ch/hepmc/HepMC3"
   pattern: '(\d+\.\d+\.\d+)'
 
+# main's pythia (major 8) points at conda-forge's pythia8: follow that, not
+# Pythia's own releases, which reach conda-forge later (8.312 -> 8.3.12).
 pythia:
-  type: git_tags
-  url: "https://gitlab.com/Pythia8/releases"
-  pattern: 'pythia(\d)(\d)(\d\d)'
+  type: conda_forge
+  package: pythia8
+  pattern: '(\d+)\.(\d)(\d\d)'
+
+# main's geant points at conda-forge's geant4 (version spelled the same)
+geant:
+  type: conda_forge
+  package: geant4
 
 yoda:
   type: html_scrape
