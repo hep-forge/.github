@@ -1,3 +1,26 @@
 {
- "issues": {}
+ "issues": {
+  "jetphox": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449"
+  },
+  "podio": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803"
+  }
+ },
+ "retries": {
+  "combiner@178e2f9d95ca2d635d2ad31d642402281c58fa5a": 1,
+  "gaudi@f3acfc7d4d909327168c6dafb2ce2f7ea0451f0f": 1
+ },
+ "transient_runs": {
+  "42943585479": true,
+  "42943590205": true,
+  "42943592449": false,
+  "42943598803": false
+ },
+ "why": {
+  "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
+  "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803": "CMake Error at /home/runner/miniconda/conda-bld/podio_1794362782385/_build_env/share/cmake-4.4/Modules/FindPackageHandleStandardArgs.cmake:290 (message):"
+ }
 }
