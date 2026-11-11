@@ -11,10 +11,6 @@
   "mcfm": {
    "number": 1,
    "run": "https://github.com/hep-forge/mcfm-feedstock/actions/runs/43006036545"
-  },
-  "dd4hep": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43008992741"
   }
  },
  "retries": {

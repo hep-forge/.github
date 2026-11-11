@@ -1,21 +1,21 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 12:30 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 12:42 UTC.
 
-failed: 1 · building: 2 · waiting: 3 · done: 35
+failed: 1 · building: 4 · done: 36
 
 | Package | State | Detail |
 |---|---|---|
 | escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43017457001) Could NOT find MPI (missing: MPI_LIBRARIES MPI_INCLUDE_DIRS) |
-| dd4hep | building | [run](https://github.com/hep-forge/dd4hep-feedstock/actions/runs/43017455352) |
+| acts | building | moved 46.8.1 to main e4de874 |
+| epic | building | moved 26.06.0 to main 0212f6c |
 | mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074) |
-| acts | waiting | dd4hep |
-| epic | waiting | dd4hep |
-| npsim | waiting | dd4hep |
+| npsim | building | moved 1.6.1 to main 1f8cb2b |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
 | combiner | done |  |
+| dd4hep | done |  |
 | delphes | done |  |
 | edm4hep | done |  |
 | eic-smear | done |  |
