@@ -1,8 +1,8 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 11:23 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 11:43 UTC.
 
-failed: 4 · blocked: 3 · building: 1 · done: 33
+failed: 4 · blocked: 3 · done: 34
 
 | Package | State | Detail |
 |---|---|---|
@@ -13,7 +13,6 @@ failed: 4 · blocked: 3 · building: 1 · done: 33
 | acts | blocked | dd4hep |
 | epic | blocked | dd4hep |
 | npsim | blocked | dd4hep |
-| rapgap | building | moved 3.310 to main 4840893 |
 | afterburner | done |  |
 | apfelgrid | done |  |
 | applgrid | done |  |
@@ -37,6 +36,7 @@ failed: 4 · blocked: 3 · building: 1 · done: 33
 | podio | done |  |
 | professor | done |  |
 | pythia | done | built; channel not refreshed yet |
+| rapgap | done |  |
 | rave | done |  |
 | rivet | done |  |
 | root-plus | done |  |
