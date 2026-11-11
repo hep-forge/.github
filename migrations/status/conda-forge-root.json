@@ -6,11 +6,7 @@
   },
   "podio": {
    "number": 2,
-   "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/42943598803"
-  },
-  "yoda": {
-   "number": 2,
-   "run": "https://github.com/hep-forge/yoda-feedstock/actions/runs/42947953051"
+   "run": "https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613"
   },
   "combiner": {
    "number": 1,
@@ -19,10 +15,6 @@
   "gaudi": {
    "number": 1,
    "run": "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087"
-  },
-  "hepmc": {
-   "number": 3,
-   "run": "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42952808775"
   },
   "roounfold": {
    "number": 1,
@@ -63,7 +55,8 @@
   "42950449842": true,
   "42952808775": true,
   "42952815617": true,
-  "42952812043": false
+  "42952812043": false,
+  "42987164613": false
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
@@ -73,6 +66,7 @@
   "https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087": "No such file or directory",
   "https://github.com/hep-forge/hepmc-feedstock/actions/runs/42952808775": "No such file or directory",
   "https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617": "No such file or directory",
-  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42952812043": "error: module map file '/home/runner/miniconda/conda-bld/root-plus_1794367649616/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl"
+  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42952812043": "error: module map file '/home/runner/miniconda/conda-bld/root-plus_1794367649616/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
+  "https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613": "CMake Error at cmake/podioBuild.cmake:205 (message):"
  }
 }

@@ -1,46 +1,45 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 08:27 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 08:43 UTC.
 
-failed: 1 · building: 7 · waiting: 24 · done: 10
+failed: 3 · blocked: 6 · building: 8 · ready: 4 · waiting: 9 · done: 12
 
 | Package | State | Detail |
 |---|---|---|
+| gaudi | failed | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) No such file or directory |
+| podio | failed | [run](https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613) CMake Error at cmake/podioBuild.cmake:205 (message): |
 | roounfold | failed | [run](https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617) No such file or directory |
+| acts | blocked | dd4hep |
+| dd4hep | blocked | edm4hep, podio |
+| edm4hep | blocked | podio |
+| epic | blocked | dd4hep |
+| jana | blocked | podio |
+| npsim | blocked | dd4hep |
+| afterburner | building | moved 0.2.1 to main 55c15fb |
 | combiner | building | [run](https://github.com/hep-forge/combiner-feedstock/actions/runs/42950434757) |
-| gaudi | building | [run](https://github.com/hep-forge/gaudi-feedstock/actions/runs/42950439087) |
-| hepmc | building | moved 3.3.1 to main 7b0c595 |
-| jetphox | building | moved 1.3.1_4 to main fea44d4 |
-| podio | building | moved 1.7.0 to main 972b983 |
-| root-plus | building | moved gamma to main 10793b7 |
-| yoda | building | moved 2.1.4, 1.9.9 to main 7dfb014 |
-| acts | waiting | dd4hep |
-| afterburner | waiting | hepmc |
+| eic-smear | building | moved 1.2.3 to main b70a7ed |
+| estarlight | building | moved 1.2.0 to main cafed68 |
+| fastnlo | building | moved 2.6.0 to main f12ceaf |
+| hammer | building | moved 2.0.0 to main 9b235d7 |
+| jetphox | building | [run](https://github.com/hep-forge/jetphox-feedstock/actions/runs/42987163534) |
+| root-plus | building | [run](https://github.com/hep-forge/root-plus-feedstock/actions/runs/42987166693) |
+| hepmc-merger | ready |  |
+| professor | ready |  |
+| rivet | ready |  |
+| sherpa | ready |  |
 | apfelgrid | waiting | applgrid |
 | applgrid | waiting | fastnlo |
-| dd4hep | waiting | edm4hep, hepmc, podio |
-| edm4hep | waiting | podio |
-| eic-smear | waiting | hepmc |
-| epic | waiting | dd4hep |
 | escalade | waiting | root-plus |
-| estarlight | waiting | hepmc |
-| fastnlo | waiting | yoda |
 | framel-root | waiting | root-plus |
-| hammer | waiting | hepmc |
-| hepmc-merger | waiting | hepmc |
-| jana | waiting | podio |
 | mcfm | waiting | applgrid |
 | nestdaq | waiting | root-plus |
-| npsim | waiting | dd4hep |
-| professor | waiting | yoda |
-| rapgap | waiting | hepmc, rivet |
-| rivet | waiting | hepmc, yoda |
-| sherpa | waiting | hepmc |
+| rapgap | waiting | rivet |
 | xfitter | waiting | apfelgrid, applgrid |
 | xfitter-dev | waiting | apfelgrid, applgrid |
 | delphes | done |  |
 | g4hepem | done |  |
 | geant | done | built; channel not refreshed yet |
+| hepmc | done |  |
 | lcg-relax | done |  |
 | phlex | done |  |
 | pythia | done | built; channel not refreshed yet |
@@ -48,3 +47,4 @@ failed: 1 · building: 7 · waiting: 24 · done: 10
 | scirooplot | done |  |
 | vgm | done |  |
 | vmc | done |  |
+| yoda | done |  |
