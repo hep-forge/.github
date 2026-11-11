@@ -160,7 +160,10 @@ class World:
     def runs(self, p, tag, since):
         d = gh_json("run", "list", "-R", f"{ORG}/{p}-feedstock", "-w", "autoupload.yml", "-b", tag,
                     "-L", "5", "--json", "databaseId,status,conclusion,createdAt,headSha,url") or []
-        return [r for r in d if r["createdAt"] >= since]
+        # compare instants, not strings: "2026-11-10T05:56Z" >= "2026-11-10 16:33Z"
+        # is true as text, which counted a same-day run from before the start
+        t0 = dt.datetime.fromisoformat(str(since).replace("Z", "+00:00"))
+        return [r for r in d if dt.datetime.fromisoformat(r["createdAt"].replace("Z", "+00:00")) >= t0]
 
     @staticmethod
     def lts(text):
@@ -211,9 +214,13 @@ class Migration:
         self.path, self.w = path, world
         spec = yaml.safe_load(path.read_text())
         self.name = spec["name"]
-        self.created = str(spec["created"]).replace("+00:00", "Z")
-        if not self.created.endswith("Z"):
-            self.created = dt.datetime.fromisoformat(self.created).strftime("%Y-%m-%dT%H:%M:%SZ")
+        # YAML loads an unquoted timestamp as a datetime, whose str() has a
+        # space where GitHub's createdAt has a "T": always write it out as
+        # GitHub does, so the two compare correctly.
+        created = dt.datetime.fromisoformat(str(spec["created"]).replace("Z", "+00:00"))
+        if created.tzinfo is None:
+            created = created.replace(tzinfo=dt.timezone.utc)
+        self.created = created.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.platform = spec.get("platform")
         self.max_running = int(spec.get("max_running", 6))
         # redo: {package: time}: its build from before that time is known bad
