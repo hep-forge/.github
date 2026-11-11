@@ -22,7 +22,15 @@
   },
   "root-plus": {
    "number": 3,
-   "run": "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42952812043"
+   "run": "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42995105019"
+  },
+  "hepmc-merger": {
+   "number": 2,
+   "run": "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/42995089475"
+  },
+  "sherpa": {
+   "number": 1,
+   "run": "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743"
   }
  },
  "retries": {
@@ -59,7 +67,10 @@
   "42952812043": false,
   "42987164613": false,
   "42987163534": false,
-  "42987166693": true
+  "42987166693": true,
+  "42995089475": false,
+  "42995105019": false,
+  "42995114743": false
  },
  "why": {
   "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42943592449": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"root_base[version='>=6.38.6,<6.38.7.0a0']\"), MatchSpec(\"root\"), MatchSpec(\"gl2ps[version='>=1",
@@ -71,6 +82,9 @@
   "https://github.com/hep-forge/roounfold-feedstock/actions/runs/42952815617": "No such file or directory",
   "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42952812043": "error: module map file '/home/runner/miniconda/conda-bld/root-plus_1794367649616/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
   "https://github.com/hep-forge/podio-feedstock/actions/runs/42987164613": "CMake Error at cmake/podioBuild.cmake:205 (message):",
-  "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42987163534": "error: conflicting types for 'sysconf'; have 'long int(void)'"
+  "https://github.com/hep-forge/jetphox-feedstock/actions/runs/42987163534": "error: conflicting types for 'sysconf'; have 'long int(void)'",
+  "https://github.com/hep-forge/hepmc-merger-feedstock/actions/runs/42995089475": "CMake Error at CMakeLists.txt:45 (target_link_libraries):",
+  "https://github.com/hep-forge/root-plus-feedstock/actions/runs/42995105019": "error: namespaces can only be defined in global or namespace scope",
+  "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743": "Unsatisfiable dependencies for platform linux-aarch64: {MatchSpec(\"hepmc=2.6\")}"
  }
 }
