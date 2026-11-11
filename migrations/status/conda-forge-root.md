@@ -1,20 +1,17 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 10:43 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 11:05 UTC.
 
-building: 7 · waiting: 5 · done: 29
+failed: 3 · building: 2 · waiting: 4 · done: 32
 
 | Package | State | Detail |
 |---|---|---|
-| edm4hep | building | moved 1.0.0 to main 6202384 |
-| escalade | building | moved v9.08.26 to main 55ed69e |
-| framel-root | building | moved 1.0.3 to main 32c65f0 |
-| jana | building | moved 2026.03.01 to main 92e81dc |
-| mcfm | building | moved 10.3-applgrid to main fa17657 |
-| nestdaq | building | moved head to main 4911c9f |
-| rivet | building | moved 4.1.3, 3.1.11 to main fe904d7 |
+| escalade | failed | [run](https://github.com/hep-forge/escalade-feedstock/actions/runs/43006008850) error: module map file '/home/runner/miniconda/conda-bld/escalade_1794393851392/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla |
+| framel-root | failed | [run](https://github.com/hep-forge/framel-root-feedstock/actions/runs/43006014543) error: module map file '/home/runner/miniconda/conda-bld/framel-root_1794393850527/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_ |
+| mcfm | failed | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43006036545) No such file or directory |
+| dd4hep | building | moved 1.37 to main 37b4bbf |
+| rivet | building | [run](https://github.com/hep-forge/rivet-feedstock/actions/runs/43006051468) |
 | acts | waiting | dd4hep |
-| dd4hep | waiting | edm4hep |
 | epic | waiting | dd4hep |
 | npsim | waiting | dd4hep |
 | rapgap | waiting | rivet |
@@ -23,6 +20,7 @@ building: 7 · waiting: 5 · done: 29
 | applgrid | done |  |
 | combiner | done |  |
 | delphes | done |  |
+| edm4hep | done |  |
 | eic-smear | done |  |
 | estarlight | done |  |
 | fastnlo | done |  |
@@ -32,8 +30,10 @@ building: 7 · waiting: 5 · done: 29
 | hammer | done |  |
 | hepmc | done |  |
 | hepmc-merger | done |  |
+| jana | done |  |
 | jetphox | done |  |
 | lcg-relax | done |  |
+| nestdaq | done |  |
 | phlex | done |  |
 | podio | done |  |
 | professor | done |  |
