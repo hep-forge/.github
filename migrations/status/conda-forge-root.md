@@ -1,12 +1,11 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-12 02:27 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-12 02:42 UTC.
 
-building: 1 · done: 40
+done: 41
 
 | Package | State | Detail |
 |---|---|---|
-| mcfm | building | [run](https://github.com/hep-forge/mcfm-feedstock/actions/runs/43116930752) |
 | acts | done |  |
 | afterburner | done |  |
 | apfelgrid | done |  |
@@ -30,6 +29,7 @@ building: 1 · done: 40
 | jana | done |  |
 | jetphox | done |  |
 | lcg-relax | done |  |
+| mcfm | done |  |
 | nestdaq | done |  |
 | npsim | done |  |
 | phlex | done |  |

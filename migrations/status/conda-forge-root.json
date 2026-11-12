@@ -3,10 +3,6 @@
   "sherpa": {
    "number": 1,
    "run": "https://github.com/hep-forge/sherpa-feedstock/actions/runs/42995114743"
-  },
-  "mcfm": {
-   "number": 1,
-   "run": "https://github.com/hep-forge/mcfm-feedstock/actions/runs/43017465074"
   }
  },
  "retries": {
