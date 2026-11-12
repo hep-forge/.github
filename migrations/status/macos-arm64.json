@@ -260,10 +260,6 @@
   "herwig7": {
    "number": 1,
    "run": "https://github.com/hep-forge/herwig7-feedstock/actions/runs/41773085572"
-  },
-  "nestdaq": {
-   "number": 10,
-   "run": "https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43226210606"
   }
  }
 }

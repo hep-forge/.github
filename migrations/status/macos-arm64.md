@@ -1,12 +1,11 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 13:44 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 14:05 UTC.
 
-failed: 1 · done: 70 · n/a: 23
+done: 71 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43226210606) Undefined symbols for architecture arm64: |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -57,6 +56,7 @@ failed: 1 · done: 70 · n/a: 23
 | looptools | done |  |
 | minio-cpp | done |  |
 | mpfun90 | done |  |
+| nestdaq | done | built; channel not refreshed yet |
 | nlojetxx | done |  |
 | nnlojet | done |  |
 | npsim | done |  |
