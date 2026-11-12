@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 08:06 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 08:27 UTC.
 
-building: 1 · done: 70 · n/a: 23
+failed: 1 · done: 70 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | building | moved head to main 5db866a |
+| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43180249924) error: no matching conversion for functional-style cast from 'std::chrono::nanoseconds' (aka 'duration<long long, ratio<1LL, 1000000000LL>>') to 'std::chrono::t |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
