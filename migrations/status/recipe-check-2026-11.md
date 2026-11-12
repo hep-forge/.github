@@ -1,8 +1,8 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-11 23:43 UTC.
+rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-12 00:10 UTC.
 
-done: 25 · n/a: 2
+done: 27
 
 | Package | State | Detail |
 |---|---|---|
@@ -18,6 +18,7 @@ done: 25 · n/a: 2
 | fastnlo | done |  |
 | framel-root | done |  |
 | g4hepem | done |  |
+| geant | done | built; channel not refreshed yet |
 | hell | done |  |
 | hellx | done |  |
 | hepmc | done |  |
@@ -28,8 +29,7 @@ done: 25 · n/a: 2
 | npsim | done |  |
 | numdiff | done |  |
 | podio | done |  |
+| pythia | done | built; channel not refreshed yet |
 | rapgap | done |  |
 | thepeg | done |  |
 | xfitter | done |  |
-| geant | n/a | nothing published |
-| pythia | n/a | nothing published |

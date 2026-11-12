@@ -1,8 +1,8 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-11 23:43 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-12 00:09 UTC.
 
-building: 1 · done: 38 · n/a: 2
+building: 1 · done: 40
 
 | Package | State | Detail |
 |---|---|---|
@@ -23,6 +23,7 @@ building: 1 · done: 38 · n/a: 2
 | framel-root | done |  |
 | g4hepem | done |  |
 | gaudi | done |  |
+| geant | done | built; channel not refreshed yet |
 | hammer | done |  |
 | hepmc | done |  |
 | hepmc-merger | done |  |
@@ -34,6 +35,7 @@ building: 1 · done: 38 · n/a: 2
 | phlex | done |  |
 | podio | done |  |
 | professor | done |  |
+| pythia | done | built; channel not refreshed yet |
 | rapgap | done |  |
 | rave | done |  |
 | rivet | done |  |
@@ -45,5 +47,3 @@ building: 1 · done: 38 · n/a: 2
 | xfitter | done |  |
 | xfitter-dev | done |  |
 | yoda | done |  |
-| geant | n/a | nothing published |
-| pythia | n/a | nothing published |
