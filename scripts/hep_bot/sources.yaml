@@ -43,6 +43,12 @@ pythia:
   package: pythia8
   pattern: '(\d+)\.(\d)(\d\d)'
 
+# framel builds its tools against conda-forge's libframel of the same
+# version, so it follows libframel (no bump before conda-forge has it)
+framel:
+  type: conda_forge
+  package: libframel
+
 # main's geant points at conda-forge's geant4 (version spelled the same)
 geant:
   type: conda_forge
