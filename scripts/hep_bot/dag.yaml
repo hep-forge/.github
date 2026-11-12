@@ -80,6 +80,12 @@ afterburner:
 eic-smear:
   depends_on: [hepmc]
 
+kfrlib:
+  depends_on: []
+
+root-plus:   # kfrlib's run_exports pin x.x.x: a KFR bump needs a root-plus rebuild
+  depends_on: [kfrlib]
+
 framel:
   depends_on: []
 
