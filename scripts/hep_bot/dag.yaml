@@ -5,15 +5,17 @@
 # requirements (host/run/build). ROOT is conda-forge's root_base (not a
 # hep-forge package since the conda-forge-root migration), so it is not a
 # node here.
+#
+# Ordered so every package comes after its dependencies: hep-bot's version
+# check walks it top to bottom. Every build/host/run requirement that names
+# another hep-forge package is an edge; packages with neither dependencies
+# nor dependents are left out (the version check takes them after these).
 
 fastjet:
   depends_on: []
 
 fastjet-contrib:
   depends_on: [fastjet]
-
-hepmc:
-  depends_on: [pythia]
 
 lhapdf:
   depends_on: []
@@ -24,17 +26,11 @@ yoda:
 hoppet:
   depends_on: [lhapdf]
 
-applgrid:
-  depends_on: [fastnlo, hoppet, lhapdf]
-
 apfel:
   depends_on: [lhapdf]
 
 apfelxx:
   depends_on: [lhapdf]
-
-apfelgrid:
-  depends_on: [apfel, lhapdf, applgrid]
 
 qcdnum:
   depends_on: []
@@ -51,25 +47,23 @@ pineappl:
 pythia:
   depends_on: []
 
+hepmc:
+  depends_on: [pythia]
+
 rivet:
   depends_on: [fastjet, fastjet-contrib, hepmc, yoda]
 
 fastnlo:
-  depends_on: [lhapdf, hoppet, fastjet, qcdnum, yoda]
+  depends_on: [fastjet, hoppet, lhapdf, qcdnum, yoda]
+
+applgrid:
+  depends_on: [fastnlo, hoppet, lhapdf]
+
+apfelgrid:
+  depends_on: [apfel, applgrid, lhapdf]
 
 rapgap:
-  depends_on: [rivet, lhapdf, pythia, hepmc]
-
-xfitter:
-  depends_on: [lhapdf, applgrid, apfelgrid, apfel, apfelxx,
-               pineappl, qcdnum, dyturbo, hathor, ploughshare]
-
-xfitter-dev:
-  depends_on: [lhapdf, applgrid, apfelgrid, apfel, apfelxx,
-               pineappl, qcdnum, dyturbo, hathor, ploughshare]
-
-nnpdf:
-  depends_on: [lhapdf, pineappl, eko]
+  depends_on: [hepmc, lhapdf, pythia, rivet]
 
 hepmc-merger:
   depends_on: [hepmc]
@@ -83,17 +77,8 @@ eic-smear:
 kfrlib:
   depends_on: []
 
-root-plus:   # kfrlib's run_exports pin x.x.x: a KFR bump needs a root-plus rebuild
-  depends_on: [kfrlib]
-
 framel:
   depends_on: []
-
-framel-root:   # takes framel's version
-  depends_on: [framel, root-plus]
-
-escalade:
-  depends_on: [root-plus]
 
 vmc:
   depends_on: []
@@ -122,5 +107,152 @@ gaudi:
 phlex:
   depends_on: []
 
-mg5amcnlo:
+cuba:
   depends_on: []
+
+cubature:
+  depends_on: []
+
+curlpp:
+  depends_on: []
+
+delphes:
+  depends_on: [pythia]
+
+difftop:
+  depends_on: [lhapdf]
+
+djangoh:
+  depends_on: [lhapdf]
+
+eko:
+  depends_on: []
+
+nnpdf:
+  depends_on: [eko, lhapdf, pineappl]
+
+emela:
+  depends_on: [lhapdf]
+
+mg5amcnlo:
+  depends_on: [emela, fastjet, fastjet-contrib, lhapdf]
+
+estarlight:
+  depends_on: [hepmc]
+
+fairmq:
+  depends_on: []
+
+geant:
+  depends_on: [vmc]
+
+g4hepem:
+  depends_on: [geant]
+
+hathor:
+  depends_on: [lhapdf]
+
+hell:
+  depends_on: []
+
+hellx:
+  depends_on: []
+
+dyturbo:
+  depends_on: [cuba, cubature, hell, hellx, lhapdf]
+
+inih:
+  depends_on: []
+
+jetphox:
+  depends_on: [lhapdf]
+
+kalman:
+  depends_on: []
+
+libdate-tz:
+  depends_on: []
+
+mcfm:
+  depends_on: [applgrid, hoppet, lhapdf]
+
+minio-cpp:
+  depends_on: [curlpp, inih]
+
+root-plus:   # kfrlib's run_exports pin x.x.x: a KFR bump needs a root-plus rebuild
+  depends_on: [inih, kalman, kfrlib, libdate-tz, minio-cpp]
+
+framel-root:   # takes framel's version
+  depends_on: [framel, root-plus]
+
+escalade:
+  depends_on: [root-plus]
+
+mpfun90:
+  depends_on: []
+
+nestdaq:
+  depends_on: [fairmq, root-plus]
+
+nnlojet:
+  depends_on: [lhapdf, pineappl]
+
+numdiff:
+  depends_on: []
+
+oneloop:
+  depends_on: []
+
+cuttools:
+  depends_on: [mpfun90, oneloop]
+
+iregi:
+  depends_on: [oneloop]
+
+ninja-hep-ph:
+  depends_on: [oneloop]
+
+ploughshare:
+  depends_on: []
+
+xfitter:
+  depends_on: [apfel, apfelgrid, apfelxx, applgrid, dyturbo, hathor, lhapdf, numdiff, pineappl, ploughshare, qcdnum]
+
+xfitter-dev:
+  depends_on: [apfel, apfelgrid, apfelxx, applgrid, dyturbo, hathor, lhapdf, numdiff, pineappl, ploughshare, qcdnum]
+
+podio:
+  depends_on: []
+
+edm4hep:
+  depends_on: [podio]
+
+dd4hep:
+  depends_on: [edm4hep, g4hepem, geant, hepmc, podio]
+
+acts:
+  depends_on: [dd4hep]
+
+epic:
+  depends_on: [dd4hep]
+
+jana:
+  depends_on: [podio]
+
+npsim:
+  depends_on: [dd4hep]
+
+professor:
+  depends_on: [yoda]
+
+sherpa:
+  depends_on: [lhapdf]
+
+thepeg:
+  depends_on: [fastjet, lhapdf]
+
+herwig7:
+  depends_on: [fastjet, lhapdf, thepeg]
+
+troll:
+  depends_on: [cuba, lhapdf]
