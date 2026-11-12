@@ -66,15 +66,9 @@
 [submodule "feedstocks/nlojetxx-feedstock"]
 	path = feedstocks/nlojetxx-feedstock
 	url = https://github.com/hep-forge/nlojetxx-feedstock.git
-[submodule "feedstocks/root-feedstock"]
-	path = feedstocks/root-feedstock
-	url = https://github.com/hep-forge/root-feedstock.git
 [submodule "feedstocks/root-plus-feedstock"]
 	path = feedstocks/root-plus-feedstock
 	url = git@github.com:hep-forge/root-plus-feedstock.git
-[submodule "feedstocks/root-guard-feedstock"]
-	path = feedstocks/root-guard-feedstock
-	url = git@github.com:hep-forge/root-guard-feedstock.git
 [submodule "feedstocks/sz3-feedstock"]
 	path = feedstocks/sz3-feedstock
 	url = git@github.com:hep-forge/sz3-feedstock.git

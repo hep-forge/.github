@@ -28,18 +28,22 @@ feedstock as a submodule, plus the shared CI templates, the scripts and hep-bot.
 conda install -c hep-forge -c conda-forge <package>
 ```
 
-Add `root-guard` so that conda never swaps in conda-forge's ROOT:
+ROOT comes from conda-forge: every hep-forge package that uses ROOT is built
+on conda-forge's `root_base` and pins the exact build it was compiled with.
 
 ```bash
-conda install -c hep-forge -c conda-forge root root-guard rivet lhapdf pythia
+conda install -c hep-forge -c conda-forge root rivet lhapdf pythia
 ```
+
+Pythia and Geant pick the generation by version: `pythia` is PYTHIA 8 and
+`"pythia<8"` is PYTHIA 6; `geant` is Geant4 and `"geant<4"` is Geant3.
 
 For a reproducible setup, use an `environment.yml`:
 
 ```yaml
 name: myhep
 channels: [hep-forge, conda-forge]
-dependencies: [root, root-guard, lhapdf, cernlib]
+dependencies: [root, lhapdf, cernlib]
 ```
 
 ```bash
@@ -135,8 +139,6 @@ _Last refreshed: 2026-11-12 (`python3 scripts/update_readme_status.py`)_
 | [rapgap](https://github.com/hep-forge/rapgap-feedstock) | `3.310` | [`3.310`](https://anaconda.org/hep-forge/rapgap) | ✅ | ✅ |
 | [rave](https://github.com/hep-forge/rave-feedstock) | `0.6.25` | [`0.6.25`](https://anaconda.org/hep-forge/rave) | ✅ | ✅ |
 | [rivet](https://github.com/hep-forge/rivet-feedstock) | `4.1.3` | [`4.1.3`](https://anaconda.org/hep-forge/rivet) | ✅ | ✅ |
-| [root](https://github.com/hep-forge/root-feedstock) | `6.40.04` | [`6.40.04`](https://anaconda.org/hep-forge/root) | ✅ | ✅ |
-| [root-guard](https://github.com/hep-forge/root-guard-feedstock) | `2` | [`2`](https://anaconda.org/hep-forge/root-guard) | ✅ | ✅ |
 | [root-plus](https://github.com/hep-forge/root-plus-feedstock) | `beta` | [`beta`](https://anaconda.org/hep-forge/root-plus) | ✅ | ✅ |
 | [roounfold](https://github.com/hep-forge/roounfold-feedstock) | `3.1.0` | [`3.1.0`](https://anaconda.org/hep-forge/roounfold) | ✅ | ✅ |
 | [scirooplot](https://github.com/hep-forge/scirooplot-feedstock) | `3.3.3` | [`3.3.3`](https://anaconda.org/hep-forge/scirooplot) | ✅ | ✅ |

@@ -109,10 +109,12 @@ class World:
             with urllib.request.urlopen(f"{CHANNEL}/{sub}/repodata.json") as f:
                 rd = json.load(f)
             self.repodata[sub] = list({**rd.get("packages", {}), **rd.get("packages.conda", {})}.values())
+        # archived feedstocks are retired (e.g. root, root-guard: ROOT comes
+        # from conda-forge) and read-only, so no migration can tag them
         self.feedstocks = sorted(
             r["name"][: -len("-feedstock")]
-            for r in gh_json("repo", "list", ORG, "-L", "500", "--json", "name") or []
-            if r["name"].endswith("-feedstock")
+            for r in gh_json("repo", "list", ORG, "-L", "500", "--json", "name,isArchived") or []
+            if r["name"].endswith("-feedstock") and not r.get("isArchived")
         )
         self._recipe, self._vars, self._tags, self._main = {}, {}, {}, {}
 

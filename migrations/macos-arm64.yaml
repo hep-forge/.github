@@ -47,5 +47,3 @@ redo:
   xfitter: 2026-11-06T05:12:00Z
   xfitter-dev: 2026-11-06T05:12:00Z
   yoda: 2026-11-06T05:12:00Z
-  # ROOT's first macOS build pinned deployment target 11.0 in run_exports
-  root: 2026-11-06T05:12:00Z
