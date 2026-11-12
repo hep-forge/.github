@@ -80,6 +80,12 @@ afterburner:
 eic-smear:
   depends_on: [hepmc]
 
+framel:
+  depends_on: []
+
+framel-root:   # takes framel's version
+  depends_on: [framel, root-plus]
+
 escalade:
   depends_on: [root-plus]
 

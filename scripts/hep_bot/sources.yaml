@@ -49,6 +49,12 @@ framel:
   type: conda_forge
   package: libframel
 
+# framel-root takes framel's version (and builds the newest KAGRA commit
+# listed in its recipe); dag.yaml makes it wait for framel's bump
+framel-root:
+  type: conda_forge
+  package: libframel
+
 # main's geant points at conda-forge's geant4 (version spelled the same)
 geant:
   type: conda_forge

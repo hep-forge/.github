@@ -18,6 +18,8 @@ in dag.yaml opts a package out):
            ran, or the feedstock's recipe/ changed since the commit `head`
            points at: move `head` to the default branch tip, which rebuilds it.
            Having the tag is the opt-in; auto_update doesn't affect it.
+  WAIT     a newer release, but a dag dependency was bumped in this same
+           run: left for the next run, once that dependency is published.
   MANUAL   newer upstream release that needs a human: a new major version,
            a git source, or a URL with more jinja than {{ version }}. Listed
            in one tracking issue on the meta-repo instead of being touched.
@@ -516,6 +518,12 @@ def main() -> None:
                 continue
 
             if up and V(up) > V(cur):
+                # built against a dependency bumped in this same run (e.g.
+                # framel-root on framel): its build would start before that
+                # version is published, so bump it on the next run
+                if waits := [d for d in (DAG.get(name) or {}).get("depends_on", []) if d in changed]:
+                    print(f"WAIT   {name}: {cur} -> {up} (after {', '.join(waits)} publishes)")
+                    continue
                 if breaking(cur, up):
                     why = "new major version"
                 elif (SOURCES.get(name) or {}).get("type") == "conda_forge":
