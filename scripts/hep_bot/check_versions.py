@@ -168,8 +168,21 @@ def latest_tag(repo_url, prefix=None, pattern=None):
     before the version (from the recipe URL); without it any leading name
     is allowed ("v1.2", "hoppet-2.3.0"). A `pattern` with several groups
     (pythia8318 -> 8, 3, 18) is joined with dots."""
-    out = subprocess.run(["git", "ls-remote", "--tags", repo_url],
-                         capture_output=True, text=True, timeout=60).stdout
+    # An upstream that does not answer (gitlab.cern.ch was down for hours on
+    # 2026-11-10/11) is not hep-bot failing: warn and treat the upstream
+    # version as unknown, as fetch_page() does for web pages, so the daily
+    # check stays green and checks again the next day.
+    try:
+        res = subprocess.run(["git", "ls-remote", "--tags", repo_url],
+                             capture_output=True, text=True, timeout=60)
+    except subprocess.TimeoutExpired:
+        print(f"  WARNING: could not list tags of {repo_url}: no answer in 60 s", file=sys.stderr)
+        return None
+    if res.returncode != 0:
+        print(f"  WARNING: could not list tags of {repo_url}: "
+              f"{(res.stderr.strip().splitlines() or ['git ls-remote failed'])[-1]}", file=sys.stderr)
+        return None
+    out = res.stdout
     best = None
     for line in out.splitlines():
         tag = line.split("refs/tags/", 1)[-1].removesuffix("^{}")
