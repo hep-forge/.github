@@ -1,12 +1,12 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 07:43 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-12 08:06 UTC.
 
-failed: 1 · done: 71 · n/a: 24
+building: 1 · done: 70 · n/a: 23
 
 | Package | State | Detail |
 |---|---|---|
-| nestdaq | failed | [run](https://github.com/hep-forge/nestdaq-feedstock/actions/runs/43119577311) error: no matching constructor for initialization of 'const std::pair<std::chrono::nanoseconds, std::chrono::system_clock::time_point>' (aka 'const pair<duratio |
+| nestdaq | building | moved head to main 5db866a |
 | acts | done |  |
 | afterburner | done |  |
 | apfel | done |  |
@@ -71,7 +71,6 @@ failed: 1 · done: 71 · n/a: 24
 | qcdnum | done |  |
 | rapgap | done |  |
 | rivet | done |  |
-| root | done |  |
 | root-plus | done |  |
 | sz3 | done |  |
 | thepeg | done |  |
@@ -94,7 +93,6 @@ failed: 1 · done: 71 · n/a: 24
 | phlex | n/a | Linux only |
 | qcdloop | n/a | Linux only |
 | rave | n/a | Linux only |
-| root-guard | n/a | noarch |
 | roounfold | n/a | Linux only |
 | scirooplot | n/a | Linux only |
 | sherpa | n/a | Linux only |
