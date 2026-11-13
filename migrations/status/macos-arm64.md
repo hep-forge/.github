@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-13 12:06 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-13 12:30 UTC.
 
-done: 72 · n/a: 25
+done: 73 · n/a: 24
 
 | Package | State | Detail |
 |---|---|---|
@@ -51,6 +51,7 @@ done: 72 · n/a: 25
 | iregi | done |  |
 | jana | done |  |
 | jetphox | done |  |
+| kalman | done |  |
 | kfrlib | done |  |
 | lhapdf | done |  |
 | libdate-tz | done |  |
@@ -85,7 +86,6 @@ done: 72 · n/a: 25
 | geant | n/a | Linux only |
 | hammer | n/a | Linux only |
 | herwig7 | n/a | Linux only |
-| kalman | n/a | nothing published |
 | kfrlib-benchmark | n/a | Linux only |
 | lcg-relax | n/a | Linux only |
 | lhapdf5 | n/a | nothing published |
