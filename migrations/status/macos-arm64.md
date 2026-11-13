@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-13 02:24 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-13 02:43 UTC.
 
-done: 71 · n/a: 23
+done: 72 · n/a: 27
 
 | Package | State | Detail |
 |---|---|---|
@@ -13,6 +13,7 @@ done: 71 · n/a: 23
 | apfelxx | done |  |
 | applgrid | done |  |
 | chaplin | done |  |
+| cm | done |  |
 | collier | done |  |
 | combiner | done |  |
 | covfie | done |  |
@@ -79,11 +80,15 @@ done: 71 · n/a: 23
 | yoda | done |  |
 | applfast | n/a | nothing published |
 | cernlib | n/a | Linux only |
+| cfg | n/a | nothing published |
 | eko | n/a | noarch |
+| fd | n/a | nothing published |
+| frv | n/a | nothing published |
 | gaudi | n/a | Linux only |
 | geant | n/a | Linux only |
 | hammer | n/a | Linux only |
 | herwig7 | n/a | Linux only |
+| kfrlib-benchmark | n/a | Linux only |
 | lcg-relax | n/a | Linux only |
 | lhapdf5 | n/a | nothing published |
 | mcfm | n/a | Linux only |
