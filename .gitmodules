@@ -291,9 +291,3 @@
 [submodule "feedstocks/cfg-feedstock"]
 	path = feedstocks/cfg-feedstock
 	url = git@github.com:hep-forge/cfg-feedstock.git
-[submodule "feedstocks/frv-feedstock"]
-	path = feedstocks/frv-feedstock
-	url = git@github.com:hep-forge/frv-feedstock.git
-[submodule "feedstocks/fd-feedstock"]
-	path = feedstocks/fd-feedstock
-	url = git@github.com:hep-forge/fd-feedstock.git

@@ -45,15 +45,12 @@ pythia:
 
 # framel builds its tools against conda-forge's libframel of the same
 # version, so it follows libframel (no bump before conda-forge has it)
-framel:
-  type: conda_forge
-  package: libframel
-
-# framel-root takes framel's version (and builds the newest KAGRA commit
-# listed in its recipe); dag.yaml makes it wait for framel's bump
+# framel-root takes framel's version, i.e. Fr's (and builds the newest
+# KAGRA commit listed in its recipe); dag.yaml makes it wait for framel
 framel-root:
-  type: conda_forge
-  package: libframel
+  type: git_tags
+  url: "https://git.ligo.org/virgo/virgoapp/Fr"
+  pattern: '^(\d+\.\d+\.\d+)$'
 
 # main's geant points at conda-forge's geant4 (version spelled the same)
 geant:

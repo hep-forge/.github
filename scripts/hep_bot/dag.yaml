@@ -83,14 +83,8 @@ cm:
 cfg:
   depends_on: [cm]
 
-frv:
-  depends_on: []
-
-fd:
-  depends_on: [cfg, cm, frv]
-
-framel:
-  depends_on: [fd, frv]
+framel:   # Fr + Frv + Fd in one package
+  depends_on: [cfg, cm]
 
 vmc:
   depends_on: []
