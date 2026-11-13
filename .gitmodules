@@ -282,3 +282,6 @@
 [submodule "feedstocks/kalman-feedstock"]
 	path = feedstocks/kalman-feedstock
 	url = git@github.com:hep-forge/kalman-feedstock.git
+[submodule "feedstocks/kfrlib-benchmark-feedstock"]
+	path = feedstocks/kfrlib-benchmark-feedstock
+	url = git@github.com:hep-forge/kfrlib-benchmark-feedstock.git
