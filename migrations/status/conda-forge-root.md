@@ -1,8 +1,8 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-13 03:42 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-13 04:05 UTC.
 
-done: 41
+done: 40
 
 | Package | State | Detail |
 |---|---|---|
@@ -19,7 +19,6 @@ done: 41
 | escalade | done |  |
 | estarlight | done |  |
 | fastnlo | done |  |
-| framel-root | done |  |
 | g4hepem | done |  |
 | gaudi | done |  |
 | geant | done | built; channel not refreshed yet |
