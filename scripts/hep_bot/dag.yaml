@@ -77,8 +77,20 @@ eic-smear:
 kfrlib:
   depends_on: []
 
-framel:
+cm:
   depends_on: []
+
+cfg:
+  depends_on: [cm]
+
+frv:
+  depends_on: []
+
+fd:
+  depends_on: [cfg, cm, frv]
+
+framel:
+  depends_on: [fd, frv]
 
 vmc:
   depends_on: []
