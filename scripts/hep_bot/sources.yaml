@@ -10,6 +10,8 @@
 #   conda_forge: package (+ optional pattern) -- the recipe only points at a
 #                conda-forge package; follow that package's versions and bump
 #                without downloading anything
+#   follows:     package -- takes that hep-forge package's version; the recipe
+#                lists no versions, hep-bot tags it once the package is tagged
 
 fastjet:
   type: html_scrape
@@ -45,12 +47,10 @@ pythia:
 
 # framel builds its tools against conda-forge's libframel of the same
 # version, so it follows libframel (no bump before conda-forge has it)
-# framel-root takes framel's version, i.e. Fr's (and builds the newest
-# KAGRA commit listed in its recipe); dag.yaml makes it wait for framel
+# framel-root takes framel's version (its recipe lists none)
 framel-root:
-  type: git_tags
-  url: "https://git.ligo.org/virgo/virgoapp/Fr"
-  pattern: '^(\d+\.\d+\.\d+)$'
+  type: follows
+  package: framel
 
 # main's geant points at conda-forge's geant4 (version spelled the same)
 geant:

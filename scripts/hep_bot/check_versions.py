@@ -500,6 +500,25 @@ def main() -> None:
 
             if (DAG.get(name) or {}).get("auto_update") is False:
                 continue
+            # A package that takes another's version (framel-root takes
+            # framel's): its recipe lists no versions; tag it with the lead
+            # package's version once that one is tagged, and only then.
+            if (src := SOURCES.get(name) or {}).get("type") == "follows":
+                lead = src["package"]
+                want = (recipe(lead) or {}).get("current")
+                newest_tag = max((t for t in tags if V(t)), key=V, default=None)
+                if not want:
+                    print(f"SKIP   {name}: {lead} has no version")
+                elif want in tags:
+                    print(f"OK     {name}: {want} (follows {lead})")
+                elif lead in changed or want not in feedstock_tags(lead):
+                    print(f"WAIT   {name}: {newest_tag} -> {want} (after {lead} {want} publishes)")
+                else:
+                    print(f"TAG    {name}: {newest_tag} -> {want} (follows {lead})")
+                    if not args.dry_run:
+                        push_tag(name, want, branch)
+                        changed.append(name)
+                continue
             if not rec or not rec["current"]:
                 print(f"SKIP   {name}: no numeric version in recipe")
                 continue
