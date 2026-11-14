@@ -87,9 +87,14 @@ version check and every Makefile target.
 | New feedstock | `scripts/new_feedstock.sh`, `.github/workflows/new-feedstock.yml` |
 
 Before you trigger anything that pushes, run the dry runs:
-`python3 scripts/hep_bot/check_versions.py --dry-run [--only pkg]`,
-`python3 scripts/hep_bot/migrate.py --dry-run [--only <migration>]` and
-`bash scripts/render_sync.sh` without `--commit`.
+`python3 scripts/hep_bot/check_versions.py --dry-run [--only pkg]` and
+`python3 scripts/hep_bot/migrate.py --dry-run [--only <migration>]`.
+
+`scripts/render_sync.sh` has no dry run. Even without `--commit` it commits and
+pushes to every feedstock whose rendered files changed; `--commit` only adds the
+meta-repo commit. To preview a template change, diff it against one feedstock's
+copy (`diff scripts/templates/autoupload.yml feedstocks/<pkg>-feedstock/.github/workflows/autoupload.yml`),
+and run the script only when the fleet-wide push is wanted.
 
 ## GitHub releases
 
