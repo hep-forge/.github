@@ -1,8 +1,8 @@
 # Migration `macos-arm64`
 
-platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-16 08:22 UTC.
+platform `macos-arm64`, started 2026-11-03T02:37:00Z, updated 2026-11-16 08:43 UTC.
 
-done: 73 · n/a: 24
+done: 73 · n/a: 25
 
 | Package | State | Detail |
 |---|---|---|
@@ -96,6 +96,7 @@ done: 73 · n/a: 24
 | phlex | n/a | Linux only |
 | qcdloop | n/a | Linux only |
 | rave | n/a | Linux only |
+| rcdaq | n/a | Linux only |
 | roounfold | n/a | Linux only |
 | scirooplot | n/a | Linux only |
 | sherpa | n/a | Linux only |
