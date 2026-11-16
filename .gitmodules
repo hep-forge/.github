@@ -291,3 +291,6 @@
 [submodule "feedstocks/cfg-feedstock"]
 	path = feedstocks/cfg-feedstock
 	url = git@github.com:hep-forge/cfg-feedstock.git
+[submodule "feedstocks/rcdaq-feedstock"]
+	path = feedstocks/rcdaq-feedstock
+	url = git@github.com:hep-forge/rcdaq-feedstock.git
