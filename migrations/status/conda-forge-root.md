@@ -1,6 +1,6 @@
 # Migration `conda-forge-root`
 
-rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-25 12:44 UTC.
+rebuild, started 2026-11-10T16:33:00Z, updated 2026-11-25 13:04 UTC.
 
 done: 40
 
