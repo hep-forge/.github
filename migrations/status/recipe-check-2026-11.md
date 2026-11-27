@@ -1,6 +1,6 @@
 # Migration `recipe-check-2026-11`
 
-rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-27 01:25 UTC.
+rebuild, started 2026-11-05T07:09:33Z, updated 2026-11-27 01:44 UTC.
 
 done: 27
 
